@@ -148,3 +148,13 @@ footer{display:flex;justify-content:space-between;gap:20px;padding:15px 2px 0;co
 @media(max-width:900px){.hero{grid-template-columns:1fr;gap:19px}.analytics-grid{grid-template-columns:1fr}.grid-4{grid-template-columns:1fr 1fr}.hero-score-row{align-items:flex-start}.score-panel{padding-bottom:0}}
 @media(max-width:620px){.shell{width:min(100% - 18px,1180px);padding-top:15px}.topbar{align-items:flex-start}.top-actions{gap:6px}.freshness{height:32px;padding:0 8px}.icon-button{height:32px;padding:0 9px}.icon-button-text{display:none}.hero{padding:17px;border-radius:10px}.hero-score-row{display:block}.signal-text{margin-top:9px}.grid-4{gap:7px}.metric-card{min-height:116px;padding:14px}.metric-value{font-size:24px}.card{padding:14px}.section-head{align-items:flex-start}.hint{text-align:left}.boundary-summary-grid{grid-template-columns:1fr}.boundary-summary-item{grid-template-columns:1fr auto}.grid-2{grid-template-columns:1fr}.driver-row{grid-template-columns:92px 1fr 38px;gap:9px}.mini-grid{grid-template-columns:1fr 1fr}footer{flex-direction:column;gap:4px}.boundary-tick span{font-size:7px}.boundary-strip{margin-left:2px;margin-right:2px}}
 @media(max-width:410px){.grid-4{grid-template-columns:1fr}.metric-card{min-height:auto}.freshness span:last-child{max-width:145px;overflow:hidden;text-overflow:ellipsis}.percentile-card{min-height:125px}}
+
+/* Minimal-text refinement */
+.metric-card-clean{display:flex;flex-direction:column;justify-content:flex-start}
+.metric-card-clean .metric-value{margin-bottom:0}
+.driver-copy span small{display:inline;margin-left:5px;color:var(--faint);font-size:9px;font-weight:650}
+.mini-grid-3{grid-template-columns:repeat(3,1fr)}
+.methodology-card details summary strong{margin-top:0;font-size:16px;letter-spacing:-.02em}
+.boundary-card .section-head,.backtest-card .section-head,.log-card .section-head,.drivers-card .section-head{margin-bottom:13px}
+@media(max-width:620px){.mini-grid-3{grid-template-columns:1fr 1fr 1fr}}
+@media(max-width:460px){.mini-grid-3{grid-template-columns:1fr}.metric-card-clean{min-height:98px}}

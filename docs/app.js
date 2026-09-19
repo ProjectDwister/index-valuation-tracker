@@ -9,17 +9,9 @@ const signedPct = (x, d=1) => {
 };
 
 function signalText(s){
-  if(s==='BUY') return 'Valuation and earnings conditions support adding long-horizon NIFTY exposure.';
-  if(s==='HOLD') return 'Valuation and earnings conditions are broadly neutral for fresh allocation.';
-  return 'Conditions are unfavourable for fresh allocation; this is not a short-selling signal.';
-}
-function boundarySentence(signal,bh,hs){
-  if(!bh || !hs) return 'Run the cloud refresh once after uploading this update to calculate the signal boundaries.';
-  const bhPe=Number(bh.pe).toFixed(2), hsPe=Number(hs.pe).toFixed(2);
-  const bhM=signedPct(bh.move_from_current), hsM=signedPct(hs.move_from_current);
-  if(signal==='BUY') return `With earnings unchanged, the model has about ${bhM} valuation headroom before BUY becomes HOLD, and about ${hsM} before SELL.`;
-  if(signal==='HOLD') return `With earnings unchanged, BUY returns near ${bhPe}× P/E; SELL begins near ${hsPe}×.`;
-  return `With earnings unchanged, HOLD returns near ${hsPe}× P/E and BUY near ${bhPe}×.`;
+  if(s==='BUY') return 'Conditions support adding exposure.';
+  if(s==='HOLD') return 'Neutral for fresh allocation.';
+  return 'Unfavourable for fresh allocation.';
 }
 function csvParse(text){
   const lines=text.trim().split(/\r?\n/); if(lines.length<2) return [];
@@ -33,7 +25,7 @@ function setFreshness(asOf){
   const d=new Date(`${asOf}T00:00:00`); const now=new Date();
   const days=Math.max(0,Math.floor((now-d)/86400000));
   host.classList.remove('fresh','stale'); host.classList.add(days<=3?'fresh':'stale');
-  host.querySelector('span:last-child').textContent=`${fmtDate(asOf)} · latest market close`;
+  host.querySelector('span:last-child').textContent=`${fmtDate(asOf)} · NSE close`;
 }
 function setSignalTone(signal){
   $('signalPill').textContent=signal; $('signalPill').className=`signal-pill ${signal}`;
@@ -95,17 +87,13 @@ async function boot(){
 
     $('nifty').textContent=num(latest.nifty_close,2);
     $('pe').textContent=`${Number(latest.pe).toFixed(2)}×`;
-    $('peVsMedian').textContent=`Median ${Number(latest.era_median_pe).toFixed(2)}×`;
+    $('peVsMedian').textContent=`vs median ${Number(latest.era_median_pe).toFixed(2)}×`;
     const peDelta=Number(latest.pe)/Number(latest.era_median_pe)-1;
-    $('peDelta').textContent=`${signedPct(peDelta)} vs median`; $('peDelta').classList.add(peDelta<=0?'positive':'negative');
+    $('peDelta').textContent=signedPct(peDelta); $('peDelta').classList.add(peDelta<=0?'positive':'negative');
     $('percentile').textContent=pct(latest.pe_percentile,1);
     $('percentileMarker').style.left=`${clamp(+latest.pe_percentile*100,0,100)}%`;
     $('quintile').textContent=latest.valuation_quintile;
     $('epsGrowth').textContent=pct(latest.yoy_eps_growth,1);
-    const epsTone=$('epsTone'); const eg=+latest.yoy_eps_growth;
-    epsTone.textContent=eg>=.12?'Strong':eg>=.06?'Healthy':eg>=0?'Moderate':'Contracting';
-    const epsToneClass=eg>=.06?'positive':eg<0?'negative':'';
-    if(epsToneClass) epsTone.classList.add(epsToneClass);
 
     $('valuationScore').textContent=Number(latest.valuation_score).toFixed(1);
     $('growthScore').textContent=Number(latest.growth_score).toFixed(1);
@@ -114,7 +102,6 @@ async function boot(){
     $('earningsYield').textContent=pct(latest.earnings_yield,2);
     $('medianPe').textContent=`${Number(latest.era_median_pe).toFixed(2)}×`;
     $('impliedEps').textContent=num(latest.implied_eps,1);
-    $('modelVersion').textContent=latest.model_version;
 
     const bounds=latest.signal_boundaries||{},bh=bounds.buy_hold,hs=bounds.hold_sell;
     $('currentBoundaryPe').textContent=`${Number(latest.pe).toFixed(2)}× P/E`;
@@ -128,7 +115,6 @@ async function boot(){
       $('holdSellMove').textContent=`${signedPct(hs.move_from_current)} vs current`;
       setBoundaryStrip(latest.pe,bh,hs);
     }else $('boundaryCard').classList.add('unavailable');
-    $('boundaryNarrative').textContent=boundarySentence(latest.signal,bh,hs);
 
     $('backtestBody').innerHTML=bt.rows.map(r=>{
       const current=r.quintile===latest.valuation_quintile;
