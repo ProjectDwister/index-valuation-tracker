@@ -1,11 +1,11 @@
 {
-  "model_version": "1.1",
+  "model_version": "1.2",
   "as_of": "2026-09-18",
-  "generated_at_utc": "2026-09-19T12:05:17+00:00",
+  "generated_at_utc": "2026-09-19T12:34:47+00:00",
   "signal": "BUY",
-  "composite_score": 77.59,
+  "composite_score": 76.94,
   "valuation_score": 94.7,
-  "growth_score": 37.67,
+  "growth_score": 35.51,
   "nifty_close": 23346.4,
   "pe": 19.74,
   "earnings_yield": 0.05065856,
@@ -13,12 +13,12 @@
   "valuation_quintile": "Q1 Cheapest",
   "era_median_pe": 22.0,
   "implied_eps": 1182.7,
-  "yoy_eps_growth": 0.04417641,
+  "yoy_eps_growth": 0.03878208,
   "prior_year": {
-    "date": "2025-09-30",
-    "nifty_close": 24691.95,
-    "pe": 21.8,
-    "implied_eps": 1132.66
+    "date": "2025-09-18",
+    "nifty_close": 25423.6,
+    "pe": 22.33,
+    "implied_eps": 1138.54
   },
   "thresholds": {
     "buy": 70,
@@ -29,7 +29,7 @@
     "earnings_growth": 0.3
   },
   "sources": {
-    "pe": "https://downstox.com/nifty-pe/nifty-50",
-    "price": "https://finance.yahoo.com/quote/%5ENSEI/history/"
+    "pe": "https://www.nseindia.com/all-reports",
+    "price": "https://www.nseindia.com/all-reports"
   }
 }
