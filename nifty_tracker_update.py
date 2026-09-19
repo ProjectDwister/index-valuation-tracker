@@ -20,6 +20,8 @@ import math
 import re
 import shutil
 from datetime import datetime, date, timedelta, timezone
+from calendar import monthrange
+from copy import copy
 from pathlib import Path
 from statistics import median
 from typing import Optional, Tuple
@@ -37,7 +39,7 @@ MARKETS_URL = "https://downstox.com/india-markets"
 YAHOO_URL = "https://query1.finance.yahoo.com/v8/finance/chart/%5ENSEI"
 PRICE_PAGE_URL = "https://finance.yahoo.com/quote/%5ENSEI/history/"
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/140 Safari/537.36"
-MODEL_VERSION = "1.3"
+MODEL_VERSION = "1.4"
 
 
 def _session() -> requests.Session:
@@ -291,56 +293,289 @@ def valuation_quintile(pct: float) -> str:
     return "Q5 Most Expensive"
 
 
-def _linear_quantile(values, q: float) -> float:
-    """Simple linear-interpolated quantile without an extra dependency."""
-    vals = sorted(float(v) for v in values if v is not None and not (isinstance(v, float) and math.isnan(v)))
+
+BACKTEST_COLUMNS = [
+    "Date", "Price", "PE", "Regime", "EPS", "EPS_Growth_YoY",
+    "PE_Pct_Regime", "Valuation_Quintile", "Fwd_1Y", "Fwd_3Y",
+    "Fwd_5Y", "Fwd_10Y", "Growth_Bucket", "PE_Pct_Expanding",
+    "Valuation_Score", "Growth_Score", "Composite_Score", "Signal",
+]
+
+
+def latest_completed_quarter_end(d: date) -> date:
+    """Return the latest calendar quarter-end on or before d."""
+    q_month = ((d.month - 1) // 3 + 1) * 3
+    q_end = date(d.year, q_month, monthrange(d.year, q_month)[1])
+    if d >= q_end:
+        return q_end
+    q_month -= 3
+    year = d.year
+    if q_month <= 0:
+        q_month += 12
+        year -= 1
+    return date(year, q_month, monthrange(year, q_month)[1])
+
+
+def next_quarter_end(d: date) -> date:
+    """Return the calendar quarter-end immediately after d."""
+    month = d.month + 3
+    year = d.year
+    if month > 12:
+        month -= 12
+        year += 1
+    return date(year, month, monthrange(year, month)[1])
+
+
+def _regime_rank_percentile(values, x: float) -> float:
+    """Average ordinal rank / N, matching the original backtest CSV."""
+    vals = [float(v) for v in values if pd.notna(v)]
     if not vals:
         return float("nan")
-    q = max(0.0, min(1.0, float(q)))
-    if len(vals) == 1:
-        return vals[0]
-    pos = (len(vals) - 1) * q
-    lo = int(math.floor(pos))
-    hi = int(math.ceil(pos))
-    if lo == hi:
-        return vals[lo]
-    w = pos - lo
-    return vals[lo] * (1 - w) + vals[hi] * w
+    lt = sum(v < x for v in vals)
+    eq = sum(abs(v - x) < 1e-10 for v in vals)
+    return (lt + (eq + 1) / 2.0) / len(vals)
 
 
-def compute_signal_boundaries(pe_values, growth_score_value: float, current_eps: float, current_close: float):
-    """Approximate P/E and NIFTY levels at the 70 and 40 score boundaries.
+def _growth_bucket(g: float) -> Optional[str]:
+    if g is None or pd.isna(g):
+        return None
+    if g < 0.05:
+        return "<5%"
+    if g <= 0.15:
+        return "5-15%"
+    return ">15%"
 
-    The calculation holds implied EPS and the earnings-growth score constant and
-    asks what valuation percentile would make the composite score equal to each
-    signal threshold. Because the historical percentile distribution is discrete,
-    the displayed P/E boundary is intentionally approximate.
+
+def rebuild_backtest_frame(df: pd.DataFrame) -> pd.DataFrame:
+    """Recalculate all derived quarterly backtest fields.
+
+    The regime-normalised descriptive percentile follows the historical CSV's
+    average-rank convention. The signal backtest continues to use an expanding
+    no-lookahead mid-rank percentile with at least eight observations in the
+    applicable earnings-methodology regime.
     """
-    wv, wg = 0.70, 0.30
+    out = df.copy()
+    out["Date"] = pd.to_datetime(out["Date"], errors="coerce")
+    out["Price"] = pd.to_numeric(out["Price"], errors="coerce")
+    out["PE"] = pd.to_numeric(out["PE"], errors="coerce")
+    out = out.dropna(subset=["Date", "Price", "PE"]).sort_values("Date")
+    out = out.drop_duplicates("Date", keep="last").reset_index(drop=True)
 
-    def one(score_threshold: float):
-        req_valuation_score = (score_threshold - wg * growth_score_value) / wv
-        req_valuation_score = max(0.0, min(100.0, req_valuation_score))
-        target_pct = 1.0 - req_valuation_score / 100.0
-        pe = _linear_quantile(pe_values, target_pct)
-        nifty = current_eps * pe
-        move = nifty / current_close - 1.0 if current_close else float("nan")
-        return {
-            "score_threshold": score_threshold,
-            "valuation_score_required": req_valuation_score,
-            "pe_percentile": target_pct,
-            "pe": pe,
-            "nifty_level": nifty,
-            "move_from_current": move,
-        }
+    seam = pd.Timestamp("2021-03-31")
+    out["Regime"] = out["Date"].apply(lambda x: "Consolidated" if x >= seam else "Standalone")
+    out["EPS"] = out["Price"] / out["PE"]
 
-    return {
-        "buy_hold": one(70.0),
-        "hold_sell": one(40.0),
-        "assumption": "Current implied EPS and earnings-growth score held constant",
-        "note": "Approximate because regime-relative P/E percentiles are based on a discrete historical distribution.",
-    }
+    eps_map = dict(zip(out["Date"], out["EPS"]))
+    regime_map = dict(zip(out["Date"], out["Regime"]))
+    growth = []
+    for _, r in out.iterrows():
+        prior = r["Date"] - pd.DateOffset(years=1)
+        if prior in eps_map and regime_map.get(prior) == r["Regime"]:
+            growth.append(float(r["EPS"] / eps_map[prior] - 1))
+        else:
+            growth.append(float("nan"))
+    out["EPS_Growth_YoY"] = growth
 
+    regime_pct = []
+    for _, r in out.iterrows():
+        vals = out.loc[out["Regime"] == r["Regime"], "PE"].tolist()
+        regime_pct.append(_regime_rank_percentile(vals, float(r["PE"])))
+    out["PE_Pct_Regime"] = regime_pct
+    out["Valuation_Quintile"] = out["PE_Pct_Regime"].map(valuation_quintile)
+
+    price_map = dict(zip(out["Date"], out["Price"]))
+    for years, col in [(1, "Fwd_1Y"), (3, "Fwd_3Y"), (5, "Fwd_5Y"), (10, "Fwd_10Y")]:
+        vals = []
+        for _, r in out.iterrows():
+            future = r["Date"] + pd.DateOffset(years=years)
+            if future in price_map:
+                vals.append(float((price_map[future] / r["Price"]) ** (1.0 / years) - 1))
+            else:
+                vals.append(float("nan"))
+        out[col] = vals
+
+    out["Growth_Bucket"] = out["EPS_Growth_YoY"].map(_growth_bucket)
+
+    expanding = [float("nan")] * len(out)
+    for regime in ("Standalone", "Consolidated"):
+        idxs = list(out.index[out["Regime"] == regime])
+        seen = []
+        for idx in idxs:
+            x = float(out.at[idx, "PE"])
+            seen.append(x)
+            if len(seen) >= 8:
+                expanding[idx] = percentile_midrank(seen, x)
+    out["PE_Pct_Expanding"] = expanding
+    out["Valuation_Score"] = out["PE_Pct_Expanding"].map(
+        lambda x: float("nan") if pd.isna(x) else 100.0 * (1.0 - float(x))
+    )
+    out["Growth_Score"] = out["EPS_Growth_YoY"].map(
+        lambda x: float("nan") if pd.isna(x) else growth_score(float(x))
+    )
+    out["Composite_Score"] = 0.70 * out["Valuation_Score"] + 0.30 * out["Growth_Score"]
+    out["Signal"] = out["Composite_Score"].map(
+        lambda x: None if pd.isna(x) else ("BUY" if x >= 70 else ("HOLD" if x >= 40 else "SELL"))
+    )
+    return out[BACKTEST_COLUMNS]
+
+
+def refresh_quarterly_backtest(
+    s: requests.Session,
+    csv_path: Path,
+    asof: date,
+) -> Tuple[pd.DataFrame, list[date]]:
+    """Append any missing completed quarter-ends and rebuild derived fields.
+
+    This function is safe to call every weekday. It performs no quarter-end
+    network requests unless the CSV is actually missing a completed quarter.
+    """
+    if not csv_path.exists():
+        raise FileNotFoundError(csv_path)
+    df = pd.read_csv(csv_path)
+    if df.empty:
+        raise ValueError("Quarterly backtest CSV is empty")
+    parsed = pd.to_datetime(df["Date"], errors="coerce")
+    if parsed.isna().all():
+        raise ValueError("Quarterly backtest CSV has no valid dates")
+    last_q = parsed.max().date()
+    through = latest_completed_quarter_end(asof)
+    missing = []
+    q = next_quarter_end(last_q)
+    while q <= through:
+        missing.append(q)
+        q = next_quarter_end(q)
+
+    if not missing:
+        return df, []
+
+    additions = []
+    for q_end in missing:
+        snap_date, close, pe, _ = fetch_latest_nse_snapshot(s, q_end, max_lookback=12)
+        additions.append({
+            "Date": q_end.isoformat(),
+            "Price": close,
+            "PE": pe,
+            "Regime": "Consolidated" if q_end >= date(2021, 3, 31) else "Standalone",
+        })
+        print(
+            f"Quarterly backtest: added {q_end:%d-%b-%Y} "
+            f"using NSE close {close:,.2f}, PE {pe:.2f}x from {snap_date:%d-%b-%Y}"
+        )
+
+    base = pd.concat([df, pd.DataFrame(additions)], ignore_index=True, sort=False)
+    rebuilt = rebuild_backtest_frame(base)
+    csv_path.parent.mkdir(parents=True, exist_ok=True)
+    rebuilt.to_csv(csv_path, index=False, date_format="%Y-%m-%d", float_format="%.12g")
+    return rebuilt, missing
+
+
+def _copy_row_style(ws, source_row: int, target_row: int, max_col: int = 18):
+    for c in range(1, max_col + 1):
+        src = ws.cell(source_row, c)
+        dst = ws.cell(target_row, c)
+        if src.has_style:
+            dst._style = copy(src._style)
+        if src.number_format:
+            dst.number_format = src.number_format
+        if src.alignment:
+            dst.alignment = copy(src.alignment)
+        if src.protection:
+            dst.protection = copy(src.protection)
+    if ws.row_dimensions[source_row].height is not None:
+        ws.row_dimensions[target_row].height = ws.row_dimensions[source_row].height
+
+
+def sync_quarterly_sheet(wb, df: pd.DataFrame):
+    """Keep the Excel Quarterly_Data sheet aligned with the canonical CSV."""
+    if "Quarterly_Data" not in wb.sheetnames:
+        return
+    ws = wb["Quarterly_Data"]
+    data_start = 5
+    old_last = max(ws.max_row, data_start)
+    last_row = data_start + len(df) - 1
+    template_row = min(max(data_start, old_last), last_row)
+
+    if last_row > old_last:
+        for r in range(old_last + 1, last_row + 1):
+            _copy_row_style(ws, template_row, r)
+
+    # Raw inputs are written from the canonical CSV; derived fields remain formulas.
+    for i, r in df.reset_index(drop=True).iterrows():
+        rr = data_start + i
+        dt = pd.to_datetime(r["Date"]).date()
+        ws.cell(rr, 1, dt)
+        ws.cell(rr, 1).number_format = "dd-mmm-yyyy"
+        ws.cell(rr, 2, float(r["Price"]))
+        ws.cell(rr, 3, float(r["PE"]))
+        ws.cell(rr, 4, str(r["Regime"]))
+
+    # Clear any obsolete trailing rows if the CSV was deduplicated.
+    for rr in range(last_row + 1, old_last + 1):
+        for cc in range(1, 19):
+            ws.cell(rr, cc).value = None
+
+    standalone_rows = [data_start + i for i, x in enumerate(df["Regime"]) if x == "Standalone"]
+    consolidated_rows = [data_start + i for i, x in enumerate(df["Regime"]) if x == "Consolidated"]
+    regime_bounds = {}
+    if standalone_rows:
+        regime_bounds["Standalone"] = (min(standalone_rows), max(standalone_rows))
+    if consolidated_rows:
+        regime_bounds["Consolidated"] = (min(consolidated_rows), max(consolidated_rows))
+
+    for i, r in df.reset_index(drop=True).iterrows():
+        rr = data_start + i
+        regime = str(r["Regime"])
+        reg_start, reg_end = regime_bounds[regime]
+        ws.cell(rr, 5, f'=IFERROR(B{rr}/C{rr},"")')
+        if rr - 4 >= data_start:
+            ws.cell(rr, 6, f'=IF(D{rr}=D{rr-4},IFERROR(E{rr}/E{rr-4}-1,""),"")')
+        else:
+            ws.cell(rr, 6, None)
+        ws.cell(
+            rr, 7,
+            f'=IFERROR((COUNTIF($C${reg_start}:$C${reg_end},"<"&C{rr})+'
+            f'(COUNTIF($C${reg_start}:$C${reg_end},C{rr})+1)/2)/COUNT($C${reg_start}:$C${reg_end}),"")'
+        )
+        ws.cell(rr, 8, f'=IF(G{rr}="","",IF(G{rr}<=20%,"Q1 Cheapest",IF(G{rr}<=40%,"Q2",IF(G{rr}<=60%,"Q3",IF(G{rr}<=80%,"Q4","Q5 Most Expensive")))))')
+        for col, offset, years in [(9, 4, 1), (10, 12, 3), (11, 20, 5), (12, 40, 10)]:
+            target = rr + offset
+            if target <= last_row:
+                if years == 1:
+                    formula = f'=IFERROR(B{target}/B{rr}-1,"")'
+                else:
+                    formula = f'=IFERROR((B{target}/B{rr})^(1/{years})-1,"")'
+                ws.cell(rr, col, formula)
+            else:
+                ws.cell(rr, col, None)
+        ws.cell(rr, 13, f'=IF(F{rr}="","",IF(F{rr}<5%,"<5%",IF(F{rr}<=15%,"5-15%",">15%")))')
+        ws.cell(rr, 14, f'=IF(COUNT($C${reg_start}:C{rr})<8,"",(COUNTIF($C${reg_start}:C{rr},"<"&C{rr})+0.5*COUNTIF($C${reg_start}:C{rr},C{rr}))/COUNT($C${reg_start}:C{rr}))')
+        ws.cell(rr, 15, f'=IF(N{rr}="","",100*(1-N{rr}))')
+        ws.cell(rr, 16, f'=IF(F{rr}="","",IF(F{rr}<=0,20,IF(F{rr}<5%,20+400*F{rr},IF(F{rr}<10%,40+400*(F{rr}-5%),IF(F{rr}<15%,60+400*(F{rr}-10%),IF(F{rr}<25%,80+200*(F{rr}-15%),100))))))')
+        ws.cell(rr, 17, f'=IF(OR(O{rr}="",P{rr}=""),"",70%*O{rr}+30%*P{rr})')
+        ws.cell(rr, 18, f'=IF(Q{rr}="","",IF(Q{rr}>=70,"BUY",IF(Q{rr}>=40,"HOLD","SELL")))')
+
+    # Extend every summary-sheet reference to the current Quarterly_Data last row.
+    pat = re.compile(r'(Quarterly_Data!\$[A-R]\$5:\$[A-R]\$)\d+')
+    for sheet_name in ("Backtest", "Growth_Matrix", "Signal_Backtest"):
+        if sheet_name not in wb.sheetnames:
+            continue
+        for row in wb[sheet_name].iter_rows():
+            for cell in row:
+                if isinstance(cell.value, str) and cell.value.startswith("="):
+                    cell.value = pat.sub(lambda m: f"{m.group(1)}{last_row}", cell.value)
+
+    # Future-proof the consolidated-era P/E history range beyond the current row count.
+    if "Dashboard" in wb.sheetnames:
+        dash = wb["Dashboard"]
+        dash["B9"] = '=IFERROR((COUNTIF(PE_History_Post2021!$B$5:$B$500,"<"&B7)+0.5*COUNTIF(PE_History_Post2021!$B$5:$B$500,B7))/COUNT(PE_History_Post2021!$B$5:$B$500),"")'
+        dash["B10"] = '=MEDIAN(PE_History_Post2021!$B$5:$B$500)'
+
+    if "Methodology" in wb.sheetnames:
+        through = pd.to_datetime(df["Date"]).max().date()
+        wb["Methodology"]["B10"] = (
+            f"Quarter-end observations from Mar-1999 to {through:%b-%Y}. "
+            "This reduces, but does not eliminate, overlapping forward-return windows."
+        )
 
 def month_rows_from_workbook(ws):
     rows = []
@@ -450,9 +685,6 @@ def write_latest_json(
 ):
     out_path.parent.mkdir(parents=True, exist_ok=True)
     era_median = median([float(v) for v in pe_values])
-    signal_boundaries = compute_signal_boundaries(
-        pe_values, metrics["growth_score"], metrics["eps"], current_close
-    )
     payload = {
         "model_version": MODEL_VERSION,
         "as_of": asof.isoformat(),
@@ -476,12 +708,6 @@ def write_latest_json(
             "implied_eps": _json_num(metrics["prior_eps"], 2),
         },
         "thresholds": {"buy": 70, "hold": 40},
-        "signal_boundaries": {
-            "buy_hold": {k: _json_num(v, 8) if isinstance(v, (int, float)) else v for k, v in signal_boundaries["buy_hold"].items()},
-            "hold_sell": {k: _json_num(v, 8) if isinstance(v, (int, float)) else v for k, v in signal_boundaries["hold_sell"].items()},
-            "assumption": signal_boundaries["assumption"],
-            "note": signal_boundaries["note"],
-        },
         "weights": {"valuation": 0.70, "earnings_growth": 0.30},
         "sources": {"pe": NSE_ARCHIVE_SOURCE, "price": NSE_ARCHIVE_SOURCE},
     }
@@ -514,7 +740,12 @@ def write_backtest_summary(csv_path: Path, out_path: Path):
             "n_3y": n("Fwd_3Y"),
         })
     out_path.parent.mkdir(parents=True, exist_ok=True)
-    out_path.write_text(json.dumps({"rows": rows}, indent=2), encoding="utf-8")
+    dates = pd.to_datetime(df.get("Date"), errors="coerce") if "Date" in df.columns else pd.Series(dtype="datetime64[ns]")
+    through = None if dates.empty or dates.isna().all() else dates.max().date().isoformat()
+    out_path.write_text(
+        json.dumps({"through": through, "observation_count": int(len(df)), "rows": rows}, indent=2),
+        encoding="utf-8",
+    )
 
 
 def export_web_files(
@@ -637,7 +868,12 @@ def main():
 
     asof = manual_date or min(pe_date, price_date)
 
+    # Self-maintaining quarterly backtest: this is checked on every weekday run,
+    # but NSE is queried for quarter-end data only when a completed quarter is missing.
+    quarterly_df, added_quarters = refresh_quarterly_backtest(s, backtest_csv, asof)
+
     wb = load_workbook(p)
+    sync_quarterly_sheet(wb, quarterly_df)
     pe_ws = wb["PE_History_Post2021"]
     update_pe_sheet(pe_ws, pe_hist, pe_date, current_pe)
 
@@ -734,6 +970,10 @@ def main():
     print(f"As of: {asof:%d-%b-%Y} | NIFTY {current_close:,.2f} | PE {current_pe:.2f}x")
     print(f"PE percentile: {metrics['pct']:.1%} | approx EPS growth: {metrics['growth']:.1%}")
     print(f"Composite score: {metrics['composite']:.1f} | Signal: {metrics['signal']}")
+    if added_quarters:
+        print("Quarterly backtest refreshed through: " + added_quarters[-1].strftime("%d-%b-%Y"))
+    else:
+        print("Quarterly backtest: already current for the latest completed quarter")
     print(f"Web dashboard data: {web_dir}")
 
 
