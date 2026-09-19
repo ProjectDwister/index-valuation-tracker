@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Update the NIFTY Valuation Backtest & Live Tracker.
 
-Default sources:
-  P/E: Downstox NIFTY 50 PE dataset/page (underlying source NSE Indices)
-  Price: Yahoo Finance chart endpoint (^NSEI), with Downstox India Markets fallback
+Default source:
+  Official NSE Archives daily index snapshot (ind_close_all), which contains
+  NIFTY 50 close, P/E, P/B and dividend yield. Downstox/Yahoo remain fallback
+  sources only if the NSE archive is temporarily unavailable.
 
 Besides updating the Excel workbook, the script writes static web data for the
 GitHub Pages dashboard under docs/data/ and copies the current workbook under
@@ -28,13 +29,15 @@ import requests
 from openpyxl import load_workbook
 from openpyxl.styles import Font, PatternFill
 
+NSE_ARCHIVE_BASE = "https://nsearchives.nseindia.com/content/indices"
+NSE_ARCHIVE_SOURCE = "https://www.nseindia.com/all-reports"
 PE_CSV_URL = "https://downstox.com/api/index-pe/nifty-50/download"
 PE_PAGE_URL = "https://downstox.com/nifty-pe/nifty-50"
 MARKETS_URL = "https://downstox.com/india-markets"
 YAHOO_URL = "https://query1.finance.yahoo.com/v8/finance/chart/%5ENSEI"
 PRICE_PAGE_URL = "https://finance.yahoo.com/quote/%5ENSEI/history/"
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/140 Safari/537.36"
-MODEL_VERSION = "1.1"
+MODEL_VERSION = "1.2"
 
 
 def _session() -> requests.Session:
@@ -62,6 +65,88 @@ def _normalise_pe_frame(df: pd.DataFrame) -> pd.DataFrame:
     out["date"] = pd.to_datetime(out["date"], errors="coerce", dayfirst=True)
     out["pe"] = pd.to_numeric(out["pe"], errors="coerce")
     return out.dropna().sort_values("date").drop_duplicates("date", keep="last")
+
+
+def _norm_col(c: str) -> str:
+    return re.sub(r"[^a-z0-9]", "", str(c).strip().lower())
+
+
+def _find_col(df: pd.DataFrame, candidates) -> Optional[str]:
+    normalized = {_norm_col(c): c for c in df.columns}
+    for cand in candidates:
+        if cand in normalized:
+            return normalized[cand]
+    for norm, orig in normalized.items():
+        if any(cand in norm for cand in candidates):
+            return orig
+    return None
+
+
+def fetch_nse_snapshot_for_date(s: requests.Session, d: date) -> Tuple[date, float, float, str]:
+    """Fetch official NSE daily index snapshot for one trading date.
+
+    The NSE archive's ind_close_all report includes the NIFTY 50 closing level
+    and valuation fields including P/E. The archive is a static-file endpoint,
+    which is materially more suitable for GitHub Actions than anti-bot protected
+    HTML/API pages.
+    """
+    url = f"{NSE_ARCHIVE_BASE}/ind_close_all_{d:%d%m%Y}.csv"
+    headers = {
+        "User-Agent": UA,
+        "Accept": "text/csv,text/plain,*/*",
+        "Referer": "https://www.nseindia.com/",
+        "Connection": "keep-alive",
+    }
+    r = s.get(url, headers=headers, timeout=25)
+    if r.status_code == 404:
+        raise FileNotFoundError(url)
+    r.raise_for_status()
+    body = r.text.lstrip("\ufeff \t\r\n")
+    if not body or body.startswith("<"):
+        raise ValueError(f"NSE archive returned non-CSV content for {d}")
+    df = pd.read_csv(io.StringIO(r.text))
+
+    name_col = _find_col(df, ["indexname", "index"])
+    close_col = _find_col(df, ["closingindexvalue", "close", "closingvalue"])
+    pe_col = _find_col(df, ["pe", "peratio", "priceearnings", "priceearningsratio"])
+    date_col = _find_col(df, ["indexdate", "date"])
+    if name_col is None or close_col is None or pe_col is None:
+        raise ValueError(f"Could not identify NIFTY snapshot columns: {list(df.columns)}")
+
+    names = df[name_col].astype(str).str.strip().str.upper().str.replace(r"\s+", " ", regex=True)
+    mask = names.eq("NIFTY 50")
+    if not mask.any():
+        # Defensive fallback for occasional naming variations.
+        mask = names.str.fullmatch(r"NIFTY\s*50")
+    if not mask.any():
+        raise ValueError("NIFTY 50 row not found in NSE daily index snapshot")
+    row = df.loc[mask].iloc[0]
+    close = float(pd.to_numeric(row[close_col], errors="raise"))
+    pe = float(pd.to_numeric(row[pe_col], errors="raise"))
+
+    out_date = d
+    if date_col is not None:
+        parsed = pd.to_datetime(row[date_col], errors="coerce", dayfirst=True)
+        if pd.notna(parsed):
+            out_date = parsed.date()
+    return out_date, close, pe, url
+
+
+def fetch_latest_nse_snapshot(s: requests.Session, target: date, max_lookback: int = 12) -> Tuple[date, float, float, str]:
+    """Find the most recent NSE trading-day snapshot on or before target."""
+    errors = []
+    for i in range(max_lookback + 1):
+        d = target - timedelta(days=i)
+        try:
+            return fetch_nse_snapshot_for_date(s, d)
+        except FileNotFoundError:
+            continue
+        except Exception as e:
+            errors.append(f"{d}: {e}")
+            # Continue because a particular archive file can be delayed/corrupt.
+            continue
+    tail = "; ".join(errors[-3:]) if errors else "no trading-day file found"
+    raise RuntimeError(f"Unable to fetch NSE index snapshot through {target}: {tail}")
 
 
 def fetch_pe_history(s: requests.Session) -> pd.DataFrame:
@@ -236,7 +321,7 @@ def update_pe_sheet(ws, pe_hist: Optional[pd.DataFrame], current_date: date, cur
             ws.cell(rr, 2, pe)
             ws.cell(rr, 2).number_format = "0.00x"
             ws.cell(rr, 3, "Consolidated")
-            ws.cell(rr, 4, PE_PAGE_URL)
+            ws.cell(rr, 4, NSE_ARCHIVE_SOURCE)
             rr += 1
         return
     rows = month_rows_from_workbook(ws)
@@ -247,7 +332,7 @@ def update_pe_sheet(ws, pe_hist: Optional[pd.DataFrame], current_date: date, cur
     ws.cell(rr, 2, current_pe)
     ws.cell(rr, 2).number_format = "0.00x"
     ws.cell(rr, 3, "Consolidated")
-    ws.cell(rr, 4, PE_PAGE_URL)
+    ws.cell(rr, 4, NSE_ARCHIVE_SOURCE)
 
 
 def style_log_row(ws, r):
@@ -338,7 +423,7 @@ def write_latest_json(
         },
         "thresholds": {"buy": 70, "hold": 40},
         "weights": {"valuation": 0.70, "earnings_growth": 0.30},
-        "sources": {"pe": PE_PAGE_URL, "price": PRICE_PAGE_URL},
+        "sources": {"pe": NSE_ARCHIVE_SOURCE, "price": NSE_ARCHIVE_SOURCE},
     }
     out_path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
 
@@ -452,49 +537,70 @@ def main():
     manual_date = datetime.strptime(args.asof, "%Y-%m-%d").date() if args.asof else None
 
     pe_hist = None
+    target_date = manual_date or date.today()
+    nse_error = None
+    try:
+        snap_date, snap_close, snap_pe, snap_url = fetch_latest_nse_snapshot(s, target_date)
+    except Exception as e:
+        nse_error = e
+        snap_date = target_date
+        snap_close = None
+        snap_pe = None
+        snap_url = NSE_ARCHIVE_SOURCE
+
+    # Prefer official NSE archive data. Manual CLI inputs override individual fields.
     if args.pe is not None:
         current_pe = float(args.pe)
-        pe_date = manual_date or date.today()
+        pe_date = manual_date or snap_date
+    elif snap_pe is not None:
+        current_pe = float(snap_pe)
+        pe_date = snap_date
     else:
+        # Legacy fallback retained for resilience, although some cloud IP ranges
+        # can be blocked by Downstox.
         try:
-            pe_hist = fetch_pe_history(s)
-            x = pe_hist.iloc[-1]
-            pe_date = x["date"].date()
-            current_pe = float(x["pe"])
-        except Exception as e_csv:
-            try:
-                pe_date, current_pe = fetch_current_pe_page(s)
-            except Exception as e_page:
-                raise RuntimeError(f"Unable to fetch P/E. CSV error: {e_csv}; page error: {e_page}")
-    asof = manual_date or pe_date
+            pe_date, current_pe = fetch_current_pe_page(s)
+        except Exception as e_page:
+            raise RuntimeError(f"Unable to fetch P/E. NSE archive error: {nse_error}; fallback error: {e_page}")
 
     if args.close is not None:
-        price_date = asof
         current_close = float(args.close)
+        price_date = manual_date or snap_date
+    elif snap_close is not None:
+        current_close = float(snap_close)
+        price_date = snap_date
     else:
-        price_date, current_close = fetch_latest_close(s, asof)
-        asof = min(pe_date, price_date)
+        try:
+            price_date, current_close = fetch_latest_close(s, pe_date)
+        except Exception as e_price:
+            raise RuntimeError(f"Unable to fetch NIFTY close. NSE archive error: {nse_error}; fallback error: {e_price}")
+
+    asof = manual_date or min(pe_date, price_date)
 
     wb = load_workbook(p)
     pe_ws = wb["PE_History_Post2021"]
     update_pe_sheet(pe_ws, pe_hist, pe_date, current_pe)
 
     rows = month_rows_from_workbook(pe_ws)
-    candidates = [(dt, pe) for _, dt, pe in rows if dt.year == asof.year - 1 and dt.month == asof.month]
-    if not candidates:
-        raise RuntimeError(f"No prior-year P/E history for {asof.year - 1}-{asof.month:02d}")
-    _, prior_pe = candidates[-1]
+
+    # For the earnings-growth modifier, compare against the nearest trading day
+    # on or before the same calendar date one year earlier. This keeps both the
+    # NIFTY level and P/E from the same official NSE daily snapshot.
     try:
-        prior_price_date, prior_close = fetch_month_last_close(s, asof.year - 1, asof.month)
+        prior_target = asof.replace(year=asof.year - 1)
+    except ValueError:
+        # 29-Feb -> 28-Feb in the prior non-leap year.
+        prior_target = asof.replace(year=asof.year - 1, day=28)
+    try:
+        prior_price_date, prior_close, prior_pe, _ = fetch_latest_nse_snapshot(s, prior_target)
     except Exception:
+        # Workbook fallback keeps the model usable during a temporary NSE archive outage.
         dash = wb["Dashboard"]
-        if asof.year == 2026 and asof.month == 9:
-            prior_price_date = dash["B12"].value
-            if isinstance(prior_price_date, datetime):
-                prior_price_date = prior_price_date.date()
-            prior_close = float(dash["B13"].value)
-        else:
-            raise
+        prior_price_date = dash["B12"].value
+        if isinstance(prior_price_date, datetime):
+            prior_price_date = prior_price_date.date()
+        prior_close = float(dash["B13"].value)
+        prior_pe = float(dash["B14"].value)
 
     pe_values = [pe for _, _, pe in rows]
     if not any(abs(x - current_pe) < 1e-10 for x in pe_values):
@@ -533,8 +639,8 @@ def main():
         metrics["growth_score"],
         metrics["composite"],
         metrics["signal"],
-        PE_PAGE_URL,
-        PRICE_PAGE_URL,
+        snap_url if 'snap_url' in locals() else NSE_ARCHIVE_SOURCE,
+        snap_url if 'snap_url' in locals() else NSE_ARCHIVE_SOURCE,
     ]
     for c, v in enumerate(vals, 1):
         log.cell(target, c, v)
