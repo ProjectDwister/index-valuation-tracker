@@ -17,12 +17,15 @@ import csv
 import io
 import json
 import math
+import os
 import re
 import shutil
+import smtplib
 from datetime import datetime, date, timedelta, timezone
 from calendar import monthrange
 from copy import copy
 from pathlib import Path
+from email.message import EmailMessage
 from statistics import median
 from typing import Optional, Tuple
 
@@ -39,7 +42,7 @@ MARKETS_URL = "https://downstox.com/india-markets"
 YAHOO_URL = "https://query1.finance.yahoo.com/v8/finance/chart/%5ENSEI"
 PRICE_PAGE_URL = "https://finance.yahoo.com/quote/%5ENSEI/history/"
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/140 Safari/537.36"
-MODEL_VERSION = "1.4"
+MODEL_VERSION = "1.5"
 
 
 def _session() -> requests.Session:
@@ -628,6 +631,229 @@ def compute_signal_boundaries(pe_values, growth_score_value: float, current_eps:
     }
 
 
+
+def _env_bool(name: str, default: bool = False) -> bool:
+    value = os.getenv(name)
+    if value is None:
+        return default
+    return str(value).strip().lower() in {"1", "true", "yes", "y", "on"}
+
+
+def _safe_float(value, default: float) -> float:
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        return float(default)
+
+
+def _alert_snapshot(asof: date, current_close: float, current_pe: float, metrics, signal_boundaries):
+    def slim(x):
+        return {
+            "pe": _json_num(x.get("pe"), 4),
+            "nifty_level": _json_num(x.get("nifty_level"), 2),
+            "move_from_current": _json_num(x.get("move_from_current"), 8),
+        }
+
+    return {
+        "as_of": asof.isoformat(),
+        "signal": metrics["signal"],
+        "composite_score": _json_num(metrics["composite"], 2),
+        "nifty_close": _json_num(current_close, 2),
+        "pe": _json_num(current_pe, 2),
+        "buy_hold": slim(signal_boundaries["buy_hold"]),
+        "hold_sell": slim(signal_boundaries["hold_sell"]),
+    }
+
+
+def _load_alert_state(path: Path):
+    try:
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8"))
+    except Exception as e:
+        print(f"Warning: could not read alert state {path}: {e}")
+    return None
+
+
+def _write_alert_state(path: Path, snapshot) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(snapshot, indent=2), encoding="utf-8")
+
+
+def _threshold_change_summary(previous, current, pe_delta_trigger: float, nifty_pct_trigger: float):
+    changes = []
+    triggered = False
+    for key, label in (("buy_hold", "BUY -> HOLD"), ("hold_sell", "HOLD -> SELL")):
+        old = (previous or {}).get(key) or {}
+        new = current.get(key) or {}
+        old_pe, new_pe = old.get("pe"), new.get("pe")
+        old_nifty, new_nifty = old.get("nifty_level"), new.get("nifty_level")
+        pe_delta = None
+        nifty_pct = None
+        if old_pe not in (None, 0) and new_pe is not None:
+            pe_delta = float(new_pe) - float(old_pe)
+        if old_nifty not in (None, 0) and new_nifty is not None:
+            nifty_pct = float(new_nifty) / float(old_nifty) - 1.0
+        boundary_trigger = (
+            (pe_delta is not None and abs(pe_delta) >= pe_delta_trigger)
+            or (nifty_pct is not None and abs(nifty_pct) >= nifty_pct_trigger)
+        )
+        triggered = triggered or boundary_trigger
+        changes.append({
+            "label": label,
+            "old_pe": old_pe,
+            "new_pe": new_pe,
+            "pe_delta": pe_delta,
+            "old_nifty": old_nifty,
+            "new_nifty": new_nifty,
+            "nifty_pct": nifty_pct,
+            "triggered": boundary_trigger,
+        })
+    signal_changed = bool(previous and previous.get("signal") and previous.get("signal") != current.get("signal"))
+    return triggered or signal_changed, signal_changed, changes
+
+
+def _fmt_num(value, digits=2, suffix=""):
+    if value is None:
+        return "-"
+    return f"{float(value):,.{digits}f}{suffix}"
+
+
+def _fmt_pct(value, digits=1, signed=False):
+    if value is None:
+        return "-"
+    x = float(value) * 100
+    if signed:
+        return f"{x:+.{digits}f}%"
+    return f"{x:.{digits}f}%"
+
+
+def send_threshold_email(previous, current, changes, signal_changed: bool, force: bool = False) -> bool:
+    """Send an SMTP email. Returns True only when an email was sent successfully."""
+    to_addr = os.getenv("ALERT_EMAIL_TO", "").strip()
+    username = os.getenv("SMTP_USERNAME", "").strip()
+    password = os.getenv("SMTP_PASSWORD", "").strip()
+    if not (to_addr and username and password):
+        print("Email alert not sent: configure ALERT_EMAIL_TO, SMTP_USERNAME and SMTP_PASSWORD GitHub secrets.")
+        return False
+
+    host = os.getenv("SMTP_HOST", "smtp.gmail.com").strip() or "smtp.gmail.com"
+    port = int(os.getenv("SMTP_PORT", "465"))
+    from_addr = os.getenv("SMTP_FROM", username).strip() or username
+    dashboard_url = os.getenv("DASHBOARD_URL", "").strip()
+
+    triggered_labels = [x["label"] for x in changes if x.get("triggered")]
+    if signal_changed:
+        triggered_labels.append(f"Signal {previous.get('signal')} -> {current.get('signal')}")
+    if force and not triggered_labels:
+        triggered_labels.append("Test alert")
+    subject_tail = ", ".join(triggered_labels) if triggered_labels else "Threshold update"
+
+    msg = EmailMessage()
+    msg["Subject"] = f"NIFTY Valuation Alert - {subject_tail}"
+    msg["From"] = from_addr
+    msg["To"] = to_addr
+
+    rows = []
+    for x in changes:
+        rows.append(
+            f"<tr><td>{x['label']}</td>"
+            f"<td>{_fmt_num(x['old_pe'], 2, 'x')}</td>"
+            f"<td><b>{_fmt_num(x['new_pe'], 2, 'x')}</b></td>"
+            f"<td>{_fmt_num(x['old_nifty'], 0)}</td>"
+            f"<td><b>{_fmt_num(x['new_nifty'], 0)}</b></td>"
+            f"<td>{_fmt_pct(x['nifty_pct'], 1, signed=True)}</td></tr>"
+        )
+
+    dashboard_link = f'<p><a href="{dashboard_url}">Open live dashboard</a></p>' if dashboard_url else ""
+    html = f"""
+    <html><body style="font-family:Arial,sans-serif;color:#142033">
+      <h2>NIFTY 50 Valuation Signal Alert</h2>
+      <p><b>As of:</b> {current['as_of']} &nbsp; | &nbsp; <b>NIFTY:</b> {_fmt_num(current['nifty_close'], 2)} &nbsp; | &nbsp; <b>P/E:</b> {_fmt_num(current['pe'], 2, 'x')}</p>
+      <p><b>Composite score:</b> {_fmt_num(current['composite_score'], 1)} &nbsp; | &nbsp; <b>Signal:</b> {current['signal']}</p>
+      <table cellpadding="7" cellspacing="0" border="1" style="border-collapse:collapse;border-color:#d8dee8">
+        <tr><th>Boundary</th><th>Previous P/E</th><th>Current P/E</th><th>Previous NIFTY</th><th>Current NIFTY</th><th>Level change</th></tr>
+        {''.join(rows)}
+      </table>
+      <p style="color:#5f6f82">Threshold NIFTY levels assume implied EPS and the earnings-growth score remain unchanged.</p>
+      {dashboard_link}
+    </body></html>
+    """
+    plain = [
+        "NIFTY 50 Valuation Signal Alert",
+        f"As of: {current['as_of']}",
+        f"NIFTY: {_fmt_num(current['nifty_close'], 2)} | P/E: {_fmt_num(current['pe'], 2, 'x')}",
+        f"Composite score: {_fmt_num(current['composite_score'], 1)} | Signal: {current['signal']}",
+        "",
+    ]
+    for x in changes:
+        plain.append(
+            f"{x['label']}: P/E {_fmt_num(x['old_pe'], 2, 'x')} -> {_fmt_num(x['new_pe'], 2, 'x')}; "
+            f"NIFTY {_fmt_num(x['old_nifty'], 0)} -> {_fmt_num(x['new_nifty'], 0)} ({_fmt_pct(x['nifty_pct'], 1, signed=True)})"
+        )
+    if dashboard_url:
+        plain.extend(["", dashboard_url])
+    msg.set_content("\n".join(plain))
+    msg.add_alternative(html, subtype="html")
+
+    try:
+        with smtplib.SMTP_SSL(host, port, timeout=30) as smtp:
+            smtp.login(username, password)
+            smtp.send_message(msg)
+        print(f"Threshold alert email sent to {to_addr}")
+        return True
+    except Exception as e:
+        print(f"Warning: threshold alert email failed: {e}")
+        return False
+
+
+def process_threshold_alerts(web_dir: Path, asof: date, current_close: float, current_pe: float, metrics, pe_values) -> None:
+    """Compare current signal boundaries with the last emailed/recorded state and alert on meaningful changes."""
+    state_path = web_dir / "data" / "threshold_alert_state.json"
+    boundaries = compute_signal_boundaries(pe_values, metrics["growth_score"], metrics["eps"], current_close)
+    current = _alert_snapshot(asof, current_close, current_pe, metrics, boundaries)
+    previous = _load_alert_state(state_path)
+    force = _env_bool("FORCE_THRESHOLD_ALERT", False)
+    pe_delta_trigger = _safe_float(os.getenv("ALERT_PE_DELTA"), 0.10)
+    nifty_pct_trigger = _safe_float(os.getenv("ALERT_NIFTY_DELTA_PCT"), 0.005)
+
+    # The first live run establishes the comparison baseline. A manual test can still force an email.
+    if previous is None:
+        if force:
+            dummy_changes = [
+                {
+                    "label": label, "old_pe": None, "new_pe": current[key]["pe"], "pe_delta": None,
+                    "old_nifty": None, "new_nifty": current[key]["nifty_level"], "nifty_pct": None, "triggered": True,
+                }
+                for key, label in (("buy_hold", "BUY -> HOLD"), ("hold_sell", "HOLD -> SELL"))
+            ]
+            sent = send_threshold_email({}, current, dummy_changes, False, force=True)
+            if not sent:
+                print("Test email was requested but could not be sent.")
+        _write_alert_state(state_path, current)
+        print("Threshold alert baseline initialized.")
+        return
+
+    triggered, signal_changed, changes = _threshold_change_summary(
+        previous, current, pe_delta_trigger, nifty_pct_trigger
+    )
+    if force:
+        triggered = True
+
+    if triggered:
+        sent = send_threshold_email(previous, current, changes, signal_changed, force=force)
+        # If email is configured and a real alert fails, retain the previous state so the next run retries.
+        email_configured = bool(os.getenv("ALERT_EMAIL_TO") and os.getenv("SMTP_USERNAME") and os.getenv("SMTP_PASSWORD"))
+        if sent or not email_configured or force:
+            _write_alert_state(state_path, current)
+        else:
+            print("Alert state retained so the email can be retried on the next run.")
+    else:
+        _write_alert_state(state_path, current)
+        print(
+            f"No threshold alert: changes are below {pe_delta_trigger:.2f}x P/E / "
+            f"{nifty_pct_trigger:.1%} NIFTY-level tolerances."
+        )
+
 def month_rows_from_workbook(ws):
     rows = []
     for r in range(5, ws.max_row + 1):
@@ -1025,6 +1251,7 @@ def main():
         pe_values,
         metrics,
     )
+    process_threshold_alerts(web_dir, asof, current_close, current_pe, metrics, pe_values)
 
     print(f"Updated: {out}")
     print(f"As of: {asof:%d-%b-%Y} | NIFTY {current_close:,.2f} | PE {current_pe:.2f}x")
