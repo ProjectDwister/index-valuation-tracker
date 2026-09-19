@@ -1,0 +1,49 @@
+{
+  "rows": [
+    {
+      "quintile": "Q1 Cheapest",
+      "median_1y": 0.37941109,
+      "median_3y": 0.28042926,
+      "median_5y": 0.23302478,
+      "median_10y": 0.16392636,
+      "loss_3y": 0.0,
+      "n_3y": 19
+    },
+    {
+      "quintile": "Q2",
+      "median_1y": 0.190038,
+      "median_3y": 0.12084743,
+      "median_5y": 0.12160165,
+      "median_10y": 0.12241988,
+      "loss_3y": 0.05,
+      "n_3y": 20
+    },
+    {
+      "quintile": "Q3",
+      "median_1y": 0.10682556,
+      "median_3y": 0.0939522,
+      "median_5y": 0.11260095,
+      "median_10y": 0.11445152,
+      "loss_3y": 0.05555556,
+      "n_3y": 18
+    },
+    {
+      "quintile": "Q4",
+      "median_1y": 0.06274104,
+      "median_3y": 0.06002736,
+      "median_5y": 0.08987021,
+      "median_10y": 0.10725244,
+      "loss_3y": 0.21052632,
+      "n_3y": 19
+    },
+    {
+      "quintile": "Q5 Most Expensive",
+      "median_1y": 0.04328961,
+      "median_3y": 0.13787543,
+      "median_5y": 0.1207882,
+      "median_10y": 0.07509864,
+      "loss_3y": 0.13636364,
+      "n_3y": 22
+    }
+  ]
+}
