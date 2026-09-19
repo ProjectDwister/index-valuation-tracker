@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#0a1324" />
+  <meta name="theme-color" content="#08111f" />
   <title>NIFTY 50 Valuation Signal</title>
   <meta name="description" content="Regime-adjusted NIFTY 50 valuation and earnings-growth allocation signal." />
   <link rel="stylesheet" href="styles.css" />
@@ -11,112 +11,179 @@
 <body>
   <main class="shell">
     <header class="topbar">
-      <div>
+      <div class="brand-block">
         <div class="eyebrow">NIFTY 50 · STRATEGIC ALLOCATION</div>
         <h1>Valuation Signal</h1>
       </div>
-      <div class="asof">As of <strong id="asOf">—</strong></div>
+      <div class="top-actions">
+        <div id="freshness" class="freshness"><span class="status-dot"></span><span>Loading latest close…</span></div>
+        <a class="icon-button" href="downloads/NIFTY_Valuation_Backtest_Live_Tracker.xlsx" aria-label="Download detailed Excel model" title="Download Excel model">
+          <span aria-hidden="true">↓</span><span class="icon-button-text">Excel</span>
+        </a>
+      </div>
     </header>
 
-    <section class="hero" aria-live="polite">
-      <div class="signal-wrap">
-        <div class="label">MODEL SIGNAL</div>
-        <div id="signal" class="signal">—</div>
-        <div id="signalText" class="signal-text">Loading the latest model output…</div>
+    <section id="hero" class="hero" aria-live="polite">
+      <div class="hero-main">
+        <div class="hero-status-row">
+          <span id="signalPill" class="signal-pill">—</span>
+          <span class="hero-kicker">MODEL SIGNAL</span>
+        </div>
+        <div class="hero-score-row">
+          <div class="hero-score"><span id="score">—</span><small>/100</small></div>
+          <div id="signalText" class="signal-text">Loading the latest model output…</div>
+        </div>
       </div>
-      <div class="score-wrap">
-        <div class="score-number"><span id="score">—</span><small>/100</small></div>
+      <div class="score-panel">
         <div class="score-track" aria-label="Composite model score">
           <div class="zones"><span></span><span></span><span></span></div>
           <div id="scoreFill" class="score-fill"></div>
           <div id="scoreMarker" class="score-marker"></div>
         </div>
-        <div class="score-labels"><span>SELL &lt;40</span><span>HOLD 40–70</span><span>BUY ≥70</span></div>
+        <div class="score-labels"><span>SELL <b>&lt;40</b></span><span>HOLD <b>40–70</b></span><span>BUY <b>≥70</b></span></div>
       </div>
     </section>
 
     <section class="metrics grid-4">
-      <article class="card metric"><div class="metric-label">NIFTY 50</div><div id="nifty" class="metric-value">—</div><div class="metric-sub">Price index</div></article>
-      <article class="card metric"><div class="metric-label">P/E</div><div id="pe" class="metric-value">—</div><div id="peVsMedian" class="metric-sub">—</div></article>
-      <article class="card metric"><div class="metric-label">Valuation percentile</div><div id="percentile" class="metric-value">—</div><div id="quintile" class="metric-sub">—</div></article>
-      <article class="card metric"><div class="metric-label">YoY implied EPS growth</div><div id="epsGrowth" class="metric-value">—</div><div class="metric-sub">NIFTY ÷ P/E</div></article>
-    </section>
-
-    <section class="grid-2">
-      <article class="card">
-        <div class="section-head"><div><div class="eyebrow">MODEL COMPONENTS</div><h2>What drives today's score</h2></div></div>
-        <div class="component-row"><span>Valuation · 70%</span><strong id="valuationScore">—</strong></div>
-        <div class="thin-track"><div id="valuationBar" class="thin-fill"></div></div>
-        <div class="component-row"><span>Earnings growth · 30%</span><strong id="growthScore">—</strong></div>
-        <div class="thin-track"><div id="growthBar" class="thin-fill"></div></div>
-        <div class="mini-grid">
-          <div><span>Earnings yield</span><strong id="earningsYield">—</strong></div>
-          <div><span>Consolidated-era median P/E</span><strong id="medianPe">—</strong></div>
-          <div><span>Current implied EPS</span><strong id="impliedEps">—</strong></div>
-          <div><span>Model version</span><strong id="modelVersion">—</strong></div>
-        </div>
+      <article class="metric-card">
+        <div class="metric-label">NIFTY 50</div>
+        <div id="nifty" class="metric-value">—</div>
+        <div class="metric-footer"><span>Price index</span><span id="niftyContext" class="micro-chip">Latest close</span></div>
       </article>
-
-      <article class="card">
-        <div class="section-head"><div><div class="eyebrow">DAILY HISTORY</div><h2>Composite score</h2></div><div class="legend-dot">40 / 70 thresholds</div></div>
-        <div id="chart" class="chart" role="img" aria-label="Composite model score history"></div>
+      <article class="metric-card">
+        <div class="metric-label">P/E</div>
+        <div id="pe" class="metric-value">—</div>
+        <div class="metric-footer"><span id="peVsMedian">—</span><span id="peDelta" class="micro-chip">—</span></div>
+      </article>
+      <article class="metric-card percentile-card">
+        <div class="metric-label">Valuation percentile</div>
+        <div id="percentile" class="metric-value">—</div>
+        <div class="percentile-track" aria-label="Valuation percentile from cheapest to most expensive">
+          <div class="percentile-gradient"></div>
+          <div id="percentileMarker" class="percentile-marker"></div>
+        </div>
+        <div class="percentile-labels"><span>Cheap</span><span>Median</span><span>Expensive</span></div>
+        <div id="quintile" class="metric-sub">—</div>
+      </article>
+      <article class="metric-card">
+        <div class="metric-label">YoY implied EPS growth</div>
+        <div id="epsGrowth" class="metric-value">—</div>
+        <div class="metric-footer"><span>NIFTY ÷ P/E</span><span id="epsTone" class="micro-chip">—</span></div>
       </article>
     </section>
 
     <section id="boundaryCard" class="card boundary-card">
       <div class="section-head">
-        <div><div class="eyebrow">SIGNAL SENSITIVITY</div><h2>What would change the signal?</h2></div>
-        <div class="hint">Assuming implied EPS and earnings-growth score do not change</div>
-      </div>
-      <p id="boundaryNarrative" class="boundary-summary">Calculating the model's valuation boundaries…</p>
-      <div class="boundary-grid">
-        <div class="boundary-item">
-          <div class="boundary-label">BUY ↔ HOLD boundary</div>
-          <div id="buyHoldPe" class="boundary-pe">—</div>
-          <div id="buyHoldNifty" class="boundary-nifty">NIFTY —</div>
-          <div id="buyHoldMove" class="boundary-move">—</div>
+        <div>
+          <div class="eyebrow">SIGNAL SENSITIVITY</div>
+          <h2>What would change the signal?</h2>
         </div>
-        <div class="boundary-arrow" aria-hidden="true">→</div>
-        <div class="boundary-item">
-          <div class="boundary-label">HOLD ↔ SELL boundary</div>
-          <div id="holdSellPe" class="boundary-pe">—</div>
-          <div id="holdSellNifty" class="boundary-nifty">NIFTY —</div>
-          <div id="holdSellMove" class="boundary-move">—</div>
+        <div class="hint">Holding implied EPS and earnings-growth score constant</div>
+      </div>
+
+      <div id="boundaryStrip" class="boundary-strip" aria-label="P/E thresholds for BUY HOLD and SELL">
+        <div class="boundary-zones"><span class="zone-buy"></span><span class="zone-hold"></span><span class="zone-sell"></span></div>
+        <div id="buyHoldTick" class="boundary-tick threshold-tick"><span>BUY / HOLD</span></div>
+        <div id="holdSellTick" class="boundary-tick threshold-tick"><span>HOLD / SELL</span></div>
+        <div id="currentPeTick" class="boundary-tick current-tick"><span>Current</span></div>
+      </div>
+      <div class="boundary-scale-labels"><span id="boundaryMin">—</span><span>P/E</span><span id="boundaryMax">—</span></div>
+
+      <div class="boundary-summary-grid">
+        <div class="boundary-summary-item">
+          <span class="boundary-summary-label">BUY → HOLD</span>
+          <strong id="buyHoldPe">—</strong>
+          <span id="buyHoldNifty">NIFTY —</span>
+          <span id="buyHoldMove" class="delta-pill">—</span>
+        </div>
+        <div class="boundary-summary-item">
+          <span class="boundary-summary-label">CURRENT</span>
+          <strong id="currentBoundaryPe">—</strong>
+          <span id="currentBoundaryNifty">NIFTY —</span>
+          <span id="currentBoundarySignal" class="delta-pill signal-delta">—</span>
+        </div>
+        <div class="boundary-summary-item">
+          <span class="boundary-summary-label">HOLD → SELL</span>
+          <strong id="holdSellPe">—</strong>
+          <span id="holdSellNifty">NIFTY —</span>
+          <span id="holdSellMove" class="delta-pill">—</span>
         </div>
       </div>
-      <p id="boundaryNote" class="note">These are approximate valuation thresholds, not price targets. They recalculate automatically as P/E history and earnings change.</p>
+      <p id="boundaryNarrative" class="boundary-narrative">Calculating the model's valuation boundaries…</p>
     </section>
 
-    <section class="card">
+    <section class="grid-2 analytics-grid">
+      <article class="card drivers-card">
+        <div class="section-head compact-head">
+          <div><div class="eyebrow">MODEL DRIVERS</div><h2>What drives today's score</h2></div>
+          <div class="model-weight">70 / 30</div>
+        </div>
+        <div class="driver-row">
+          <div class="driver-copy"><span>Valuation</span><small>70% weight</small></div>
+          <div class="driver-bar"><div id="valuationBar" class="driver-fill valuation-fill"></div></div>
+          <strong id="valuationScore">—</strong>
+        </div>
+        <div class="driver-row">
+          <div class="driver-copy"><span>EPS growth</span><small>30% weight</small></div>
+          <div class="driver-bar"><div id="growthBar" class="driver-fill growth-fill"></div></div>
+          <strong id="growthScore">—</strong>
+        </div>
+        <div class="mini-grid">
+          <div><span>Earnings yield</span><strong id="earningsYield">—</strong></div>
+          <div><span>Era median P/E</span><strong id="medianPe">—</strong></div>
+          <div><span>Current implied EPS</span><strong id="impliedEps">—</strong></div>
+          <div><span>Model version</span><strong id="modelVersion">—</strong></div>
+        </div>
+      </article>
+
+      <article class="card history-card">
+        <div class="section-head compact-head">
+          <div><div class="eyebrow">DAILY HISTORY</div><h2>Composite score</h2></div>
+          <div class="threshold-legend"><span class="dot sell-dot"></span>40 <span class="dot buy-dot"></span>70</div>
+        </div>
+        <div id="chart" class="chart" role="img" aria-label="Composite model score history"></div>
+      </article>
+    </section>
+
+    <section class="card backtest-card">
       <div class="section-head">
         <div><div class="eyebrow">HISTORICAL BACKTEST</div><h2>Forward returns by regime-relative valuation</h2></div>
         <div class="hint">Quarter-end observations · price returns</div>
       </div>
       <div class="table-wrap">
-        <table>
+        <table class="backtest-table">
           <thead><tr><th>Starting valuation</th><th>1Y median</th><th>3Y median CAGR</th><th>5Y median CAGR</th><th>10Y median CAGR</th><th>3Y loss freq.</th><th>3Y N</th></tr></thead>
           <tbody id="backtestBody"></tbody>
         </table>
       </div>
-      <p class="note">P/E is ranked within the applicable earnings-methodology regime before the two eras are pooled. This avoids comparing pre-2021 standalone P/E mechanically with post-2021 consolidated P/E.</p>
+      <p class="note">P/E is ranked within the applicable earnings-methodology regime before the two eras are pooled. The highlighted row is the current valuation bucket.</p>
     </section>
 
-    <section class="grid-2">
-      <article class="card">
-        <div class="eyebrow">RECENT OBSERVATIONS</div><h2>Signal log</h2>
+    <section class="grid-2 bottom-grid">
+      <article class="card log-card">
+        <div class="section-head compact-head"><div><div class="eyebrow">RECENT OBSERVATIONS</div><h2>Signal log</h2></div><div class="hint">Newest first</div></div>
         <div class="table-wrap compact"><table><thead><tr><th>Date</th><th>P/E</th><th>Score</th><th>Signal</th></tr></thead><tbody id="historyBody"></tbody></table></div>
       </article>
-      <article class="card methodology">
-        <div class="eyebrow">HOW TO READ IT</div><h2>A slow-moving allocation signal</h2>
-        <p><strong>BUY</strong> means valuation and earnings conditions historically supported adding long-horizon NIFTY exposure. <strong>HOLD</strong> is neutral. <strong>SELL</strong> means the model is unfavourable for fresh allocation; it is not an instruction to short the index or liquidate a strategic portfolio.</p>
-        <p>The score is 70% post-2021 regime-relative valuation and 30% YoY implied EPS growth. The historical study uses quarter-end observations and no-lookahead expanding valuation percentiles for the signal backtest.</p>
-        <a class="button" href="downloads/NIFTY_Valuation_Backtest_Live_Tracker.xlsx">Download detailed Excel model</a>
+
+      <article class="card methodology-card">
+        <details>
+          <summary>
+            <span><span class="eyebrow">METHODOLOGY & ASSUMPTIONS</span><strong>How to read the signal</strong></span>
+            <span class="chevron">⌄</span>
+          </summary>
+          <div class="methodology-content">
+            <p><strong>BUY</strong> means valuation and earnings conditions historically supported adding long-horizon NIFTY exposure. <strong>HOLD</strong> is neutral. <strong>SELL</strong> means the model is unfavourable for fresh allocation; it is not an instruction to short the index or liquidate a strategic portfolio.</p>
+            <p>The score is 70% post-2021 regime-relative valuation and 30% YoY implied EPS growth. The historical study uses quarter-end observations and no-lookahead expanding valuation percentiles for the signal backtest.</p>
+            <p>The sensitivity thresholds hold implied EPS and the earnings-growth score constant. They are model boundaries, not price targets.</p>
+          </div>
+        </details>
+        <div class="source-strip"><span>Primary data</span><strong>NSE Indices / NSE Archives</strong></div>
       </article>
     </section>
 
     <footer>
-      <div>Data: NSE Indices / NSE Archives primary; alternate sources are used only as fallbacks.</div>
-      <div>Model output for research and strategic allocation monitoring, not personalised investment advice.</div>
+      <div>Research dashboard · strategic allocation monitoring</div>
+      <div>Not personalised investment advice.</div>
     </footer>
   </main>
   <script src="app.js"></script>
