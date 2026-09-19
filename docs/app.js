@@ -59,6 +59,7 @@ function setFreshness(asOf){
 function setSignalTone(signal){
   $('signalPill').textContent=signal;
   $('signalPill').className=`signal-pill ${signal}`;
+  $('score').className=`signal-score ${signal}`;
   $('currentBoundarySignal').textContent=signal;
   $('currentBoundarySignal').className=`delta-pill signal-delta ${signal}`;
 }
@@ -153,7 +154,7 @@ function renderScoreHistory(rows,latest){
     <div class="score-summary">
       <div class="score-summary-top">
         <div>
-          <div class="summary-score">${current.toFixed(1)}<span>/100</span></div>
+          <div class="summary-score ${signal}">${current.toFixed(1)}<span>/100</span></div>
           <div class="summary-signal ${signal}">${signal}</div>
         </div>
         <div class="summary-progress-copy">Chart appears automatically after ${minPointsForChart} daily observations.</div>

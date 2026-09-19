@@ -252,3 +252,13 @@ footer{display:flex;justify-content:space-between;gap:20px;padding:15px 2px 0;co
   .summary-stat-grid{grid-template-columns:1fr}
   .score-history-host{min-height:260px}
 }
+
+/* Signal-coloured score: BUY green, HOLD amber, SELL red */
+.signal-score{transition:color .2s ease,text-shadow .2s ease}
+.signal-score.BUY{color:var(--buy);text-shadow:0 0 24px rgba(34,197,94,.10)}
+.signal-score.HOLD{color:var(--hold);text-shadow:0 0 24px rgba(245,158,11,.10)}
+.signal-score.SELL{color:var(--sell);text-shadow:0 0 24px rgba(239,68,68,.10)}
+.summary-score.BUY{color:var(--buy)}
+.summary-score.HOLD{color:var(--hold)}
+.summary-score.SELL{color:var(--sell)}
+.summary-score span{color:var(--faint)}
