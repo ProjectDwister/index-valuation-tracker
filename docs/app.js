@@ -104,7 +104,8 @@ async function boot(){
     $('epsGrowth').textContent=pct(latest.yoy_eps_growth,1);
     const epsTone=$('epsTone'); const eg=+latest.yoy_eps_growth;
     epsTone.textContent=eg>=.12?'Strong':eg>=.06?'Healthy':eg>=0?'Moderate':'Contracting';
-    epsTone.classList.add(eg>=.06?'positive':eg<0?'negative':'');
+    const epsToneClass=eg>=.06?'positive':eg<0?'negative':'';
+    if(epsToneClass) epsTone.classList.add(epsToneClass);
 
     $('valuationScore').textContent=Number(latest.valuation_score).toFixed(1);
     $('growthScore').textContent=Number(latest.growth_score).toFixed(1);
