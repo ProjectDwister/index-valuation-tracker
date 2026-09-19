@@ -1,0 +1,42 @@
+NIFTY VALUATION TRACKER — 5-MINUTE GITHUB SETUP
+================================================
+
+1. Create a GitHub repository named: nifty-valuation-tracker
+   Easiest option: make it PUBLIC (the dashboard contains only market/model data).
+
+2. Upload/commit the CONTENTS of this extracted folder to the repository root.
+   Important: preserve these folders exactly:
+       .github/workflows/nifty-tracker.yml
+       docs/
+
+3. In GitHub open:
+       Settings -> Pages
+   Under Build and deployment set:
+       Source = GitHub Actions
+
+4. Open:
+       Actions -> Refresh NIFTY tracker and deploy Pages
+   Click:
+       Run workflow -> Run workflow
+
+5. Wait for the workflow to complete, then open:
+       Settings -> Pages
+   GitHub will show your live website address there.
+
+AUTOMATION
+----------
+The cloud workflow runs Monday-Friday at 7:00 PM Asia/Kolkata.
+Your PC does NOT need to be on.
+
+MANUAL REFRESH
+--------------
+Actions -> Refresh NIFTY tracker and deploy Pages -> Run workflow
+
+WHAT GETS UPDATED
+-----------------
+- Website signal and score
+- Daily history
+- Detailed Excel workbook
+- Downloadable Excel copy on the website
+
+For full details, read README.md.
