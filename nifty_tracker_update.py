@@ -577,6 +577,57 @@ def sync_quarterly_sheet(wb, df: pd.DataFrame):
             "This reduces, but does not eliminate, overlapping forward-return windows."
         )
 
+def _linear_quantile(values, q: float) -> float:
+    """Simple linear-interpolated quantile used for signal-boundary estimates."""
+    vals = sorted(
+        float(v) for v in values
+        if v is not None and not (isinstance(v, float) and math.isnan(v))
+    )
+    if not vals:
+        return float("nan")
+    q = max(0.0, min(1.0, float(q)))
+    if len(vals) == 1:
+        return vals[0]
+    pos = (len(vals) - 1) * q
+    lo = int(math.floor(pos))
+    hi = int(math.ceil(pos))
+    if lo == hi:
+        return vals[lo]
+    w = pos - lo
+    return vals[lo] * (1 - w) + vals[hi] * w
+
+
+def compute_signal_boundaries(pe_values, growth_score_value: float, current_eps: float, current_close: float):
+    """Approximate P/E/NIFTY levels where the composite score crosses 70 and 40.
+
+    Implied EPS and the earnings-growth score are held constant.
+    """
+    wv, wg = 0.70, 0.30
+
+    def one(score_threshold: float):
+        req_valuation_score = (score_threshold - wg * growth_score_value) / wv
+        req_valuation_score = max(0.0, min(100.0, req_valuation_score))
+        target_pct = 1.0 - req_valuation_score / 100.0
+        pe = _linear_quantile(pe_values, target_pct)
+        nifty = current_eps * pe
+        move = nifty / current_close - 1.0 if current_close else float("nan")
+        return {
+            "score_threshold": score_threshold,
+            "valuation_score_required": req_valuation_score,
+            "pe_percentile": target_pct,
+            "pe": pe,
+            "nifty_level": nifty,
+            "move_from_current": move,
+        }
+
+    return {
+        "buy_hold": one(70.0),
+        "hold_sell": one(40.0),
+        "assumption": "Current implied EPS and earnings-growth score held constant",
+        "note": "Approximate because regime-relative P/E percentiles are based on a discrete historical distribution.",
+    }
+
+
 def month_rows_from_workbook(ws):
     rows = []
     for r in range(5, ws.max_row + 1):
@@ -685,6 +736,9 @@ def write_latest_json(
 ):
     out_path.parent.mkdir(parents=True, exist_ok=True)
     era_median = median([float(v) for v in pe_values])
+    signal_boundaries = compute_signal_boundaries(
+        pe_values, metrics["growth_score"], metrics["eps"], current_close
+    )
     payload = {
         "model_version": MODEL_VERSION,
         "as_of": asof.isoformat(),
@@ -708,6 +762,12 @@ def write_latest_json(
             "implied_eps": _json_num(metrics["prior_eps"], 2),
         },
         "thresholds": {"buy": 70, "hold": 40},
+        "signal_boundaries": {
+            "buy_hold": {k: _json_num(v, 8) if isinstance(v, (int, float)) else v for k, v in signal_boundaries["buy_hold"].items()},
+            "hold_sell": {k: _json_num(v, 8) if isinstance(v, (int, float)) else v for k, v in signal_boundaries["hold_sell"].items()},
+            "assumption": signal_boundaries["assumption"],
+            "note": signal_boundaries["note"],
+        },
         "weights": {"valuation": 0.70, "earnings_growth": 0.30},
         "sources": {"pe": NSE_ARCHIVE_SOURCE, "price": NSE_ARCHIVE_SOURCE},
     }
