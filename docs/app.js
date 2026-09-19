@@ -2,6 +2,19 @@ const $ = (id) => document.getElementById(id);
 const pct = (x, d=1) => x == null ? '—' : `${(x*100).toFixed(d)}%`;
 const num = (x, d=2) => x == null ? '—' : Number(x).toLocaleString('en-IN',{minimumFractionDigits:d,maximumFractionDigits:d});
 const fmtDate = (s) => s ? new Date(`${s}T00:00:00`).toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'}) : '—';
+const signedPct = (x, d=1) => {
+  if(x == null || Number.isNaN(Number(x))) return '—';
+  const v=Number(x)*100; return `${v>=0?'+':''}${v.toFixed(d)}%`;
+};
+function boundarySentence(signal,bh,hs){
+  if(!bh || !hs) return 'Run the cloud refresh once after uploading this update to calculate the signal boundaries.';
+  const bhPe=Number(bh.pe).toFixed(2), hsPe=Number(hs.pe).toFixed(2);
+  const bhN=num(bh.nifty_level,0), hsN=num(hs.nifty_level,0);
+  const bhM=signedPct(bh.move_from_current), hsM=signedPct(hs.move_from_current);
+  if(signal==='BUY') return `If earnings stay unchanged, the model would move from BUY to HOLD at roughly ${bhPe}× P/E (NIFTY ${bhN}, ${bhM} from here), and to SELL around ${hsPe}× (NIFTY ${hsN}, ${hsM}).`;
+  if(signal==='HOLD') return `If earnings stay unchanged, a fall toward ${bhPe}× P/E (NIFTY ${bhN}, ${bhM}) would restore BUY, while a rise toward ${hsPe}× (NIFTY ${hsN}, ${hsM}) would move the model to SELL.`;
+  return `If earnings stay unchanged, a fall toward ${hsPe}× P/E (NIFTY ${hsN}, ${hsM}) would restore HOLD; a further fall toward ${bhPe}× (NIFTY ${bhN}, ${bhM}) would restore BUY.`;
+}
 
 function csvParse(text){
   const lines=text.trim().split(/\r?\n/); if(lines.length<2) return [];
@@ -55,6 +68,21 @@ async function boot(){
     $('medianPe').textContent=`${Number(latest.era_median_pe).toFixed(2)}×`;
     $('impliedEps').textContent=num(latest.implied_eps,1);
     $('modelVersion').textContent=latest.model_version;
+
+    const bounds=latest.signal_boundaries || {};
+    const bh=bounds.buy_hold, hs=bounds.hold_sell;
+    if(bh && hs){
+      $('buyHoldPe').textContent=`${Number(bh.pe).toFixed(2)}× P/E`;
+      $('buyHoldNifty').textContent=`NIFTY ${num(bh.nifty_level,0)}`;
+      $('buyHoldMove').textContent=`${signedPct(bh.move_from_current)} vs current`;
+      $('holdSellPe').textContent=`${Number(hs.pe).toFixed(2)}× P/E`;
+      $('holdSellNifty').textContent=`NIFTY ${num(hs.nifty_level,0)}`;
+      $('holdSellMove').textContent=`${signedPct(hs.move_from_current)} vs current`;
+      $('boundaryNote').textContent=`${bounds.assumption || 'Current earnings assumptions held constant'}. ${bounds.note || ''}`;
+    }else{
+      $('boundaryCard').classList.add('unavailable');
+    }
+    $('boundaryNarrative').textContent=boundarySentence(latest.signal,bh,hs);
 
     $('backtestBody').innerHTML=bt.rows.map(r=>`<tr class="${r.quintile===latest.valuation_quintile?'current':''}"><td>${r.quintile}</td><td>${pct(r.median_1y)}</td><td>${pct(r.median_3y)}</td><td>${pct(r.median_5y)}</td><td>${pct(r.median_10y)}</td><td>${pct(r.loss_3y)}</td><td>${r.n_3y}</td></tr>`).join('');
     $('historyBody').innerHTML=(history.length?history.slice(-8).reverse():[{date:latest.as_of,pe:latest.pe,composite_score:latest.composite_score,signal:latest.signal}]).map(r=>`<tr><td>${fmtDate(r.date)}</td><td>${Number(r.pe).toFixed(2)}×</td><td>${Number(r.composite_score).toFixed(1)}</td><td><span class="badge ${r.signal}">${r.signal}</span></td></tr>`).join('');

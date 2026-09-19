@@ -63,6 +63,30 @@
       </article>
     </section>
 
+    <section id="boundaryCard" class="card boundary-card">
+      <div class="section-head">
+        <div><div class="eyebrow">SIGNAL SENSITIVITY</div><h2>What would change the signal?</h2></div>
+        <div class="hint">Assuming implied EPS and earnings-growth score do not change</div>
+      </div>
+      <p id="boundaryNarrative" class="boundary-summary">Calculating the model's valuation boundaries…</p>
+      <div class="boundary-grid">
+        <div class="boundary-item">
+          <div class="boundary-label">BUY ↔ HOLD boundary</div>
+          <div id="buyHoldPe" class="boundary-pe">—</div>
+          <div id="buyHoldNifty" class="boundary-nifty">NIFTY —</div>
+          <div id="buyHoldMove" class="boundary-move">—</div>
+        </div>
+        <div class="boundary-arrow" aria-hidden="true">→</div>
+        <div class="boundary-item">
+          <div class="boundary-label">HOLD ↔ SELL boundary</div>
+          <div id="holdSellPe" class="boundary-pe">—</div>
+          <div id="holdSellNifty" class="boundary-nifty">NIFTY —</div>
+          <div id="holdSellMove" class="boundary-move">—</div>
+        </div>
+      </div>
+      <p id="boundaryNote" class="note">These are approximate valuation thresholds, not price targets. They recalculate automatically as P/E history and earnings change.</p>
+    </section>
+
     <section class="card">
       <div class="section-head">
         <div><div class="eyebrow">HISTORICAL BACKTEST</div><h2>Forward returns by regime-relative valuation</h2></div>
@@ -91,7 +115,7 @@
     </section>
 
     <footer>
-      <div>Data: NSE-derived P/E history via Downstox; NIFTY price via Yahoo Finance fallback chain.</div>
+      <div>Data: NSE Indices / NSE Archives primary; alternate sources are used only as fallbacks.</div>
       <div>Model output for research and strategic allocation monitoring, not personalised investment advice.</div>
     </footer>
   </main>
