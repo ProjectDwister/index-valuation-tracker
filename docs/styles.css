@@ -559,3 +559,48 @@ body.signal-shift .signal-sweep{animation:signalSweep 1.15s cubic-bezier(.22,.8,
 @media(max-width:420px){
   .score-dial .dial-score-wrap{top:86px;}
 }
+
+
+/* =========================================================
+   SCORE ALIGNMENT — FINAL
+   Optically center the main score lower inside the semicircle.
+   62% tracks the dial height across desktop and mobile layouts.
+   ========================================================= */
+.score-dial .dial-score-wrap{
+  left:50% !important;
+  top:62% !important;
+  transform:translate(-50%,-50%) !important;
+  width:auto !important;
+  min-width:0 !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  text-align:center !important;
+}
+
+.score-dial .dial-score-wrap .hero-score{
+  position:static !important;
+  display:block !important;
+  width:auto !important;
+  margin:0 !important;
+  padding:0 !important;
+  line-height:.88 !important;
+  text-align:center !important;
+}
+
+.score-dial .dial-score-wrap .hero-score > #score{
+  display:block !important;
+  margin:0 !important;
+  padding:0 !important;
+  text-align:center !important;
+}
+
+/* Keep the main dial and compact composite score purely numeric. */
+.score-dial .dial-score-wrap .hero-score > small,
+.summary-score > span{
+  display:none !important;
+}
+
+.score-dial .dial-score-wrap .signal-text{
+  display:none !important;
+}

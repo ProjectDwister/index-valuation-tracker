@@ -255,7 +255,7 @@ function renderScoreHistory(rows,latest){
   host.innerHTML=`
     <div class="score-summary">
       <div class="score-summary-top">
-        <div class="summary-score ${signal}">${current.toFixed(1)}<span>/100</span></div>
+        <div class="summary-score ${signal}">${current.toFixed(1)}</div>
         <div class="summary-progress-copy">Chart appears automatically after ${minPointsForChart} daily observations.</div>
       </div>
       <div class="summary-stat-grid">
