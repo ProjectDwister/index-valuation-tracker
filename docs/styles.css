@@ -497,3 +497,65 @@ body.signal-shift .signal-sweep{animation:signalSweep 1.15s cubic-bezier(.22,.8,
     top:76px;
   }
 }
+
+
+/* =========================================================
+   FINAL SCORE-DIAL BALANCE
+   Main dial is intentionally just the numeric score.
+   The number sits slightly below the geometric midpoint of the
+   semicircle for better optical balance with the heavy top arc.
+   ========================================================= */
+.score-dial .dial-score-wrap{
+  left:50%;
+  top:104px;
+  width:auto;
+  min-width:0;
+  transform:translate(-50%,-50%);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+
+.score-dial .dial-score-wrap .hero-score{
+  position:static;
+  display:block;
+  width:auto;
+  margin:0;
+  padding:0;
+  line-height:.88;
+  text-align:center;
+}
+
+.score-dial .dial-score-wrap .hero-score > #score{
+  display:block;
+  margin:0;
+  padding:0;
+  text-align:center;
+}
+
+/* /100 has been removed from the HTML; hide defensively in case an
+   older cached page is briefly paired with this stylesheet. */
+.score-dial .dial-score-wrap .hero-score > small{
+  display:none !important;
+}
+
+.score-dial .dial-score-wrap .signal-text{
+  display:none;
+}
+
+@media(max-width:900px){
+  .score-dial .dial-score-wrap{top:96px;}
+}
+
+@media(max-width:620px){
+  .score-dial .dial-score-wrap{
+    top:90px;
+    width:auto;
+    min-width:0;
+  }
+}
+
+@media(max-width:420px){
+  .score-dial .dial-score-wrap{top:86px;}
+}
