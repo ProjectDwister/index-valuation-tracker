@@ -412,3 +412,88 @@ body.signal-shift .signal-sweep{animation:signalSweep 1.15s cubic-bezier(.22,.8,
     bottom:.09em;
   }
 }
+
+/* =========================================================
+   FINAL DIAL ALIGNMENT FIX
+   The large numeric score is centred exactly on the gauge's
+   geometric centre. The /100 denominator is centred beneath
+   the number, so it cannot pull the score visually sideways.
+   ========================================================= */
+.score-dial .dial-score-wrap{
+  position:absolute;
+  left:50%;
+  top:94px;
+  width:auto;
+  min-width:170px;
+  transform:translate(-50%,-50%);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  pointer-events:none;
+}
+
+.score-dial .dial-score-wrap .hero-score{
+  position:relative;
+  display:block;
+  width:auto;
+  margin:0;
+  padding:0;
+  line-height:.84;
+  text-align:center;
+}
+
+.score-dial .dial-score-wrap .hero-score > #score{
+  display:block;
+  width:auto;
+  margin:0;
+  padding:0;
+  text-align:center;
+}
+
+.score-dial .dial-score-wrap .hero-score > small{
+  position:absolute;
+  top:calc(100% + 7px);
+  left:50%;
+  bottom:auto;
+  transform:translateX(-50%);
+  margin:0;
+  padding:0;
+  font-size:9px;
+  line-height:1;
+  letter-spacing:.05em;
+  color:var(--faint);
+  white-space:nowrap;
+  text-align:center;
+}
+
+/* The score colour already communicates the state; removing the
+   sentence keeps the dial visually balanced and uncluttered. */
+.score-dial .dial-score-wrap .signal-text{
+  display:none;
+}
+
+@media(max-width:900px){
+  .score-dial .dial-score-wrap{
+    top:87px;
+  }
+}
+
+@media(max-width:620px){
+  .score-dial .dial-score-wrap{
+    top:80px;
+    width:auto;
+    min-width:150px;
+  }
+  .score-dial .dial-score-wrap .hero-score > small{
+    top:calc(100% + 6px);
+    font-size:9px;
+  }
+}
+
+@media(max-width:420px){
+  .score-dial .dial-score-wrap{
+    top:76px;
+  }
+}
