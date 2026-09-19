@@ -1,0 +1,82 @@
+name: Refresh NIFTY tracker and deploy Pages
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 19 * * 1-5'
+      timezone: 'Asia/Kolkata'
+  push:
+    branches: ['main']
+    paths:
+      - 'docs/**'
+      - 'nifty_tracker_update.py'
+      - 'requirements.txt'
+      - 'nifty_quarterly_backtest.csv'
+      - 'NIFTY_Valuation_Backtest_Live_Tracker.xlsx'
+      - '.github/workflows/nifty-tracker.yml'
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: nifty-pages
+  cancel-in-progress: false
+
+jobs:
+  update-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        if: github.event_name != 'push'
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        if: github.event_name != 'push'
+        run: python -m pip install -r requirements.txt
+
+      - name: Refresh NIFTY valuation model
+        if: github.event_name != 'push'
+        run: >-
+          python nifty_tracker_update.py
+          --workbook NIFTY_Valuation_Backtest_Live_Tracker.xlsx
+          --backtest-csv nifty_quarterly_backtest.csv
+          --web-dir docs
+
+      - name: Commit refreshed model history
+        if: github.event_name != 'push'
+        run: |
+          git config user.name "NIFTY Tracker Bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add NIFTY_Valuation_Backtest_Live_Tracker.xlsx docs/data docs/downloads
+          if ! git diff --cached --quiet; then
+            git commit -m "Daily NIFTY valuation update"
+            git push
+          else
+            echo "No model changes to commit."
+          fi
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: docs
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
