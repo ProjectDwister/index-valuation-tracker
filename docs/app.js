@@ -194,6 +194,19 @@ function drawSparkline(hostId,rows,key){
 
 function renderSparklines(history,latest){
   const rows=sparkRows(history,latest);
+  const ids=['sparkNifty','sparkPe','sparkPercentile','sparkEps'];
+  const ready=rows.length>=5;
+
+  ids.forEach(id=>{
+    const host=$(id);
+    if(!host) return;
+    const card=host.closest('.spark-card');
+    if(card) card.classList.toggle('sparkline-ready',ready);
+    if(!ready) host.innerHTML='';
+  });
+
+  if(!ready) return;
+
   drawSparkline('sparkNifty',rows,'nifty_close');
   drawSparkline('sparkPe',rows,'pe');
   drawSparkline('sparkPercentile',rows,'pe_percentile');
@@ -256,7 +269,6 @@ function renderScoreHistory(rows,latest){
     <div class="score-summary">
       <div class="score-summary-top">
         <div class="summary-score ${signal}">${current.toFixed(1)}</div>
-        <div class="summary-progress-copy">Chart appears automatically after ${minPointsForChart} daily observations.</div>
       </div>
       <div class="summary-stat-grid">
         <div class="summary-stat"><span>5-day change</span><strong>${change5==null?'—':signedPoints(change5,1)}</strong></div>
