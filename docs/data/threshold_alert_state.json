@@ -1,0 +1,17 @@
+{
+  "as_of": "2026-09-18",
+  "signal": "BUY",
+  "composite_score": 76.94,
+  "nifty_close": 23346.4,
+  "pe": 19.74,
+  "buy_hold": {
+    "pe": 20.5786,
+    "nifty_level": 24338.18,
+    "move_from_current": 0.04248086
+  },
+  "hold_sell": {
+    "pe": 22.275,
+    "nifty_level": 26344.53,
+    "move_from_current": 0.12841947
+  }
+}
