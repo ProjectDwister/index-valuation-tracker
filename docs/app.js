@@ -57,11 +57,71 @@ function setFreshness(asOf){
 }
 
 function setSignalTone(signal){
-  $('signalPill').textContent='';
-  $('signalPill').className=`signal-pill ${signal} signal-pill-hidden`;
+  document.body.dataset.signal=(signal||'HOLD').toLowerCase();
   $('score').className=`signal-score ${signal}`;
-  $('currentBoundarySignal').textContent=signal;
-  $('currentBoundarySignal').className=`delta-pill signal-delta ${signal}`;
+  $('stickyScore').className=`sticky-score ${signal}`;
+
+  try{
+    const previous=localStorage.getItem('niftySignal');
+    if(previous && previous!==signal){
+      document.body.classList.add('signal-shift');
+      window.setTimeout(()=>document.body.classList.remove('signal-shift'),1300);
+    }
+    localStorage.setItem('niftySignal',signal);
+  }catch(_e){}
+}
+
+function animateNumber(el, target, duration=720, decimals=1){
+  if(!el || !Number.isFinite(Number(target))) return;
+  const final=Number(target);
+  const start=performance.now();
+  const ease=t=>1-Math.pow(1-t,3);
+  const frame=now=>{
+    const t=clamp((now-start)/duration,0,1);
+    el.textContent=(final*ease(t)).toFixed(decimals);
+    if(t<1) requestAnimationFrame(frame);
+  };
+  requestAnimationFrame(frame);
+}
+
+function setDial(score){
+  const s=clamp(Number(score),0,100);
+  const theta=Math.PI-(s/100)*Math.PI;
+  const cx=110+80*Math.cos(theta);
+  const cy=110-80*Math.sin(theta);
+  ['dialMarker','dialMarkerHalo'].forEach(id=>{
+    const el=$(id);
+    el.setAttribute('cx',cx.toFixed(2));
+    el.setAttribute('cy',cy.toFixed(2));
+  });
+}
+
+function setHeroDistance(latest,bh,hs){
+  const score=Number(latest.composite_score);
+  const signal=latest.signal;
+  let buffer='—';
+  if(signal==='BUY') buffer=`+${Math.max(0,score-70).toFixed(1)} pts vs 70`;
+  else if(signal==='SELL') buffer=`${Math.max(0,40-score).toFixed(1)} pts below 40`;
+  else {
+    const toSell=Math.max(0,score-40);
+    const toBuy=Math.max(0,70-score);
+    buffer=`${Math.min(toSell,toBuy).toFixed(1)} pts to nearest edge`;
+  }
+  $('scoreBuffer').textContent=buffer;
+
+  let boundary='—';
+  if(bh && hs){
+    if(signal==='BUY') boundary=`${Number(bh.pe).toFixed(2)}× · ${signedPct(bh.move_from_current)}`;
+    else if(signal==='SELL') boundary=`${Number(hs.pe).toFixed(2)}× · ${signedPct(hs.move_from_current)}`;
+    else {
+      const buyMove=Math.abs(Number(bh.move_from_current));
+      const sellMove=Math.abs(Number(hs.move_from_current));
+      boundary=buyMove<=sellMove
+        ? `${Number(bh.pe).toFixed(2)}× · ${signedPct(bh.move_from_current)}`
+        : `${Number(hs.pe).toFixed(2)}× · ${signedPct(hs.move_from_current)}`;
+    }
+  }
+  $('nextBoundary').textContent=boundary;
 }
 
 function setBoundaryStrip(current,bh,hs){
@@ -88,14 +148,56 @@ function setBoundaryStrip(current,bh,hs){
 function heatStyle(v,type='return',current=false){
   if(v==null || Number.isNaN(Number(v))) return '';
   const n=Number(v);
-  const boost=current ? 1.25 : .72;
+  const boost=current ? 1.30 : .74;
   if(type==='loss'){
     const a=clamp(Math.abs(n)/.25*.20*boost,.02,current?.24:.14);
     return `background:rgba(239,68,68,${a.toFixed(3)})`;
   }
   const positive=n>=0;
-  const a=clamp(Math.abs(n)/.35*.22*boost,.018,current?.25:.15);
+  const a=clamp(Math.abs(n)/.35*.22*boost,.018,current?.26:.15);
   return `background:${positive?`rgba(34,197,94,${a.toFixed(3)})`:`rgba(239,68,68,${a.toFixed(3)})`}`;
+}
+
+function sparkRows(history,latest){
+  const rows=[...history];
+  if(!rows.length || rows[rows.length-1].date!==latest.as_of){
+    rows.push({
+      date:latest.as_of,
+      nifty_close:latest.nifty_close,
+      pe:latest.pe,
+      pe_percentile:latest.pe_percentile,
+      yoy_eps_growth:latest.yoy_eps_growth,
+      composite_score:latest.composite_score,
+      signal:latest.signal
+    });
+  }
+  return rows.slice(-30);
+}
+
+function drawSparkline(hostId,rows,key){
+  const host=$(hostId);
+  if(!host) return;
+  const vals=rows.filter(r=>r[key]!=='' && r[key]!=null).map(r=>Number(r[key])).filter(Number.isFinite);
+  if(!vals.length){host.innerHTML='';return;}
+  const W=160,H=34,p=3;
+  let lo=Math.min(...vals),hi=Math.max(...vals);
+  if(lo===hi){lo-=1;hi+=1;}
+  const pad=(hi-lo)*.18;
+  lo-=pad;hi+=pad;
+  const x=i=>p+(vals.length===1?(W-2*p):i/(vals.length-1)*(W-2*p));
+  const y=v=>p+(hi-v)/(hi-lo)*(H-2*p);
+  const path=vals.map((v,i)=>`${i?'L':'M'} ${x(i).toFixed(1)} ${y(v).toFixed(1)}`).join(' ');
+  const lastX=x(vals.length-1),lastY=y(vals[vals.length-1]);
+  const area=vals.length>1?`${path} L ${lastX.toFixed(1)} ${(H-p).toFixed(1)} L ${x(0).toFixed(1)} ${(H-p).toFixed(1)} Z`:'';
+  host.innerHTML=`<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none"><path class="spark-area" d="${area}"></path><path class="spark-path" d="${path}"></path><circle class="spark-dot" cx="${lastX.toFixed(1)}" cy="${lastY.toFixed(1)}" r="2.4"></circle></svg>`;
+}
+
+function renderSparklines(history,latest){
+  const rows=sparkRows(history,latest);
+  drawSparkline('sparkNifty',rows,'nifty_close');
+  drawSparkline('sparkPe',rows,'pe');
+  drawSparkline('sparkPercentile',rows,'pe_percentile');
+  drawSparkline('sparkEps',rows,'yoy_eps_growth');
 }
 
 function drawChart(rows){
@@ -153,23 +255,34 @@ function renderScoreHistory(rows,latest){
   host.innerHTML=`
     <div class="score-summary">
       <div class="score-summary-top">
-        <div>
-          <div class="summary-score ${signal}">${current.toFixed(1)}<span>/100</span></div>
-        </div>
+        <div class="summary-score ${signal}">${current.toFixed(1)}<span>/100</span></div>
         <div class="summary-progress-copy">Chart appears automatically after ${minPointsForChart} daily observations.</div>
       </div>
       <div class="summary-stat-grid">
         <div class="summary-stat"><span>5-day change</span><strong>${change5==null?'—':signedPoints(change5,1)}</strong></div>
         <div class="summary-stat"><span>20-day range</span><strong>${range20?`${low20.toFixed(1)}–${high20.toFixed(1)}`:'—'}</strong></div>
-        <div class="summary-stat"><span>Days in ${signal}</span><strong>${days}</strong></div>
+        <div class="summary-stat"><span>Days in current signal</span><strong>${days}</strong></div>
       </div>
       <div class="summary-score-track" aria-label="Current composite score ${current.toFixed(1)} out of 100">
         <div class="summary-zones"><span></span><span></span><span></span></div>
         <div class="summary-fill" style="width:${clamp(current,0,100)}%"></div>
         <div class="summary-marker" style="left:${clamp(current,0,100)}%"></div>
       </div>
-      <div class="summary-score-labels"><span>SELL &lt;40</span><span>HOLD 40–70</span><span>BUY ≥70</span></div>
+      <div class="summary-score-labels"><span>&lt;40</span><span>40–70</span><span>≥70</span></div>
     </div>`;
+}
+
+function installStickyBehavior(){
+  const sticky=$('stickySummary');
+  const hero=$('hero');
+  const update=()=>{
+    const show=hero.getBoundingClientRect().bottom<24;
+    sticky.classList.toggle('visible',show);
+    sticky.setAttribute('aria-hidden',show?'false':'true');
+  };
+  update();
+  window.addEventListener('scroll',update,{passive:true});
+  window.addEventListener('resize',update,{passive:true});
 }
 
 async function boot(){
@@ -184,7 +297,9 @@ async function boot(){
     setFreshness(latest.as_of);
     setSignalTone(latest.signal);
     $('signalText').textContent=signalText(latest.signal);
-    $('score').textContent=Number(latest.composite_score).toFixed(1);
+    animateNumber($('score'),latest.composite_score,760,1);
+    $('stickyScore').textContent=Number(latest.composite_score).toFixed(1);
+    setDial(latest.composite_score);
     const sc=clamp(+latest.composite_score,0,100);
     $('scoreFill').style.width=`${sc}%`;
     $('scoreMarker').style.left=`${sc}%`;
@@ -200,6 +315,9 @@ async function boot(){
     $('quintile').textContent=displayQuintile(latest.valuation_quintile);
     $('epsGrowth').textContent=pct(latest.yoy_eps_growth,1);
 
+    $('stickyNifty').textContent=num(latest.nifty_close,0);
+    $('stickyPe').textContent=`${Number(latest.pe).toFixed(2)}×`;
+
     $('valuationScore').textContent=Number(latest.valuation_score).toFixed(1);
     $('growthScore').textContent=Number(latest.growth_score).toFixed(1);
     $('valuationBar').style.width=`${clamp(+latest.valuation_score,0,100)}%`;
@@ -209,6 +327,7 @@ async function boot(){
     $('impliedEps').textContent=num(latest.implied_eps,1);
 
     const bounds=latest.signal_boundaries||{}, bh=bounds.buy_hold, hs=bounds.hold_sell;
+    setHeroDistance(latest,bh,hs);
     $('currentBoundaryPe').textContent=`${Number(latest.pe).toFixed(2)}× P/E`;
     $('currentBoundaryNifty').textContent=`NIFTY ${num(latest.nifty_close,0)}`;
     if(bh&&hs){
@@ -230,9 +349,11 @@ async function boot(){
     }).join('');
 
     const logRows=history.length?history.slice(-5).reverse():[{date:latest.as_of,pe:latest.pe,composite_score:latest.composite_score,signal:latest.signal}];
-    $('historyBody').innerHTML=logRows.map(r=>`<tr><td>${fmtDate(r.date)}</td><td>${Number(r.pe).toFixed(2)}×</td><td>${Number(r.composite_score).toFixed(1)}</td><td><span class="badge ${r.signal}">${r.signal}</span></td></tr>`).join('');
+    $('historyBody').innerHTML=logRows.map(r=>`<tr><td>${fmtDate(r.date)}</td><td>${Number(r.pe).toFixed(2)}×</td><td class="log-score ${r.signal}">${Number(r.composite_score).toFixed(1)}</td><td><span class="badge ${r.signal}">${r.signal}</span></td></tr>`).join('');
 
+    renderSparklines(history,latest);
     renderScoreHistory(history.length?history:[{date:latest.as_of,composite_score:latest.composite_score,signal:latest.signal}],latest);
+    installStickyBehavior();
   }catch(e){
     document.querySelector('.shell').insertAdjacentHTML('afterbegin','<div class="error">Dashboard data could not be loaded. Open the repository Actions tab and run “Refresh NIFTY tracker and deploy Pages” manually.</div>');
     console.error(e);

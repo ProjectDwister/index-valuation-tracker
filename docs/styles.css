@@ -265,3 +265,104 @@ footer{display:flex;justify-content:space-between;gap:20px;padding:15px 2px 0;co
 
 /* Signal is conveyed by score colour; hide duplicate text label in hero. */
 .signal-pill-hidden{display:none!important}
+
+/* =========================================================
+   Premium terminal / WOW refinement
+   ========================================================= */
+body{
+  --signal-color:var(--buy);
+  --signal-rgb:34,197,94;
+  background:
+    radial-gradient(circle at 16% -8%, rgba(96,165,250,.055), transparent 30rem),
+    linear-gradient(180deg,#07111f 0%,var(--bg) 34%,#07101c 100%);
+}
+body[data-signal="buy"]{--signal-color:var(--buy);--signal-rgb:34,197,94}
+body[data-signal="hold"]{--signal-color:var(--hold);--signal-rgb:245,158,11}
+body[data-signal="sell"]{--signal-color:var(--sell);--signal-rgb:239,68,68}
+
+.ambient-glow{position:fixed;z-index:-2;inset:-15vh -15vw auto -15vw;height:64vh;pointer-events:none;background:radial-gradient(ellipse at 50% 0%,rgba(var(--signal-rgb),.11),rgba(var(--signal-rgb),.025) 42%,transparent 72%);filter:blur(8px);transition:background 1s ease}
+body:after{content:"";position:fixed;z-index:-3;inset:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.012) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.012) 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(to bottom,rgba(0,0,0,.34),transparent 72%)}
+.signal-sweep{position:fixed;z-index:50;inset:0;pointer-events:none;opacity:0;background:linear-gradient(110deg,transparent 25%,rgba(var(--signal-rgb),.13) 47%,rgba(255,255,255,.07) 50%,rgba(var(--signal-rgb),.10) 53%,transparent 76%);transform:translateX(-110%)}
+body.signal-shift .signal-sweep{animation:signalSweep 1.15s cubic-bezier(.22,.8,.3,1)}
+@keyframes signalSweep{0%{opacity:0;transform:translateX(-110%)}18%{opacity:1}100%{opacity:0;transform:translateX(110%)}}
+
+.card,.metric-card,.hero{background:linear-gradient(180deg,rgba(16,30,49,.91),rgba(11,24,40,.94));border-color:rgba(255,255,255,.075);box-shadow:inset 0 1px 0 rgba(255,255,255,.025),0 16px 48px rgba(0,0,0,.17);backdrop-filter:blur(14px)}
+.card,.metric-card{transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease}
+@media(hover:hover){.metric-card:hover,.card:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.115);box-shadow:inset 0 1px 0 rgba(255,255,255,.035),0 19px 54px rgba(0,0,0,.20)}}
+
+.sticky-summary{position:fixed;z-index:40;top:0;left:0;right:0;transform:translateY(-115%);opacity:0;border-bottom:1px solid rgba(255,255,255,.08);background:rgba(6,15,27,.84);backdrop-filter:blur(20px) saturate(130%);transition:transform .25s ease,opacity .25s ease;box-shadow:0 10px 28px rgba(0,0,0,.20)}
+.sticky-summary.visible{transform:translateY(0);opacity:1}
+.sticky-inner{width:min(1180px,calc(100% - 32px));height:48px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.sticky-inner>strong{font-size:12px;letter-spacing:-.015em}
+.sticky-metrics{display:flex;gap:20px;color:var(--faint);font-size:9px;letter-spacing:.02em}
+.sticky-metrics span{white-space:nowrap}.sticky-metrics b{margin-left:5px;color:var(--text);font-size:11px;font-variant-numeric:tabular-nums}.sticky-score.BUY{color:var(--buy)!important}.sticky-score.HOLD{color:var(--hold)!important}.sticky-score.SELL{color:var(--sell)!important}
+
+/* Hero: radial score dial + concise live context */
+.hero{grid-template-columns:minmax(330px,.8fr) minmax(0,1.2fr);min-height:238px;align-items:center;padding:20px 24px;border-color:rgba(var(--signal-rgb),.16);box-shadow:inset 0 1px 0 rgba(255,255,255,.035),0 18px 55px rgba(0,0,0,.19),0 0 48px rgba(var(--signal-rgb),.035)}
+.dial-column{display:flex;align-items:center;justify-content:center;min-width:0}
+.score-dial{position:relative;width:min(100%,330px);height:190px}
+.score-dial svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.dial-track,.dial-zone{fill:none;stroke-linecap:round;stroke-width:10}
+.dial-track{stroke:rgba(255,255,255,.045)}
+.dial-zone{opacity:.78}
+.dial-sell{stroke:var(--sell);stroke-dasharray:39 61;stroke-dashoffset:0}
+.dial-hold{stroke:var(--hold);stroke-dasharray:29 71;stroke-dashoffset:-40}
+.dial-buy{stroke:var(--buy);stroke-dasharray:29 71;stroke-dashoffset:-70}
+.dial-marker-halo{fill:rgba(var(--signal-rgb),.16);filter:drop-shadow(0 0 9px rgba(var(--signal-rgb),.45));transition:cx .65s cubic-bezier(.2,.8,.2,1),cy .65s cubic-bezier(.2,.8,.2,1),fill .3s ease}
+.dial-marker{fill:#fff;stroke:var(--signal-color);stroke-width:2;filter:drop-shadow(0 0 6px rgba(var(--signal-rgb),.75));transition:cx .65s cubic-bezier(.2,.8,.2,1),cy .65s cubic-bezier(.2,.8,.2,1),stroke .3s ease}
+.dial-score-wrap{position:absolute;left:50%;top:91px;width:72%;transform:translate(-50%,-50%);text-align:center}
+.hero-score{font-size:clamp(48px,6vw,66px);line-height:.90;font-weight:870;letter-spacing:-.06em;font-variant-numeric:tabular-nums}
+.hero-score small{font-size:13px;margin-left:3px;color:var(--faint);font-weight:650;letter-spacing:0}
+.signal-score{transition:color .35s ease,text-shadow .35s ease}.signal-score.BUY{color:var(--buy);text-shadow:0 0 28px rgba(34,197,94,.15)}.signal-score.HOLD{color:var(--hold);text-shadow:0 0 28px rgba(245,158,11,.15)}.signal-score.SELL{color:var(--sell);text-shadow:0 0 28px rgba(239,68,68,.15)}
+.signal-text{margin-top:9px;max-width:none;color:#a7b9cc;font-size:11px;line-height:1.4}
+.dial-scale{position:absolute;left:13%;right:13%;bottom:1px;height:17px;color:var(--faint);font-size:8px;font-variant-numeric:tabular-nums}
+.dial-scale span{position:absolute;transform:translateX(-50%)}.dial-scale span:last-child{transform:none}
+.hero-context{display:flex;flex-direction:column;gap:20px;padding:7px 0 5px 8px}
+.hero-context-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.hero-insight{padding:14px 15px;border:1px solid rgba(255,255,255,.055);border-radius:9px;background:rgba(255,255,255,.018);box-shadow:inset 0 1px 0 rgba(255,255,255,.018)}
+.hero-insight span{display:block;margin-bottom:7px;color:var(--faint);font-size:9px;letter-spacing:.03em}.hero-insight strong{display:block;color:#e9f3ff;font-size:17px;letter-spacing:-.025em;font-variant-numeric:tabular-nums}
+.hero-score-strip{padding:4px 3px 0}.score-track{height:7px}.score-fill{background:linear-gradient(90deg,rgba(255,255,255,.24),rgba(255,255,255,.63));transition:width .65s cubic-bezier(.2,.8,.2,1)}.score-marker{box-shadow:0 0 0 3px rgba(255,255,255,.075),0 0 14px rgba(var(--signal-rgb),.34)}
+
+/* KPI cards with mini market sparklines */
+.metric-card{position:relative;overflow:hidden;min-height:143px;padding-bottom:42px}
+.metric-card:after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:linear-gradient(90deg,transparent,rgba(var(--signal-rgb),.19),transparent);opacity:.55}
+.metric-card .metric-value{position:relative;z-index:2}
+.sparkline-host{position:absolute;left:12px;right:12px;bottom:7px;height:30px;opacity:.72;pointer-events:none}
+.sparkline-host svg{width:100%;height:100%;overflow:visible}.spark-path{fill:none;stroke:rgba(110,179,255,.84);stroke-width:1.5;vector-effect:non-scaling-stroke}.spark-area{fill:rgba(96,165,250,.055)}.spark-dot{fill:#b7d8ff;filter:drop-shadow(0 0 4px rgba(96,165,250,.5))}
+.sparkline-lower{opacity:.52}
+.percentile-card{padding-bottom:42px}
+
+/* Valuation thermometer */
+.boundary-card{position:relative;overflow:hidden;border-color:rgba(var(--signal-rgb),.13)}
+.boundary-card:before{content:"";position:absolute;inset:0 auto auto 13%;width:74%;height:1px;background:linear-gradient(90deg,transparent,rgba(var(--signal-rgb),.25),transparent)}
+.boundary-zones{box-shadow:inset 0 0 0 1px rgba(255,255,255,.035)}
+.current-tick{background:var(--signal-color);box-shadow:0 0 0 4px rgba(var(--signal-rgb),.11),0 0 22px rgba(var(--signal-rgb),.32)}
+.current-tick:after{background:#fff;box-shadow:0 0 0 3px rgba(var(--signal-rgb),.17),0 0 12px rgba(var(--signal-rgb),.34)}
+.current-boundary-card{border-color:rgba(var(--signal-rgb),.18);background:linear-gradient(180deg,rgba(var(--signal-rgb),.055),rgba(255,255,255,.018))}
+.current-boundary-card strong{color:var(--signal-color)}
+
+/* Stronger heatmap / current valuation spotlight */
+.backtest-table tbody tr{transition:opacity .18s ease,background .18s ease}
+.backtest-table tr.current{background:linear-gradient(90deg,rgba(var(--signal-rgb),.13),rgba(96,165,250,.055));box-shadow:inset 3px 0 0 var(--signal-color),inset 0 1px 0 rgba(255,255,255,.025),inset 0 -1px 0 rgba(255,255,255,.025)}
+.current-badge{background:rgba(var(--signal-rgb),.12);color:var(--signal-color);border:1px solid rgba(var(--signal-rgb),.16)}
+.log-score.BUY{color:var(--buy);font-weight:800}.log-score.HOLD{color:var(--hold);font-weight:800}.log-score.SELL{color:var(--sell);font-weight:800}
+
+/* Subtle staged entrance */
+.reveal{opacity:0;transform:translateY(8px);animation:revealIn .46s cubic-bezier(.2,.8,.2,1) forwards}.reveal-1{animation-delay:.03s}.reveal-2{animation-delay:.08s}.reveal-3{animation-delay:.13s}.reveal-4{animation-delay:.18s}.reveal-5{animation-delay:.23s}.reveal-6{animation-delay:.28s}.reveal-7{animation-delay:.33s}
+@keyframes revealIn{to{opacity:1;transform:translateY(0)}}
+
+/* Signal-coloured compact score remains purely numeric */
+.summary-score.BUY{color:var(--buy)}.summary-score.HOLD{color:var(--hold)}.summary-score.SELL{color:var(--sell)}
+.summary-marker{box-shadow:0 0 0 3px rgba(255,255,255,.07),0 0 12px rgba(var(--signal-rgb),.22)}
+
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;gap:5px;min-height:0;padding:16px 18px 19px}.score-dial{height:178px;max-width:310px}.hero-context{padding:0}.hero-context-grid{max-width:620px;width:100%;margin:0 auto}.hero-score-strip{max-width:620px;width:100%;margin:0 auto}.dial-score-wrap{top:85px}
+}
+@media(max-width:620px){
+  .sticky-inner{width:calc(100% - 20px);height:44px}.sticky-inner>strong{display:none}.sticky-metrics{width:100%;justify-content:space-between;gap:8px}
+  .hero{padding:13px 14px 16px}.score-dial{height:163px}.dial-score-wrap{top:77px}.hero-score{font-size:49px}.hero-context-grid{grid-template-columns:1fr 1fr;gap:6px}.hero-insight{padding:10px 11px}.hero-insight strong{font-size:14px}.metric-card{min-height:135px}.sparkline-host{bottom:6px}
+}
+@media(max-width:420px){
+  .hero-context-grid{grid-template-columns:1fr}.score-dial{height:155px}.dial-score-wrap{top:74px}.hero-score{font-size:46px}.dial-scale{left:10%;right:10%}
+}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;animation:none}.signal-sweep{display:none}.score-fill,.dial-marker,.dial-marker-halo,.sticky-summary,.card,.metric-card{transition:none!important}}
