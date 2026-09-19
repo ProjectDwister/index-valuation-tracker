@@ -262,3 +262,6 @@ footer{display:flex;justify-content:space-between;gap:20px;padding:15px 2px 0;co
 .summary-score.HOLD{color:var(--hold)}
 .summary-score.SELL{color:var(--sell)}
 .summary-score span{color:var(--faint)}
+
+/* Signal is conveyed by score colour; hide duplicate text label in hero. */
+.signal-pill-hidden{display:none!important}
