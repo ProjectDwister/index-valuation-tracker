@@ -2,6 +2,12 @@ name: Refresh NIFTY tracker and deploy Pages
 
 on:
   workflow_dispatch:
+    inputs:
+      test_email_alert:
+        description: 'Send a test threshold email on this run'
+        required: false
+        default: false
+        type: boolean
   schedule:
     - cron: '0 19 * * 1-5'
       timezone: 'Asia/Kolkata'
@@ -50,6 +56,17 @@ jobs:
 
       - name: Refresh NIFTY valuation model
         if: github.event_name != 'push'
+        env:
+          ALERT_EMAIL_TO: ${{ secrets.ALERT_EMAIL_TO }}
+          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          SMTP_HOST: ${{ vars.SMTP_HOST || 'smtp.gmail.com' }}
+          SMTP_PORT: ${{ vars.SMTP_PORT || '465' }}
+          SMTP_FROM: ${{ vars.SMTP_FROM || secrets.SMTP_USERNAME }}
+          ALERT_PE_DELTA: ${{ vars.ALERT_PE_DELTA || '0.10' }}
+          ALERT_NIFTY_DELTA_PCT: ${{ vars.ALERT_NIFTY_DELTA_PCT || '0.005' }}
+          FORCE_THRESHOLD_ALERT: ${{ github.event_name == 'workflow_dispatch' && inputs.test_email_alert || false }}
+          DASHBOARD_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
         run: >-
           python nifty_tracker_update.py
           --workbook NIFTY_Valuation_Backtest_Live_Tracker.xlsx
