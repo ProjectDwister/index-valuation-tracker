@@ -1,0 +1,687 @@
+:root{
+  --bg:#08111f;
+  --panel:#0d1929;
+  --panel-2:#101e31;
+  --panel-3:#13243a;
+  --text:#f3f7fc;
+  --muted:#8ea3bd;
+  --faint:#5f7590;
+  --line:rgba(255,255,255,.075);
+  --line-strong:rgba(255,255,255,.12);
+  --buy:#22c55e;
+  --buy-soft:rgba(34,197,94,.12);
+  --hold:#f59e0b;
+  --hold-soft:rgba(245,158,11,.11);
+  --sell:#ef4444;
+  --sell-soft:rgba(239,68,68,.11);
+  --accent:#60a5fa;
+  --accent-soft:rgba(96,165,250,.10);
+  --shadow:0 14px 42px rgba(0,0,0,.18);
+}
+*{box-sizing:border-box}
+html{color-scheme:dark}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body:before{content:"";position:fixed;inset:0 0 auto 0;height:1px;background:linear-gradient(90deg,transparent,rgba(96,165,250,.35),transparent);pointer-events:none}
+.shell{width:min(1180px,calc(100% - 56px));margin:0 auto;padding:24px 0 42px}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:16px}
+.brand-block{min-width:0}
+h1,h2,p{margin-top:0}
+h1{margin:2px 0 0;font-size:clamp(27px,4vw,40px);line-height:1.05;letter-spacing:-.045em;font-weight:820}
+h2{margin:3px 0 0;font-size:18px;line-height:1.2;letter-spacing:-.025em;font-weight:760}
+.eyebrow{color:#7fa1cc;font-size:10px;line-height:1.2;letter-spacing:.145em;font-weight:800;text-transform:uppercase}
+.top-actions{display:flex;align-items:center;gap:10px}
+.freshness{display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 11px;border:1px solid var(--line);border-radius:9px;background:rgba(255,255,255,.025);color:var(--muted);font-size:11px;white-space:nowrap}
+.status-dot{width:7px;height:7px;border-radius:50%;background:var(--faint);box-shadow:0 0 0 3px rgba(255,255,255,.025)}
+.freshness.fresh .status-dot{background:var(--buy);box-shadow:0 0 0 3px var(--buy-soft)}
+.freshness.stale .status-dot{background:var(--hold);box-shadow:0 0 0 3px var(--hold-soft)}
+.icon-button{display:inline-flex;align-items:center;gap:7px;height:36px;padding:0 11px;border:1px solid var(--line);border-radius:9px;background:rgba(255,255,255,.035);color:var(--text);font-size:11px;font-weight:750;text-decoration:none;transition:.18s ease}
+.icon-button:hover{border-color:var(--line-strong);background:rgba(255,255,255,.055)}
+.hero{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(320px,.85fr);gap:30px;align-items:end;padding:22px 24px;border:1px solid var(--line);border-radius:12px;background:var(--panel);box-shadow:var(--shadow)}
+.hero-status-row{display:flex;align-items:center;gap:10px;margin-bottom:13px}
+.hero-kicker{color:var(--muted);font-size:10px;letter-spacing:.14em;font-weight:800}
+.signal-pill{display:inline-flex;align-items:center;justify-content:center;min-width:64px;height:25px;padding:0 10px;border-radius:999px;font-size:11px;font-weight:900;letter-spacing:.05em;border:1px solid transparent}
+.signal-pill.BUY{color:#9af2b9;background:var(--buy-soft);border-color:rgba(34,197,94,.20)}
+.signal-pill.HOLD{color:#ffd879;background:var(--hold-soft);border-color:rgba(245,158,11,.20)}
+.signal-pill.SELL{color:#ffadad;background:var(--sell-soft);border-color:rgba(239,68,68,.20)}
+.hero-score-row{display:flex;align-items:baseline;gap:24px}
+.hero-score{font-size:clamp(44px,7vw,64px);line-height:.95;font-weight:850;letter-spacing:-.055em;font-variant-numeric:tabular-nums}
+.hero-score small{font-size:16px;color:var(--faint);font-weight:650;margin-left:4px;letter-spacing:0}
+.signal-text{max-width:500px;color:var(--muted);font-size:13px;line-height:1.5}
+.score-panel{padding-bottom:3px}
+.score-track{position:relative;height:8px;border-radius:999px;background:rgba(255,255,255,.05);overflow:visible}
+.zones{position:absolute;inset:0;display:grid;grid-template-columns:40fr 30fr 30fr;overflow:hidden;border-radius:999px}
+.zones span:nth-child(1){background:rgba(239,68,68,.28)}
+.zones span:nth-child(2){background:rgba(245,158,11,.28)}
+.zones span:nth-child(3){background:rgba(34,197,94,.28)}
+.score-fill{position:absolute;inset:0 auto 0 0;width:0;border-radius:999px;background:rgba(243,247,252,.52);transition:width .45s ease}
+.score-marker{position:absolute;top:50%;width:3px;height:20px;border-radius:4px;background:#fff;box-shadow:0 0 0 3px rgba(255,255,255,.08);transform:translate(-1.5px,-50%)}
+.score-labels{display:grid;grid-template-columns:40fr 30fr 30fr;margin-top:9px;color:var(--faint);font-size:9px;text-align:center}
+.score-labels b{color:var(--muted);font-weight:750}
+.metrics{margin-top:12px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.metric-card,.card{border:1px solid var(--line);background:var(--panel);border-radius:11px}
+.metric-card{min-height:126px;padding:16px 17px}
+.metric-label{color:var(--muted);font-size:10px;font-weight:750;letter-spacing:.02em}
+.metric-value{margin:12px 0 10px;font-size:29px;line-height:1;font-weight:820;letter-spacing:-.035em;font-variant-numeric:tabular-nums}
+.metric-sub{margin-top:8px;color:var(--muted);font-size:11px}
+.metric-footer{display:flex;align-items:center;justify-content:space-between;gap:8px;color:var(--muted);font-size:10px}
+.micro-chip{display:inline-flex;align-items:center;padding:3px 6px;border-radius:5px;background:rgba(255,255,255,.04);color:#aebfd3;white-space:nowrap}
+.micro-chip.positive{color:#91e9ad;background:var(--buy-soft)}
+.micro-chip.negative{color:#ffaaaa;background:var(--sell-soft)}
+.percentile-card .metric-value{margin-bottom:8px}
+.percentile-track{position:relative;height:5px;margin:3px 0 6px;border-radius:999px;background:rgba(255,255,255,.05)}
+.percentile-gradient{position:absolute;inset:0;border-radius:999px;background:linear-gradient(90deg,rgba(34,197,94,.72),rgba(96,165,250,.38) 45%,rgba(245,158,11,.48) 72%,rgba(239,68,68,.72))}
+.percentile-marker{position:absolute;top:50%;left:0;width:3px;height:15px;border-radius:3px;background:#fff;transform:translate(-1.5px,-50%);box-shadow:0 0 0 2px rgba(255,255,255,.08)}
+.percentile-labels{display:flex;justify-content:space-between;color:var(--faint);font-size:8px}
+.card{padding:18px}
+.section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:16px}
+.compact-head{margin-bottom:14px}
+.hint{color:var(--faint);font-size:10px;line-height:1.4;text-align:right}
+.boundary-card{margin-top:10px}
+.boundary-strip{position:relative;height:28px;margin:23px 6px 3px}
+.boundary-zones{position:absolute;inset:9px 0 auto 0;height:7px;display:flex;overflow:hidden;border-radius:999px;background:rgba(255,255,255,.04)}
+.boundary-zones span{height:100%}
+.zone-buy{background:rgba(34,197,94,.42)}
+.zone-hold{background:rgba(245,158,11,.42)}
+.zone-sell{background:rgba(239,68,68,.42)}
+.boundary-tick{position:absolute;top:2px;width:2px;height:22px;background:rgba(255,255,255,.68);transform:translateX(-1px)}
+.boundary-tick span{position:absolute;top:-18px;left:50%;transform:translateX(-50%);color:var(--faint);font-size:8px;font-weight:750;white-space:nowrap;letter-spacing:.04em}
+.current-tick{width:3px;height:26px;top:0;background:#fff;box-shadow:0 0 0 3px rgba(255,255,255,.07)}
+.current-tick span{color:var(--text);font-weight:850}
+.boundary-scale-labels{display:flex;justify-content:space-between;padding:0 3px;color:var(--faint);font-size:9px}
+.boundary-summary-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:15px}
+.boundary-summary-item{display:grid;grid-template-columns:1fr auto;gap:4px 12px;padding:12px 13px;border:1px solid rgba(255,255,255,.055);border-radius:8px;background:rgba(255,255,255,.02)}
+.boundary-summary-label{grid-column:1/-1;color:var(--faint);font-size:9px;font-weight:800;letter-spacing:.08em}
+.boundary-summary-item strong{font-size:19px;line-height:1.1;letter-spacing:-.025em;font-variant-numeric:tabular-nums}
+.boundary-summary-item>span:not(.boundary-summary-label):not(.delta-pill){color:var(--muted);font-size:10px;align-self:end}
+.delta-pill{justify-self:end;align-self:end;padding:3px 6px;border-radius:5px;color:#b9c9da;background:rgba(255,255,255,.04);font-size:9px;font-weight:750;white-space:nowrap}
+.signal-delta.BUY{color:#91e9ad;background:var(--buy-soft)}
+.signal-delta.HOLD{color:#ffd879;background:var(--hold-soft)}
+.signal-delta.SELL{color:#ffaaaa;background:var(--sell-soft)}
+.boundary-narrative{margin:13px 0 0;color:var(--muted);font-size:11px;line-height:1.55}
+.boundary-card.unavailable .boundary-strip,.boundary-card.unavailable .boundary-summary-grid{opacity:.38}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.analytics-grid{grid-template-columns:.9fr 1.1fr}
+.model-weight{display:inline-flex;padding:4px 7px;border:1px solid var(--line);border-radius:6px;color:var(--muted);font-size:9px;font-weight:800}
+.driver-row{display:grid;grid-template-columns:110px 1fr 43px;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.045)}
+.driver-copy span{display:block;font-size:12px;font-weight:700}
+.driver-copy small{display:block;margin-top:2px;color:var(--faint);font-size:9px}
+.driver-bar{height:5px;border-radius:999px;background:rgba(255,255,255,.055);overflow:hidden}
+.driver-fill{height:100%;width:0;border-radius:inherit;transition:width .45s ease}
+.valuation-fill{background:var(--accent)}
+.growth-fill{background:#9b8cf2}
+.driver-row strong{text-align:right;font-size:13px;font-variant-numeric:tabular-nums}
+.mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:13px}
+.mini-grid div{padding:10px 11px;border:1px solid rgba(255,255,255,.045);border-radius:7px;background:rgba(255,255,255,.018)}
+.mini-grid span{display:block;color:var(--faint);font-size:9px;margin-bottom:5px}
+.mini-grid strong{font-size:14px;font-variant-numeric:tabular-nums}
+.threshold-legend{display:flex;align-items:center;gap:5px;color:var(--faint);font-size:9px}
+.dot{width:6px;height:6px;border-radius:50%;display:inline-block}.sell-dot{background:var(--sell)}.buy-dot{background:var(--buy);margin-left:5px}
+.chart{min-height:230px;display:flex;align-items:center;justify-content:center}
+.chart svg{width:100%;height:230px;overflow:visible}
+.backtest-card{margin-top:10px}
+.table-wrap{width:100%;overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:720px}
+th{padding:9px 9px;border-bottom:1px solid var(--line);color:var(--faint);font-size:9px;font-weight:750;text-transform:uppercase;letter-spacing:.055em;text-align:right;white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+td{padding:9px;text-align:right;border-bottom:1px solid rgba(255,255,255,.04);font-size:11px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.backtest-table td.heat{border-radius:4px;background-clip:padding-box}
+.backtest-table tr.current{background:rgba(96,165,250,.075)}
+.backtest-table tr.current td:first-child{font-weight:800;color:#dcecff}
+.current-badge{display:inline-flex;margin-left:7px;padding:2px 5px;border-radius:4px;background:rgba(96,165,250,.11);color:#9ec8ff;font-size:8px;font-weight:800;vertical-align:1px}
+.note{margin:12px 0 0;color:var(--faint);font-size:10px;line-height:1.5}
+.bottom-grid{align-items:stretch}
+.compact table{min-width:100%}
+.badge{display:inline-flex;align-items:center;justify-content:center;min-width:48px;padding:4px 7px;border-radius:999px;font-size:9px;font-weight:850;letter-spacing:.03em}
+.badge.BUY{color:#91e9ad;background:var(--buy-soft)}.badge.HOLD{color:#ffd879;background:var(--hold-soft)}.badge.SELL{color:#ffaaaa;background:var(--sell-soft)}
+.methodology-card{display:flex;flex-direction:column;justify-content:space-between}
+details summary{display:flex;align-items:center;justify-content:space-between;gap:14px;cursor:pointer;list-style:none}
+details summary::-webkit-details-marker{display:none}
+details summary strong{display:block;margin-top:5px;font-size:16px;letter-spacing:-.02em}
+.chevron{color:var(--faint);font-size:18px;transition:transform .18s ease}
+details[open] .chevron{transform:rotate(180deg)}
+.methodology-content{padding-top:13px}
+.methodology-content p{margin:0 0 9px;color:var(--muted);font-size:11px;line-height:1.6}
+.source-strip{display:flex;justify-content:space-between;gap:12px;margin-top:15px;padding-top:11px;border-top:1px solid var(--line);color:var(--faint);font-size:9px}.source-strip strong{color:var(--muted);font-weight:700}
+footer{display:flex;justify-content:space-between;gap:20px;padding:15px 2px 0;color:#617791;font-size:9px}
+.error{margin-bottom:12px;padding:10px 12px;border:1px solid rgba(239,68,68,.25);border-radius:8px;background:var(--sell-soft);color:#ffc2c2;font-size:11px}
+@media(max-width:900px){.hero{grid-template-columns:1fr;gap:19px}.analytics-grid{grid-template-columns:1fr}.grid-4{grid-template-columns:1fr 1fr}.hero-score-row{align-items:flex-start}.score-panel{padding-bottom:0}}
+@media(max-width:620px){.shell{width:min(100% - 22px,1180px);padding-top:15px}.topbar{align-items:flex-start}.top-actions{gap:6px}.freshness{height:32px;padding:0 8px}.icon-button{height:32px;padding:0 9px}.icon-button-text{display:none}.hero{padding:17px;border-radius:10px}.hero-score-row{display:block}.signal-text{margin-top:9px}.grid-4{gap:7px}.metric-card{min-height:116px;padding:14px}.metric-value{font-size:24px}.card{padding:14px}.section-head{align-items:flex-start}.hint{text-align:left}.boundary-summary-grid{grid-template-columns:1fr}.boundary-summary-item{grid-template-columns:1fr auto}.grid-2{grid-template-columns:1fr}.driver-row{grid-template-columns:92px 1fr 38px;gap:9px}.mini-grid{grid-template-columns:1fr 1fr}footer{flex-direction:column;gap:4px}.boundary-tick span{font-size:7px}.boundary-strip{margin-left:2px;margin-right:2px}}
+@media(max-width:410px){.grid-4{grid-template-columns:1fr}.metric-card{min-height:auto}.freshness span:last-child{max-width:145px;overflow:hidden;text-overflow:ellipsis}.percentile-card{min-height:125px}}
+
+/* Minimal-text refinement */
+.metric-card-clean{display:flex;flex-direction:column;justify-content:flex-start}
+.metric-card-clean .metric-value{margin-bottom:0}
+.driver-copy span small{display:inline;margin-left:5px;color:var(--faint);font-size:9px;font-weight:650}
+.mini-grid-3{grid-template-columns:repeat(3,1fr)}
+.methodology-card details summary strong{margin-top:0;font-size:16px;letter-spacing:-.02em}
+.boundary-card .section-head,.backtest-card .section-head,.log-card .section-head,.drivers-card .section-head{margin-bottom:13px}
+@media(max-width:620px){.mini-grid-3{grid-template-columns:1fr 1fr 1fr}}
+@media(max-width:460px){.mini-grid-3{grid-template-columns:1fr}.metric-card-clean{min-height:98px}}
+
+/* Final polish */
+.hero{padding:17px 22px;gap:22px;align-items:center}
+.hero-status-row{margin-bottom:9px}
+.hero-score-row{gap:18px;align-items:center}
+.hero-score{font-size:clamp(42px,6vw,57px)}
+.signal-text{font-size:12px;line-height:1.42}
+.score-panel{padding-bottom:0}
+
+.boundary-card{border-color:rgba(96,165,250,.13)}
+.boundary-strip{height:34px;margin-top:27px}
+.boundary-zones{top:12px;height:8px}
+.boundary-tick{top:5px;height:22px}
+.current-tick{top:1px;width:4px;height:30px;box-shadow:0 0 0 4px rgba(255,255,255,.07),0 0 16px rgba(255,255,255,.10)}
+.current-tick:after{content:"";position:absolute;left:50%;bottom:-2px;width:8px;height:8px;border-radius:50%;background:#fff;transform:translateX(-50%);box-shadow:0 0 0 3px rgba(255,255,255,.08)}
+.current-tick span{top:-23px;font-size:9px;letter-spacing:.02em}
+.current-tick span b{margin-left:3px;font-size:10px;color:#fff}
+.threshold-tick span{top:-20px}
+.boundary-summary-item{padding:10px 12px}
+.boundary-summary-item strong{font-size:18px}
+
+.analytics-grid{grid-template-columns:.92fr 1.08fr;align-items:stretch}
+.drivers-card,.history-card{min-height:250px}
+.driver-row{grid-template-columns:102px 1fr 40px;gap:10px;padding:8px 0}
+.driver-copy span{font-size:11px}
+.driver-bar{height:4px}
+.driver-row strong{font-size:12px}
+.mini-grid{margin-top:9px;gap:6px}
+.mini-grid div{padding:8px 9px}
+.mini-grid span{font-size:8px;margin-bottom:4px}
+.mini-grid strong{font-size:13px}
+
+.history-mode{display:inline-flex;align-items:center;height:24px;padding:0 8px;border-radius:6px;border:1px solid var(--line);font-size:9px;font-weight:750;color:var(--faint);white-space:nowrap}
+.history-mode.ready{color:#a9cfff;background:rgba(96,165,250,.06);border-color:rgba(96,165,250,.14)}
+.history-mode.building{color:#aebfd3;background:rgba(255,255,255,.025)}
+.score-history-host{min-height:190px}
+.score-summary{height:100%;display:flex;flex-direction:column;justify-content:space-between;padding:2px 1px 0}
+.score-summary-top{display:flex;align-items:flex-start;justify-content:space-between;gap:18px}
+.summary-score{font-size:40px;line-height:.95;font-weight:850;letter-spacing:-.045em;font-variant-numeric:tabular-nums}
+.summary-score span{font-size:12px;color:var(--faint);font-weight:650;letter-spacing:0;margin-left:4px}
+.summary-signal{display:inline-flex;margin-top:8px;padding:4px 8px;border-radius:999px;font-size:9px;font-weight:850;letter-spacing:.04em}
+.summary-signal.BUY{color:#91e9ad;background:var(--buy-soft)}
+.summary-signal.HOLD{color:#ffd879;background:var(--hold-soft)}
+.summary-signal.SELL{color:#ffaaaa;background:var(--sell-soft)}
+.summary-progress-copy{max-width:190px;color:var(--faint);font-size:9px;line-height:1.45;text-align:right}
+.summary-stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:12px 0}
+.summary-stat{padding:9px 10px;border:1px solid rgba(255,255,255,.045);border-radius:7px;background:rgba(255,255,255,.018)}
+.summary-stat span{display:block;color:var(--faint);font-size:8px;margin-bottom:5px}
+.summary-stat strong{font-size:14px;font-variant-numeric:tabular-nums}
+.summary-score-track{position:relative;height:7px;border-radius:999px;background:rgba(255,255,255,.05);overflow:visible}
+.summary-zones{position:absolute;inset:0;display:grid;grid-template-columns:40fr 30fr 30fr;overflow:hidden;border-radius:999px}
+.summary-zones span:nth-child(1){background:rgba(239,68,68,.25)}
+.summary-zones span:nth-child(2){background:rgba(245,158,11,.25)}
+.summary-zones span:nth-child(3){background:rgba(34,197,94,.25)}
+.summary-fill{position:absolute;inset:0 auto 0 0;border-radius:999px;background:rgba(243,247,252,.50)}
+.summary-marker{position:absolute;top:50%;width:3px;height:17px;border-radius:3px;background:#fff;transform:translate(-1.5px,-50%);box-shadow:0 0 0 3px rgba(255,255,255,.07)}
+.summary-score-labels{display:grid;grid-template-columns:40fr 30fr 30fr;margin-top:7px;color:var(--faint);font-size:8px;text-align:center}
+.empty-history{display:flex;min-height:180px;align-items:center;justify-content:center;color:var(--faint);font-size:10px;text-align:center}
+.chart{min-height:205px}
+.chart svg{height:205px}
+
+.backtest-table tbody tr:not(.current){opacity:.78;transition:opacity .15s ease}
+.backtest-table tbody tr:not(.current):hover{opacity:1}
+.backtest-table tr.current{background:rgba(96,165,250,.09);box-shadow:inset 3px 0 0 rgba(96,165,250,.65)}
+.backtest-table tr.current td{font-weight:800;color:#eef6ff}
+.backtest-table tr.current td:first-child{color:#fff}
+.current-badge{background:rgba(96,165,250,.16);color:#b9d8ff}
+
+.bottom-grid{grid-template-columns:1.12fr .88fr;align-items:start}
+.log-card,.methodology-card{min-height:0}
+.text-link{color:#88b8f6;font-size:9px;font-weight:750;text-decoration:none}
+.text-link:hover{color:#b6d5ff;text-decoration:underline}
+.methodology-card{justify-content:flex-start}
+.source-strip{margin-top:12px}
+
+@media(max-width:900px){
+  .hero{padding:16px 18px}
+  .analytics-grid{grid-template-columns:1fr}
+  .drivers-card,.history-card{min-height:0}
+  .bottom-grid{grid-template-columns:1fr}
+}
+@media(max-width:620px){
+  .hero{padding:15px}
+  .summary-stat-grid{grid-template-columns:1fr 1fr 1fr}
+  .summary-progress-copy{max-width:150px}
+  .boundary-strip{margin-top:31px}
+  .current-tick span{font-size:8px}
+}
+@media(max-width:460px){
+  .summary-score-top{gap:10px}
+  .summary-progress-copy{max-width:125px}
+  .summary-stat-grid{grid-template-columns:1fr}
+  .score-history-host{min-height:260px}
+}
+
+/* Signal-coloured score: BUY green, HOLD amber, SELL red */
+.signal-score{transition:color .2s ease,text-shadow .2s ease}
+.signal-score.BUY{color:var(--buy);text-shadow:0 0 24px rgba(34,197,94,.10)}
+.signal-score.HOLD{color:var(--hold);text-shadow:0 0 24px rgba(245,158,11,.10)}
+.signal-score.SELL{color:var(--sell);text-shadow:0 0 24px rgba(239,68,68,.10)}
+.summary-score.BUY{color:var(--buy)}
+.summary-score.HOLD{color:var(--hold)}
+.summary-score.SELL{color:var(--sell)}
+.summary-score span{color:var(--faint)}
+
+/* Signal is conveyed by score colour; hide duplicate text label in hero. */
+.signal-pill-hidden{display:none!important}
+
+/* =========================================================
+   Premium terminal / WOW refinement
+   ========================================================= */
+body{
+  --signal-color:var(--buy);
+  --signal-rgb:34,197,94;
+  background:
+    radial-gradient(circle at 16% -8%, rgba(96,165,250,.055), transparent 30rem),
+    linear-gradient(180deg,#07111f 0%,var(--bg) 34%,#07101c 100%);
+}
+body[data-signal="buy"]{--signal-color:var(--buy);--signal-rgb:34,197,94}
+body[data-signal="hold"]{--signal-color:var(--hold);--signal-rgb:245,158,11}
+body[data-signal="sell"]{--signal-color:var(--sell);--signal-rgb:239,68,68}
+
+.ambient-glow{position:fixed;z-index:-2;inset:-15vh -15vw auto -15vw;height:64vh;pointer-events:none;background:radial-gradient(ellipse at 50% 0%,rgba(var(--signal-rgb),.11),rgba(var(--signal-rgb),.025) 42%,transparent 72%);filter:blur(8px);transition:background 1s ease}
+body:after{content:"";position:fixed;z-index:-3;inset:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.012) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.012) 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(to bottom,rgba(0,0,0,.34),transparent 72%)}
+.signal-sweep{position:fixed;z-index:50;inset:0;pointer-events:none;opacity:0;background:linear-gradient(110deg,transparent 25%,rgba(var(--signal-rgb),.13) 47%,rgba(255,255,255,.07) 50%,rgba(var(--signal-rgb),.10) 53%,transparent 76%);transform:translateX(-110%)}
+body.signal-shift .signal-sweep{animation:signalSweep 1.15s cubic-bezier(.22,.8,.3,1)}
+@keyframes signalSweep{0%{opacity:0;transform:translateX(-110%)}18%{opacity:1}100%{opacity:0;transform:translateX(110%)}}
+
+.card,.metric-card,.hero{background:linear-gradient(180deg,rgba(16,30,49,.91),rgba(11,24,40,.94));border-color:rgba(255,255,255,.075);box-shadow:inset 0 1px 0 rgba(255,255,255,.025),0 16px 48px rgba(0,0,0,.17);backdrop-filter:blur(14px)}
+.card,.metric-card{transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease}
+@media(hover:hover){.metric-card:hover,.card:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.115);box-shadow:inset 0 1px 0 rgba(255,255,255,.035),0 19px 54px rgba(0,0,0,.20)}}
+
+.sticky-summary{position:fixed;z-index:40;top:0;left:0;right:0;transform:translateY(-115%);opacity:0;border-bottom:1px solid rgba(255,255,255,.08);background:rgba(6,15,27,.84);backdrop-filter:blur(20px) saturate(130%);transition:transform .25s ease,opacity .25s ease;box-shadow:0 10px 28px rgba(0,0,0,.20)}
+.sticky-summary.visible{transform:translateY(0);opacity:1}
+.sticky-inner{width:min(1180px,calc(100% - 32px));height:48px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.sticky-inner>strong{font-size:12px;letter-spacing:-.015em}
+.sticky-metrics{display:flex;gap:20px;color:var(--faint);font-size:9px;letter-spacing:.02em}
+.sticky-metrics span{white-space:nowrap}.sticky-metrics b{margin-left:5px;color:var(--text);font-size:11px;font-variant-numeric:tabular-nums}.sticky-score.BUY{color:var(--buy)!important}.sticky-score.HOLD{color:var(--hold)!important}.sticky-score.SELL{color:var(--sell)!important}
+
+/* Hero: radial score dial + concise live context */
+.hero{grid-template-columns:minmax(330px,.8fr) minmax(0,1.2fr);min-height:238px;align-items:center;padding:20px 24px;border-color:rgba(var(--signal-rgb),.16);box-shadow:inset 0 1px 0 rgba(255,255,255,.035),0 18px 55px rgba(0,0,0,.19),0 0 48px rgba(var(--signal-rgb),.035)}
+.dial-column{display:flex;align-items:center;justify-content:center;min-width:0}
+.score-dial{position:relative;width:min(100%,330px);height:190px}
+.score-dial svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.dial-track,.dial-zone{fill:none;stroke-linecap:round;stroke-width:10}
+.dial-track{stroke:rgba(255,255,255,.045)}
+.dial-zone{opacity:.78}
+.dial-sell{stroke:var(--sell);stroke-dasharray:39 61;stroke-dashoffset:0}
+.dial-hold{stroke:var(--hold);stroke-dasharray:29 71;stroke-dashoffset:-40}
+.dial-buy{stroke:var(--buy);stroke-dasharray:29 71;stroke-dashoffset:-70}
+.dial-marker-halo{fill:rgba(var(--signal-rgb),.16);filter:drop-shadow(0 0 9px rgba(var(--signal-rgb),.45));transition:cx .65s cubic-bezier(.2,.8,.2,1),cy .65s cubic-bezier(.2,.8,.2,1),fill .3s ease}
+.dial-marker{fill:#fff;stroke:var(--signal-color);stroke-width:2;filter:drop-shadow(0 0 6px rgba(var(--signal-rgb),.75));transition:cx .65s cubic-bezier(.2,.8,.2,1),cy .65s cubic-bezier(.2,.8,.2,1),stroke .3s ease}
+.dial-score-wrap{position:absolute;left:50%;top:91px;width:72%;transform:translate(-50%,-50%);text-align:center}
+.hero-score{font-size:clamp(48px,6vw,66px);line-height:.90;font-weight:870;letter-spacing:-.06em;font-variant-numeric:tabular-nums}
+.hero-score small{font-size:13px;margin-left:3px;color:var(--faint);font-weight:650;letter-spacing:0}
+.signal-score{transition:color .35s ease,text-shadow .35s ease}.signal-score.BUY{color:var(--buy);text-shadow:0 0 28px rgba(34,197,94,.15)}.signal-score.HOLD{color:var(--hold);text-shadow:0 0 28px rgba(245,158,11,.15)}.signal-score.SELL{color:var(--sell);text-shadow:0 0 28px rgba(239,68,68,.15)}
+.signal-text{margin-top:9px;max-width:none;color:#a7b9cc;font-size:11px;line-height:1.4}
+.dial-scale{position:absolute;left:13%;right:13%;bottom:1px;height:17px;color:var(--faint);font-size:8px;font-variant-numeric:tabular-nums}
+.dial-scale span{position:absolute;transform:translateX(-50%)}.dial-scale span:last-child{transform:none}
+.hero-context{display:flex;flex-direction:column;gap:20px;padding:7px 0 5px 8px}
+.hero-context-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.hero-insight{padding:14px 15px;border:1px solid rgba(255,255,255,.055);border-radius:9px;background:rgba(255,255,255,.018);box-shadow:inset 0 1px 0 rgba(255,255,255,.018)}
+.hero-insight span{display:block;margin-bottom:7px;color:var(--faint);font-size:9px;letter-spacing:.03em}.hero-insight strong{display:block;color:#e9f3ff;font-size:17px;letter-spacing:-.025em;font-variant-numeric:tabular-nums}
+.hero-score-strip{padding:4px 3px 0}.score-track{height:7px}.score-fill{background:linear-gradient(90deg,rgba(255,255,255,.24),rgba(255,255,255,.63));transition:width .65s cubic-bezier(.2,.8,.2,1)}.score-marker{box-shadow:0 0 0 3px rgba(255,255,255,.075),0 0 14px rgba(var(--signal-rgb),.34)}
+
+/* KPI cards with mini market sparklines */
+.metric-card{position:relative;overflow:hidden;min-height:143px;padding-bottom:42px}
+.metric-card:after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:linear-gradient(90deg,transparent,rgba(var(--signal-rgb),.19),transparent);opacity:.55}
+.metric-card .metric-value{position:relative;z-index:2}
+.sparkline-host{position:absolute;left:12px;right:12px;bottom:7px;height:30px;opacity:.72;pointer-events:none}
+.sparkline-host svg{width:100%;height:100%;overflow:visible}.spark-path{fill:none;stroke:rgba(110,179,255,.84);stroke-width:1.5;vector-effect:non-scaling-stroke}.spark-area{fill:rgba(96,165,250,.055)}.spark-dot{fill:#b7d8ff;filter:drop-shadow(0 0 4px rgba(96,165,250,.5))}
+.sparkline-lower{opacity:.52}
+.spark-card:not(.sparkline-ready){padding-bottom:18px}
+.spark-card:not(.sparkline-ready) .sparkline-host{display:none}
+.percentile-card{padding-bottom:42px}
+.percentile-card:not(.sparkline-ready){padding-bottom:18px}
+
+/* Valuation thermometer */
+.boundary-card{position:relative;overflow:hidden;border-color:rgba(var(--signal-rgb),.13)}
+.boundary-card:before{content:"";position:absolute;inset:0 auto auto 13%;width:74%;height:1px;background:linear-gradient(90deg,transparent,rgba(var(--signal-rgb),.25),transparent)}
+.boundary-zones{box-shadow:inset 0 0 0 1px rgba(255,255,255,.035)}
+.current-tick{background:var(--signal-color);box-shadow:0 0 0 4px rgba(var(--signal-rgb),.11),0 0 22px rgba(var(--signal-rgb),.32)}
+.current-tick:after{background:#fff;box-shadow:0 0 0 3px rgba(var(--signal-rgb),.17),0 0 12px rgba(var(--signal-rgb),.34)}
+.current-boundary-card{border-color:rgba(var(--signal-rgb),.18);background:linear-gradient(180deg,rgba(var(--signal-rgb),.055),rgba(255,255,255,.018))}
+.current-boundary-card strong{color:var(--signal-color)}
+
+/* Stronger heatmap / current valuation spotlight */
+.backtest-table tbody tr{transition:opacity .18s ease,background .18s ease}
+.backtest-table tr.current{background:linear-gradient(90deg,rgba(var(--signal-rgb),.13),rgba(96,165,250,.055));box-shadow:inset 3px 0 0 var(--signal-color),inset 0 1px 0 rgba(255,255,255,.025),inset 0 -1px 0 rgba(255,255,255,.025)}
+.current-badge{background:rgba(var(--signal-rgb),.12);color:var(--signal-color);border:1px solid rgba(var(--signal-rgb),.16)}
+.log-score.BUY{color:var(--buy);font-weight:800}.log-score.HOLD{color:var(--hold);font-weight:800}.log-score.SELL{color:var(--sell);font-weight:800}
+
+/* Subtle staged entrance */
+.reveal{opacity:0;transform:translateY(8px);animation:revealIn .46s cubic-bezier(.2,.8,.2,1) forwards}.reveal-1{animation-delay:.03s}.reveal-2{animation-delay:.08s}.reveal-3{animation-delay:.13s}.reveal-4{animation-delay:.18s}.reveal-5{animation-delay:.23s}.reveal-6{animation-delay:.28s}.reveal-7{animation-delay:.33s}
+@keyframes revealIn{to{opacity:1;transform:translateY(0)}}
+
+/* Signal-coloured compact score remains purely numeric */
+.summary-score.BUY{color:var(--buy)}.summary-score.HOLD{color:var(--hold)}.summary-score.SELL{color:var(--sell)}
+.summary-marker{box-shadow:0 0 0 3px rgba(255,255,255,.07),0 0 12px rgba(var(--signal-rgb),.22)}
+
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;gap:5px;min-height:0;padding:16px 18px 19px}.score-dial{height:178px;max-width:310px}.hero-context{padding:0}.hero-context-grid{max-width:620px;width:100%;margin:0 auto}.hero-score-strip{max-width:620px;width:100%;margin:0 auto}.dial-score-wrap{top:85px}
+}
+@media(max-width:620px){
+  .sticky-inner{width:calc(100% - 20px);height:44px}.sticky-inner>strong{display:none}.sticky-metrics{width:100%;justify-content:space-between;gap:8px}
+  .hero{padding:13px 14px 16px}.score-dial{height:163px}.dial-score-wrap{top:77px}.hero-score{font-size:49px}.hero-context-grid{grid-template-columns:1fr 1fr;gap:6px}.hero-insight{padding:10px 11px}.hero-insight strong{font-size:14px}.metric-card{min-height:135px}.sparkline-host{bottom:6px}
+}
+@media(max-width:420px){
+  .hero-context-grid{grid-template-columns:1fr}.score-dial{height:155px}.dial-score-wrap{top:74px}.hero-score{font-size:46px}.dial-scale{left:10%;right:10%}
+}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;animation:none}.signal-sweep{display:none}.score-fill,.dial-marker,.dial-marker-halo,.sticky-summary,.card,.metric-card{transition:none!important}}
+
+/* =========================================================
+   Dial score centering fix
+   Keep the large numeric score itself on the exact centreline.
+   The /100 suffix is positioned outside that centred number so
+   it does not pull the score visually to the left on mobile.
+   ========================================================= */
+.dial-score-wrap{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+.dial-score-wrap .hero-score{
+  position:relative;
+  display:block;
+  width:max-content;
+  margin:0 auto;
+  text-align:center;
+}
+.dial-score-wrap .hero-score > #score{
+  display:block;
+  text-align:center;
+}
+.dial-score-wrap .hero-score > small{
+  position:absolute;
+  left:100%;
+  bottom:.10em;
+  margin-left:6px;
+  white-space:nowrap;
+}
+.dial-score-wrap .signal-text{
+  width:100%;
+  text-align:center;
+}
+
+@media(max-width:620px){
+  .dial-score-wrap{
+    width:84%;
+  }
+  .dial-score-wrap .hero-score > small{
+    margin-left:5px;
+    bottom:.09em;
+  }
+}
+
+/* =========================================================
+   FINAL DIAL ALIGNMENT FIX
+   The large numeric score is centred exactly on the gauge's
+   geometric centre. The /100 denominator is centred beneath
+   the number, so it cannot pull the score visually sideways.
+   ========================================================= */
+.score-dial .dial-score-wrap{
+  position:absolute;
+  left:50%;
+  top:94px;
+  width:auto;
+  min-width:170px;
+  transform:translate(-50%,-50%);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  pointer-events:none;
+}
+
+.score-dial .dial-score-wrap .hero-score{
+  position:relative;
+  display:block;
+  width:auto;
+  margin:0;
+  padding:0;
+  line-height:.84;
+  text-align:center;
+}
+
+.score-dial .dial-score-wrap .hero-score > #score{
+  display:block;
+  width:auto;
+  margin:0;
+  padding:0;
+  text-align:center;
+}
+
+.score-dial .dial-score-wrap .hero-score > small{
+  position:absolute;
+  top:calc(100% + 7px);
+  left:50%;
+  bottom:auto;
+  transform:translateX(-50%);
+  margin:0;
+  padding:0;
+  font-size:9px;
+  line-height:1;
+  letter-spacing:.05em;
+  color:var(--faint);
+  white-space:nowrap;
+  text-align:center;
+}
+
+/* The score colour already communicates the state; removing the
+   sentence keeps the dial visually balanced and uncluttered. */
+.score-dial .dial-score-wrap .signal-text{
+  display:none;
+}
+
+@media(max-width:900px){
+  .score-dial .dial-score-wrap{
+    top:87px;
+  }
+}
+
+@media(max-width:620px){
+  .score-dial .dial-score-wrap{
+    top:80px;
+    width:auto;
+    min-width:150px;
+  }
+  .score-dial .dial-score-wrap .hero-score > small{
+    top:calc(100% + 6px);
+    font-size:9px;
+  }
+}
+
+@media(max-width:420px){
+  .score-dial .dial-score-wrap{
+    top:76px;
+  }
+}
+
+
+/* =========================================================
+   FINAL SCORE-DIAL BALANCE
+   Main dial is intentionally just the numeric score.
+   The number sits slightly below the geometric midpoint of the
+   semicircle for better optical balance with the heavy top arc.
+   ========================================================= */
+.score-dial .dial-score-wrap{
+  left:50%;
+  top:104px;
+  width:auto;
+  min-width:0;
+  transform:translate(-50%,-50%);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+
+.score-dial .dial-score-wrap .hero-score{
+  position:static;
+  display:block;
+  width:auto;
+  margin:0;
+  padding:0;
+  line-height:.88;
+  text-align:center;
+}
+
+.score-dial .dial-score-wrap .hero-score > #score{
+  display:block;
+  margin:0;
+  padding:0;
+  text-align:center;
+}
+
+/* /100 has been removed from the HTML; hide defensively in case an
+   older cached page is briefly paired with this stylesheet. */
+.score-dial .dial-score-wrap .hero-score > small{
+  display:none !important;
+}
+
+.score-dial .dial-score-wrap .signal-text{
+  display:none;
+}
+
+@media(max-width:900px){
+  .score-dial .dial-score-wrap{top:96px;}
+}
+
+@media(max-width:620px){
+  .score-dial .dial-score-wrap{
+    top:90px;
+    width:auto;
+    min-width:0;
+  }
+}
+
+@media(max-width:420px){
+  .score-dial .dial-score-wrap{top:86px;}
+}
+
+
+/* =========================================================
+   SCORE ALIGNMENT — FINAL
+   Optically center the main score lower inside the semicircle.
+   62% tracks the dial height across desktop and mobile layouts.
+   ========================================================= */
+.score-dial .dial-score-wrap{
+  left:50% !important;
+  top:62% !important;
+  transform:translate(-50%,-50%) !important;
+  width:auto !important;
+  min-width:0 !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  text-align:center !important;
+}
+
+.score-dial .dial-score-wrap .hero-score{
+  position:static !important;
+  display:block !important;
+  width:auto !important;
+  margin:0 !important;
+  padding:0 !important;
+  line-height:.88 !important;
+  text-align:center !important;
+}
+
+.score-dial .dial-score-wrap .hero-score > #score{
+  display:block !important;
+  margin:0 !important;
+  padding:0 !important;
+  text-align:center !important;
+}
+
+/* Keep the main dial and compact composite score purely numeric. */
+.score-dial .dial-score-wrap .hero-score > small,
+.summary-score > span{
+  display:none !important;
+}
+
+.score-dial .dial-score-wrap .signal-text{
+  display:none !important;
+}
+
+/* =========================================================
+   Arc signal callouts above the dial
+   Shows SELL / HOLD / BUY over the matching arc segments and
+   highlights the currently active model signal.
+   ========================================================= */
+.dial-callouts{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  z-index:2;
+}
+.dial-callout{
+  position:absolute;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:2px;
+  min-width:46px;
+  padding:4px 7px 3px;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,.07);
+  background:rgba(7,17,31,.44);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.04);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  opacity:.58;
+  transform:translateY(0) scale(.96);
+  transition:opacity .25s ease, transform .25s ease, box-shadow .25s ease, border-color .25s ease, background .25s ease;
+}
+.dial-callout .callout-label{
+  font-size:9px;
+  line-height:1;
+  font-weight:800;
+  letter-spacing:.10em;
+  color:#cfdded;
+}
+.dial-callout .callout-arrow{
+  font-size:13px;
+  line-height:1;
+  color:rgba(255,255,255,.72);
+}
+.dial-callout-sell{left:8px;top:10px}
+.dial-callout-hold{left:50%;top:-1px;transform:translateX(-50%) scale(.96)}
+.dial-callout-buy{right:8px;top:10px}
+.dial-callout.active{
+  opacity:1;
+  transform:translateY(-2px) scale(1.02);
+}
+.dial-callout-hold.active{transform:translateX(-50%) translateY(-2px) scale(1.02)}
+.dial-callout-sell.active{
+  background:rgba(239,68,68,.16);
+  border-color:rgba(239,68,68,.34);
+  box-shadow:0 10px 22px rgba(239,68,68,.12), 0 0 24px rgba(239,68,68,.12), inset 0 1px 0 rgba(255,255,255,.06);
+}
+.dial-callout-hold.active{
+  background:rgba(245,158,11,.16);
+  border-color:rgba(245,158,11,.34);
+  box-shadow:0 10px 22px rgba(245,158,11,.12), 0 0 24px rgba(245,158,11,.12), inset 0 1px 0 rgba(255,255,255,.06);
+}
+.dial-callout-buy.active{
+  background:rgba(34,197,94,.16);
+  border-color:rgba(34,197,94,.34);
+  box-shadow:0 10px 22px rgba(34,197,94,.12), 0 0 24px rgba(34,197,94,.12), inset 0 1px 0 rgba(255,255,255,.06);
+}
+.dial-callout.active .callout-label,
+.dial-callout.active .callout-arrow{
+  color:#f6fbff;
+}
+
+@media(max-width:620px){
+  .dial-callout{min-width:42px;padding:3px 6px 3px;border-radius:9px}
+  .dial-callout .callout-label{font-size:8px}
+  .dial-callout .callout-arrow{font-size:12px}
+  .dial-callout-sell{left:3px;top:9px}
+  .dial-callout-buy{right:3px;top:9px}
+  .dial-callout-hold{top:-2px}
+}
