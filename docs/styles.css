@@ -105,9 +105,9 @@ h2{font-size:20px;line-height:1.2;letter-spacing:-.028em;font-weight:790}
 .score-dial svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
 .dial-track,.dial-zone{fill:none;stroke-linecap:round;stroke-width:10}
 .dial-track{stroke:rgba(255,255,255,.045)}
-.dial-sell{stroke:var(--sell);stroke-dasharray:39 61;stroke-dashoffset:0;opacity:.9}
-.dial-hold{stroke:var(--hold);stroke-dasharray:29 71;stroke-dashoffset:-40;opacity:.9}
-.dial-buy{stroke:var(--buy);stroke-dasharray:29 71;stroke-dashoffset:-70;opacity:.9}
+.dial-sell{stroke:var(--sell);opacity:.9}
+.dial-hold{stroke:var(--hold);opacity:.9}
+.dial-buy{stroke:var(--buy);opacity:.9}
 .dial-marker-halo{fill:rgba(var(--signal-rgb),.16);filter:drop-shadow(0 0 10px rgba(var(--signal-rgb),.4));transition:cx .65s cubic-bezier(.2,.8,.2,1),cy .65s cubic-bezier(.2,.8,.2,1)}
 .dial-marker{fill:#fff;stroke:var(--signal);stroke-width:2;filter:drop-shadow(0 0 8px rgba(var(--signal-rgb),.8));transition:cx .65s cubic-bezier(.2,.8,.2,1),cy .65s cubic-bezier(.2,.8,.2,1)}
 .dial-callouts{position:absolute;left:3%;right:3%;top:0;height:38px;pointer-events:none}
