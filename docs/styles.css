@@ -274,3 +274,45 @@ details[open] .chevron{transform:rotate(180deg)}
   .sticky-metrics{gap:10px;font-size:9px}
   .sticky-inner>strong{display:none}
 }
+
+/* ---------------------------------------------------------
+   Refinement: optical score balance + responsive title
+   --------------------------------------------------------- */
+.title-mobile{display:none}
+
+/* The numeric score is intentionally lower than the geometric
+   centre of the SVG. This gives better optical balance within
+   the open semicircle and keeps clear space for the arc labels. */
+.dial-score-wrap{
+  top:112px;
+}
+
+/* The signal sentence belongs with the decision context, not
+   inside the gauge. */
+.hero-context-message{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  min-height:22px;
+  color:#c2d1e2;
+  font-size:14px;
+  line-height:1.45;
+  font-weight:620;
+  letter-spacing:-.01em;
+}
+.hero-context-message::before{
+  content:"";
+  width:8px;
+  height:8px;
+  flex:0 0 8px;
+  border-radius:50%;
+  background:var(--signal);
+  box-shadow:0 0 0 4px rgba(var(--signal-rgb),.10),0 0 14px rgba(var(--signal-rgb),.28);
+}
+
+@media (max-width:760px){
+  .title-desktop{display:none}
+  .title-mobile{display:inline}
+  .dial-score-wrap{top:110px}
+  .hero-context-message{font-size:13px;margin-bottom:-3px}
+}
