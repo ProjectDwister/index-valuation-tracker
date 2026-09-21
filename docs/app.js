@@ -165,8 +165,8 @@ function renderSelected(slug){
   selectedSlug=slug; $('indexSelect').value=slug;
   try{localStorage.setItem('niftySelectedIndex',slug);}catch(_e){}
   const u=new URL(window.location.href);u.searchParams.set('index',slug);history.replaceState(null,'',u);
-  $('desktopIndexTitle').textContent=`${x.index_name} Valuation Signal`; $('stickyTitle').textContent=`${x.index_name} Signal`;
-  document.title=`${x.index_name} Valuation Signal`;
+  $('desktopIndexTitle').textContent='Index Valuation Tracker'; $('stickyTitle').textContent='Index Valuation Tracker';
+  document.title=`${x.index_name} | Index Valuation Tracker`;
   setFreshness(x.as_of);setSignalTone(x.signal);renderAvailability(x);
   animateNumber($('score'),x.composite_score,650,1);setDial(x.composite_score);
   const sc=Number.isFinite(Number(x.composite_score))?clamp(Number(x.composite_score),0,100):0;$('scoreFill').style.width=`${sc}%`;$('scoreMarker').style.left=`${sc}%`;
