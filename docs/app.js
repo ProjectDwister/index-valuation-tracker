@@ -160,6 +160,16 @@ function clearThresholds(){
   ['ovBuyHoldPe','ovHoldSellPe','buyHoldPe','holdSellPe','buyHoldNifty','holdSellNifty','buyHoldMove','holdSellMove','boundaryMin','boundaryMax','ovBoundaryMin','ovBoundaryMax'].forEach(id=>{if($(id))$(id).textContent='—';});
 }
 
+function updateExcelDownload(x, slug){
+  const link=$('indexExcelDownload'), text=$('indexExcelText');
+  if(!link) return;
+  link.href=`downloads/indices/${encodeURIComponent(slug)}.xlsx`;
+  link.setAttribute('download',`${x.index_name} Valuation Tracker.xlsx`);
+  link.setAttribute('aria-label',`Download ${x.index_name} Excel model`);
+  link.title=`Download ${x.index_name} Excel model`;
+  if(text) text.textContent=`${x.index_name} Excel`;
+}
+
 function renderSelected(slug){
   const x=latestBundle?.indices?.[slug]; if(!x)return;
   selectedSlug=slug; $('indexSelect').value=slug;
@@ -167,6 +177,7 @@ function renderSelected(slug){
   const u=new URL(window.location.href);u.searchParams.set('index',slug);history.replaceState(null,'',u);
   $('desktopIndexTitle').textContent='Index Valuation Tracker'; $('stickyTitle').textContent='Index Valuation Tracker';
   document.title=`${x.index_name} | Index Valuation Tracker`;
+  updateExcelDownload(x,slug);
   setFreshness(x.as_of);setSignalTone(x.signal);renderAvailability(x);
   animateNumber($('score'),x.composite_score,650,1);setDial(x.composite_score);
   const sc=Number.isFinite(Number(x.composite_score))?clamp(Number(x.composite_score),0,100):0;$('scoreFill').style.width=`${sc}%`;$('scoreMarker').style.left=`${sc}%`;
