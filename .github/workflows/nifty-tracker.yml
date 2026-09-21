@@ -16,8 +16,11 @@ on:
     paths:
       - 'docs/**'
       - 'nifty_tracker_update.py'
+      - 'multi_index_tracker.py'
       - 'requirements.txt'
       - 'nifty_quarterly_backtest.csv'
+      - 'multi_index_quarterly.csv'
+      - 'multi_index_monthly.csv'
       - 'NIFTY_Valuation_Backtest_Live_Tracker.xlsx'
       - '.github/workflows/nifty-tracker.yml'
 
@@ -54,7 +57,7 @@ jobs:
         if: github.event_name != 'push'
         run: python -m pip install -r requirements.txt
 
-      - name: Refresh NIFTY valuation model
+      - name: Refresh NIFTY 50 model and alerts
         if: github.event_name != 'push'
         env:
           ALERT_EMAIL_TO: ${{ secrets.ALERT_EMAIL_TO }}
@@ -73,14 +76,22 @@ jobs:
           --backtest-csv nifty_quarterly_backtest.csv
           --web-dir docs
 
+      - name: Refresh multi-index universe and backtests
+        if: github.event_name != 'push'
+        run: >-
+          python multi_index_tracker.py
+          --web-dir docs
+          --quarterly-csv multi_index_quarterly.csv
+          --monthly-csv multi_index_monthly.csv
+
       - name: Commit refreshed model history
         if: github.event_name != 'push'
         run: |
           git config user.name "NIFTY Tracker Bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add NIFTY_Valuation_Backtest_Live_Tracker.xlsx nifty_quarterly_backtest.csv docs/data docs/downloads
+          git add NIFTY_Valuation_Backtest_Live_Tracker.xlsx nifty_quarterly_backtest.csv multi_index_quarterly.csv multi_index_monthly.csv docs/data docs/downloads
           if ! git diff --cached --quiet; then
-            git commit -m "NIFTY valuation and backtest update"
+            git commit -m "NIFTY multi-index valuation and backtest update"
             git push
           else
             echo "No model changes to commit."
