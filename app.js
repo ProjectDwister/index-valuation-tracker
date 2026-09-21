@@ -81,16 +81,23 @@ function updateMarketStatusDot(){
   const host=$('freshness'); if(!host) return;
   const open=nseMarketIsOpen();
   const holiday=nseHolidayName();
+  const statusText=$('marketStatusText');
   host.classList.remove('fresh','stale','market-open','market-closed');
   host.classList.add(open?'market-open':'market-closed');
   const closedReason=holiday ? `NSE market is closed — ${holiday}` : 'NSE regular market is closed';
+  if(statusText){
+    if(open) statusText.textContent='Market Open · closes 3:30 PM';
+    else if(holiday) statusText.textContent=`Market Closed · ${holiday}`;
+    else statusText.textContent='Market Closed';
+  }
   host.title=open?'NSE regular market is open':closedReason;
   host.setAttribute('aria-label', open?'NSE regular market open':closedReason);
 }
 
 function setFreshness(asOf){
   const host=$('freshness'); if(!host) return;
-  host.querySelector('span:last-child').textContent=`${fmtDate(asOf)} · NSE close`;
+  const dateEl=$('freshnessDate');
+  if(dateEl) dateEl.textContent=`Latest close ${fmtDate(asOf)}`;
   updateMarketStatusDot();
   if(!marketStatusTimer){
     marketStatusTimer=window.setInterval(updateMarketStatusDot,30000);
@@ -207,9 +214,20 @@ function renderHistory(slug,current){
 
 function renderBacktest(slug,current){
   const bt=backtestBundle?.indices?.[slug] || {rows:[],meta:{}};
-  const meta=bt.meta||{};
+  const meta=bt.meta||{}, rows=bt.rows||[];
   $('backtestMeta').textContent=meta.valid_pe_quarters?`${meta.valid_pe_quarters} PE-bearing quarter-end observations · ${meta.first_quarter||''} to ${meta.last_quarter||''}`:'Insufficient historical P/E observations.';
-  $('backtestBody').innerHTML=(bt.rows||[]).map(r=>{const isCurrent=r.quintile===current.valuation_quintile;const f=v=>pct(v,1);return `<tr class="${isCurrent?'current':''}"><td>${displayQuintile(r.quintile)}${isCurrent?'<span class="current-badge">CURRENT</span>':''}</td><td>${f(r.median_1y)}</td><td>${f(r.median_3y)}</td><td>${f(r.median_5y)}</td><td>${f(r.median_10y)}</td><td>${f(r.loss_3y)}</td><td>${r.n_3y??0}</td></tr>`;}).join('') || '<tr><td colspan="7">Insufficient history for a reliable backtest.</td></tr>';
+  $('backtestBody').innerHTML=rows.map(r=>{const isCurrent=r.quintile===current.valuation_quintile;const f=v=>pct(v,1);return `<tr class="${isCurrent?'current':''}"><td>${displayQuintile(r.quintile)}${isCurrent?'<span class="current-badge">CURRENT</span>':''}</td><td>${f(r.median_1y)}</td><td>${f(r.median_3y)}</td><td>${f(r.median_5y)}</td><td>${f(r.median_10y)}</td><td>${f(r.loss_3y)}</td><td>${r.n_3y??0}</td></tr>`;}).join('') || '<tr><td colspan="7">Insufficient history for a reliable backtest.</td></tr>';
+
+  const chart=$('backtestChart');
+  if(!chart) return;
+  const values=rows.map(r=>Number(r.median_3y)).filter(Number.isFinite);
+  if(!values.length){chart.innerHTML='<div class="empty-history">Not enough 3-year history for the visual.</div>';return;}
+  const max=Math.max(...values.map(v=>Math.max(v,0)),.01);
+  chart.innerHTML=rows.map(r=>{
+    const v=Number(r.median_3y), isCurrent=r.quintile===current.valuation_quintile;
+    const h=Number.isFinite(v)?clamp(Math.max(0,v)/max*100,2,100):0;
+    return `<div class="backtest-bar-item ${isCurrent?'current':''}"><div class="backtest-bar-track"><div class="backtest-bar-fill" style="height:${h}%"></div></div><div class="backtest-bar-value">${pct(r.median_3y,1)}</div><div class="backtest-bar-label">${displayQuintile(r.quintile)}</div></div>`;
+  }).join('');
 }
 
 function renderAvailability(x){
@@ -242,6 +260,9 @@ function renderSelected(slug){
   else u.searchParams.set('index',slug);
   history.replaceState(null,'',u);
   $('desktopIndexTitle').textContent='Index Valuation Tracker'; $('stickyTitle').textContent='Index Valuation Tracker';
+  if($('heroIndexName')) $('heroIndexName').textContent=x.index_name;
+  if($('heroIndexGroup')) $('heroIndexGroup').textContent=x.group||'NSE Equity Index';
+  if($('indexSummaryLine')) $('indexSummaryLine').textContent=`${x.index_name} · ${x.group||'NSE Equity Index'} · ${x.composite_score==null?'Score unavailable':`Score ${Number(x.composite_score).toFixed(1)}`} · ${x.pe?`${Number(x.pe).toFixed(2)}× P/E`:'P/E unavailable'}`;
   document.title=`${x.index_name} | Index Valuation Tracker`;
   updateExcelDownload(x,slug);
   setFreshness(x.as_of);setSignalTone(x.signal);renderAvailability(x);
@@ -279,9 +300,21 @@ function buildSelector(){
 }
 
 function renderHeatmap(){
-  const search=($('heatmapSearch').value||'').toLowerCase(),group=$('heatmapGroup').value;
-  const rows=catalog.items.map(i=>({...i,...latestBundle.indices[i.slug]})).filter(x=>(group==='All'||x.group===group)&&(!search||x.name.toLowerCase().includes(search))).sort((a,b)=>(b.composite_score??-1)-(a.composite_score??-1));
-  $('heatmapBody').innerHTML=rows.map(x=>`<tr data-slug="${x.slug}"><td><strong>${x.name}</strong></td><td class="muted-cell">${x.group}</td><td>${x.pe?Number(x.pe).toFixed(2)+'×':'—'}</td><td>${pct(x.pe_percentile,1)}</td><td>${pct(x.yoy_eps_growth,1)}</td><td class="score-cell ${x.signal||''}">${x.composite_score==null?'—':Number(x.composite_score).toFixed(1)}</td><td>${x.signal?`<span class="badge ${x.signal}">${x.signal}</span>`:'—'}</td></tr>`).join('');
+  const search=($('heatmapSearch').value||'').toLowerCase(),group=$('heatmapGroup').value,sort=$('heatmapSort')?.value||'score-desc';
+  const rows=catalog.items.map(i=>({...i,...latestBundle.indices[i.slug]})).filter(x=>(group==='All'||x.group===group)&&(!search||x.name.toLowerCase().includes(search)));
+  const n=v=>Number.isFinite(Number(v))?Number(v):null;
+  const sorters={
+    'score-desc':(a,b)=>(n(b.composite_score)??-Infinity)-(n(a.composite_score)??-Infinity),
+    'valuation-asc':(a,b)=>(n(a.pe_percentile)??Infinity)-(n(b.pe_percentile)??Infinity),
+    'eps-desc':(a,b)=>(n(b.yoy_eps_growth)??-Infinity)-(n(a.yoy_eps_growth)??-Infinity),
+    'pe-asc':(a,b)=>(n(a.pe)??Infinity)-(n(b.pe)??Infinity),
+    'name-asc':(a,b)=>a.name.localeCompare(b.name)
+  };
+  rows.sort(sorters[sort]||sorters['score-desc']);
+  $('heatmapBody').innerHTML=rows.map(x=>{
+    const pp=n(x.pe_percentile), width=pp==null?0:clamp(pp*100,0,100);
+    return `<tr data-slug="${x.slug}"><td><strong>${x.name}</strong></td><td class="muted-cell">${x.group}</td><td>${x.pe?Number(x.pe).toFixed(2)+'×':'—'}</td><td><div class="heatmap-percentile"><span>${pct(x.pe_percentile,1)}</span><i><b style="width:${width}%"></b></i></div></td><td>${pct(x.yoy_eps_growth,1)}</td><td class="score-cell ${x.signal||''}">${x.composite_score==null?'—':Number(x.composite_score).toFixed(1)}</td><td>${x.signal?`<span class="badge ${x.signal}">${x.signal}</span>`:'—'}</td></tr>`;
+  }).join('');
   $('heatmapBody').querySelectorAll('tr[data-slug]').forEach(tr=>tr.addEventListener('click',()=>{renderSelected(tr.dataset.slug);activateTab('overview');window.scrollTo({top:0,behavior:'smooth'});}));
 }
 
@@ -309,7 +342,7 @@ async function boot(){
       ]);catalog=c;latestBundle=l;backtestBundle=b;allHistory=csvParse(h);
     }catch(_multiErr){await loadLegacyFallback();}
     buildSelector();
-    $('heatmapSearch').addEventListener('input',renderHeatmap);$('heatmapGroup').addEventListener('change',renderHeatmap);
+    $('heatmapSearch').addEventListener('input',renderHeatmap);$('heatmapGroup').addEventListener('change',renderHeatmap);$('heatmapSort')?.addEventListener('change',renderHeatmap);
     const requestedSlug=new URLSearchParams(location.search).get('index');
     let slug=(requestedSlug && latestBundle.indices[requestedSlug]) ? requestedSlug : 'nifty-50';
     if(!latestBundle.indices[slug]) slug=catalog.default_slug;

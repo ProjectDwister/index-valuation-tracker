@@ -28,17 +28,27 @@
   <main class="shell">
     <header class="topbar">
       <div class="brand-block">
-        <h1><span id="desktopIndexTitle" class="desktop-title">Index Valuation Tracker</span><span class="mobile-title">Index Tracker</span></h1>
+        <div class="brand-copy">
+          <h1><span id="desktopIndexTitle" class="desktop-title">Index Valuation Tracker</span><span class="mobile-title">Index Tracker</span></h1>
+          <div id="indexSummaryLine" class="index-summary-line">Multi-index valuation dashboard</div>
+        </div>
         <div class="index-picker-wrap">
           <label for="indexSelect">Index</label>
           <select id="indexSelect" class="index-select" aria-label="Select NIFTY index"></select>
         </div>
       </div>
+
       <div class="top-actions">
         <a class="icon-button home-button" href="https://projectdwister.github.io/index-valuation-tracker/" aria-label="Go to Index Valuation Tracker home" title="Home">
           <span aria-hidden="true">⌂</span><span class="icon-button-text">Home</span>
         </a>
-        <div id="freshness" class="freshness"><span class="status-dot"></span><span>Loading…</span></div>
+        <div id="freshness" class="freshness" aria-live="polite">
+          <span class="status-dot"></span>
+          <span class="freshness-copy">
+            <strong id="marketStatusText">Loading…</strong>
+            <small id="freshnessDate">Latest close —</small>
+          </span>
+        </div>
         <a id="indexExcelDownload" class="icon-button" href="downloads/indices/nifty-50.xlsx" aria-label="Download selected index Excel model" title="Download selected index Excel model">
           <span aria-hidden="true">↓</span><span id="indexExcelText" class="icon-button-text">Excel</span>
         </a>
@@ -64,8 +74,8 @@
               <path class="dial-zone dial-sell" d="M30 110 A80 80 0 0 1 85.279 33.915"></path>
               <path class="dial-zone dial-hold" d="M85.279 33.915 A80 80 0 0 1 157.023 45.279"></path>
               <path class="dial-zone dial-buy" d="M157.023 45.279 A80 80 0 0 1 190 110"></path>
-              <circle id="dialMarkerHalo" class="dial-marker-halo" cx="30" cy="110" r="9"></circle>
-              <circle id="dialMarker" class="dial-marker" cx="30" cy="110" r="4.5"></circle>
+              <circle id="dialMarkerHalo" class="dial-marker-halo" cx="30" cy="110" r="8"></circle>
+              <circle id="dialMarker" class="dial-marker" cx="30" cy="110" r="4"></circle>
             </svg>
             <div class="dial-callouts" aria-hidden="true">
               <div id="calloutSell" class="dial-callout dial-callout-sell"><span class="callout-label">SELL</span><span class="callout-arrow">↘</span></div>
@@ -80,16 +90,49 @@
         </div>
 
         <div class="hero-context">
-          <div class="hero-context-grid">
-            <div class="hero-insight">
-              <span>Score buffer</span>
-              <strong id="scoreBuffer">—</strong>
+          <div class="selected-index-context">
+            <div>
+              <span class="context-label">Selected index</span>
+              <strong id="heroIndexName">—</strong>
             </div>
-            <div class="hero-insight">
-              <span>Next P/E boundary</span>
-              <strong id="nextBoundary">—</strong>
+            <span id="heroIndexGroup" class="group-chip">—</span>
+          </div>
+
+          <div class="hero-metric-grid">
+            <div class="hero-metric spark-card">
+              <span class="metric-label">Index level</span>
+              <strong id="nifty" class="hero-metric-value">—</strong>
+              <div id="sparkNifty" class="sparkline-host" aria-hidden="true"></div>
+            </div>
+            <div class="hero-metric spark-card">
+              <span class="metric-label">P/E</span>
+              <strong id="pe" class="hero-metric-value">—</strong>
+              <div class="metric-footer"><span id="peVsMedian">—</span><span id="peDelta" class="micro-chip">—</span></div>
+              <div id="sparkPe" class="sparkline-host" aria-hidden="true"></div>
+            </div>
+            <div class="hero-metric percentile-card spark-card">
+              <span class="metric-label">Valuation percentile</span>
+              <strong id="percentile" class="hero-metric-value">—</strong>
+              <div class="percentile-track" aria-label="Valuation percentile from cheapest to most expensive">
+                <div class="percentile-gradient"></div>
+                <div id="percentileMarker" class="percentile-marker"></div>
+              </div>
+              <div class="percentile-labels"><span>Cheap</span><span>Median</span><span>Expensive</span></div>
+              <div id="quintile" class="metric-sub">—</div>
+              <div id="sparkPercentile" class="sparkline-host sparkline-lower" aria-hidden="true"></div>
+            </div>
+            <div class="hero-metric spark-card">
+              <span class="metric-label">YoY implied EPS growth</span>
+              <strong id="epsGrowth" class="hero-metric-value">—</strong>
+              <div id="sparkEps" class="sparkline-host" aria-hidden="true"></div>
             </div>
           </div>
+
+          <div class="hero-insights-row">
+            <div class="hero-insight-compact"><span>Score buffer</span><strong id="scoreBuffer">—</strong></div>
+            <div class="hero-insight-compact"><span>Next P/E boundary</span><strong id="nextBoundary">—</strong></div>
+          </div>
+
           <div class="hero-score-strip">
             <div class="score-track" aria-label="Composite model score">
               <div class="zones"><span></span><span></span><span></span></div>
@@ -101,40 +144,9 @@
         </div>
       </section>
 
-      <section class="metrics grid-4">
-        <article class="metric-card metric-card-clean spark-card">
-          <div class="metric-label">Index level</div>
-          <div id="nifty" class="metric-value">—</div>
-          <div id="sparkNifty" class="sparkline-host" aria-hidden="true"></div>
-        </article>
-        <article class="metric-card spark-card">
-          <div class="metric-label">P/E</div>
-          <div id="pe" class="metric-value">—</div>
-          <div class="metric-footer"><span id="peVsMedian">—</span><span id="peDelta" class="micro-chip">—</span></div>
-          <div id="sparkPe" class="sparkline-host" aria-hidden="true"></div>
-        </article>
-        <article class="metric-card percentile-card spark-card">
-          <div class="metric-label">Valuation percentile</div>
-          <div id="percentile" class="metric-value">—</div>
-          <div class="percentile-track" aria-label="Valuation percentile from cheapest to most expensive">
-            <div class="percentile-gradient"></div>
-            <div id="percentileMarker" class="percentile-marker"></div>
-          </div>
-          <div class="percentile-labels"><span>Cheap</span><span>Median</span><span>Expensive</span></div>
-          <div id="quintile" class="metric-sub">—</div>
-          <div id="sparkPercentile" class="sparkline-host sparkline-lower" aria-hidden="true"></div>
-        </article>
-        <article class="metric-card metric-card-clean spark-card">
-          <div class="metric-label">YoY implied EPS growth</div>
-          <div id="epsGrowth" class="metric-value">—</div>
-          <div id="sparkEps" class="sparkline-host" aria-hidden="true"></div>
-        </article>
-      </section>
-
-      <section class="card overview-threshold-card">
+      <section class="overview-threshold-card">
         <div class="section-head compact-head">
-          <h2>Signal thresholds</h2>
-          <div class="hint">EPS unchanged</div>
+          <div><h2>Signal thresholds</h2><div class="subhead-note">P/E levels at which the current signal changes, assuming EPS is unchanged.</div></div>
         </div>
         <div id="overviewBoundaryStrip" class="boundary-strip overview-boundary-strip" aria-label="P/E signal thresholds overview">
           <div class="boundary-zones"><span class="zone-buy"></span><span class="zone-hold"></span><span class="zone-sell"></span></div>
@@ -193,6 +205,10 @@
     <section id="panel-backtest" class="tab-panel" data-panel="backtest">
       <section class="card backtest-card">
         <div class="section-head"><div><h2>Forward returns by valuation</h2><div id="backtestMeta" class="subhead-note"></div></div></div>
+        <div class="backtest-visual">
+          <div class="backtest-visual-head"><span>3Y median CAGR by starting valuation</span><small>Higher bars indicate stronger subsequent returns</small></div>
+          <div id="backtestChart" class="backtest-chart" aria-label="3-year median CAGR by valuation bucket"></div>
+        </div>
         <div class="table-wrap">
           <table class="backtest-table">
             <thead><tr><th>Starting valuation</th><th>1Y median</th><th>3Y median CAGR</th><th>5Y median CAGR</th><th>10Y median CAGR</th><th>3Y loss freq.</th><th>3Y N</th></tr></thead>
@@ -225,13 +241,20 @@
     <section id="panel-heatmap" class="tab-panel" data-panel="heatmap">
       <section class="card heatmap-card">
         <div class="section-head heatmap-head">
-          <div><h2>Cross-index valuation heatmap</h2><div class="subhead-note">Compare each index against its own history.</div></div>
+          <div><h2>Cross-index valuation heatmap</h2><div class="subhead-note">Compare each index against its own history. Click a row to open its dashboard.</div></div>
           <div class="heatmap-controls">
             <input id="heatmapSearch" class="heatmap-search" type="search" placeholder="Search indices…" aria-label="Search indices" />
             <select id="heatmapGroup" class="heatmap-group" aria-label="Filter index group"><option value="All">All groups</option><option>Broad Market</option><option>Sectoral</option><option>Strategy / Thematic / Other</option></select>
+            <select id="heatmapSort" class="heatmap-sort" aria-label="Sort heatmap">
+              <option value="score-desc">Score: high to low</option>
+              <option value="valuation-asc">Valuation: cheapest first</option>
+              <option value="eps-desc">EPS growth: high to low</option>
+              <option value="pe-asc">P/E: low to high</option>
+              <option value="name-asc">Index: A to Z</option>
+            </select>
           </div>
         </div>
-        <div class="table-wrap">
+        <div class="table-wrap heatmap-wrap">
           <table class="heatmap-table">
             <thead><tr><th>Index</th><th>Group</th><th>P/E</th><th>Valuation %ile</th><th>EPS growth</th><th>Score</th><th>Signal</th></tr></thead>
             <tbody id="heatmapBody"></tbody>
