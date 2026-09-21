@@ -37,6 +37,10 @@ from typing import Dict, Iterable, List, Optional, Tuple
 
 import pandas as pd
 import requests
+from openpyxl import Workbook
+from openpyxl.comments import Comment
+from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
+from openpyxl.utils import get_column_letter
 
 NSE_ARCHIVE_BASE = "https://nsearchives.nseindia.com/content/indices"
 NSE_SOURCE_URL = "https://www.nseindia.com/all-reports"
@@ -526,6 +530,66 @@ def build_quarterly_backtest(qdf: pd.DataFrame, key: str) -> Tuple[pd.DataFrame,
     return d, {"rows": rows, "meta": {"status":status,"valid_pe_quarters":valid_pe,"first_quarter":first,"last_quarter":last}}
 
 
+
+def build_legacy_nifty50_backtest(path: Path) -> Optional[Dict]:
+    """Build the canonical NIFTY 50 backtest summary from the original long-history file.
+
+    The multi-index NSE archive only offers a much shorter comparable history for
+    NIFTY 50.  When the original tracker file is present, preserve its 1999-onward
+    quarter-end backtest rather than replacing it with the generic multi-index sample.
+    """
+    if not path.exists():
+        return None
+    try:
+        d = pd.read_csv(path)
+    except Exception as e:
+        print(f"WARNING: could not read canonical NIFTY 50 backtest {path}: {e}")
+        return None
+
+    required = {"Date", "PE", "Valuation_Quintile", "Fwd_1Y", "Fwd_3Y", "Fwd_5Y", "Fwd_10Y"}
+    if not required.issubset(set(d.columns)):
+        print(f"WARNING: canonical NIFTY 50 backtest missing columns: {sorted(required-set(d.columns))}")
+        return None
+
+    d["Date"] = pd.to_datetime(d["Date"], errors="coerce")
+    d["PE"] = pd.to_numeric(d["PE"], errors="coerce")
+    for c in ["Fwd_1Y", "Fwd_3Y", "Fwd_5Y", "Fwd_10Y"]:
+        d[c] = pd.to_numeric(d[c], errors="coerce")
+
+    rows = []
+    order = ["Q1 Cheapest", "Q2", "Q3", "Q4", "Q5 Most Expensive"]
+    for q in order:
+        x = d[d["Valuation_Quintile"] == q]
+        def med(col):
+            vals = x[col].dropna()
+            return None if vals.empty else float(vals.median())
+        s3 = x["Fwd_3Y"].dropna()
+        rows.append({
+            "quintile": q,
+            "n": int(len(x)),
+            "median_1y": med("Fwd_1Y"),
+            "median_3y": med("Fwd_3Y"),
+            "median_5y": med("Fwd_5Y"),
+            "median_10y": med("Fwd_10Y"),
+            "loss_3y": None if s3.empty else float((s3 < 0).mean()),
+            "n_3y": int(len(s3)),
+        })
+
+    valid_pe = int(d["PE"].notna().sum())
+    valid_dates = d["Date"].dropna()
+    first = valid_dates.min().date().isoformat() if len(valid_dates) else None
+    last = valid_dates.max().date().isoformat() if len(valid_dates) else None
+    return {
+        "rows": rows,
+        "meta": {
+            "status": "ok" if valid_pe >= 12 else "insufficient_history",
+            "valid_pe_quarters": valid_pe,
+            "first_quarter": first,
+            "last_quarter": last,
+            "source": "canonical_nifty50_long_history",
+        },
+    }
+
 def find_prior_row(prior_snap: pd.DataFrame, key: str) -> Optional[pd.Series]:
     x = prior_snap[prior_snap["IndexKey"] == key]
     if x.empty: return None
@@ -653,12 +717,369 @@ def make_catalog(latest_map: Dict[str, Dict], backtests: Dict[str, Dict]) -> Dic
     }
 
 
+
+def load_legacy_nifty50_detail(path: Path) -> Optional[pd.DataFrame]:
+    """Return the canonical NIFTY 50 quarter-end detail for workbook export."""
+    if not path.exists():
+        return None
+    try:
+        d = pd.read_csv(path)
+    except Exception as e:
+        print(f"WARNING: could not read NIFTY 50 workbook-detail history {path}: {e}")
+        return None
+    if "Date" not in d.columns or "PE" not in d.columns:
+        return None
+    d["Date"] = pd.to_datetime(d["Date"], errors="coerce")
+    d = d[d["Date"].notna()].copy().sort_values("Date")
+    if "Price" in d.columns and "Close" not in d.columns:
+        d["Close"] = pd.to_numeric(d["Price"], errors="coerce")
+    d["PE"] = pd.to_numeric(d["PE"], errors="coerce")
+    if "Regime" not in d.columns:
+        d["Regime"] = d["Date"].apply(lambda x: "Consolidated" if x >= REGIME_SEAM else "Standalone")
+    return d
+
+
+def _safe_excel_value(v):
+    if v is None:
+        return None
+    if isinstance(v, float) and (math.isnan(v) or math.isinf(v)):
+        return None
+    if pd.isna(v):
+        return None
+    if isinstance(v, pd.Timestamp):
+        return v.to_pydatetime()
+    return v
+
+
+def _autosize(ws, min_width: int = 10, max_width: int = 34):
+    for col in range(1, ws.max_column + 1):
+        letter = get_column_letter(col)
+        width = 0
+        for row in range(1, min(ws.max_row, 250) + 1):
+            v = ws.cell(row, col).value
+            if v is None:
+                continue
+            width = max(width, len(str(v)))
+        ws.column_dimensions[letter].width = min(max(width + 2, min_width), max_width)
+
+
+def _style_workbook_sheet(ws, freeze: Optional[str] = None):
+    ws.sheet_view.showGridLines = False
+    if freeze:
+        ws.freeze_panes = freeze
+
+
+def _apply_table_header(ws, row: int, start_col: int, end_col: int):
+    fill = PatternFill("solid", fgColor="0F2742")
+    font = Font(color="FFFFFF", bold=True)
+    for c in range(start_col, end_col + 1):
+        cell = ws.cell(row, c)
+        cell.fill = fill
+        cell.font = font
+        cell.alignment = Alignment(horizontal="center", vertical="center")
+
+
+def _apply_section_header(ws, row: int, title: str, end_col: int = 6):
+    ws.merge_cells(start_row=row, start_column=1, end_row=row, end_column=end_col)
+    c = ws.cell(row, 1, title)
+    c.fill = PatternFill("solid", fgColor="0B1F36")
+    c.font = Font(color="FFFFFF", bold=True, size=11)
+    c.alignment = Alignment(horizontal="left")
+
+
+def _set_imported_header_comment(cell, source_url: str):
+    cell.comment = Comment(f"Imported source: {source_url}", "Index Valuation Tracker")
+
+
+def _write_index_workbook(
+    out_path: Path,
+    x: Dict,
+    summary: Dict,
+    monthly_detail: pd.DataFrame,
+    quarterly_detail: pd.DataFrame,
+    history_detail: pd.DataFrame,
+):
+    """Create a self-contained Excel download for one eligible index."""
+    wb = Workbook()
+    ws = wb.active
+    ws.title = "Overview"
+    _style_workbook_sheet(ws)
+
+    dark_fill = PatternFill("solid", fgColor="071A2D")
+    teal_fill = PatternFill("solid", fgColor="D9F2EE")
+    gray_fill = PatternFill("solid", fgColor="EEF2F6")
+    white_font = Font(color="FFFFFF", bold=True)
+    blue_font = Font(color="0000FF")
+    green_font = Font(color="008000")
+    gray_font = Font(color="666666")
+    black_font = Font(color="000000")
+    orange_fill = PatternFill("solid", fgColor="FFF2CC")
+    thin_gray = Side(style="thin", color="D6DEE8")
+    top_border = Border(top=Side(style="thin", color="7B8794"))
+
+    ws.merge_cells("A1:F1")
+    ws["A1"] = f"{x['index_name']} Valuation Tracker"
+    ws["A1"].fill = dark_fill
+    ws["A1"].font = Font(color="FFFFFF", bold=True, size=16)
+    ws["A1"].alignment = Alignment(horizontal="left", vertical="center")
+    ws.row_dimensions[1].height = 26
+
+    ws["A2"] = "As of"
+    ws["B2"] = datetime.fromisoformat(x["as_of"])
+    ws["B2"].number_format = "dd-mmm-yyyy"
+    ws["D2"] = "Group"
+    ws["E2"] = x.get("group")
+    for c in ("A2","D2"):
+        ws[c].font = gray_font
+    for c in ("B2","E2"):
+        ws[c].font = green_font
+
+    _apply_section_header(ws, 4, "Current valuation and score", 6)
+    metrics = [
+        ("Index level", x.get("nifty_close"), '#,##0.00;[Red](#,##0.00);-'),
+        ("P/E", x.get("pe"), '0.00x;[Red](0.00x);-'),
+        ("P/E percentile", x.get("pe_percentile"), '0.0%'),
+        ("Implied EPS", x.get("implied_eps"), '#,##0.0;[Red](#,##0.0);-'),
+        ("YoY implied EPS growth", x.get("yoy_eps_growth"), '0.0%'),
+        ("Earnings yield", x.get("earnings_yield"), '0.00%'),
+        ("Valuation score", x.get("valuation_score"), '0.0'),
+        ("Growth score", x.get("growth_score"), '0.0'),
+        ("Composite score", x.get("composite_score"), '0.0'),
+        ("Signal", x.get("signal"), '@'),
+    ]
+    r = 5
+    for i in range(0, len(metrics), 2):
+        left = metrics[i]
+        right = metrics[i+1] if i+1 < len(metrics) else None
+        ws.cell(r,1,left[0]).font = gray_font
+        ws.cell(r,2,_safe_excel_value(left[1])).font = green_font if not isinstance(left[1], str) else black_font
+        ws.cell(r,2).number_format = left[2]
+        if right:
+            ws.cell(r,4,right[0]).font = gray_font
+            ws.cell(r,5,_safe_excel_value(right[1])).font = green_font if not isinstance(right[1], str) else black_font
+            ws.cell(r,5).number_format = right[2]
+        r += 1
+
+    _apply_section_header(ws, 11, "Signal thresholds", 6)
+    ws["A12"] = "Boundary"
+    ws["B12"] = "P/E"
+    ws["C12"] = "Equivalent index level"
+    ws["D12"] = "% move from current"
+    _apply_table_header(ws, 12, 1, 4)
+    bounds = x.get("signal_boundaries") or {}
+    threshold_rows = [("BUY → HOLD", bounds.get("buy_hold")), ("HOLD → SELL", bounds.get("hold_sell"))]
+    rr = 13
+    for label, b in threshold_rows:
+        ws.cell(rr,1,label)
+        if b:
+            ws.cell(rr,2,_safe_excel_value(b.get("pe"))).number_format = '0.00x'
+            ws.cell(rr,3,_safe_excel_value(b.get("nifty_level"))).number_format = '#,##0'
+            ws.cell(rr,4,_safe_excel_value(b.get("move_from_current"))).number_format = '0.0%'
+        rr += 1
+
+    _apply_section_header(ws, 16, "Forward returns by starting valuation", 7)
+    headers = ["Starting valuation","Observations","1Y median","3Y median CAGR","5Y median CAGR","10Y median CAGR","3Y loss frequency"]
+    for c,h in enumerate(headers,1): ws.cell(17,c,h)
+    _apply_table_header(ws,17,1,7)
+    for i, row in enumerate(summary.get("rows", []), start=18):
+        vals = [
+            row.get("quintile"), row.get("n"), row.get("median_1y"), row.get("median_3y"),
+            row.get("median_5y"), row.get("median_10y"), row.get("loss_3y")
+        ]
+        for c,v in enumerate(vals,1):
+            ws.cell(i,c,_safe_excel_value(v))
+        for c in range(3,8): ws.cell(i,c).number_format='0.0%'
+
+    meta = summary.get("meta", {})
+    note_row = 24
+    _apply_section_header(ws, note_row, "Coverage and methodology", 6)
+    notes = [
+        ("Monthly P/E observations", x.get("live_pe_history_months")),
+        ("Quarter-end P/E observations", meta.get("valid_pe_quarters", x.get("backtest_valid_pe_quarters"))),
+        ("Backtest start", meta.get("first_quarter")),
+        ("Backtest end", meta.get("last_quarter")),
+        ("Model", "70% own-index P/E valuation percentile + 30% own-index YoY implied EPS growth"),
+        ("P/E source", "NSE Indices daily archive"),
+    ]
+    for j,(lab,val) in enumerate(notes, start=note_row+1):
+        ws.cell(j,1,lab).font = gray_font
+        ws.cell(j,2,_safe_excel_value(val))
+        if lab == "P/E source":
+            ws.cell(j,2).hyperlink = NSE_SOURCE_URL
+            ws.cell(j,2).style = "Hyperlink"
+    _autosize(ws)
+
+    # Monthly P/E history
+    wm = wb.create_sheet("Monthly PE History")
+    _style_workbook_sheet(wm, "A2")
+    mh = ["Date","Index Close","P/E","Implied EPS","Earnings Yield"]
+    for c,h in enumerate(mh,1): wm.cell(1,c,h)
+    _apply_table_header(wm,1,1,len(mh))
+    _set_imported_header_comment(wm["B1"], NSE_SOURCE_URL)
+    _set_imported_header_comment(wm["C1"], NSE_SOURCE_URL)
+    md = monthly_detail.copy().sort_values("Date") if not monthly_detail.empty else monthly_detail
+    for i,(_,row) in enumerate(md.iterrows(), start=2):
+        dt = pd.to_datetime(row.get("Date"), errors="coerce")
+        wm.cell(i,1,_safe_excel_value(dt)).number_format="dd-mmm-yyyy"
+        wm.cell(i,2,_safe_excel_value(row.get("Close"))).number_format='#,##0.00;[Red](#,##0.00);-'
+        wm.cell(i,3,_safe_excel_value(row.get("PE"))).number_format='0.00x;[Red](0.00x);-'
+        wm.cell(i,2).font = green_font; wm.cell(i,3).font = green_font
+        wm.cell(i,4,f'=IFERROR(B{i}/C{i},"")').font = black_font
+        wm.cell(i,4).number_format='#,##0.00;[Red](#,##0.00);-'
+        wm.cell(i,5,f'=IFERROR(1/C{i},"")').font = black_font
+        wm.cell(i,5).number_format='0.00%'
+    _autosize(wm)
+
+    # Quarter-end backtest detail
+    wq = wb.create_sheet("Quarterly Backtest")
+    _style_workbook_sheet(wq, "A2")
+    qh = ["Date","Index Close","P/E","Regime","Implied EPS","YoY EPS Growth","P/E Percentile","Valuation Quintile","Fwd 1Y","Fwd 3Y CAGR","Fwd 5Y CAGR","Fwd 10Y CAGR"]
+    for c,h in enumerate(qh,1): wq.cell(1,c,h)
+    _apply_table_header(wq,1,1,len(qh))
+    _set_imported_header_comment(wq["B1"], NSE_SOURCE_URL)
+    _set_imported_header_comment(wq["C1"], NSE_SOURCE_URL)
+    qd = quarterly_detail.copy().sort_values("Date") if not quarterly_detail.empty else quarterly_detail
+    nrows = len(qd)
+    first_excel = 2
+    last_excel = first_excel + nrows - 1
+    for idx,(_,row) in enumerate(qd.iterrows(), start=2):
+        dt = pd.to_datetime(row.get("Date"), errors="coerce")
+        close_val = row.get("Close", row.get("Price"))
+        pe_val = row.get("PE")
+        regime_val = row.get("Regime")
+        if regime_val is None or pd.isna(regime_val):
+            regime_val = "Consolidated" if pd.notna(dt) and dt >= REGIME_SEAM else "Standalone"
+        wq.cell(idx,1,_safe_excel_value(dt)).number_format="dd-mmm-yyyy"
+        wq.cell(idx,2,_safe_excel_value(close_val)).number_format='#,##0.00;[Red](#,##0.00);-'
+        wq.cell(idx,3,_safe_excel_value(pe_val)).number_format='0.00x;[Red](0.00x);-'
+        wq.cell(idx,4,regime_val)
+        wq.cell(idx,2).font = green_font; wq.cell(idx,3).font = green_font; wq.cell(idx,4).font = gray_font
+        wq.cell(idx,5,f'=IFERROR(B{idx}/C{idx},"")').number_format='#,##0.00;[Red](#,##0.00);-'
+        # YoY EPS: same quarter one year earlier, only if the PE regime is unchanged.
+        if idx >= 6:
+            wq.cell(idx,6,f'=IF(AND(D{idx}=D{idx-4},E{idx-4}<>""),E{idx}/E{idx-4}-1,"")')
+        else:
+            wq.cell(idx,6,None)
+        wq.cell(idx,6).number_format='0.0%'
+        if nrows:
+            wq.cell(idx,7,f'=IF(C{idx}="","",(COUNTIFS($D$2:$D${last_excel},D{idx},$C$2:$C${last_excel},">0",$C$2:$C${last_excel},"<"&C{idx})+(COUNTIFS($D$2:$D${last_excel},D{idx},$C$2:$C${last_excel},C{idx})+1)/2)/COUNTIFS($D$2:$D${last_excel},D{idx},$C$2:$C${last_excel},">0"))')
+        wq.cell(idx,7).number_format='0.0%'
+        wq.cell(idx,8,f'=IF(G{idx}="","",IF(G{idx}<=20%,"Q1 Cheapest",IF(G{idx}<=40%,"Q2",IF(G{idx}<=60%,"Q3",IF(G{idx}<=80%,"Q4","Q5 Most Expensive")))))')
+        offsets = [(9,4,1),(10,12,3),(11,20,5),(12,40,10)]
+        for col, offset, years in offsets:
+            target = idx + offset
+            if target <= last_excel:
+                if years == 1:
+                    formula = f'=IFERROR(B{target}/B{idx}-1,"")'
+                else:
+                    formula = f'=IFERROR((B{target}/B{idx})^(1/{years})-1,"")'
+                wq.cell(idx,col,formula)
+            else:
+                wq.cell(idx,col,None)
+            wq.cell(idx,col).number_format='0.0%'
+    _autosize(wq)
+
+    # Daily score/signal history. Percentile and EPS-growth columns are pipeline inputs;
+    # scores and signal are reconstructed as formulas so the workbook remains auditable.
+    wh = wb.create_sheet("Score History")
+    _style_workbook_sheet(wh, "A2")
+    hh = ["Date","Index Close","P/E","P/E Percentile","YoY EPS Growth","Valuation Score","Growth Score","Composite Score","Signal"]
+    for c,h in enumerate(hh,1): wh.cell(1,c,h)
+    _apply_table_header(wh,1,1,len(hh))
+    hd = history_detail.copy().sort_values("date") if not history_detail.empty else history_detail
+    for i,(_,row) in enumerate(hd.iterrows(), start=2):
+        dt = pd.to_datetime(row.get("date"), errors="coerce")
+        wh.cell(i,1,_safe_excel_value(dt)).number_format="dd-mmm-yyyy"
+        wh.cell(i,2,_safe_excel_value(row.get("close"))).number_format='#,##0.00;[Red](#,##0.00);-'
+        wh.cell(i,3,_safe_excel_value(row.get("pe"))).number_format='0.00x;[Red](0.00x);-'
+        wh.cell(i,4,_safe_excel_value(row.get("pe_percentile"))).number_format='0.0%'
+        wh.cell(i,5,_safe_excel_value(row.get("yoy_eps_growth"))).number_format='0.0%'
+        for c in (2,3,4,5): wh.cell(i,c).font = green_font
+        wh.cell(i,6,f'=IF(D{i}="","",100*(1-D{i}))').number_format='0.0'
+        wh.cell(i,7,f'=IF(E{i}="","",IF(E{i}<=0,20,IF(E{i}<5%,20+400*E{i},IF(E{i}<10%,40+400*(E{i}-5%),IF(E{i}<15%,60+400*(E{i}-10%),IF(E{i}<25%,80+200*(E{i}-15%),100))))))').number_format='0.0'
+        wh.cell(i,8,f'=IF(OR(F{i}="",G{i}=""),"",70%*F{i}+30%*G{i})').number_format='0.0'
+        wh.cell(i,9,f'=IF(H{i}="","",IF(H{i}>=70,"BUY",IF(H{i}>=40,"HOLD","SELL")))')
+    _autosize(wh)
+
+    # Source and methodology notes.
+    ws2 = wb.create_sheet("Sources & Methodology")
+    _style_workbook_sheet(ws2)
+    _apply_section_header(ws2,1,"Sources",4)
+    src = [
+        ("NSE Indices daily archive", NSE_SOURCE_URL),
+        ("NSE index archive files", NSE_ARCHIVE_BASE),
+    ]
+    for i,(name,url) in enumerate(src,start=2):
+        ws2.cell(i,1,name)
+        ws2.cell(i,2,url)
+        ws2.cell(i,2).hyperlink=url
+        ws2.cell(i,2).style="Hyperlink"
+    _apply_section_header(ws2,5,"Methodology",4)
+    meth = [
+        "All P/E, implied EPS and return calculations are specific to the selected index.",
+        "Valuation score = 100 × (1 − own-index P/E percentile).",
+        "Growth score is based on YoY change in own-index implied EPS.",
+        "Composite score = 70% valuation score + 30% growth score.",
+        "BUY ≥ 70; HOLD 40 to <70; SELL <40.",
+        "NIFTY 50 uses the canonical long-history quarter-end backtest where available; other indices use the multi-index archive history.",
+    ]
+    for i,t in enumerate(meth,start=6): ws2.cell(i,1,t)
+    ws2.column_dimensions['A'].width=92
+    ws2.column_dimensions['B'].width=55
+
+    # Consistent number/input visual cues and print setup.
+    for sh in wb.worksheets:
+        sh.sheet_properties.pageSetUpPr.fitToPage = True
+        sh.page_setup.fitToWidth = 1
+        sh.page_setup.fitToHeight = 0
+        sh.page_margins.left = 0.3
+        sh.page_margins.right = 0.3
+        sh.page_margins.top = 0.5
+        sh.page_margins.bottom = 0.5
+
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    wb.save(out_path)
+
+
+def generate_index_workbooks(
+    web_dir: Path,
+    latest_map: Dict[str, Dict],
+    backtests: Dict[str, Dict],
+    quarter_details: Dict[str, pd.DataFrame],
+    monthly: pd.DataFrame,
+    history_path: Path,
+):
+    """Generate one downloadable XLSX per eligible dashboard index."""
+    out_dir = web_dir / "downloads" / "indices"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    for old in out_dir.glob("*.xlsx"):
+        old.unlink()
+
+    if history_path.exists():
+        hist = pd.read_csv(history_path)
+    else:
+        hist = pd.DataFrame()
+
+    for slug, x in latest_map.items():
+        key = x.get("index_key")
+        md = monthly[monthly["IndexKey"] == key].copy() if "IndexKey" in monthly.columns else pd.DataFrame()
+        qd = quarter_details.get(slug, pd.DataFrame())
+        hd = hist[hist["slug"] == slug].copy() if (not hist.empty and "slug" in hist.columns) else pd.DataFrame()
+        out = out_dir / f"{slug}.xlsx"
+        _write_index_workbook(out, x, backtests.get(slug, {}), md, qd, hd)
+        print(f"Excel: wrote {out} ({x.get('index_name')})")
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--web-dir", default="docs")
     ap.add_argument("--quarterly-csv", default="multi_index_quarterly.csv")
     ap.add_argument("--monthly-csv", default="multi_index_monthly.csv")
     ap.add_argument("--target-date", default=None, help="YYYY-MM-DD; defaults to today")
+    ap.add_argument(
+        "--nifty50-quarterly-csv",
+        default="nifty_quarterly_backtest.csv",
+        help="Canonical long-history NIFTY 50 quarter-end backtest file (1999 onward)",
+    )
     args = ap.parse_args()
 
     web_dir = Path(args.web_dir)
@@ -666,6 +1087,9 @@ def main():
     qpath = Path(args.quarterly_csv)
     mpath = Path(args.monthly_csv)
     target = date.fromisoformat(args.target_date) if args.target_date else date.today()
+    nifty50_legacy_path = Path(args.nifty50_quarterly_csv)
+    nifty50_legacy_summary = build_legacy_nifty50_backtest(nifty50_legacy_path)
+    nifty50_legacy_detail = load_legacy_nifty50_detail(nifty50_legacy_path)
 
     s = session()
     latest_date, latest_snap, latest_url = fetch_snapshot_on_or_before(s, target, max_lookback=12)
@@ -687,10 +1111,23 @@ def main():
 
     latest_map: Dict[str, Dict] = {}
     backtests: Dict[str, Dict] = {}
+    quarter_details: Dict[str, pd.DataFrame] = {}
     used_slugs = set()
     for _, row in current.iterrows():
         key = row["IndexKey"]
         qbt, summary = build_quarterly_backtest(quarterly, key)
+        # NIFTY 50 is special: preserve the original 1999-onward canonical
+        # backtest instead of the much shorter generic multi-index archive.
+        # Current/live valuation metrics still come from the multi-index engine;
+        # only the historical forward-return table and its sample metadata are
+        # replaced by the deeper NIFTY 50 dataset.
+        if key == "NIFTY50" and nifty50_legacy_summary is not None:
+            summary = nifty50_legacy_summary
+            print(
+                "NIFTY 50: using canonical long-history backtest "
+                f"{summary['meta'].get('first_quarter')} to {summary['meta'].get('last_quarter')} "
+                f"({summary['meta'].get('valid_pe_quarters')} PE-bearing quarters)"
+            )
         base_slug = slugify(row["IndexName"])
         slug = base_slug
         n = 2
@@ -699,9 +1136,15 @@ def main():
         used_slugs.add(slug)
 
         x = build_current_for_index(key, row, latest_date, prior_snap, monthly, qbt)
+        if key == "NIFTY50" and nifty50_legacy_summary is not None:
+            x["backtest_valid_pe_quarters"] = int(nifty50_legacy_summary["meta"].get("valid_pe_quarters", 0) or 0)
         x["slug"] = slug
         latest_map[slug] = x
         backtests[slug] = summary
+        if key == "NIFTY50" and nifty50_legacy_detail is not None:
+            quarter_details[slug] = nifty50_legacy_detail.copy()
+        else:
+            quarter_details[slug] = qbt.copy()
 
     # Dashboard eligibility: show only indices for which the model is actually useful.
     # This removes "limited history" and live P/E-unavailable entries from the
@@ -734,6 +1177,7 @@ def main():
 
     latest_map = {k:v for k,v in latest_map.items() if k in keep}
     backtests = {k:v for k,v in backtests.items() if k in keep}
+    quarter_details = {k:v for k,v in quarter_details.items() if k in keep}
 
     if excluded:
         print(f"Excluded {len(excluded)} limited/unusable indices from dashboard.")
@@ -753,7 +1197,9 @@ def main():
         "generated_at": datetime.utcnow().isoformat(timespec="seconds") + "Z",
         "indices": backtests,
     }, indent=2, allow_nan=False), encoding="utf-8")
-    append_daily_history(data_dir / "multi_index_history.csv", latest_map)
+    history_path = data_dir / "multi_index_history.csv"
+    append_daily_history(history_path, latest_map)
+    generate_index_workbooks(web_dir, latest_map, backtests, quarter_details, monthly, history_path)
 
     ok = sum(1 for x in latest_map.values() if x.get("signal"))
     print(f"Multi-index tracker updated: {len(latest_map)} eligible indices; {ok} with live signal; as of {latest_date}")
