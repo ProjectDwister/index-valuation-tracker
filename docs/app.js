@@ -27,27 +27,26 @@ function csvParse(text){
 }
 
 let marketStatusTimer = null;
+let nseHolidayCalendar = {covered_years:[], holidays:{}};
 
-// NSE Capital Market (Equities) trading holidays for 2026.
-// Source: NSE/CMTR/71775 (12-Dec-2025) plus NSE/CMTR/72260 (12-Jan-2026).
-const NSE_EQUITY_HOLIDAYS = {
-  '2026-01-15':'Municipal Corporation Election in Maharashtra',
-  '2026-01-26':'Republic Day',
-  '2026-03-03':'Holi',
-  '2026-03-26':'Shri Ram Navami',
-  '2026-03-31':'Shri Mahavir Jayanti',
-  '2026-04-03':'Good Friday',
-  '2026-04-14':'Dr. Baba Saheb Ambedkar Jayanti',
-  '2026-05-01':'Maharashtra Day',
-  '2026-05-28':'Bakri Id',
-  '2026-06-26':'Muharram',
-  '2026-09-14':'Ganesh Chaturthi',
-  '2026-10-02':'Mahatma Gandhi Jayanti',
-  '2026-10-20':'Dussehra',
-  '2026-11-10':'Diwali-Balipratipada',
-  '2026-11-24':'Prakash Gurpurb Sri Guru Nanak Dev',
-  '2026-12-25':'Christmas'
-};
+async function loadHolidayCalendar(){
+  try{
+    const r=await fetch('data/nse_market_holidays.json',{cache:'no-store'});
+    if(!r.ok) throw new Error(`holiday calendar HTTP ${r.status}`);
+    const data=await r.json();
+    if(data && typeof data==='object'){
+      nseHolidayCalendar={
+        covered_years:Array.isArray(data.covered_years)?data.covered_years.map(Number):[],
+        holidays:(data.holidays && typeof data.holidays==='object')?data.holidays:{},
+        regular_session:data.regular_session||{open:'09:15',close:'15:30'}
+      };
+    }
+  }catch(e){
+    // Fail conservatively: without a calendar for the current year the indicator
+    // will remain red rather than incorrectly claiming that the market is open.
+    console.warn('NSE holiday calendar could not be loaded.',e);
+  }
+}
 
 function istParts(now = new Date()){
   const parts = new Intl.DateTimeFormat('en-US', {
@@ -62,15 +61,22 @@ function istParts(now = new Date()){
   };
 }
 
+function nseCalendarCovers(now = new Date()){
+  const p=istParts(now);
+  return nseHolidayCalendar.covered_years.includes(Number(p.year));
+}
+
 function nseHolidayName(now = new Date()){
   const p=istParts(now);
   const key=`${p.year}-${p.month}-${p.day}`;
-  return NSE_EQUITY_HOLIDAYS[key] || null;
+  return nseHolidayCalendar.holidays[key] || null;
 }
 
 function nseMarketIsOpen(now = new Date()){
-  // NSE regular cash-market session: Monday-Friday, 09:15-15:30 India time, excluding declared trading holidays.
+  // NSE regular cash-market session: Monday-Friday, 09:15-15:30 India time,
+  // excluding holidays listed in docs/data/nse_market_holidays.json.
   const p=istParts(now);
+  if(!nseCalendarCovers(now)) return false;
   if(!['Mon','Tue','Wed','Thu','Fri'].includes(p.weekday)) return false;
   if(nseHolidayName(now)) return false;
   const minutes = p.hour * 60 + p.minute;
@@ -79,20 +85,24 @@ function nseMarketIsOpen(now = new Date()){
 
 function updateMarketStatusDot(){
   const host=$('freshness'); if(!host) return;
-  const open=nseMarketIsOpen();
-  const holiday=nseHolidayName();
+  const now=new Date();
+  const covered=nseCalendarCovers(now);
+  const open=nseMarketIsOpen(now);
+  const holiday=nseHolidayName(now);
   const statusText=$('marketStatusText');
   host.classList.remove('fresh','stale','market-open','market-closed');
   host.classList.add(open ? 'market-open' : 'market-closed');
-  // Set an explicit inline colour as a fail-safe in case an older stylesheet is cached.
   const dot=host.querySelector('.status-dot');
   if(dot){
     dot.style.background=open ? '#22c55e' : '#ef4444';
     dot.style.boxShadow=open ? '0 0 0 4px rgba(34,197,94,.13)' : '0 0 0 4px rgba(239,68,68,.13)';
   }
-  const closedReason=holiday ? `NSE market is closed — ${holiday}` : 'NSE regular market is closed';
+  let closedReason='NSE regular market is closed';
+  if(!covered) closedReason=`NSE holiday calendar is not configured for ${istParts(now).year}`;
+  else if(holiday) closedReason=`NSE market is closed — ${holiday}`;
   if(statusText){
     if(open) statusText.textContent='Market Open · closes 3:30 PM';
+    else if(!covered) statusText.textContent='Market Closed · calendar update required';
     else if(holiday) statusText.textContent=`Market Closed · ${holiday}`;
     else statusText.textContent='Market Closed';
   }
@@ -338,6 +348,7 @@ async function loadLegacyFallback(){
 
 async function boot(){
   initTabs();
+  await loadHolidayCalendar();
   try{
     try{
       const [c,l,b,h]=await Promise.all([
@@ -353,6 +364,6 @@ async function boot(){
     let slug=(requestedSlug && latestBundle.indices[requestedSlug]) ? requestedSlug : 'nifty-50';
     if(!latestBundle.indices[slug]) slug=catalog.default_slug;
     renderSelected(slug);renderHeatmap();installSticky();
-  }catch(e){document.querySelector('.shell').insertAdjacentHTML('afterbegin','<div class="error">Dashboard data could not be loaded. Run the GitHub Action “Refresh NIFTY tracker and deploy Pages” once after installing the multi-index update.</div>');console.error(e);}
+  }catch(e){document.querySelector('.shell').insertAdjacentHTML('afterbegin','<div class="error">Dashboard data could not be loaded. Run the GitHub Action “Refresh Index Valuation Tracker and deploy Pages” once to refresh the data.</div>');console.error(e);}
 }
 boot();
