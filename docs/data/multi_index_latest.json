@@ -122,7 +122,7 @@
         }
       },
       "live_pe_history_months": 65,
-      "backtest_valid_pe_quarters": 43,
+      "backtest_valid_pe_quarters": 110,
       "model_version": "multi-index-1.0",
       "source": "NSE Indices daily archive"
     },

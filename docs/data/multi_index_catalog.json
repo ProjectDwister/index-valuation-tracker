@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-21T09:09:25Z",
+  "generated_at": "2026-09-21T09:46:26Z",
   "default_slug": "nifty-50",
   "groups": [
     "Broad Market",
@@ -28,7 +28,7 @@
       "name": "NIFTY 50",
       "group": "Broad Market",
       "status": "ok",
-      "valid_pe_quarters": 43,
+      "valid_pe_quarters": 110,
       "live_pe_history_months": 65
     },
     {
