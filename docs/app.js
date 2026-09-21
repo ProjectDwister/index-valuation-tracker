@@ -264,7 +264,7 @@ function updateExcelDownload(x, slug){
   link.setAttribute('download',`${x.index_name} Valuation Tracker.xlsx`);
   link.setAttribute('aria-label',`Download ${x.index_name} Excel model`);
   link.title=`Download ${x.index_name} Excel model`;
-  if(text) text.textContent=`${x.index_name} Excel`;
+  if(text) text.textContent='Excel';
 }
 
 function renderSelected(slug){
