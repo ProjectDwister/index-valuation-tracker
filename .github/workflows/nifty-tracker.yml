@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       test_email_alert:
-        description: 'Send a test threshold email on this run'
+        description: 'Send a test multi-index valuation email on this run'
         required: false
         default: false
         type: boolean
@@ -59,7 +59,15 @@ jobs:
           python -m pip install -r requirements.txt
           python -m pip install openpyxl
 
-      - name: Refresh NIFTY 50 model and alerts
+      - name: Refresh NIFTY 50 canonical model
+        if: github.event_name != 'push'
+        run: >-
+          python nifty_tracker_update.py
+          --workbook NIFTY_Valuation_Backtest_Live_Tracker.xlsx
+          --backtest-csv nifty_quarterly_backtest.csv
+          --web-dir docs
+
+      - name: Refresh multi-index universe, backtests and alerts
         if: github.event_name != 'push'
         env:
           ALERT_EMAIL_TO: ${{ secrets.ALERT_EMAIL_TO }}
@@ -69,17 +77,9 @@ jobs:
           SMTP_PORT: ${{ vars.SMTP_PORT || '465' }}
           SMTP_FROM: ${{ vars.SMTP_FROM || secrets.SMTP_USERNAME }}
           ALERT_PE_DELTA: ${{ vars.ALERT_PE_DELTA || '0.10' }}
-          ALERT_NIFTY_DELTA_PCT: ${{ vars.ALERT_NIFTY_DELTA_PCT || '0.005' }}
+          ALERT_INDEX_DELTA_PCT: ${{ vars.ALERT_INDEX_DELTA_PCT || vars.ALERT_NIFTY_DELTA_PCT || '0.005' }}
           FORCE_THRESHOLD_ALERT: ${{ github.event_name == 'workflow_dispatch' && inputs.test_email_alert || false }}
           DASHBOARD_URL: https://projectdwister.github.io/index-valuation-tracker/
-        run: >-
-          python nifty_tracker_update.py
-          --workbook NIFTY_Valuation_Backtest_Live_Tracker.xlsx
-          --backtest-csv nifty_quarterly_backtest.csv
-          --web-dir docs
-
-      - name: Refresh multi-index universe and backtests
-        if: github.event_name != 'push'
         run: >-
           python multi_index_tracker.py
           --web-dir docs
