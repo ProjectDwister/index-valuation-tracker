@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-21T08:54:52Z",
+  "generated_at": "2026-09-21T09:09:25Z",
   "default_slug": "nifty-50",
   "groups": [
     "Broad Market",
@@ -38,14 +38,6 @@
       "status": "ok",
       "valid_pe_quarters": 43,
       "live_pe_history_months": 65
-    },
-    {
-      "slug": "nifty-india-fpi-150",
-      "name": "NIFTY India FPI 150",
-      "group": "Broad Market",
-      "status": "ok",
-      "valid_pe_quarters": 4,
-      "live_pe_history_months": 13
     },
     {
       "slug": "nifty-largemidcap-250",
@@ -104,22 +96,6 @@
       "live_pe_history_months": 65
     },
     {
-      "slug": "nifty-midsmallcap400-50-50",
-      "name": "NIFTY Midsmallcap400 50:50",
-      "group": "Broad Market",
-      "status": "insufficient_history",
-      "valid_pe_quarters": 2,
-      "live_pe_history_months": 7
-    },
-    {
-      "slug": "nifty-next-100",
-      "name": "NIFTY Next 100",
-      "group": "Broad Market",
-      "status": "insufficient_history",
-      "valid_pe_quarters": 0,
-      "live_pe_history_months": 1
-    },
-    {
       "slug": "nifty-next-50",
       "name": "NIFTY Next 50",
       "group": "Broad Market",
@@ -152,28 +128,12 @@
       "live_pe_history_months": 65
     },
     {
-      "slug": "nifty-smallcap-500",
-      "name": "NIFTY Smallcap 500",
-      "group": "Broad Market",
-      "status": "insufficient_history",
-      "valid_pe_quarters": 2,
-      "live_pe_history_months": 8
-    },
-    {
       "slug": "nifty-total-market",
       "name": "NIFTY Total Market",
       "group": "Broad Market",
       "status": "ok",
       "valid_pe_quarters": 19,
       "live_pe_history_months": 59
-    },
-    {
-      "slug": "nifty500-largemidsmall-equal-cap-weighted",
-      "name": "Nifty500 Largemidsmall Equal-Cap Weighted",
-      "group": "Broad Market",
-      "status": "ok",
-      "valid_pe_quarters": 9,
-      "live_pe_history_months": 27
     },
     {
       "slug": "nifty500-multicap-50-25-25",
@@ -200,60 +160,12 @@
       "live_pe_history_months": 65
     },
     {
-      "slug": "nifty-capital-goods",
-      "name": "NIFTY Capital Goods",
-      "group": "Sectoral",
-      "status": "insufficient_history",
-      "valid_pe_quarters": 1,
-      "live_pe_history_months": 3
-    },
-    {
-      "slug": "nifty-cement",
-      "name": "NIFTY Cement",
-      "group": "Sectoral",
-      "status": "insufficient_history",
-      "valid_pe_quarters": 2,
-      "live_pe_history_months": 7
-    },
-    {
-      "slug": "nifty-chemicals",
-      "name": "NIFTY Chemicals",
-      "group": "Sectoral",
-      "status": "ok",
-      "valid_pe_quarters": 6,
-      "live_pe_history_months": 18
-    },
-    {
-      "slug": "nifty-commercial-transport-services",
-      "name": "NIFTY Commercial & Transport Services",
-      "group": "Sectoral",
-      "status": "insufficient_history",
-      "valid_pe_quarters": 1,
-      "live_pe_history_months": 3
-    },
-    {
-      "slug": "nifty-construction",
-      "name": "NIFTY Construction",
-      "group": "Sectoral",
-      "status": "insufficient_history",
-      "valid_pe_quarters": 1,
-      "live_pe_history_months": 3
-    },
-    {
       "slug": "nifty-consumer-durables",
       "name": "NIFTY Consumer Durables",
       "group": "Sectoral",
       "status": "ok",
       "valid_pe_quarters": 26,
       "live_pe_history_months": 65
-    },
-    {
-      "slug": "nifty-consumer-services",
-      "name": "NIFTY Consumer Services",
-      "group": "Sectoral",
-      "status": "insufficient_history",
-      "valid_pe_quarters": 1,
-      "live_pe_history_months": 3
     },
     {
       "slug": "nifty-energy",
@@ -304,36 +216,12 @@
       "live_pe_history_months": 65
     },
     {
-      "slug": "nifty-hospitals",
-      "name": "NIFTY Hospitals",
-      "group": "Sectoral",
-      "status": "insufficient_history",
-      "valid_pe_quarters": 1,
-      "live_pe_history_months": 3
-    },
-    {
-      "slug": "nifty-housing-finance",
-      "name": "NIFTY Housing Finance",
-      "group": "Sectoral",
-      "status": "insufficient_history",
-      "valid_pe_quarters": 1,
-      "live_pe_history_months": 3
-    },
-    {
       "slug": "nifty-it",
       "name": "NIFTY IT",
       "group": "Sectoral",
       "status": "ok",
       "valid_pe_quarters": 43,
       "live_pe_history_months": 65
-    },
-    {
-      "slug": "nifty-insurance",
-      "name": "NIFTY Insurance",
-      "group": "Sectoral",
-      "status": "insufficient_history",
-      "valid_pe_quarters": 1,
-      "live_pe_history_months": 3
     },
     {
       "slug": "nifty-media",
@@ -376,14 +264,6 @@
       "live_pe_history_months": 39
     },
     {
-      "slug": "nifty-nbfc",
-      "name": "NIFTY NBFC",
-      "group": "Sectoral",
-      "status": "insufficient_history",
-      "valid_pe_quarters": 1,
-      "live_pe_history_months": 3
-    },
-    {
       "slug": "nifty-oil-gas",
       "name": "NIFTY Oil & Gas",
       "group": "Sectoral",
@@ -408,14 +288,6 @@
       "live_pe_history_months": 65
     },
     {
-      "slug": "nifty-power",
-      "name": "NIFTY Power",
-      "group": "Sectoral",
-      "status": "insufficient_history",
-      "valid_pe_quarters": 1,
-      "live_pe_history_months": 3
-    },
-    {
       "slug": "nifty-private-bank",
       "name": "NIFTY Private Bank",
       "group": "Sectoral",
@@ -424,52 +296,12 @@
       "live_pe_history_months": 65
     },
     {
-      "slug": "nifty-reits-realty",
-      "name": "NIFTY REITS & Realty",
-      "group": "Sectoral",
-      "status": "insufficient_history",
-      "valid_pe_quarters": 2,
-      "live_pe_history_months": 6
-    },
-    {
       "slug": "nifty-realty",
       "name": "NIFTY Realty",
       "group": "Sectoral",
       "status": "ok",
       "valid_pe_quarters": 42,
       "live_pe_history_months": 64
-    },
-    {
-      "slug": "nifty-retail",
-      "name": "NIFTY Retail",
-      "group": "Sectoral",
-      "status": "insufficient_history",
-      "valid_pe_quarters": 1,
-      "live_pe_history_months": 3
-    },
-    {
-      "slug": "nifty-telecommunications",
-      "name": "NIFTY Telecommunications",
-      "group": "Sectoral",
-      "status": "insufficient_history",
-      "valid_pe_quarters": 1,
-      "live_pe_history_months": 3
-    },
-    {
-      "slug": "nifty500-healthcare",
-      "name": "Nifty500 Healthcare",
-      "group": "Sectoral",
-      "status": "ok",
-      "valid_pe_quarters": 4,
-      "live_pe_history_months": 14
-    },
-    {
-      "slug": "nifty-ai-catalysts",
-      "name": "NIFTY Ai Catalysts",
-      "group": "Strategy / Thematic / Other",
-      "status": "insufficient_history",
-      "valid_pe_quarters": 0,
-      "live_pe_history_months": 0
     },
     {
       "slug": "nifty-alpha-50",
@@ -504,28 +336,12 @@
       "live_pe_history_months": 65
     },
     {
-      "slug": "nifty-capital-markets",
-      "name": "NIFTY Capital Markets",
-      "group": "Strategy / Thematic / Other",
-      "status": "ok",
-      "valid_pe_quarters": 8,
-      "live_pe_history_months": 24
-    },
-    {
       "slug": "nifty-commodities",
       "name": "NIFTY Commodities",
       "group": "Strategy / Thematic / Other",
       "status": "ok",
       "valid_pe_quarters": 43,
       "live_pe_history_months": 65
-    },
-    {
-      "slug": "nifty-conglomerate-50",
-      "name": "NIFTY Conglomerate 50",
-      "group": "Strategy / Thematic / Other",
-      "status": "ok",
-      "valid_pe_quarters": 4,
-      "live_pe_history_months": 12
     },
     {
       "slug": "nifty-core-housing",
@@ -550,14 +366,6 @@
       "status": "ok",
       "valid_pe_quarters": 43,
       "live_pe_history_months": 65
-    },
-    {
-      "slug": "nifty-ev-new-age-automotive",
-      "name": "NIFTY Ev & New Age Automotive",
-      "group": "Strategy / Thematic / Other",
-      "status": "ok",
-      "valid_pe_quarters": 9,
-      "live_pe_history_months": 28
     },
     {
       "slug": "nifty-growth-sectors-15",
@@ -592,52 +400,12 @@
       "live_pe_history_months": 65
     },
     {
-      "slug": "nifty-india-corporate-group-index-aditya-birla-group",
-      "name": "NIFTY India Corporate Group Index - Aditya Birla Group",
-      "group": "Strategy / Thematic / Other",
-      "status": "ok",
-      "valid_pe_quarters": 8,
-      "live_pe_history_months": 25
-    },
-    {
-      "slug": "nifty-india-corporate-group-index-mahindra-group",
-      "name": "NIFTY India Corporate Group Index - Mahindra Group",
-      "group": "Strategy / Thematic / Other",
-      "status": "ok",
-      "valid_pe_quarters": 9,
-      "live_pe_history_months": 29
-    },
-    {
-      "slug": "nifty-india-corporate-group-index-tata-group",
-      "name": "NIFTY India Corporate Group Index - Tata Group",
-      "group": "Strategy / Thematic / Other",
-      "status": "ok",
-      "valid_pe_quarters": 9,
-      "live_pe_history_months": 29
-    },
-    {
-      "slug": "nifty-india-corporate-group-index-tata-group-25-cap",
-      "name": "NIFTY India Corporate Group Index - Tata Group 25% Cap",
-      "group": "Strategy / Thematic / Other",
-      "status": "ok",
-      "valid_pe_quarters": 9,
-      "live_pe_history_months": 29
-    },
-    {
       "slug": "nifty-india-defence",
       "name": "NIFTY India Defence",
       "group": "Strategy / Thematic / Other",
       "status": "ok",
       "valid_pe_quarters": 18,
       "live_pe_history_months": 56
-    },
-    {
-      "slug": "nifty-india-defence-equal-weight",
-      "name": "NIFTY India Defence Equal Weight",
-      "group": "Strategy / Thematic / Other",
-      "status": "insufficient_history",
-      "valid_pe_quarters": 0,
-      "live_pe_history_months": 1
     },
     {
       "slug": "nifty-india-digital",
@@ -648,22 +416,6 @@
       "live_pe_history_months": 53
     },
     {
-      "slug": "nifty-india-infrastructure-logistics",
-      "name": "NIFTY India Infrastructure & Logistics",
-      "group": "Strategy / Thematic / Other",
-      "status": "ok",
-      "valid_pe_quarters": 5,
-      "live_pe_history_months": 15
-    },
-    {
-      "slug": "nifty-india-internet",
-      "name": "NIFTY India Internet",
-      "group": "Strategy / Thematic / Other",
-      "status": "ok",
-      "valid_pe_quarters": 5,
-      "live_pe_history_months": 16
-    },
-    {
       "slug": "nifty-india-manufacturing",
       "name": "NIFTY India Manufacturing",
       "group": "Strategy / Thematic / Other",
@@ -672,52 +424,12 @@
       "live_pe_history_months": 61
     },
     {
-      "slug": "nifty-india-new-age-consumption",
-      "name": "NIFTY India New Age Consumption",
-      "group": "Strategy / Thematic / Other",
-      "status": "ok",
-      "valid_pe_quarters": 7,
-      "live_pe_history_months": 23
-    },
-    {
-      "slug": "nifty-india-railways-psu",
-      "name": "NIFTY India Railways PSU",
-      "group": "Strategy / Thematic / Other",
-      "status": "ok",
-      "valid_pe_quarters": 7,
-      "live_pe_history_months": 22
-    },
-    {
-      "slug": "nifty-india-select-5-corporate-groups-maatr",
-      "name": "NIFTY India Select 5 Corporate Groups (Maatr)",
-      "group": "Strategy / Thematic / Other",
-      "status": "ok",
-      "valid_pe_quarters": 7,
-      "live_pe_history_months": 22
-    },
-    {
-      "slug": "nifty-india-tourism",
-      "name": "NIFTY India Tourism",
-      "group": "Strategy / Thematic / Other",
-      "status": "ok",
-      "valid_pe_quarters": 9,
-      "live_pe_history_months": 27
-    },
-    {
       "slug": "nifty-infrastructure",
       "name": "NIFTY Infrastructure",
       "group": "Strategy / Thematic / Other",
       "status": "ok",
       "valid_pe_quarters": 43,
       "live_pe_history_months": 65
-    },
-    {
-      "slug": "nifty-ipo",
-      "name": "NIFTY Ipo",
-      "group": "Strategy / Thematic / Other",
-      "status": "ok",
-      "valid_pe_quarters": 8,
-      "live_pe_history_months": 26
     },
     {
       "slug": "nifty-low-volatility-50",
@@ -750,14 +462,6 @@
       "status": "ok",
       "valid_pe_quarters": 15,
       "live_pe_history_months": 47
-    },
-    {
-      "slug": "nifty-midsmallcap400-momentum-quality-100",
-      "name": "NIFTY Midsmallcap400 Momentum Quality 100",
-      "group": "Strategy / Thematic / Other",
-      "status": "ok",
-      "valid_pe_quarters": 10,
-      "live_pe_history_months": 31
     },
     {
       "slug": "nifty-mnc",
@@ -808,22 +512,6 @@
       "live_pe_history_months": 41
     },
     {
-      "slug": "nifty-reits-invits-90-10",
-      "name": "NIFTY REITS & Invits 90:10",
-      "group": "Strategy / Thematic / Other",
-      "status": "insufficient_history",
-      "valid_pe_quarters": 0,
-      "live_pe_history_months": 2
-    },
-    {
-      "slug": "nifty-rural",
-      "name": "NIFTY Rural",
-      "group": "Strategy / Thematic / Other",
-      "status": "ok",
-      "valid_pe_quarters": 8,
-      "live_pe_history_months": 26
-    },
-    {
       "slug": "nifty-services-sector",
       "name": "NIFTY Services Sector",
       "group": "Strategy / Thematic / Other",
@@ -840,22 +528,6 @@
       "live_pe_history_months": 65
     },
     {
-      "slug": "nifty-small-finance-banks-microfinance-institutions",
-      "name": "NIFTY Small Finance Banks & Microfinance Institutions",
-      "group": "Strategy / Thematic / Other",
-      "status": "insufficient_history",
-      "valid_pe_quarters": 0,
-      "live_pe_history_months": 2
-    },
-    {
-      "slug": "nifty-smallcap250-momentum-quality-100",
-      "name": "NIFTY Smallcap250 Momentum Quality 100",
-      "group": "Strategy / Thematic / Other",
-      "status": "ok",
-      "valid_pe_quarters": 11,
-      "live_pe_history_months": 33
-    },
-    {
       "slug": "nifty-smallcap250-quality-50",
       "name": "NIFTY Smallcap250 Quality 50",
       "group": "Strategy / Thematic / Other",
@@ -870,46 +542,6 @@
       "status": "ok",
       "valid_pe_quarters": 34,
       "live_pe_history_months": 63
-    },
-    {
-      "slug": "nifty-sugar-ethanol",
-      "name": "NIFTY Sugar & Ethanol",
-      "group": "Strategy / Thematic / Other",
-      "status": "insufficient_history",
-      "valid_pe_quarters": 1,
-      "live_pe_history_months": 3
-    },
-    {
-      "slug": "nifty-top-10-equal-weight",
-      "name": "NIFTY Top 10 Equal Weight",
-      "group": "Strategy / Thematic / Other",
-      "status": "ok",
-      "valid_pe_quarters": 9,
-      "live_pe_history_months": 27
-    },
-    {
-      "slug": "nifty-top-15-equal-weight",
-      "name": "NIFTY Top 15 Equal Weight",
-      "group": "Strategy / Thematic / Other",
-      "status": "ok",
-      "valid_pe_quarters": 7,
-      "live_pe_history_months": 23
-    },
-    {
-      "slug": "nifty-top-20-equal-weight",
-      "name": "NIFTY Top 20 Equal Weight",
-      "group": "Strategy / Thematic / Other",
-      "status": "ok",
-      "valid_pe_quarters": 7,
-      "live_pe_history_months": 23
-    },
-    {
-      "slug": "nifty-total-market-momentum-quality-50",
-      "name": "NIFTY Total Market Momentum Quality 50",
-      "group": "Strategy / Thematic / Other",
-      "status": "ok",
-      "valid_pe_quarters": 4,
-      "live_pe_history_months": 13
     },
     {
       "slug": "nifty-transportation-logistics",
@@ -1000,14 +632,6 @@
       "live_pe_history_months": 65
     },
     {
-      "slug": "nifty200-value-30",
-      "name": "Nifty200 Value 30",
-      "group": "Strategy / Thematic / Other",
-      "status": "ok",
-      "valid_pe_quarters": 9,
-      "live_pe_history_months": 27
-    },
-    {
       "slug": "nifty50-equal-weight",
       "name": "Nifty50 Equal Weight",
       "group": "Strategy / Thematic / Other",
@@ -1030,94 +654,6 @@
       "status": "ok",
       "valid_pe_quarters": 43,
       "live_pe_history_months": 65
-    },
-    {
-      "slug": "nifty500-ahimsa",
-      "name": "Nifty500 Ahimsa",
-      "group": "Strategy / Thematic / Other",
-      "status": "insufficient_history",
-      "valid_pe_quarters": 0,
-      "live_pe_history_months": 2
-    },
-    {
-      "slug": "nifty500-equal-weight",
-      "name": "Nifty500 Equal Weight",
-      "group": "Strategy / Thematic / Other",
-      "status": "ok",
-      "valid_pe_quarters": 9,
-      "live_pe_history_months": 27
-    },
-    {
-      "slug": "nifty500-flexicap-quality-30",
-      "name": "Nifty500 Flexicap Quality 30",
-      "group": "Strategy / Thematic / Other",
-      "status": "ok",
-      "valid_pe_quarters": 5,
-      "live_pe_history_months": 17
-    },
-    {
-      "slug": "nifty500-growth-50",
-      "name": "Nifty500 Growth 50",
-      "group": "Strategy / Thematic / Other",
-      "status": "insufficient_history",
-      "valid_pe_quarters": 0,
-      "live_pe_history_months": 1
-    },
-    {
-      "slug": "nifty500-low-volatility-50",
-      "name": "Nifty500 Low Volatility 50",
-      "group": "Strategy / Thematic / Other",
-      "status": "ok",
-      "valid_pe_quarters": 7,
-      "live_pe_history_months": 21
-    },
-    {
-      "slug": "nifty500-momentum-50",
-      "name": "Nifty500 Momentum 50",
-      "group": "Strategy / Thematic / Other",
-      "status": "ok",
-      "valid_pe_quarters": 9,
-      "live_pe_history_months": 27
-    },
-    {
-      "slug": "nifty500-multicap-india-manufacturing-50-30-20",
-      "name": "Nifty500 Multicap India Manufacturing 50:30:20",
-      "group": "Strategy / Thematic / Other",
-      "status": "ok",
-      "valid_pe_quarters": 10,
-      "live_pe_history_months": 30
-    },
-    {
-      "slug": "nifty500-multicap-infrastructure-50-30-20",
-      "name": "Nifty500 Multicap Infrastructure 50:30:20",
-      "group": "Strategy / Thematic / Other",
-      "status": "ok",
-      "valid_pe_quarters": 10,
-      "live_pe_history_months": 30
-    },
-    {
-      "slug": "nifty500-multicap-momentum-quality-50",
-      "name": "Nifty500 Multicap Momentum Quality 50",
-      "group": "Strategy / Thematic / Other",
-      "status": "ok",
-      "valid_pe_quarters": 8,
-      "live_pe_history_months": 24
-    },
-    {
-      "slug": "nifty500-multifactor-mqvlv-50",
-      "name": "Nifty500 Multifactor Mqvlv 50",
-      "group": "Strategy / Thematic / Other",
-      "status": "ok",
-      "valid_pe_quarters": 6,
-      "live_pe_history_months": 19
-    },
-    {
-      "slug": "nifty500-quality-50",
-      "name": "Nifty500 Quality 50",
-      "group": "Strategy / Thematic / Other",
-      "status": "ok",
-      "valid_pe_quarters": 7,
-      "live_pe_history_months": 21
     },
     {
       "slug": "nifty500-shariah",
