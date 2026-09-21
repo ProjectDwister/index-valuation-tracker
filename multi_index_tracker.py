@@ -23,17 +23,22 @@ Subsequent runs append only newly completed periods.
 from __future__ import annotations
 
 import argparse
+import html
 import io
 import json
 import math
+import os
 import re
+import smtplib
 import time
 from calendar import monthrange
 from dataclasses import dataclass
 from datetime import date, datetime, timedelta
+from email.message import EmailMessage
 from pathlib import Path
 from statistics import median
 from typing import Dict, Iterable, List, Optional, Tuple
+from urllib.parse import urlencode
 
 import pandas as pd
 import requests
@@ -1069,6 +1074,387 @@ def generate_index_workbooks(
         _write_index_workbook(out, x, backtests.get(slug, {}), md, qd, hd)
         print(f"Excel: wrote {out} ({x.get('index_name')})")
 
+
+
+def _env_bool(name: str, default: bool = False) -> bool:
+    value = os.getenv(name)
+    if value is None:
+        return default
+    return str(value).strip().lower() in {"1", "true", "yes", "y", "on"}
+
+
+def _safe_float(value, default: float) -> float:
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        return float(default)
+
+
+def _alert_num(value, digits=2, suffix=""):
+    if value is None:
+        return "—"
+    try:
+        return f"{float(value):,.{digits}f}{suffix}"
+    except (TypeError, ValueError):
+        return "—"
+
+
+def _alert_pct(value, digits=1, signed=False):
+    if value is None:
+        return "—"
+    try:
+        x = float(value) * 100
+    except (TypeError, ValueError):
+        return "—"
+    if signed:
+        return f"{x:+.{digits}f}%"
+    return f"{x:.{digits}f}%"
+
+
+def _index_alert_snapshot(slug: str, x: Dict) -> Dict:
+    bounds = x.get("signal_boundaries") or {}
+
+    def slim(key: str):
+        b = bounds.get(key) or {}
+        return {
+            "pe": b.get("pe"),
+            # Kept as index_level in alert state even though the model's internal
+            # boundary field is named nifty_level for backwards compatibility.
+            "index_level": b.get("nifty_level"),
+            "move_from_current": b.get("move_from_current"),
+        }
+
+    return {
+        "slug": slug,
+        "index_name": x.get("index_name", slug),
+        "as_of": x.get("as_of"),
+        "signal": x.get("signal"),
+        "composite_score": x.get("composite_score"),
+        "index_level": x.get("nifty_close"),
+        "pe": x.get("pe"),
+        "buy_hold": slim("buy_hold"),
+        "hold_sell": slim("hold_sell"),
+    }
+
+
+def _load_multi_alert_state(path: Path) -> Dict:
+    try:
+        if path.exists():
+            data = json.loads(path.read_text(encoding="utf-8"))
+            if isinstance(data, dict) and isinstance(data.get("indices"), dict):
+                return data
+    except Exception as e:
+        print(f"Warning: could not read multi-index alert state {path}: {e}")
+    return {"indices": {}}
+
+
+def _write_multi_alert_state(path: Path, snapshots: Dict[str, Dict]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    payload = {
+        "updated_at": datetime.utcnow().isoformat(timespec="seconds") + "Z",
+        "indices": snapshots,
+    }
+    path.write_text(json.dumps(payload, indent=2, allow_nan=False), encoding="utf-8")
+
+
+def _compare_index_alert(previous: Dict, current: Dict, pe_delta_trigger: float, index_pct_trigger: float):
+    changes = []
+    boundary_triggered = False
+    for key, label in (("buy_hold", "BUY → HOLD"), ("hold_sell", "HOLD → SELL")):
+        old = (previous or {}).get(key) or {}
+        new = current.get(key) or {}
+        old_pe, new_pe = old.get("pe"), new.get("pe")
+        old_level, new_level = old.get("index_level"), new.get("index_level")
+        pe_delta = None
+        level_pct = None
+        if old_pe not in (None, 0) and new_pe is not None:
+            pe_delta = float(new_pe) - float(old_pe)
+        if old_level not in (None, 0) and new_level is not None:
+            level_pct = float(new_level) / float(old_level) - 1.0
+        this_trigger = (
+            (pe_delta is not None and abs(pe_delta) >= pe_delta_trigger)
+            or (level_pct is not None and abs(level_pct) >= index_pct_trigger)
+        )
+        boundary_triggered = boundary_triggered or this_trigger
+        changes.append({
+            "key": key,
+            "label": label,
+            "old_pe": old_pe,
+            "new_pe": new_pe,
+            "pe_delta": pe_delta,
+            "old_level": old_level,
+            "new_level": new_level,
+            "level_pct": level_pct,
+            "triggered": this_trigger,
+        })
+
+    signal_changed = bool(
+        previous
+        and previous.get("signal")
+        and current.get("signal")
+        and previous.get("signal") != current.get("signal")
+    )
+    triggered = boundary_triggered or signal_changed
+    return triggered, signal_changed, changes
+
+
+def _trigger_description(alert: Dict) -> str:
+    parts = []
+    if alert.get("signal_changed"):
+        prev = alert.get("previous", {}).get("signal")
+        curr = alert.get("current", {}).get("signal")
+        parts.append(f"Signal {prev} → {curr}")
+    boundary_labels = [c["label"] for c in alert.get("changes", []) if c.get("triggered")]
+    if boundary_labels:
+        if len(boundary_labels) == 2:
+            parts.append("Both thresholds changed")
+        else:
+            parts.append(f"{boundary_labels[0]} threshold changed")
+    if alert.get("test") and not parts:
+        parts.append("Test alert")
+    return "; ".join(parts) if parts else "Threshold update"
+
+
+def _dashboard_link(base_url: str, slug: str) -> str:
+    if not base_url:
+        return ""
+    sep = "&" if "?" in base_url else "?"
+    return f"{base_url}{sep}{urlencode({'index': slug})}"
+
+
+def _build_multi_index_email(alerts: List[Dict], base_url: str, force_test: bool = False) -> EmailMessage:
+    if not alerts:
+        raise ValueError("alerts cannot be empty")
+
+    msg = EmailMessage()
+    if force_test and len(alerts) == 1:
+        name = alerts[0]["current"]["index_name"]
+        subject = f"Index Valuation Tracker – {name} – Test Alert"
+    elif len(alerts) == 1:
+        a = alerts[0]
+        name = a["current"]["index_name"]
+        if a.get("signal_changed"):
+            subject_tail = f"Signal changed to {a['current'].get('signal')}"
+        else:
+            subject_tail = "Threshold Alert"
+        subject = f"Index Valuation Tracker – {name} – {subject_tail}"
+    else:
+        subject = f"Index Valuation Tracker – {len(alerts)} Index Alerts"
+    msg["Subject"] = subject
+
+    summary_rows = []
+    for a in alerts:
+        c = a["current"]
+        link = _dashboard_link(base_url, c["slug"])
+        name = html.escape(str(c["index_name"]))
+        if link:
+            name = f'<a href="{html.escape(link)}" style="color:#2457a7;text-decoration:none">{name}</a>'
+        summary_rows.append(
+            "<tr>"
+            f"<td>{name}</td>"
+            f"<td><b>{html.escape(str(c.get('signal') or '—'))}</b></td>"
+            f"<td>{_alert_num(c.get('composite_score'),1)}</td>"
+            f"<td>{_alert_num(c.get('pe'),2,'x')}</td>"
+            f"<td>{html.escape(_trigger_description(a))}</td>"
+            "</tr>"
+        )
+
+    detail_sections = []
+    for a in alerts:
+        c = a["current"]
+        link = _dashboard_link(base_url, c["slug"])
+        rows = []
+        for ch in a.get("changes", []):
+            row_style = "background:#fff7e6;" if ch.get("triggered") else ""
+            rows.append(
+                f'<tr style="{row_style}">'
+                f"<td>{html.escape(ch['label'])}</td>"
+                f"<td>{_alert_num(ch.get('old_pe'),2,'x')}</td>"
+                f"<td><b>{_alert_num(ch.get('new_pe'),2,'x')}</b></td>"
+                f"<td>{_alert_num(ch.get('old_level'),0)}</td>"
+                f"<td><b>{_alert_num(ch.get('new_level'),0)}</b></td>"
+                f"<td>{_alert_pct(ch.get('level_pct'),1,signed=True)}</td>"
+                "</tr>"
+            )
+        link_html = f'<p><a href="{html.escape(link)}">Open {html.escape(c["index_name"])} dashboard</a></p>' if link else ""
+        signal_note = ""
+        if a.get("signal_changed"):
+            signal_note = (
+                f'<p style="padding:9px 11px;background:#eef5ff;border-left:3px solid #2457a7">'
+                f'<b>Signal changed:</b> {html.escape(str(a.get("previous",{}).get("signal") or "—"))} '
+                f'→ <b>{html.escape(str(c.get("signal") or "—"))}</b></p>'
+            )
+        detail_sections.append(f"""
+          <div style="margin-top:28px">
+            <h2 style="font-size:18px;margin:0 0 10px">{html.escape(c['index_name'])} Valuation Signal Alert</h2>
+            <p><b>As of:</b> {html.escape(str(c.get('as_of') or '—'))} &nbsp; | &nbsp;
+               <b>Index Level:</b> {_alert_num(c.get('index_level'),2)} &nbsp; | &nbsp;
+               <b>P/E:</b> {_alert_num(c.get('pe'),2,'x')}</p>
+            <p><b>Composite score:</b> {_alert_num(c.get('composite_score'),1)} &nbsp; | &nbsp;
+               <b>Signal:</b> {html.escape(str(c.get('signal') or '—'))}</p>
+            {signal_note}
+            <table cellpadding="7" cellspacing="0" border="1" style="border-collapse:collapse;border-color:#d8dee8;width:100%;max-width:760px">
+              <tr style="background:#f5f7fa"><th>Boundary</th><th>Previous P/E</th><th>Current P/E</th><th>Previous Index Level</th><th>Current Index Level</th><th>Level change</th></tr>
+              {''.join(rows)}
+            </table>
+            <p style="color:#5f6f82">Threshold index levels assume implied EPS and the earnings-growth score remain unchanged.</p>
+            {link_html}
+          </div>
+        """)
+
+    summary_heading = "Test alert" if force_test else ("Alert summary" if len(alerts) > 1 else "Alert")
+    html_body = f"""
+    <html><body style="font-family:Arial,sans-serif;color:#142033;line-height:1.45">
+      <h1 style="font-size:22px;margin-bottom:6px">Index Valuation Tracker</h1>
+      <p style="color:#5f6f82;margin-top:0">{summary_heading}</p>
+      <table cellpadding="7" cellspacing="0" border="1" style="border-collapse:collapse;border-color:#d8dee8;width:100%;max-width:760px">
+        <tr style="background:#f5f7fa"><th>Index</th><th>Signal</th><th>Score</th><th>P/E</th><th>Trigger</th></tr>
+        {''.join(summary_rows)}
+      </table>
+      {''.join(detail_sections)}
+    </body></html>
+    """
+
+    plain = ["Index Valuation Tracker", ""]
+    for a in alerts:
+        c = a["current"]
+        plain += [
+            f"{c['index_name']} — {_trigger_description(a)}",
+            f"As of: {c.get('as_of')}",
+            f"Index Level: {_alert_num(c.get('index_level'),2)} | P/E: {_alert_num(c.get('pe'),2,'x')}",
+            f"Composite score: {_alert_num(c.get('composite_score'),1)} | Signal: {c.get('signal')}",
+        ]
+        for ch in a.get("changes", []):
+            plain.append(
+                f"{ch['label']}: P/E {_alert_num(ch.get('old_pe'),2,'x')} -> {_alert_num(ch.get('new_pe'),2,'x')}; "
+                f"Index {_alert_num(ch.get('old_level'),0)} -> {_alert_num(ch.get('new_level'),0)} "
+                f"({_alert_pct(ch.get('level_pct'),1,signed=True)})"
+            )
+        link = _dashboard_link(base_url, c["slug"])
+        if link:
+            plain.append(link)
+        plain.append("")
+
+    msg.set_content("\n".join(plain))
+    msg.add_alternative(html_body, subtype="html")
+    return msg
+
+
+def _send_multi_index_email(alerts: List[Dict], base_url: str, force_test: bool = False) -> bool:
+    to_addr = os.getenv("ALERT_EMAIL_TO", "").strip()
+    username = os.getenv("SMTP_USERNAME", "").strip()
+    password = os.getenv("SMTP_PASSWORD", "").strip()
+    if not (to_addr and username and password):
+        print("Multi-index email not sent: configure ALERT_EMAIL_TO, SMTP_USERNAME and SMTP_PASSWORD.")
+        return False
+
+    host = os.getenv("SMTP_HOST", "smtp.gmail.com").strip() or "smtp.gmail.com"
+    port = int(os.getenv("SMTP_PORT", "465"))
+    from_addr = os.getenv("SMTP_FROM", username).strip() or username
+    msg = _build_multi_index_email(alerts, base_url, force_test=force_test)
+    msg["From"] = from_addr
+    msg["To"] = to_addr
+
+    try:
+        with smtplib.SMTP_SSL(host, port, timeout=30) as smtp:
+            smtp.login(username, password)
+            smtp.send_message(msg)
+        print(f"Multi-index alert email sent to {to_addr}: {msg['Subject']}")
+        return True
+    except Exception as e:
+        print(f"Warning: multi-index alert email failed: {e}")
+        return False
+
+
+def process_multi_index_alerts(web_dir: Path, latest_map: Dict[str, Dict]) -> None:
+    """Send one index-specific or consolidated email for all meaningful alert events."""
+    if not latest_map:
+        return
+
+    state_path = web_dir / "data" / "multi_index_alert_state.json"
+    prior_state = _load_multi_alert_state(state_path).get("indices", {})
+    current_state = {slug: _index_alert_snapshot(slug, x) for slug, x in latest_map.items()}
+
+    force = _env_bool("FORCE_THRESHOLD_ALERT", False)
+    pe_delta_trigger = _safe_float(os.getenv("ALERT_PE_DELTA"), 0.10)
+    index_pct_trigger = _safe_float(
+        os.getenv("ALERT_INDEX_DELTA_PCT", os.getenv("ALERT_NIFTY_DELTA_PCT")), 0.005
+    )
+    base_url = os.getenv("DASHBOARD_URL", "").strip()
+
+    # First run: establish baselines. A manual test still sends a deterministic
+    # NIFTY 50 example so the user can validate subject, body and dashboard link.
+    if not prior_state:
+        if force:
+            test_slug = next((s for s,x in latest_map.items() if x.get("index_name") == "NIFTY 50"), next(iter(latest_map)))
+            c = current_state[test_slug]
+            dummy_changes = []
+            for key, label in (("buy_hold", "BUY → HOLD"), ("hold_sell", "HOLD → SELL")):
+                b = c.get(key) or {}
+                dummy_changes.append({
+                    "key": key, "label": label,
+                    "old_pe": b.get("pe"), "new_pe": b.get("pe"), "pe_delta": 0.0,
+                    "old_level": b.get("index_level"), "new_level": b.get("index_level"), "level_pct": 0.0,
+                    "triggered": False,
+                })
+            _send_multi_index_email([{
+                "previous": c, "current": c, "signal_changed": False,
+                "changes": dummy_changes, "test": True,
+            }], base_url, force_test=True)
+        _write_multi_alert_state(state_path, current_state)
+        print("Multi-index alert baseline initialized.")
+        return
+
+    alerts = []
+    for slug, c in current_state.items():
+        p = prior_state.get(slug)
+        # Newly eligible indices get a baseline without generating alert spam.
+        if not p:
+            continue
+        triggered, signal_changed, changes = _compare_index_alert(p, c, pe_delta_trigger, index_pct_trigger)
+        if triggered:
+            alerts.append({
+                "previous": p,
+                "current": c,
+                "signal_changed": signal_changed,
+                "changes": changes,
+                "test": False,
+            })
+
+    if force and not alerts:
+        test_slug = next((s for s,x in latest_map.items() if x.get("index_name") == "NIFTY 50"), next(iter(latest_map)))
+        c = current_state[test_slug]
+        p = prior_state.get(test_slug, c)
+        _, signal_changed, changes = _compare_index_alert(p, c, pe_delta_trigger, index_pct_trigger)
+        # Make test output easy to read even when no values moved.
+        if not changes:
+            changes = []
+        alerts = [{
+            "previous": p,
+            "current": c,
+            "signal_changed": signal_changed,
+            "changes": changes,
+            "test": True,
+        }]
+
+    if alerts:
+        test_mode = bool(force and all(a.get("test") for a in alerts))
+        sent = _send_multi_index_email(alerts, base_url, force_test=test_mode)
+        email_configured = bool(
+            os.getenv("ALERT_EMAIL_TO") and os.getenv("SMTP_USERNAME") and os.getenv("SMTP_PASSWORD")
+        )
+        if sent or not email_configured or force:
+            _write_multi_alert_state(state_path, current_state)
+        else:
+            # Preserve the old baseline so the same real alert is retried next run.
+            print("Multi-index alert state retained because email delivery failed.")
+    else:
+        _write_multi_alert_state(state_path, current_state)
+        print(
+            f"No multi-index alert: changes are below {pe_delta_trigger:.2f}x P/E / "
+            f"{index_pct_trigger:.1%} index-level tolerances and no signals changed."
+        )
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--web-dir", default="docs")
@@ -1200,6 +1586,7 @@ def main():
     history_path = data_dir / "multi_index_history.csv"
     append_daily_history(history_path, latest_map)
     generate_index_workbooks(web_dir, latest_map, backtests, quarter_details, monthly, history_path)
+    process_multi_index_alerts(web_dir, latest_map)
 
     ok = sum(1 for x in latest_map.values() if x.get("signal"))
     print(f"Multi-index tracker updated: {len(latest_map)} eligible indices; {ok} with live signal; as of {latest_date}")
