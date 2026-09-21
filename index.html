@@ -4,209 +4,240 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#07111f" />
-  <title>NIFTY 50 Valuation Signal</title>
-  <meta name="description" content="Regime-adjusted NIFTY 50 valuation and earnings-growth allocation signal." />
+  <title>Index Valuation Tracker</title>
+  <meta name="description" content="Multi-index valuation, earnings-growth and historical forward-return dashboard for NSE equity indices." />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div id="ambientGlow" class="ambient-glow" aria-hidden="true"></div>
-  <div id="signalSweep" class="signal-sweep" aria-hidden="true"></div>
 
   <div id="stickySummary" class="sticky-summary" aria-hidden="true">
     <div class="sticky-inner">
-      <strong>NIFTY 50 Valuation Signal</strong>
+      <div class="sticky-brand-group">
+        <a class="sticky-home-button" href="https://projectdwister.github.io/index-valuation-tracker/" aria-label="Home" title="Home">⌂</a>
+        <strong id="stickyTitle">Index Valuation Tracker</strong>
+      </div>
       <div class="sticky-metrics">
-        <span>NIFTY <b id="stickyNifty">—</b></span>
+        <span>INDEX <b id="stickyNifty">—</b></span>
         <span>P/E <b id="stickyPe">—</b></span>
-        <span>Score <b id="stickyScore" class="sticky-score">—</b></span>
+        <span>SCORE <b id="stickyScore" class="sticky-score">—</b></span>
       </div>
     </div>
   </div>
 
   <main class="shell">
-    <header class="topbar reveal reveal-1">
+    <header class="topbar">
       <div class="brand-block">
-        <h1>NIFTY 50 Valuation Signal</h1>
+        <h1><span id="desktopIndexTitle" class="desktop-title">Index Valuation Tracker</span><span class="mobile-title">Index Tracker</span></h1>
+        <div class="index-picker-wrap">
+          <label for="indexSelect">Index</label>
+          <select id="indexSelect" class="index-select" aria-label="Select NIFTY index"></select>
+        </div>
       </div>
       <div class="top-actions">
+        <a class="icon-button home-button" href="https://projectdwister.github.io/index-valuation-tracker/" aria-label="Go to Index Valuation Tracker home" title="Home">
+          <span aria-hidden="true">⌂</span><span class="icon-button-text">Home</span>
+        </a>
         <div id="freshness" class="freshness"><span class="status-dot"></span><span>Loading…</span></div>
-        <a class="icon-button" href="downloads/NIFTY_Valuation_Backtest_Live_Tracker.xlsx" aria-label="Download Excel model" title="Download Excel model">
-          <span aria-hidden="true">↓</span><span class="icon-button-text">Excel</span>
+        <a id="indexExcelDownload" class="icon-button" href="downloads/indices/nifty-50.xlsx" aria-label="Download selected index Excel model" title="Download selected index Excel model">
+          <span aria-hidden="true">↓</span><span id="indexExcelText" class="icon-button-text">Excel</span>
         </a>
       </div>
     </header>
 
-    <section id="hero" class="hero reveal reveal-2" aria-live="polite">
-      <div class="dial-column">
-        <div class="score-dial" aria-label="Composite valuation score">
-          <svg viewBox="0 0 220 132" role="img" aria-hidden="true">
-            <path class="dial-track" d="M30 110 A80 80 0 0 1 190 110" pathLength="100"></path>
-            <path class="dial-zone dial-sell" d="M30 110 A80 80 0 0 1 190 110" pathLength="100"></path>
-            <path class="dial-zone dial-hold" d="M30 110 A80 80 0 0 1 190 110" pathLength="100"></path>
-            <path class="dial-zone dial-buy" d="M30 110 A80 80 0 0 1 190 110" pathLength="100"></path>
-            <circle id="dialMarkerHalo" class="dial-marker-halo" cx="30" cy="110" r="9"></circle>
-            <circle id="dialMarker" class="dial-marker" cx="30" cy="110" r="4.5"></circle>
-          </svg>
-          <div class="dial-callouts" aria-hidden="true">
-            <div id="calloutSell" class="dial-callout dial-callout-sell"><span class="callout-label">SELL</span><span class="callout-arrow">↘</span></div>
-            <div id="calloutHold" class="dial-callout dial-callout-hold"><span class="callout-label">HOLD</span><span class="callout-arrow">↓</span></div>
-            <div id="calloutBuy" class="dial-callout dial-callout-buy"><span class="callout-label">BUY</span><span class="callout-arrow">↙</span></div>
-          </div>
-          <div class="dial-score-wrap">
-            <div class="hero-score"><span id="score">—</span><small>/100</small></div>
-            <div id="signalText" class="signal-text">Loading…</div>
-          </div>
-          <div class="dial-scale"><span style="left:1%">0</span><span style="left:38%">40</span><span style="left:68%">70</span><span style="right:1%">100</span></div>
-        </div>
-      </div>
+    <nav class="tab-nav" aria-label="Dashboard sections">
+      <button type="button" class="tab-button active" data-tab="overview">Overview</button>
+      <button type="button" class="tab-button" data-tab="valuation">Valuation</button>
+      <button type="button" class="tab-button" data-tab="backtest">Backtest</button>
+      <button type="button" class="tab-button" data-tab="history">History</button>
+      <button type="button" class="tab-button" data-tab="heatmap">Heatmap</button>
+    </nav>
 
-      <div class="hero-context">
-        <div class="hero-context-grid">
-          <div class="hero-insight">
-            <span>Score buffer</span>
-            <strong id="scoreBuffer">—</strong>
-          </div>
-          <div class="hero-insight">
-            <span>Next P/E boundary</span>
-            <strong id="nextBoundary">—</strong>
+    <section id="panel-overview" class="tab-panel active" data-panel="overview">
+      <div id="availabilityBanner" class="availability-banner" hidden></div>
+
+      <section id="hero" class="hero" aria-live="polite">
+        <div class="dial-column">
+          <div class="score-dial" aria-label="Composite valuation score">
+            <svg viewBox="0 0 220 132" role="img" aria-hidden="true">
+              <path class="dial-track" d="M30 110 A80 80 0 0 1 190 110"></path>
+              <path class="dial-zone dial-sell" d="M30 110 A80 80 0 0 1 85.279 33.915"></path>
+              <path class="dial-zone dial-hold" d="M85.279 33.915 A80 80 0 0 1 157.023 45.279"></path>
+              <path class="dial-zone dial-buy" d="M157.023 45.279 A80 80 0 0 1 190 110"></path>
+              <circle id="dialMarkerHalo" class="dial-marker-halo" cx="30" cy="110" r="9"></circle>
+              <circle id="dialMarker" class="dial-marker" cx="30" cy="110" r="4.5"></circle>
+            </svg>
+            <div class="dial-callouts" aria-hidden="true">
+              <div id="calloutSell" class="dial-callout dial-callout-sell"><span class="callout-label">SELL</span><span class="callout-arrow">↘</span></div>
+              <div id="calloutHold" class="dial-callout dial-callout-hold"><span class="callout-label">HOLD</span><span class="callout-arrow">↓</span></div>
+              <div id="calloutBuy" class="dial-callout dial-callout-buy"><span class="callout-label">BUY</span><span class="callout-arrow">↙</span></div>
+            </div>
+            <div class="dial-score-wrap">
+              <div class="hero-score"><span id="score" class="signal-score">—</span></div>
+            </div>
+            <div class="dial-scale"><span style="left:1%">0</span><span style="left:38%">40</span><span style="left:68%">70</span><span style="right:1%">100</span></div>
           </div>
         </div>
-        <div class="hero-score-strip">
-          <div class="score-track" aria-label="Composite model score">
-            <div class="zones"><span></span><span></span><span></span></div>
-            <div id="scoreFill" class="score-fill"></div>
-            <div id="scoreMarker" class="score-marker"></div>
+
+        <div class="hero-context">
+          <div class="hero-context-grid">
+            <div class="hero-insight">
+              <span>Score buffer</span>
+              <strong id="scoreBuffer">—</strong>
+            </div>
+            <div class="hero-insight">
+              <span>Next P/E boundary</span>
+              <strong id="nextBoundary">—</strong>
+            </div>
           </div>
-          <div class="score-labels"><span>&lt;40</span><span>40–70</span><span>≥70</span></div>
+          <div class="hero-score-strip">
+            <div class="score-track" aria-label="Composite model score">
+              <div class="zones"><span></span><span></span><span></span></div>
+              <div id="scoreFill" class="score-fill"></div>
+              <div id="scoreMarker" class="score-marker"></div>
+            </div>
+            <div class="score-labels"><span>&lt;40</span><span>40–70</span><span>≥70</span></div>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="metrics grid-4 reveal reveal-3">
-      <article class="metric-card metric-card-clean spark-card">
-        <div class="metric-label">NIFTY 50</div>
-        <div id="nifty" class="metric-value">—</div>
-        <div id="sparkNifty" class="sparkline-host" aria-hidden="true"></div>
-      </article>
-      <article class="metric-card spark-card">
-        <div class="metric-label">P/E</div>
-        <div id="pe" class="metric-value">—</div>
-        <div class="metric-footer"><span id="peVsMedian">—</span><span id="peDelta" class="micro-chip">—</span></div>
-        <div id="sparkPe" class="sparkline-host" aria-hidden="true"></div>
-      </article>
-      <article class="metric-card percentile-card spark-card">
-        <div class="metric-label">Valuation percentile</div>
-        <div id="percentile" class="metric-value">—</div>
-        <div class="percentile-track" aria-label="Valuation percentile from cheapest to most expensive">
-          <div class="percentile-gradient"></div>
-          <div id="percentileMarker" class="percentile-marker"></div>
-        </div>
-        <div class="percentile-labels"><span>Cheap</span><span>Median</span><span>Expensive</span></div>
-        <div id="quintile" class="metric-sub">—</div>
-        <div id="sparkPercentile" class="sparkline-host sparkline-lower" aria-hidden="true"></div>
-      </article>
-      <article class="metric-card metric-card-clean spark-card">
-        <div class="metric-label">YoY implied EPS growth</div>
-        <div id="epsGrowth" class="metric-value">—</div>
-        <div id="sparkEps" class="sparkline-host" aria-hidden="true"></div>
-      </article>
-    </section>
+      <section class="metrics grid-4">
+        <article class="metric-card metric-card-clean spark-card">
+          <div class="metric-label">Index level</div>
+          <div id="nifty" class="metric-value">—</div>
+          <div id="sparkNifty" class="sparkline-host" aria-hidden="true"></div>
+        </article>
+        <article class="metric-card spark-card">
+          <div class="metric-label">P/E</div>
+          <div id="pe" class="metric-value">—</div>
+          <div class="metric-footer"><span id="peVsMedian">—</span><span id="peDelta" class="micro-chip">—</span></div>
+          <div id="sparkPe" class="sparkline-host" aria-hidden="true"></div>
+        </article>
+        <article class="metric-card percentile-card spark-card">
+          <div class="metric-label">Valuation percentile</div>
+          <div id="percentile" class="metric-value">—</div>
+          <div class="percentile-track" aria-label="Valuation percentile from cheapest to most expensive">
+            <div class="percentile-gradient"></div>
+            <div id="percentileMarker" class="percentile-marker"></div>
+          </div>
+          <div class="percentile-labels"><span>Cheap</span><span>Median</span><span>Expensive</span></div>
+          <div id="quintile" class="metric-sub">—</div>
+          <div id="sparkPercentile" class="sparkline-host sparkline-lower" aria-hidden="true"></div>
+        </article>
+        <article class="metric-card metric-card-clean spark-card">
+          <div class="metric-label">YoY implied EPS growth</div>
+          <div id="epsGrowth" class="metric-value">—</div>
+          <div id="sparkEps" class="sparkline-host" aria-hidden="true"></div>
+        </article>
+      </section>
 
-    <section id="boundaryCard" class="card boundary-card reveal reveal-4">
-      <div class="section-head">
-        <h2>Signal thresholds</h2>
-        <div class="hint">EPS unchanged</div>
-      </div>
-
-      <div id="boundaryStrip" class="boundary-strip" aria-label="P/E thresholds for allocation signal">
-        <div class="boundary-zones"><span class="zone-buy"></span><span class="zone-hold"></span><span class="zone-sell"></span></div>
-        <div id="buyHoldTick" class="boundary-tick threshold-tick"><span>BUY / HOLD</span></div>
-        <div id="holdSellTick" class="boundary-tick threshold-tick"><span>HOLD / SELL</span></div>
-        <div id="currentPeTick" class="boundary-tick current-tick"><span>Current</span></div>
-      </div>
-      <div class="boundary-scale-labels"><span id="boundaryMin">—</span><span>P/E</span><span id="boundaryMax">—</span></div>
-
-      <div class="boundary-summary-grid">
-        <div class="boundary-summary-item">
-          <span class="boundary-summary-label">BUY → HOLD</span>
-          <strong id="buyHoldPe">—</strong>
-          <span id="buyHoldNifty">NIFTY —</span>
-          <span id="buyHoldMove" class="delta-pill">—</span>
-        </div>
-        <div class="boundary-summary-item current-boundary-card">
-          <span class="boundary-summary-label">CURRENT</span>
-          <strong id="currentBoundaryPe">—</strong>
-          <span id="currentBoundaryNifty">NIFTY —</span>
-        </div>
-        <div class="boundary-summary-item">
-          <span class="boundary-summary-label">HOLD → SELL</span>
-          <strong id="holdSellPe">—</strong>
-          <span id="holdSellNifty">NIFTY —</span>
-          <span id="holdSellMove" class="delta-pill">—</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="grid-2 analytics-grid reveal reveal-5">
-      <article class="card drivers-card">
-        <div class="section-head compact-head"><h2>Score drivers</h2></div>
-        <div class="driver-row">
-          <div class="driver-copy"><span>Valuation <small>70%</small></span></div>
-          <div class="driver-bar"><div id="valuationBar" class="driver-fill valuation-fill"></div></div>
-          <strong id="valuationScore">—</strong>
-        </div>
-        <div class="driver-row">
-          <div class="driver-copy"><span>EPS growth <small>30%</small></span></div>
-          <div class="driver-bar"><div id="growthBar" class="driver-fill growth-fill"></div></div>
-          <strong id="growthScore">—</strong>
-        </div>
-        <div class="mini-grid mini-grid-3">
-          <div><span>Earnings yield</span><strong id="earningsYield">—</strong></div>
-          <div><span>Median P/E</span><strong id="medianPe">—</strong></div>
-          <div><span>Implied EPS</span><strong id="impliedEps">—</strong></div>
-        </div>
-      </article>
-
-      <article class="card history-card">
+      <section class="card overview-threshold-card">
         <div class="section-head compact-head">
-          <h2>Composite score</h2>
-          <div id="scoreHistoryMode" class="history-mode">Building history</div>
+          <h2>Signal thresholds</h2>
+          <div class="hint">EPS unchanged</div>
         </div>
-        <div id="scoreHistoryHost" class="score-history-host" aria-live="polite"></div>
-      </article>
+        <div id="overviewBoundaryStrip" class="boundary-strip overview-boundary-strip" aria-label="P/E signal thresholds overview">
+          <div class="boundary-zones"><span class="zone-buy"></span><span class="zone-hold"></span><span class="zone-sell"></span></div>
+          <div id="ovBuyHoldTick" class="boundary-tick threshold-tick"><span>BUY / HOLD</span></div>
+          <div id="ovHoldSellTick" class="boundary-tick threshold-tick"><span>HOLD / SELL</span></div>
+          <div id="ovCurrentPeTick" class="boundary-tick current-tick"><span>Current</span></div>
+        </div>
+        <div class="boundary-scale-labels"><span id="ovBoundaryMin">—</span><span>P/E</span><span id="ovBoundaryMax">—</span></div>
+        <div class="overview-threshold-grid">
+          <div class="overview-threshold-item"><span>BUY → HOLD</span><strong id="ovBuyHoldPe">—</strong></div>
+          <div class="overview-threshold-item current"><span>CURRENT</span><strong id="ovCurrentPe">—</strong></div>
+          <div class="overview-threshold-item"><span>HOLD → SELL</span><strong id="ovHoldSellPe">—</strong></div>
+        </div>
+      </section>
     </section>
 
-    <section class="card backtest-card reveal reveal-6">
-      <div class="section-head"><h2>Forward returns by valuation</h2></div>
-      <div class="table-wrap">
-        <table class="backtest-table">
-          <thead><tr><th>Starting valuation</th><th>1Y median</th><th>3Y median CAGR</th><th>5Y median CAGR</th><th>10Y median CAGR</th><th>3Y loss freq.</th><th>3Y N</th></tr></thead>
-          <tbody id="backtestBody"></tbody>
-        </table>
-      </div>
-    </section>
+    <section id="panel-valuation" class="tab-panel" data-panel="valuation">
+      <section id="boundaryCard" class="card boundary-card">
+        <div class="section-head"><h2>Signal thresholds</h2><div class="hint">EPS unchanged</div></div>
+        <div id="boundaryStrip" class="boundary-strip" aria-label="P/E thresholds for allocation signal">
+          <div class="boundary-zones"><span class="zone-buy"></span><span class="zone-hold"></span><span class="zone-sell"></span></div>
+          <div id="buyHoldTick" class="boundary-tick threshold-tick"><span>BUY / HOLD</span></div>
+          <div id="holdSellTick" class="boundary-tick threshold-tick"><span>HOLD / SELL</span></div>
+          <div id="currentPeTick" class="boundary-tick current-tick"><span>Current</span></div>
+        </div>
+        <div class="boundary-scale-labels"><span id="boundaryMin">—</span><span>P/E</span><span id="boundaryMax">—</span></div>
+        <div class="boundary-summary-grid">
+          <div class="boundary-summary-item"><span class="boundary-summary-label">BUY → HOLD</span><strong id="buyHoldPe">—</strong><span id="buyHoldNifty">INDEX —</span><span id="buyHoldMove" class="delta-pill">—</span></div>
+          <div class="boundary-summary-item current-boundary-card"><span class="boundary-summary-label">CURRENT</span><strong id="currentBoundaryPe">—</strong><span id="currentBoundaryNifty">INDEX —</span></div>
+          <div class="boundary-summary-item"><span class="boundary-summary-label">HOLD → SELL</span><strong id="holdSellPe">—</strong><span id="holdSellNifty">INDEX —</span><span id="holdSellMove" class="delta-pill">—</span></div>
+        </div>
+      </section>
 
-    <section class="grid-2 bottom-grid reveal reveal-7">
-      <article class="card log-card">
-        <div class="section-head compact-head"><h2>Signal log</h2><a class="text-link" href="data/history.csv">View history</a></div>
-        <div class="table-wrap compact"><table><thead><tr><th>Date</th><th>P/E</th><th>Score</th><th>Signal</th></tr></thead><tbody id="historyBody"></tbody></table></div>
-      </article>
-
-      <article class="card methodology-card">
-        <details>
-          <summary>
-            <strong>Methodology</strong>
-            <span class="chevron">⌄</span>
-          </summary>
-          <div class="methodology-content">
-            <p><strong>BUY</strong> supports adding long-horizon exposure. <strong>HOLD</strong> is neutral. <strong>SELL</strong> is unfavourable for fresh allocation.</p>
-            <p>Score: 70% post-2021 regime-relative valuation + 30% YoY implied EPS growth. Backtest: quarter-end observations with no-lookahead valuation percentiles.</p>
-            <p>Signal thresholds hold implied EPS and the earnings-growth score constant. They are model boundaries, not price targets.</p>
-            <p>Research model; not personalised investment advice.</p>
+      <section class="grid-2 valuation-grid">
+        <article class="card drivers-card">
+          <div class="section-head compact-head"><h2>Score drivers</h2></div>
+          <div class="driver-row"><div class="driver-copy"><span>Valuation <small>70%</small></span></div><div class="driver-bar"><div id="valuationBar" class="driver-fill valuation-fill"></div></div><strong id="valuationScore">—</strong></div>
+          <div class="driver-row"><div class="driver-copy"><span>EPS growth <small>30%</small></span></div><div class="driver-bar"><div id="growthBar" class="driver-fill growth-fill"></div></div><strong id="growthScore">—</strong></div>
+          <div class="mini-grid mini-grid-3">
+            <div><span>Earnings yield</span><strong id="earningsYield">—</strong></div>
+            <div><span>Median P/E</span><strong id="medianPe">—</strong></div>
+            <div><span>Implied EPS</span><strong id="impliedEps">—</strong></div>
           </div>
-        </details>
-        <div class="source-strip"><span>Source</span><strong>NSE Indices / NSE Archives</strong></div>
-      </article>
+        </article>
+        <article class="card explanation-card">
+          <div class="section-head compact-head"><h2>How to read it</h2></div>
+          <div class="explanation-copy">
+            <p><strong>BUY</strong> supports adding long-horizon exposure. <strong>HOLD</strong> is neutral. <strong>SELL</strong> is unfavourable for fresh allocation.</p>
+            <p>The score compares each index against <strong>its own</strong> valuation history: 70% P/E percentile + 30% YoY implied EPS growth.</p>
+            <p>Signal thresholds assume implied EPS and the growth score are unchanged. They are model boundaries, not price targets.</p>
+          </div>
+        </article>
+      </section>
+    </section>
+
+    <section id="panel-backtest" class="tab-panel" data-panel="backtest">
+      <section class="card backtest-card">
+        <div class="section-head"><div><h2>Forward returns by valuation</h2><div id="backtestMeta" class="subhead-note"></div></div></div>
+        <div class="table-wrap">
+          <table class="backtest-table">
+            <thead><tr><th>Starting valuation</th><th>1Y median</th><th>3Y median CAGR</th><th>5Y median CAGR</th><th>10Y median CAGR</th><th>3Y loss freq.</th><th>3Y N</th></tr></thead>
+            <tbody id="backtestBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+
+    <section id="panel-history" class="tab-panel" data-panel="history">
+      <section class="grid-2 history-grid">
+        <article class="card history-card"><div class="section-head compact-head"><h2>Composite score</h2><div id="scoreHistoryMode" class="history-mode">Building history</div></div><div id="scoreHistoryHost" class="score-history-host" aria-live="polite"></div></article>
+        <article class="card methodology-card">
+          <details open><summary><strong>Methodology</strong><span class="chevron">⌄</span></summary>
+            <div class="methodology-content">
+              <p>Each index is evaluated against its own P/E history; the NIFTY 50 calibration is not imposed on other indices.</p>
+              <p>Current valuation percentiles use post-2021 month-end P/E observations. Historical backtests use quarter-end observations and separate pre/post-2021 P/E regimes.</p>
+              <p>Indices with insufficient P/E history or unavailable aggregate earnings are explicitly marked rather than assigned a synthetic signal.</p>
+            </div>
+          </details>
+          <div class="source-strip"><span>Source</span><strong>NSE Indices / NSE Archives</strong></div>
+        </article>
+      </section>
+      <section class="grid-2 bottom-grid">
+        <article class="card log-card"><div class="section-head compact-head"><h2>Signal log</h2><a class="text-link" href="data/multi_index_history.csv">View all history</a></div><div class="table-wrap compact"><table><thead><tr><th>Date</th><th>P/E</th><th>Score</th><th>Signal</th></tr></thead><tbody id="historyBody"></tbody></table></div></article>
+        <article class="card notes-card"><div class="section-head compact-head"><h2>Coverage</h2></div><div id="coverageStats" class="coverage-grid"></div></article>
+      </section>
+    </section>
+
+    <section id="panel-heatmap" class="tab-panel" data-panel="heatmap">
+      <section class="card heatmap-card">
+        <div class="section-head heatmap-head">
+          <div><h2>Cross-index valuation heatmap</h2><div class="subhead-note">Compare each index against its own history.</div></div>
+          <div class="heatmap-controls">
+            <input id="heatmapSearch" class="heatmap-search" type="search" placeholder="Search indices…" aria-label="Search indices" />
+            <select id="heatmapGroup" class="heatmap-group" aria-label="Filter index group"><option value="All">All groups</option><option>Broad Market</option><option>Sectoral</option><option>Strategy / Thematic / Other</option></select>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table class="heatmap-table">
+            <thead><tr><th>Index</th><th>Group</th><th>P/E</th><th>Valuation %ile</th><th>EPS growth</th><th>Score</th><th>Signal</th></tr></thead>
+            <tbody id="heatmapBody"></tbody>
+          </table>
+        </div>
+      </section>
     </section>
   </main>
   <script src="app.js"></script>
