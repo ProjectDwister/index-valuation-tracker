@@ -1,4 +1,4 @@
-name: Refresh NIFTY tracker and deploy Pages
+name: Refresh Index Valuation Tracker and deploy Pages
 
 on:
   workflow_dispatch:
@@ -30,7 +30,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: nifty-pages
+  group: index-valuation-pages
   cancel-in-progress: false
 
 jobs:
@@ -69,7 +69,7 @@ jobs:
           ALERT_PE_DELTA: ${{ vars.ALERT_PE_DELTA || '0.10' }}
           ALERT_NIFTY_DELTA_PCT: ${{ vars.ALERT_NIFTY_DELTA_PCT || '0.005' }}
           FORCE_THRESHOLD_ALERT: ${{ github.event_name == 'workflow_dispatch' && inputs.test_email_alert || false }}
-          DASHBOARD_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
+          DASHBOARD_URL: https://projectdwister.github.io/index-valuation-tracker/
         run: >-
           python nifty_tracker_update.py
           --workbook NIFTY_Valuation_Backtest_Live_Tracker.xlsx
@@ -87,11 +87,11 @@ jobs:
       - name: Commit refreshed model history
         if: github.event_name != 'push'
         run: |
-          git config user.name "NIFTY Tracker Bot"
+          git config user.name "Index Valuation Tracker Bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add NIFTY_Valuation_Backtest_Live_Tracker.xlsx nifty_quarterly_backtest.csv multi_index_quarterly.csv multi_index_monthly.csv docs/data docs/downloads
           if ! git diff --cached --quiet; then
-            git commit -m "NIFTY multi-index valuation and backtest update"
+            git commit -m "Index valuation and backtest update"
             git push
           else
             echo "No model changes to commit."
