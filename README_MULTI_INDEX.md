@@ -1,77 +1,40 @@
-# NIFTY Multi-Index Valuation Tracker update
+# Multi-index valuation engine
 
-This update keeps the existing NIFTY 50 Excel model and Gmail threshold alerts, and adds a multi-index valuation/backtest layer to the GitHub Pages dashboard.
+`multi_index_tracker.py` extends the canonical NIFTY 50 tracker to other eligible NSE equity indices.
 
-## Add / replace these files
+## Per-index calculations
 
-Replace:
-- `docs/index.html`
-- `docs/styles.css`
-- `docs/app.js`
-- `.github/workflows/nifty-tracker.yml`
+Each index uses its own:
+- index level
+- P/E
+- implied EPS = index level / P/E
+- YoY implied EPS growth
+- post-2021 P/E percentile
+- valuation score
+- growth score
+- composite score
+- BUY / HOLD / SELL thresholds
+- historical forward returns
 
-Add:
-- `multi_index_tracker.py` at the repository root
-
-Do not delete the existing:
-- `nifty_tracker_update.py`
-- `NIFTY_Valuation_Backtest_Live_Tracker.xlsx`
-- `nifty_quarterly_backtest.csv`
-- Gmail repository secrets
-- existing `docs/data/` history
-
-## First run
-
-After committing the files, go to:
-
-Actions -> Refresh NIFTY tracker and deploy Pages -> Run workflow
-
-The first multi-index run is intentionally longer because it bootstraps historical NSE snapshots:
-- Quarter-end observations from Mar-2012 onward for forward-return backtests
-- Month-end observations from Apr-2021 onward for current P/E percentiles
-
-It creates automatically:
-- `multi_index_quarterly.csv`
-- `multi_index_monthly.csv`
-- `docs/data/multi_index_catalog.json`
-- `docs/data/multi_index_latest.json`
-- `docs/data/multi_index_backtests.json`
-- `docs/data/multi_index_history.csv`
-
-Later weekday runs are much lighter. New month-end and quarter-end observations are added only when required.
-
-## Dashboard
-
-The dashboard adds:
-- Index selector with Broad Market, Sectoral and Strategy/Thematic/Other groups
-- Bookmarkable URLs such as `?index=nifty-50`
-- Per-index Overview / Valuation / Backtest / History tabs
-- Cross-index valuation heatmap
-- Per-index score based on its own history, not NIFTY 50's P/E range
-- Only indices with sufficient live P/E history and a usable historical backtest are shown; limited-history / P/E-unavailable indices are excluded from the webpage
-
-## Scoring
-
-For indices with sufficient data:
-- 70% valuation score based on the index's own post-2021 P/E percentile
-- 30% YoY implied EPS-growth score
-- BUY >= 70
-- HOLD 40 to <70
-- SELL <40
-
-Historical forward-return tables use quarter-end observations and separate pre-/post-2021 P/E regimes.
-
-## Current scope
-
-The NSE daily multi-index archive contains many NIFTY indices in one file. The updater keeps equity-like NIFTY indices and excludes categories where a P/E-based model is not economically appropriate (e.g. bonds/G-Secs, debt, inverse/leverage, futures/arbitrage and hybrid debt strategies).
-
+No other index is scored using NIFTY 50 P/E or EPS.
 
 ## Useful-history filter
 
-The webpage now includes only indices that satisfy all of the following:
-- Current P/E is available
-- A live composite score can be calculated
-- At least 8 comparable post-2021 monthly P/E observations
-- At least 12 P/E-bearing quarter-end observations for the backtest
+To appear in the selector and heatmap an index must have:
+- current P/E available
+- live composite score available
+- at least 8 comparable post-2021 monthly P/E observations
+- at least 32 P/E-bearing quarter-end observations
+- at least 16 matured 3-year forward-return observations
 
-Indices that do not yet meet these conditions are omitted from the selector and heatmap. Their raw monthly and quarterly source history is retained, so they can automatically appear later when enough history has accumulated.
+This intentionally removes short-history thematic indices whose backtests are too sparse to be useful.
+
+Raw history remains in `multi_index_monthly.csv` and `multi_index_quarterly.csv`, allowing an index to qualify automatically later.
+
+## NIFTY 50 exception
+
+NIFTY 50 keeps the canonical 1999-onward backtest from `nifty_quarterly_backtest.csv`. Other indices use their eligible history from the common multi-index archive.
+
+## Historical percentile note
+
+The current forward-return tables use regime-normalised descriptive historical percentiles. They are not yet converted to strict expanding-history/no-lookahead percentiles; that methodology is being treated as a separate research decision so current published backtest numbers are not silently changed.

@@ -1,0 +1,16 @@
+INDEX VALUATION TRACKER - REPOSITORY CLEANUP UPDATE
+===================================================
+
+Upload/replace the files in this package, preserving their folders.
+
+Then manually run:
+  Actions -> Refresh Index Valuation Tracker and deploy Pages -> Run workflow
+
+That manual run will:
+- rebuild the dashboard using the stricter useful-history filter;
+- reduce the currently eligible universe from 83 to 51 indices;
+- regenerate only the eligible per-index Excel downloads;
+- prune the multi-index alert state to eligible indices; and
+- automatically remove obsolete duplicate webpage files and the old NIFTY-only alert-state file.
+
+The current scoring formula and published historical backtest methodology are NOT changed by this cleanup.

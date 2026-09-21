@@ -54,7 +54,8 @@ MODEL_VERSION = "multi-index-1.0"
 REGIME_SEAM = pd.Timestamp("2021-03-31")
 MIN_EXPANDING_OBS = 8
 MIN_LIVE_MONTHS = 8
-MIN_BACKTEST_QUARTERS = 12
+MIN_BACKTEST_QUARTERS = 32
+MIN_MATURE_3Y_OBS = 16
 BOOTSTRAP_QUARTER_START = date(2012, 3, 31)
 BOOTSTRAP_MONTH_START = date(2021, 4, 30)
 
@@ -531,7 +532,7 @@ def build_quarterly_backtest(qdf: pd.DataFrame, key: str) -> Tuple[pd.DataFrame,
     valid_pe = int(d["PE"].notna().sum())
     first = d["Date"].min().date().isoformat() if len(d) else None
     last = d["Date"].max().date().isoformat() if len(d) else None
-    status = "ok" if valid_pe >= 12 else "insufficient_history"
+    status = "ok" if valid_pe >= MIN_BACKTEST_QUARTERS else "insufficient_history"
     return d, {"rows": rows, "meta": {"status":status,"valid_pe_quarters":valid_pe,"first_quarter":first,"last_quarter":last}}
 
 
@@ -587,7 +588,7 @@ def build_legacy_nifty50_backtest(path: Path) -> Optional[Dict]:
     return {
         "rows": rows,
         "meta": {
-            "status": "ok" if valid_pe >= 12 else "insufficient_history",
+            "status": "ok" if valid_pe >= MIN_BACKTEST_QUARTERS else "insufficient_history",
             "valid_pe_quarters": valid_pe,
             "first_quarter": first,
             "last_quarter": last,
@@ -710,6 +711,7 @@ def make_catalog(latest_map: Dict[str, Dict], backtests: Dict[str, Dict]) -> Dic
             "group": x["group"],
             "status": status,
             "valid_pe_quarters": bt_meta.get("valid_pe_quarters", 0),
+            "matured_3y_obs": sum(int(r.get("n_3y", 0) or 0) for r in backtests.get(slug, {}).get("rows", [])),
             "live_pe_history_months": x.get("live_pe_history_months", 0),
         })
     group_order = {"Broad Market":0,"Sectoral":1,"Strategy / Thematic / Other":2}
@@ -1541,6 +1543,10 @@ def main():
     #   * live composite score can be calculated
     #   * at least MIN_LIVE_MONTHS of comparable post-2021 P/E history
     #   * at least MIN_BACKTEST_QUARTERS PE-bearing quarter-end observations
+    #   * at least MIN_MATURE_3Y_OBS matured 3-year forward-return observations
+    #
+    # This deliberately favours a smaller, more statistically useful dashboard
+    # universe over showing every NSE index with only a short back-cast history.
     #
     # The full raw monthly/quarterly archive is still retained, so a currently
     # excluded index can automatically enter the dashboard once it matures.
@@ -1549,17 +1555,22 @@ def main():
     for slug, x in latest_map.items():
         bt_meta = backtests.get(slug, {}).get("meta", {})
         q_obs = int(bt_meta.get("valid_pe_quarters", 0) or 0)
+        matured_3y_obs = sum(int(r.get("n_3y", 0) or 0) for r in backtests.get(slug, {}).get("rows", []))
         live_months = int(x.get("live_pe_history_months", 0) or 0)
         useful = (
             x.get("pe") is not None
             and x.get("composite_score") is not None
             and live_months >= MIN_LIVE_MONTHS
             and q_obs >= MIN_BACKTEST_QUARTERS
+            and matured_3y_obs >= MIN_MATURE_3Y_OBS
         )
         if useful:
             keep.add(slug)
         else:
-            excluded.append((x.get("index_name", slug), live_months, q_obs, x.get("pe") is not None))
+            excluded.append((
+                x.get("index_name", slug), live_months, q_obs, matured_3y_obs,
+                x.get("pe") is not None
+            ))
 
     latest_map = {k:v for k,v in latest_map.items() if k in keep}
     backtests = {k:v for k,v in backtests.items() if k in keep}
@@ -1567,8 +1578,11 @@ def main():
 
     if excluded:
         print(f"Excluded {len(excluded)} limited/unusable indices from dashboard.")
-        for name, live_months, q_obs, has_pe in excluded:
-            print(f"  - {name}: live_months={live_months}, quarter_pe_obs={q_obs}, current_pe={'yes' if has_pe else 'no'}")
+        for name, live_months, q_obs, matured_3y_obs, has_pe in excluded:
+            print(
+                f"  - {name}: live_months={live_months}, quarter_pe_obs={q_obs}, "
+                f"matured_3y_obs={matured_3y_obs}, current_pe={'yes' if has_pe else 'no'}"
+            )
 
     catalog = make_catalog(latest_map, backtests)
     data_dir.mkdir(parents=True, exist_ok=True)

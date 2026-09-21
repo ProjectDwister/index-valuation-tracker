@@ -1251,7 +1251,13 @@ def main():
         pe_values,
         metrics,
     )
-    process_threshold_alerts(web_dir, asof, current_close, current_pe, metrics, pe_values)
+    # Multi-index alerts are the authoritative alert system for the website.
+    # Keep the legacy NIFTY-only alert engine opt-in for backwards compatibility,
+    # but disable it by default so it cannot maintain a competing alert state.
+    if _env_bool("ENABLE_LEGACY_NIFTY_ALERTS", False):
+        process_threshold_alerts(web_dir, asof, current_close, current_pe, metrics, pe_values)
+    else:
+        print("Legacy NIFTY-only email alerts disabled; multi-index alert engine is authoritative.")
 
     print(f"Updated: {out}")
     print(f"As of: {asof:%d-%b-%Y} | NIFTY {current_close:,.2f} | PE {current_pe:.2f}x")

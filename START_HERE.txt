@@ -1,42 +1,43 @@
-NIFTY VALUATION TRACKER — 5-MINUTE GITHUB SETUP
-================================================
+INDEX VALUATION TRACKER - QUICK GITHUB SETUP
+============================================
 
-1. Create a GitHub repository named: nifty-valuation-tracker
-   Easiest option: make it PUBLIC (the dashboard contains only market/model data).
+Repository name:
+    index-valuation-tracker
 
-2. Upload/commit the CONTENTS of this extracted folder to the repository root.
-   Important: preserve these folders exactly:
+Live site:
+    https://projectdwister.github.io/index-valuation-tracker/
+
+1. Upload/commit this repository with these paths preserved:
        .github/workflows/nifty-tracker.yml
        docs/
 
-3. In GitHub open:
+2. In GitHub open:
        Settings -> Pages
-   Under Build and deployment set:
+   Set:
        Source = GitHub Actions
 
+3. Configure Gmail alert secrets in:
+       Settings -> Secrets and variables -> Actions
+
+   Required secrets:
+       SMTP_USERNAME
+       SMTP_PASSWORD
+       ALERT_EMAIL_TO
+
 4. Open:
-       Actions -> Refresh NIFTY tracker and deploy Pages
+       Actions -> Refresh Index Valuation Tracker and deploy Pages
    Click:
        Run workflow -> Run workflow
 
-5. Wait for the workflow to complete, then open:
-       Settings -> Pages
-   GitHub will show your live website address there.
+5. The weekday cloud refresh runs at 7:00 PM Asia/Kolkata.
+   Your PC does not need to be on.
 
-AUTOMATION
-----------
-The cloud workflow runs Monday-Friday at 7:00 PM Asia/Kolkata.
-Your PC does NOT need to be on.
+NOTES
+-----
+- The base website opens NIFTY 50.
+- Only indices with useful historical depth are displayed.
+- The top-right Excel button downloads the workbook for the selected index.
+- Multi-index alerts are consolidated into one email per refresh when triggers occur.
+- Update docs/data/nse_market_holidays.json when NSE publishes a new year's holiday calendar.
 
-MANUAL REFRESH
---------------
-Actions -> Refresh NIFTY tracker and deploy Pages -> Run workflow
-
-WHAT GETS UPDATED
------------------
-- Website signal and score
-- Daily history
-- Detailed Excel workbook
-- Downloadable Excel copy on the website
-
-For full details, read README.md.
+See README.md for the current methodology and full repository description.

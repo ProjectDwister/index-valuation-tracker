@@ -1,61 +1,96 @@
-# NIFTY 50 Valuation Signal — GitHub Actions + GitHub Pages
+# Index Valuation Tracker
 
-This repository runs the NIFTY valuation model in the cloud and publishes a mobile-friendly dashboard with GitHub Pages.
+Cloud-updated valuation dashboard for selected NSE equity indices.
 
-## What happens automatically
+Live site: https://projectdwister.github.io/index-valuation-tracker/
 
-- **Weekdays at 7:00 PM India time**: GitHub Actions runs the Python updater.
-- The updater refreshes NIFTY P/E, index close, implied EPS growth and the composite model score.
-- It updates the Excel workbook and appends the daily signal history.
-- It writes `docs/data/latest.json`, `docs/data/history.csv` and `docs/data/backtest_summary.json`.
-- It copies the current Excel model to `docs/downloads/`.
-- The workflow commits the refreshed history back to `main` and publishes the `docs/` site to GitHub Pages.
-- You can also run it anytime from **Actions → Refresh NIFTY tracker and deploy Pages → Run workflow**.
+## What the tracker does
 
-## One-time GitHub setup
+The GitHub Action refreshes the canonical NIFTY 50 model and the multi-index dataset, writes the website data under `docs/data/`, generates one Excel workbook per eligible index, evaluates multi-index email alerts, commits refreshed data back to `main`, and deploys `docs/` to GitHub Pages.
 
-1. Create a new GitHub repository. `nifty-valuation-tracker` is a good name.
-2. Upload/commit **all files and folders in this project**, preserving `.github/workflows/nifty-tracker.yml` and the `docs/` folder.
-3. Make sure the default branch is named `main`.
-4. Open **Settings → Pages**.
-5. Under **Build and deployment → Source**, choose **GitHub Actions**.
-6. Open **Actions**, select **Refresh NIFTY tracker and deploy Pages**, and choose **Run workflow** once.
-7. After the deployment finishes, the Pages URL appears in the deployment summary and under **Settings → Pages**.
+The scheduled run is Monday-Friday at 7:00 PM Asia/Kolkata. It can also be run manually from **Actions -> Refresh Index Valuation Tracker and deploy Pages -> Run workflow**.
 
-> GitHub Pages is a public website. This dashboard contains only market/model data, but do not add passwords, API keys or confidential information under `docs/`.
+## Dashboard universe
 
-## Files
+The website intentionally excludes short-history or incomplete indices. An index must have:
 
-- `NIFTY_Valuation_Backtest_Live_Tracker.xlsx` — full Excel model and backtest.
-- `nifty_tracker_update.py` — cloud/local updater.
-- `nifty_quarterly_backtest.csv` — fixed historical quarter-end study.
-- `requirements.txt` — Python dependencies.
-- `.github/workflows/nifty-tracker.yml` — scheduled cloud job + Pages deployment.
-- `docs/` — static website and generated data.
-- `run_nifty_tracker.bat` — optional Windows local launcher; no longer required for the cloud setup.
+- a current P/E;
+- a calculable composite score;
+- at least 8 comparable post-2021 monthly P/E observations;
+- at least 32 P/E-bearing quarter-end observations; and
+- at least 16 matured 3-year forward-return observations.
 
-## Signal definition
+Raw monthly and quarterly archive data are retained even for excluded indices, so an index can enter the dashboard automatically once it has enough history.
 
-`Composite Score = 70% × Valuation Score + 30% × Earnings-Growth Score`
+NIFTY 50 is a special case: its backtest uses the canonical long-history file from 1999 onward rather than the shorter common multi-index archive.
 
-- **BUY**: score ≥ 70
-- **HOLD**: 40 ≤ score < 70
-- **SELL**: score < 40
+## Scoring
 
-The current P/E is ranked within the post-April-2021 consolidated-earnings regime. The historical backtest normalises P/E within the applicable earnings-methodology regime before pooling observations.
+`Composite Score = 70% x Valuation Score + 30% x Earnings-Growth Score`
 
-`SELL` means conditions are unfavourable for fresh long-horizon allocation under this model. It is not a recommendation to short NIFTY or liquidate a diversified portfolio.
+- BUY: score >= 70
+- HOLD: 40 <= score < 70
+- SELL: score < 40
+
+Each index uses its own P/E history and its own implied EPS growth. Implied index EPS is calculated as index level divided by index P/E.
+
+## Historical backtest methodology
+
+The current historical return tables rank P/E within the applicable standalone/consolidated methodology regime and then pool observations into valuation quintiles. This is a descriptive regime-normalised historical study.
+
+The current tables are intentionally left unchanged. A separate future research step can compare them with strict expanding-history/no-lookahead percentiles before any methodology change is adopted.
+
+## Website
+
+GitHub Pages is served only from `docs/`.
+
+Important website files:
+
+- `docs/index.html`
+- `docs/styles.css`
+- `docs/app.js`
+- `docs/data/` generated JSON/CSV and the maintainable NSE holiday calendar
+- `docs/downloads/indices/` dynamic per-index Excel downloads
+
+The base URL opens NIFTY 50. Direct links such as `?index=nifty-bank` open the selected index.
+
+## Market status indicator
+
+The top-right market-status indicator uses Asia/Kolkata time, regular NSE cash-market hours (09:15-15:30), weekends, and the holiday calendar in:
+
+`docs/data/nse_market_holidays.json`
+
+Update that JSON when NSE publishes a new year's Capital Market holiday calendar. If the current year is not covered, the indicator fails conservatively to red and shows that a calendar update is required rather than incorrectly showing the market as open.
+
+## Email alerts
+
+The authoritative alert engine is the multi-index engine in `multi_index_tracker.py`.
+
+It monitors every eligible displayed index and sends a consolidated email when one or more indices meet the configured threshold-change or signal-change conditions. The legacy NIFTY-only alert engine remains in `nifty_tracker_update.py` only for backwards compatibility and is disabled by default.
+
+Required GitHub Actions secrets:
+
+- `SMTP_USERNAME`
+- `SMTP_PASSWORD`
+- `ALERT_EMAIL_TO`
+
+Optional repository variables include `ALERT_PE_DELTA`, `ALERT_INDEX_DELTA_PCT`, `SMTP_HOST`, `SMTP_PORT`, and `SMTP_FROM`.
+
+## Main repository files
+
+- `multi_index_tracker.py` - multi-index data, backtests, downloads and alerts
+- `nifty_tracker_update.py` - canonical NIFTY 50 refresh and fallback web data
+- `NIFTY_Valuation_Backtest_Live_Tracker.xlsx` - canonical NIFTY 50 workbook
+- `nifty_quarterly_backtest.csv` - canonical NIFTY 50 long-history quarter-end study
+- `multi_index_quarterly.csv` - persistent raw multi-index quarter-end archive
+- `multi_index_monthly.csv` - persistent raw multi-index month-end archive
+- `.github/workflows/nifty-tracker.yml` - scheduled refresh and Pages deployment
+- `requirements.txt` - Python dependencies
 
 ## Data sources
 
+- NSE / NSE Indices daily archive and index reports
 - P/E methodology: https://www.niftyindices.com/resources/index-concepts/price-earnings-ratio
 - NSE index reports: https://www.niftyindices.com/reports
-- P/E series/page: https://downstox.com/nifty-pe/nifty-50
-- P/E CSV: https://downstox.com/api/index-pe/nifty-50/download
-- NIFTY price history fallback: https://finance.yahoo.com/quote/%5ENSEI/history/
 
-## Troubleshooting
-
-If an automatic run fails, open the failed workflow in **Actions** and inspect the `Refresh NIFTY valuation model` step. The most likely cause is a temporary upstream data-source response. Re-run the workflow later using **Run workflow**.
-
-If GitHub Pages shows a 404, confirm **Settings → Pages → Source = GitHub Actions**, then manually run the workflow once.
+Do not store passwords, API keys or confidential information in `docs/` because GitHub Pages is public.
