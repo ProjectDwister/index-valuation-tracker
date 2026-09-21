@@ -174,7 +174,10 @@ function renderSelected(slug){
   const x=latestBundle?.indices?.[slug]; if(!x)return;
   selectedSlug=slug; $('indexSelect').value=slug;
   try{localStorage.setItem('niftySelectedIndex',slug);}catch(_e){}
-  const u=new URL(window.location.href);u.searchParams.set('index',slug);history.replaceState(null,'',u);
+  const u=new URL(window.location.href);
+  if(slug==='nifty-50') u.searchParams.delete('index');
+  else u.searchParams.set('index',slug);
+  history.replaceState(null,'',u);
   $('desktopIndexTitle').textContent='Index Valuation Tracker'; $('stickyTitle').textContent='Index Valuation Tracker';
   document.title=`${x.index_name} | Index Valuation Tracker`;
   updateExcelDownload(x,slug);
@@ -244,7 +247,9 @@ async function boot(){
     }catch(_multiErr){await loadLegacyFallback();}
     buildSelector();
     $('heatmapSearch').addEventListener('input',renderHeatmap);$('heatmapGroup').addEventListener('change',renderHeatmap);
-    let slug=new URLSearchParams(location.search).get('index');if(!slug||!latestBundle.indices[slug]){try{slug=localStorage.getItem('niftySelectedIndex');}catch(_e){}}if(!slug||!latestBundle.indices[slug])slug=catalog.default_slug;
+    const requestedSlug=new URLSearchParams(location.search).get('index');
+    let slug=(requestedSlug && latestBundle.indices[requestedSlug]) ? requestedSlug : 'nifty-50';
+    if(!latestBundle.indices[slug]) slug=catalog.default_slug;
     renderSelected(slug);renderHeatmap();installSticky();
   }catch(e){document.querySelector('.shell').insertAdjacentHTML('afterbegin','<div class="error">Dashboard data could not be loaded. Run the GitHub Action “Refresh NIFTY tracker and deploy Pages” once after installing the multi-index update.</div>');console.error(e);}
 }
