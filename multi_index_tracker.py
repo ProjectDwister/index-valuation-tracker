@@ -45,6 +45,7 @@ MODEL_VERSION = "multi-index-1.0"
 REGIME_SEAM = pd.Timestamp("2021-03-31")
 MIN_EXPANDING_OBS = 8
 MIN_LIVE_MONTHS = 8
+MIN_BACKTEST_QUARTERS = 12
 BOOTSTRAP_QUARTER_START = date(2012, 3, 31)
 BOOTSTRAP_MONTH_START = date(2021, 4, 30)
 
@@ -603,6 +604,11 @@ def append_daily_history(path: Path, latest_map: Dict[str, Dict]):
     cols = ["date","slug","index_name","group","close","pe","pe_percentile","yoy_eps_growth","valuation_score","growth_score","composite_score","signal"]
     if path.exists():
         hist = pd.read_csv(path)
+        # Prune previously tracked indices that are no longer useful enough to
+        # appear on the dashboard. Raw monthly/quarterly source history is kept
+        # separately so an index can automatically re-enter later once it has
+        # sufficient history.
+        hist = hist[hist["slug"].isin(set(latest_map.keys()))].copy()
     else:
         hist = pd.DataFrame(columns=cols)
     rows = []
@@ -697,14 +703,42 @@ def main():
         latest_map[slug] = x
         backtests[slug] = summary
 
-    # Prefer only indices with at least some PE history in the selector. Keep PE-unavailable current
-    # indices if they have historical PE, since the website can explain why the live signal is unavailable.
-    keep = {
-        slug for slug, x in latest_map.items()
-        if x.get("live_pe_history_months",0) >= 1 or x.get("backtest_valid_pe_quarters",0) >= 4 or x.get("pe") is not None
-    }
+    # Dashboard eligibility: show only indices for which the model is actually useful.
+    # This removes "limited history" and live P/E-unavailable entries from the
+    # selector/heatmap rather than displaying a weak or incomplete signal.
+    #
+    # Requirements:
+    #   * current P/E is available
+    #   * live composite score can be calculated
+    #   * at least MIN_LIVE_MONTHS of comparable post-2021 P/E history
+    #   * at least MIN_BACKTEST_QUARTERS PE-bearing quarter-end observations
+    #
+    # The full raw monthly/quarterly archive is still retained, so a currently
+    # excluded index can automatically enter the dashboard once it matures.
+    keep = set()
+    excluded = []
+    for slug, x in latest_map.items():
+        bt_meta = backtests.get(slug, {}).get("meta", {})
+        q_obs = int(bt_meta.get("valid_pe_quarters", 0) or 0)
+        live_months = int(x.get("live_pe_history_months", 0) or 0)
+        useful = (
+            x.get("pe") is not None
+            and x.get("composite_score") is not None
+            and live_months >= MIN_LIVE_MONTHS
+            and q_obs >= MIN_BACKTEST_QUARTERS
+        )
+        if useful:
+            keep.add(slug)
+        else:
+            excluded.append((x.get("index_name", slug), live_months, q_obs, x.get("pe") is not None))
+
     latest_map = {k:v for k,v in latest_map.items() if k in keep}
     backtests = {k:v for k,v in backtests.items() if k in keep}
+
+    if excluded:
+        print(f"Excluded {len(excluded)} limited/unusable indices from dashboard.")
+        for name, live_months, q_obs, has_pe in excluded:
+            print(f"  - {name}: live_months={live_months}, quarter_pe_obs={q_obs}, current_pe={'yes' if has_pe else 'no'}")
 
     catalog = make_catalog(latest_map, backtests)
     data_dir.mkdir(parents=True, exist_ok=True)

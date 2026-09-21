@@ -48,7 +48,7 @@ The dashboard adds:
 - Per-index Overview / Valuation / Backtest / History tabs
 - Cross-index valuation heatmap
 - Per-index score based on its own history, not NIFTY 50's P/E range
-- Explicit `P/E unavailable` / `limited history` states instead of forcing a signal
+- Only indices with sufficient live P/E history and a usable historical backtest are shown; limited-history / P/E-unavailable indices are excluded from the webpage
 
 ## Scoring
 
@@ -64,3 +64,14 @@ Historical forward-return tables use quarter-end observations and separate pre-/
 ## Current scope
 
 The NSE daily multi-index archive contains many NIFTY indices in one file. The updater keeps equity-like NIFTY indices and excludes categories where a P/E-based model is not economically appropriate (e.g. bonds/G-Secs, debt, inverse/leverage, futures/arbitrage and hybrid debt strategies).
+
+
+## Useful-history filter
+
+The webpage now includes only indices that satisfy all of the following:
+- Current P/E is available
+- A live composite score can be calculated
+- At least 8 comparable post-2021 monthly P/E observations
+- At least 12 P/E-bearing quarter-end observations for the backtest
+
+Indices that do not yet meet these conditions are omitted from the selector and heatmap. Their raw monthly and quarterly source history is retained, so they can automatically appear later when enough history has accumulated.
