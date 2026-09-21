@@ -92,7 +92,12 @@ jobs:
           git add NIFTY_Valuation_Backtest_Live_Tracker.xlsx nifty_quarterly_backtest.csv multi_index_quarterly.csv multi_index_monthly.csv docs/data docs/downloads
           if ! git diff --cached --quiet; then
             git commit -m "Index valuation and backtest update"
-            git push
+            # The repository may have moved forward while the data refresh was running
+            # (for example, if a webpage file was edited manually). Rebase the bot
+            # commit onto the latest main branch before pushing.
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
           else
             echo "No model changes to commit."
           fi
