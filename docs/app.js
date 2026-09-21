@@ -221,7 +221,7 @@ function renderHeatmap(){
 
 function activateTab(name){document.querySelectorAll('.tab-button').forEach(b=>b.classList.toggle('active',b.dataset.tab===name));document.querySelectorAll('.tab-panel').forEach(p=>p.classList.toggle('active',p.dataset.panel===name));try{localStorage.setItem('niftyActiveTab',name);}catch(_e){} if(name==='heatmap')renderHeatmap();}
 function initTabs(){document.querySelectorAll('.tab-button').forEach(b=>b.addEventListener('click',()=>activateTab(b.dataset.tab)));let name='overview';try{name=localStorage.getItem('niftyActiveTab')||'overview';}catch(_e){}activateTab(name);}
-function installSticky(){const s=$('stickySummary'),hero=$('hero');const u=()=>{const show=hero.getBoundingClientRect().bottom<24;s.classList.toggle('visible',show);s.setAttribute('aria-hidden',show?'false':'true');};u();addEventListener('scroll',u,{passive:true});addEventListener('resize',u,{passive:true});}
+function installSticky(){const s=$('stickySummary'),topbar=document.querySelector('.topbar');if(!s||!topbar)return;const u=()=>{const show=topbar.getBoundingClientRect().bottom<0;s.classList.toggle('visible',show);s.setAttribute('aria-hidden',show?'false':'true');};u();addEventListener('scroll',u,{passive:true});addEventListener('resize',u,{passive:true});}
 
 async function loadLegacyFallback(){
   const [l,h,b]=await Promise.all([fetch('data/latest.json',{cache:'no-store'}).then(r=>r.json()),fetch('data/history.csv',{cache:'no-store'}).then(r=>r.ok?r.text():''),fetch('data/backtest_summary.json',{cache:'no-store'}).then(r=>r.json())]);
