@@ -80,104 +80,9 @@ function csvParse(text){
   });
 }
 
-let marketStatusTimer = null;
-let nseHolidayCalendar = {covered_years:[], holidays:{}};
-
-async function loadHolidayCalendar(){
-  try{
-    let data;
-    try{
-      data=await fetchResource('data/nse_market_holidays.json','json',{attempts:3,timeoutMs:5000});
-      cacheWrite('holiday-calendar',data);
-    }catch(networkError){
-      data=cacheRead('holiday-calendar');
-      if(!data) throw networkError;
-    }
-    if(data && typeof data==='object'){
-      nseHolidayCalendar={
-        covered_years:Array.isArray(data.covered_years)?data.covered_years.map(Number):[],
-        holidays:(data.holidays && typeof data.holidays==='object')?data.holidays:{},
-        regular_session:data.regular_session||{open:'09:15',close:'15:30'}
-      };
-    }
-  }catch(e){
-    // Fail conservatively: without a calendar for the current year the indicator
-    // remains red rather than incorrectly claiming that the market is open.
-    console.warn('NSE holiday calendar could not be loaded.',e);
-  }
-  updateMarketStatusDot();
-}
-
-function istParts(now = new Date()){
-  const parts = new Intl.DateTimeFormat('en-US', {
-    timeZone:'Asia/Kolkata',
-    year:'numeric', month:'2-digit', day:'2-digit', weekday:'short',
-    hour:'2-digit', minute:'2-digit', hourCycle:'h23'
-  }).formatToParts(now);
-  const get = type => parts.find(p => p.type === type)?.value;
-  return {
-    year:get('year'), month:get('month'), day:get('day'), weekday:get('weekday'),
-    hour:Number(get('hour')), minute:Number(get('minute'))
-  };
-}
-
-function nseCalendarCovers(now = new Date()){
-  const p=istParts(now);
-  return nseHolidayCalendar.covered_years.includes(Number(p.year));
-}
-
-function nseHolidayName(now = new Date()){
-  const p=istParts(now);
-  const key=`${p.year}-${p.month}-${p.day}`;
-  return nseHolidayCalendar.holidays[key] || null;
-}
-
-function nseMarketIsOpen(now = new Date()){
-  // NSE regular cash-market session: Monday-Friday, 09:15-15:30 India time,
-  // excluding holidays listed in docs/data/nse_market_holidays.json.
-  const p=istParts(now);
-  if(!nseCalendarCovers(now)) return false;
-  if(!['Mon','Tue','Wed','Thu','Fri'].includes(p.weekday)) return false;
-  if(nseHolidayName(now)) return false;
-  const minutes = p.hour * 60 + p.minute;
-  return minutes >= (9 * 60 + 15) && minutes < (15 * 60 + 30);
-}
-
-function updateMarketStatusDot(){
-  const host=$('freshness'); if(!host) return;
-  const now=new Date();
-  const covered=nseCalendarCovers(now);
-  const open=nseMarketIsOpen(now);
-  const holiday=nseHolidayName(now);
-  const statusText=$('marketStatusText');
-  host.classList.remove('fresh','stale','market-open','market-closed');
-  host.classList.add(open ? 'market-open' : 'market-closed');
-  const dot=host.querySelector('.status-dot');
-  if(dot){
-    dot.style.background=open ? '#22c55e' : '#ef4444';
-    dot.style.boxShadow=open ? '0 0 0 4px rgba(34,197,94,.13)' : '0 0 0 4px rgba(239,68,68,.13)';
-  }
-  let closedReason='NSE regular market is closed';
-  if(!covered) closedReason=`NSE holiday calendar is not configured for ${istParts(now).year}`;
-  else if(holiday) closedReason=`NSE market is closed — ${holiday}`;
-  if(statusText){
-    if(open) statusText.textContent='Market Open · closes 3:30 PM';
-    else if(!covered) statusText.textContent='Market Closed · calendar update required';
-    else if(holiday) statusText.textContent=`Market Closed · ${holiday}`;
-    else statusText.textContent='Market Closed';
-  }
-  host.title=open ? 'NSE regular market is open' : closedReason;
-  host.setAttribute('aria-label', open ? 'NSE regular market open' : closedReason);
-}
-
 function setFreshness(asOf){
-  const host=$('freshness'); if(!host) return;
-  const dateEl=$('freshnessDate');
-  if(dateEl) dateEl.textContent=`Latest close ${fmtDate(asOf)}`;
-  updateMarketStatusDot();
-  if(!marketStatusTimer){
-    marketStatusTimer=window.setInterval(updateMarketStatusDot,30000);
-  }
+  const footer=$('lastUpdatedText');
+  if(footer) footer.textContent=`Last updated on ${fmtDate(asOf)}`;
 }
 
 function setDialCallouts(signal){
@@ -460,7 +365,6 @@ async function boot(){
   setLoadProgress(4);
   initTabs();
   setLoadProgress(10);
-  await loadHolidayCalendar();
   setLoadProgress(22);
   try{
     try{

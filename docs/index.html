@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#07111f" />
   <title>Index Valuation Tracker</title>
   <meta name="description" content="Multi-index valuation, earnings-growth and historical forward-return dashboard for NSE equity indices." />
-  <link rel="stylesheet" href="styles.css?v=20260922a" />
+  <link rel="stylesheet" href="styles.css?v=20260922b" />
 </head>
 <body>
   <div id="ambientGlow" class="ambient-glow" aria-hidden="true"></div>
@@ -42,13 +42,6 @@
         <a class="icon-button home-button" href="https://projectdwister.github.io/index-valuation-tracker/" aria-label="Go to Index Valuation Tracker home" title="Home">
           <span aria-hidden="true">⌂</span><span class="icon-button-text">Home</span>
         </a>
-        <div id="freshness" class="freshness" aria-live="polite">
-          <span class="status-dot"></span>
-          <span class="freshness-copy">
-            <strong id="marketStatusText">Market status</strong>
-            <small id="freshnessDate">Latest close —</small>
-          </span>
-        </div>
         <a id="indexExcelDownload" class="icon-button" href="downloads/indices/nifty-50.xlsx" aria-label="Download selected index Excel model" title="Download selected index Excel model">
           <span aria-hidden="true">↓</span><span id="indexExcelText" class="icon-button-text">Excel</span>
         </a>
@@ -262,7 +255,11 @@
         </div>
       </section>
     </section>
+
+    <footer class="site-footer" aria-live="polite">
+      <span id="lastUpdatedText">Last updated on —</span>
+    </footer>
   </main>
-  <script src="app.js?v=20260922a"></script>
+  <script src="app.js?v=20260922b"></script>
 </body>
 </html>

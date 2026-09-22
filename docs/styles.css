@@ -104,3 +104,23 @@ html.app-load-failed .loading-title::after{background:linear-gradient(90deg,#f59
   .desktop-title.loading-title{display:none}
   .mobile-title.loading-title{display:inline-block}
 }
+
+
+/* Footer update: market status removed from the header. */
+.site-footer{
+  margin-top:26px;
+  padding:18px 4px 4px;
+  border-top:1px solid rgba(255,255,255,.045);
+  text-align:center;
+  color:var(--faint);
+  font-size:10px;
+  font-style:italic;
+  letter-spacing:.01em;
+}
+@media(max-width:760px){
+  .top-actions{width:auto;justify-content:flex-start}
+  .site-footer{margin-top:20px;padding-top:15px;font-size:9px}
+}
+@media(max-width:500px){
+  .top-actions{display:flex;grid-template-columns:none;width:auto}
+}
