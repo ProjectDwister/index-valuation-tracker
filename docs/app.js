@@ -12,6 +12,60 @@ let backtestBundle = null;
 let allHistory = [];
 let selectedSlug = null;
 
+const APP_CACHE_PREFIX = 'ivt-cache-v2:';
+const sleep = ms => new Promise(resolve => window.setTimeout(resolve, ms));
+
+function setLoadProgress(value, failed=false){
+  const v=clamp(Number(value)||0,0,100);
+  document.documentElement.style.setProperty('--app-load-progress',`${v}%`);
+  document.documentElement.classList.toggle('app-load-failed',!!failed);
+  if(v<100) document.documentElement.classList.remove('app-ready');
+}
+
+function finishLoadProgress(){
+  setLoadProgress(100);
+  window.setTimeout(()=>document.documentElement.classList.add('app-ready'),260);
+}
+
+async function fetchResource(url, type='json', {attempts=4, timeoutMs=8000}={}){
+  let lastError=null;
+  for(let attempt=0; attempt<attempts; attempt++){
+    const controller=new AbortController();
+    const timer=window.setTimeout(()=>controller.abort(),timeoutMs);
+    try{
+      // Retry requests use a cache-busting query parameter. This helps during
+      // the short GitHub Pages/CDN propagation window after a deployment.
+      const sep=url.includes('?')?'&':'?';
+      const requestUrl=attempt===0 ? url : `${url}${sep}retry=${Date.now()}-${attempt}`;
+      const r=await fetch(requestUrl,{cache:'no-store',signal:controller.signal});
+      if(!r.ok) throw new Error(`${url} HTTP ${r.status}`);
+      return type==='text' ? await r.text() : await r.json();
+    }catch(e){
+      lastError=e;
+      if(attempt<attempts-1) await sleep([250,650,1300,2200][attempt]||2200);
+    }finally{
+      window.clearTimeout(timer);
+    }
+  }
+  throw lastError || new Error(`Unable to load ${url}`);
+}
+
+function cacheWrite(key,value){
+  try{
+    const payload=typeof value==='string' ? {kind:'text',value} : {kind:'json',value};
+    localStorage.setItem(APP_CACHE_PREFIX+key,JSON.stringify({saved_at:Date.now(),payload}));
+  }catch(_e){}
+}
+
+function cacheRead(key){
+  try{
+    const raw=localStorage.getItem(APP_CACHE_PREFIX+key);
+    if(!raw) return null;
+    const parsed=JSON.parse(raw);
+    return parsed?.payload?.value ?? null;
+  }catch(_e){ return null; }
+}
+
 function displayQuintile(q){
   const map={'Q1 Cheapest':'Cheapest 20%','Q2':'20–40%','Q3':'40–60%','Q4':'60–80%','Q5 Most Expensive':'Most expensive 20%'};
   return map[q] || q || '—';
@@ -31,9 +85,14 @@ let nseHolidayCalendar = {covered_years:[], holidays:{}};
 
 async function loadHolidayCalendar(){
   try{
-    const r=await fetch('data/nse_market_holidays.json',{cache:'no-store'});
-    if(!r.ok) throw new Error(`holiday calendar HTTP ${r.status}`);
-    const data=await r.json();
+    let data;
+    try{
+      data=await fetchResource('data/nse_market_holidays.json','json',{attempts:3,timeoutMs:5000});
+      cacheWrite('holiday-calendar',data);
+    }catch(networkError){
+      data=cacheRead('holiday-calendar');
+      if(!data) throw networkError;
+    }
     if(data && typeof data==='object'){
       nseHolidayCalendar={
         covered_years:Array.isArray(data.covered_years)?data.covered_years.map(Number):[],
@@ -43,9 +102,10 @@ async function loadHolidayCalendar(){
     }
   }catch(e){
     // Fail conservatively: without a calendar for the current year the indicator
-    // will remain red rather than incorrectly claiming that the market is open.
+    // remains red rather than incorrectly claiming that the market is open.
     console.warn('NSE holiday calendar could not be loaded.',e);
   }
+  updateMarketStatusDot();
 }
 
 function istParts(now = new Date()){
@@ -316,6 +376,11 @@ function buildSelector(){
 }
 
 function renderHeatmap(){
+  const body=$('heatmapBody');
+  if(!catalog || !latestBundle?.indices){
+    if(body) body.innerHTML='<tr><td colspan="7" class="heatmap-loading-row">Loading index data…</td></tr>';
+    return;
+  }
   const search=($('heatmapSearch').value||'').toLowerCase(),group=$('heatmapGroup').value,sort=$('heatmapSort')?.value||'score-desc';
   const rows=catalog.items.map(i=>({...i,...latestBundle.indices[i.slug]})).filter(x=>(group==='All'||x.group===group)&&(!search||x.name.toLowerCase().includes(search)));
   const n=v=>Number.isFinite(Number(v))?Number(v):null;
@@ -334,36 +399,94 @@ function renderHeatmap(){
   $('heatmapBody').querySelectorAll('tr[data-slug]').forEach(tr=>tr.addEventListener('click',()=>{renderSelected(tr.dataset.slug);activateTab('overview');window.scrollTo({top:0,behavior:'smooth'});}));
 }
 
-function activateTab(name){document.querySelectorAll('.tab-button').forEach(b=>b.classList.toggle('active',b.dataset.tab===name));document.querySelectorAll('.tab-panel').forEach(p=>p.classList.toggle('active',p.dataset.panel===name));try{localStorage.setItem('niftyActiveTab',name);}catch(_e){} if(name==='heatmap')renderHeatmap();}
+function activateTab(name){document.querySelectorAll('.tab-button').forEach(b=>b.classList.toggle('active',b.dataset.tab===name));document.querySelectorAll('.tab-panel').forEach(p=>p.classList.toggle('active',p.dataset.panel===name));try{localStorage.setItem('niftyActiveTab',name);}catch(_e){} if(name==='heatmap' && catalog && latestBundle?.indices)renderHeatmap();}
 function initTabs(){document.querySelectorAll('.tab-button').forEach(b=>b.addEventListener('click',()=>activateTab(b.dataset.tab)));let name='overview';try{name=localStorage.getItem('niftyActiveTab')||'overview';}catch(_e){}activateTab(name);}
 function installSticky(){const s=$('stickySummary'),topbar=document.querySelector('.topbar');if(!s||!topbar)return;const u=()=>{const show=topbar.getBoundingClientRect().bottom<0;s.classList.toggle('visible',show);s.setAttribute('aria-hidden',show?'false':'true');};u();addEventListener('scroll',u,{passive:true});addEventListener('resize',u,{passive:true});}
 
 async function loadLegacyFallback(){
-  const [l,h,b]=await Promise.all([fetch('data/latest.json',{cache:'no-store'}).then(r=>r.json()),fetch('data/history.csv',{cache:'no-store'}).then(r=>r.ok?r.text():''),fetch('data/backtest_summary.json',{cache:'no-store'}).then(r=>r.json())]);
+  let done=0;
+  const bump=()=>setLoadProgress(30+(++done/3)*38);
+  const tasks=[
+    fetchResource('data/latest.json','json').finally(bump),
+    fetchResource('data/history.csv','text').finally(bump),
+    fetchResource('data/backtest_summary.json','json').finally(bump)
+  ];
+  const [l,h,b]=await Promise.all(tasks);
   const slug='nifty-50';
   catalog={default_slug:slug,groups:['Broad Market'],items:[{slug,name:'NIFTY 50',group:'Broad Market',status:'ok'}]};
-  latestBundle={indices:{[slug]:{...l,index_name:'NIFTY 50',group:'Broad Market',slug}}};backtestBundle={indices:{[slug]:b}};
+  latestBundle={indices:{[slug]:{...l,index_name:'NIFTY 50',group:'Broad Market',slug}}};
+  backtestBundle={indices:{[slug]:b}};
   allHistory=csvParse(h).map(r=>({...r,slug,close:r.nifty_close||r.close}));
 }
 
+async function loadMultiIndexData(){
+  let completed=0;
+  const bump=()=>setLoadProgress(28+(++completed/4)*46);
+  const defs=[
+    ['catalog','data/multi_index_catalog.json','json'],
+    ['latest','data/multi_index_latest.json','json'],
+    ['backtests','data/multi_index_backtests.json','json'],
+    ['history','data/multi_index_history.csv','text']
+  ];
+  const results=await Promise.allSettled(defs.map(([key,url,type])=>
+    fetchResource(url,type).then(value=>{cacheWrite(key,value);return value;}).finally(bump)
+  ));
+  const loaded={};
+  defs.forEach(([key],i)=>{
+    if(results[i].status==='fulfilled') loaded[key]=results[i].value;
+    else loaded[key]=cacheRead(key);
+  });
+
+  // Catalog + latest are the minimum required to render the selector/heatmap.
+  if(!loaded.catalog || !loaded.latest) throw new Error('Critical multi-index data unavailable');
+  catalog=loaded.catalog;
+  latestBundle=loaded.latest;
+  backtestBundle=loaded.backtests || {indices:{}};
+  allHistory=loaded.history ? csvParse(loaded.history) : [];
+}
+
+function showFatalLoadError(error){
+  setLoadProgress(100,true);
+  const shell=document.querySelector('.shell');
+  if(!shell) return;
+  const old=document.querySelector('.load-failure-banner');
+  if(old) old.remove();
+  shell.insertAdjacentHTML('afterbegin',`<div class="error load-failure-banner">Dashboard data could not be loaded. <button type="button" id="retryDashboardLoad">Retry</button></div>`);
+  $('retryDashboardLoad')?.addEventListener('click',()=>window.location.reload());
+  console.error(error);
+}
+
 async function boot(){
+  setLoadProgress(4);
   initTabs();
+  setLoadProgress(10);
   await loadHolidayCalendar();
+  setLoadProgress(22);
   try{
     try{
-      const [c,l,b,h]=await Promise.all([
-        fetch('data/multi_index_catalog.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('catalog');return r.json()}),
-        fetch('data/multi_index_latest.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('latest');return r.json()}),
-        fetch('data/multi_index_backtests.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('backtests');return r.json()}),
-        fetch('data/multi_index_history.csv',{cache:'no-store'}).then(r=>r.ok?r.text():'')
-      ]);catalog=c;latestBundle=l;backtestBundle=b;allHistory=csvParse(h);
-    }catch(_multiErr){await loadLegacyFallback();}
+      await loadMultiIndexData();
+    }catch(_multiErr){
+      console.warn('Multi-index bundle unavailable; trying NIFTY 50 fallback.',_multiErr);
+      await loadLegacyFallback();
+    }
+
+    setLoadProgress(78);
     buildSelector();
-    $('heatmapSearch').addEventListener('input',renderHeatmap);$('heatmapGroup').addEventListener('change',renderHeatmap);$('heatmapSort')?.addEventListener('change',renderHeatmap);
+    $('heatmapSearch').addEventListener('input',renderHeatmap);
+    $('heatmapGroup').addEventListener('change',renderHeatmap);
+    $('heatmapSort')?.addEventListener('change',renderHeatmap);
+    setLoadProgress(86);
+
     const requestedSlug=new URLSearchParams(location.search).get('index');
     let slug=(requestedSlug && latestBundle.indices[requestedSlug]) ? requestedSlug : 'nifty-50';
     if(!latestBundle.indices[slug]) slug=catalog.default_slug;
-    renderSelected(slug);renderHeatmap();installSticky();
-  }catch(e){document.querySelector('.shell').insertAdjacentHTML('afterbegin','<div class="error">Dashboard data could not be loaded. Run the GitHub Action “Refresh Index Valuation Tracker and deploy Pages” once to refresh the data.</div>');console.error(e);}
+    renderSelected(slug);
+    setLoadProgress(94);
+    renderHeatmap();
+    installSticky();
+    finishLoadProgress();
+  }catch(e){
+    showFatalLoadError(e);
+  }
 }
 boot();

@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#07111f" />
   <title>Index Valuation Tracker</title>
   <meta name="description" content="Multi-index valuation, earnings-growth and historical forward-return dashboard for NSE equity indices." />
-  <link rel="stylesheet" href="styles.css?v=20260921b" />
+  <link rel="stylesheet" href="styles.css?v=20260922a" />
 </head>
 <body>
   <div id="ambientGlow" class="ambient-glow" aria-hidden="true"></div>
@@ -29,7 +29,7 @@
     <header class="topbar">
       <div class="brand-block">
         <div class="brand-copy">
-          <h1><span id="desktopIndexTitle" class="desktop-title">Index Valuation Tracker</span><span class="mobile-title">Index Tracker</span></h1>
+          <h1><span id="desktopIndexTitle" class="desktop-title loading-title" data-loading-text="Index Valuation Tracker">Index Valuation Tracker</span><span class="mobile-title loading-title" data-loading-text="Index Tracker">Index Tracker</span></h1>
           <div id="indexSummaryLine" class="index-summary-line">Multi-index valuation dashboard</div>
         </div>
         <div class="index-picker-wrap">
@@ -45,7 +45,7 @@
         <div id="freshness" class="freshness" aria-live="polite">
           <span class="status-dot"></span>
           <span class="freshness-copy">
-            <strong id="marketStatusText">Loading…</strong>
+            <strong id="marketStatusText">Market status</strong>
             <small id="freshnessDate">Latest close —</small>
           </span>
         </div>
@@ -263,6 +263,6 @@
       </section>
     </section>
   </main>
-  <script src="app.js?v=20260921b"></script>
+  <script src="app.js?v=20260922a"></script>
 </body>
 </html>

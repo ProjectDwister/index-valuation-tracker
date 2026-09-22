@@ -67,3 +67,40 @@ h1{font-size:clamp(28px,3.5vw,38px);line-height:1.05;letter-spacing:-.045em;font
 .freshness.market-closed .status-dot{background:#ef4444!important;box-shadow:0 0 0 4px rgba(239,68,68,.13)!important}
 .home-button{display:inline-flex!important;visibility:visible!important;opacity:1!important}
 @media (min-width:761px){.home-button .icon-button-text{display:inline!important}}
+
+/* Loading progress is visualised directly inside the product title. */
+.loading-title{
+  position:relative;
+  display:inline-block;
+  color:#52657a;
+  transition:color .28s ease;
+}
+.loading-title::after{
+  content:attr(data-loading-text);
+  position:absolute;
+  inset:0 auto 0 0;
+  width:var(--app-load-progress,0%);
+  overflow:hidden;
+  white-space:nowrap;
+  background:linear-gradient(90deg,#60a5fa 0%,#7dd3fc 55%,#34d399 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  transition:width .30s cubic-bezier(.2,.8,.2,1),opacity .28s ease;
+  pointer-events:none;
+}
+html.app-ready .loading-title{color:var(--text)}
+html.app-ready .loading-title::after{opacity:0}
+html.app-load-failed .loading-title::after{background:linear-gradient(90deg,#f59e0b,#ef4444);-webkit-background-clip:text;background-clip:text}
+
+/* Keep the responsive title variants correct while the loading fill is active. */
+.desktop-title.loading-title{display:inline-block}
+.mobile-title.loading-title{display:none}
+.heatmap-loading-row{padding:24px 12px!important;text-align:center!important;color:var(--faint)!important}
+.load-failure-banner{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.load-failure-banner button{border:1px solid rgba(255,255,255,.14);border-radius:8px;background:rgba(255,255,255,.05);color:var(--text);padding:7px 12px;cursor:pointer;font-weight:700}
+.load-failure-banner button:hover{background:rgba(255,255,255,.09)}
+@media(max-width:760px){
+  .desktop-title.loading-title{display:none}
+  .mobile-title.loading-title{display:inline-block}
+}
