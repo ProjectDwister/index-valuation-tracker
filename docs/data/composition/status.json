@@ -69,16 +69,15 @@
     "nifty500-shariah"
   ],
   "status": "ok",
-  "constituent_csv_indices": 40,
+  "constituent_csv_indices": 41,
   "constituent_csv_errors": {
-    "nifty-auto": "No official Index Constituent CSV link on index page",
-    "nifty100-esg": "No official Index Constituent CSV link on index page",
     "nifty-shariah-25": "No official Index Constituent CSV link on index page",
+    "nifty100-esg": "No official Index Constituent CSV link on index page",
     "nifty100-enhanced-esg": "No official Index Constituent CSV link on index page",
     "nifty50-shariah": "No official Index Constituent CSV link on index page",
     "nifty500-shariah": "No official Index Constituent CSV link on index page"
   },
-  "generated_at": "2026-09-23T10:22:15Z",
-  "available_indices": 45,
+  "generated_at": "2026-09-23T10:30:06Z",
+  "available_indices": 46,
   "tracked_indices": 51
 }

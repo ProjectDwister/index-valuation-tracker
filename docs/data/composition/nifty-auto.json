@@ -1,0 +1,120 @@
+{
+  "slug": "nifty-auto",
+  "index_name": "NIFTY Auto",
+  "as_of": null,
+  "retrieved_on": "2026-09-23",
+  "source": "NSE Indices — Index Constituent CSV",
+  "source_url": "https://www.niftyindices.com/IndexConstituent/ind_niftyautolist.csv",
+  "source_type": "official_nse_indices_constituent_csv",
+  "completeness": "constituents",
+  "stock_count": 15,
+  "weight_coverage": null,
+  "top10_weight": null,
+  "coverage_note": "The official constituent file lists members but does not publish usable stock weights.",
+  "holdings": [
+    {
+      "name": "Ashok Leyland Ltd.",
+      "symbol": "ASHOKLEY",
+      "sector": "Capital Goods",
+      "weight": null
+    },
+    {
+      "name": "Bajaj Auto Ltd.",
+      "symbol": "BAJAJ-AUTO",
+      "sector": "Automobile and Auto Components",
+      "weight": null
+    },
+    {
+      "name": "Bharat Forge Ltd.",
+      "symbol": "BHARATFORG",
+      "sector": "Automobile and Auto Components",
+      "weight": null
+    },
+    {
+      "name": "Bosch Ltd.",
+      "symbol": "BOSCHLTD",
+      "sector": "Automobile and Auto Components",
+      "weight": null
+    },
+    {
+      "name": "Eicher Motors Ltd.",
+      "symbol": "EICHERMOT",
+      "sector": "Automobile and Auto Components",
+      "weight": null
+    },
+    {
+      "name": "Exide Industries Ltd.",
+      "symbol": "EXIDEIND",
+      "sector": "Automobile and Auto Components",
+      "weight": null
+    },
+    {
+      "name": "Hero MotoCorp Ltd.",
+      "symbol": "HEROMOTOCO",
+      "sector": "Automobile and Auto Components",
+      "weight": null
+    },
+    {
+      "name": "Mahindra & Mahindra Ltd.",
+      "symbol": "M&M",
+      "sector": "Automobile and Auto Components",
+      "weight": null
+    },
+    {
+      "name": "Maruti Suzuki India Ltd.",
+      "symbol": "MARUTI",
+      "sector": "Automobile and Auto Components",
+      "weight": null
+    },
+    {
+      "name": "Samvardhana Motherson International Ltd.",
+      "symbol": "MOTHERSON",
+      "sector": "Automobile and Auto Components",
+      "weight": null
+    },
+    {
+      "name": "Sona BLW Precision Forgings Ltd.",
+      "symbol": "SONACOMS",
+      "sector": "Automobile and Auto Components",
+      "weight": null
+    },
+    {
+      "name": "Tata Motors Passenger Vehicles Ltd.",
+      "symbol": "TMPV",
+      "sector": "Automobile and Auto Components",
+      "weight": null
+    },
+    {
+      "name": "Tube Investments of India Ltd.",
+      "symbol": "TIINDIA",
+      "sector": "Automobile and Auto Components",
+      "weight": null
+    },
+    {
+      "name": "TVS Motor Company Ltd.",
+      "symbol": "TVSMOTOR",
+      "sector": "Automobile and Auto Components",
+      "weight": null
+    },
+    {
+      "name": "UNO Minda Ltd.",
+      "symbol": "UNOMINDA",
+      "sector": "Automobile and Auto Components",
+      "weight": null
+    }
+  ],
+  "sectors": [
+    {
+      "name": "Automobile and Auto Components",
+      "count": 14,
+      "stock_share": 93.3333,
+      "weight": null
+    },
+    {
+      "name": "Capital Goods",
+      "count": 1,
+      "stock_share": 6.6667,
+      "weight": null
+    }
+  ]
+}
