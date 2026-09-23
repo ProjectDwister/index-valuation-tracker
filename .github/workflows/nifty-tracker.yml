@@ -17,6 +17,7 @@ on:
       - 'docs/**'
       - 'nifty_tracker_update.py'
       - 'multi_index_tracker.py'
+      - 'composition_tracker.py'
       - 'requirements.txt'
       - 'nifty_quarterly_backtest.csv'
       - 'multi_index_quarterly.csv'
@@ -83,6 +84,12 @@ jobs:
           --web-dir docs
           --quarterly-csv multi_index_quarterly.csv
           --monthly-csv multi_index_monthly.csv
+
+      - name: Refresh official index composition and weightage
+        if: github.event_name != 'push'
+        run: >-
+          python composition_tracker.py
+          --web-dir docs
 
       - name: Repository housekeeping
         if: github.event_name != 'push'
