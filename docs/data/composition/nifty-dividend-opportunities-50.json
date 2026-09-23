@@ -1,0 +1,378 @@
+{
+  "slug": "nifty-dividend-opportunities-50",
+  "index_name": "NIFTY Dividend Opportunities 50",
+  "as_of": null,
+  "retrieved_on": "2026-09-23",
+  "source": "NSE Indices — Index Constituent CSV",
+  "source_url": "https://www.niftyindices.com/IndexConstituent/ind_niftydivopp50list.csv",
+  "source_type": "official_nse_indices_constituent_csv",
+  "completeness": "constituents",
+  "stock_count": 50,
+  "weight_coverage": null,
+  "top10_weight": null,
+  "coverage_note": "The official constituent file lists members but does not publish usable stock weights.",
+  "holdings": [
+    {
+      "name": "Angel One Ltd.",
+      "symbol": "ANGELONE",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Ashok Leyland Ltd.",
+      "symbol": "ASHOKLEY",
+      "sector": "Capital Goods",
+      "weight": null
+    },
+    {
+      "name": "Bajaj Auto Ltd.",
+      "symbol": "BAJAJ-AUTO",
+      "sector": "Automobile and Auto Components",
+      "weight": null
+    },
+    {
+      "name": "Bank of Baroda",
+      "symbol": "BANKBARODA",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Bank of India",
+      "symbol": "BANKINDIA",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Bank of Maharashtra",
+      "symbol": "MAHABANK",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Bharat Petroleum Corporation Ltd.",
+      "symbol": "BPCL",
+      "sector": "Oil Gas & Consumable Fuels",
+      "weight": null
+    },
+    {
+      "name": "Britannia Industries Ltd.",
+      "symbol": "BRITANNIA",
+      "sector": "Fast Moving Consumer Goods",
+      "weight": null
+    },
+    {
+      "name": "Canara Bank",
+      "symbol": "CANBK",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Coal India Ltd.",
+      "symbol": "COALINDIA",
+      "sector": "Oil Gas & Consumable Fuels",
+      "weight": null
+    },
+    {
+      "name": "Colgate Palmolive (India) Ltd.",
+      "symbol": "COLPAL",
+      "sector": "Fast Moving Consumer Goods",
+      "weight": null
+    },
+    {
+      "name": "Cummins India Ltd.",
+      "symbol": "CUMMINSIND",
+      "sector": "Capital Goods",
+      "weight": null
+    },
+    {
+      "name": "GAIL (India) Ltd.",
+      "symbol": "GAIL",
+      "sector": "Oil Gas & Consumable Fuels",
+      "weight": null
+    },
+    {
+      "name": "Godrej Consumer Products Ltd.",
+      "symbol": "GODREJCP",
+      "sector": "Fast Moving Consumer Goods",
+      "weight": null
+    },
+    {
+      "name": "HCL Technologies Ltd.",
+      "symbol": "HCLTECH",
+      "sector": "Information Technology",
+      "weight": null
+    },
+    {
+      "name": "HDFC Asset Management Company Ltd.",
+      "symbol": "HDFCAMC",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Hero MotoCorp Ltd.",
+      "symbol": "HEROMOTOCO",
+      "sector": "Automobile and Auto Components",
+      "weight": null
+    },
+    {
+      "name": "Hindustan Petroleum Corporation Ltd.",
+      "symbol": "HINDPETRO",
+      "sector": "Oil Gas & Consumable Fuels",
+      "weight": null
+    },
+    {
+      "name": "Hindustan Unilever Ltd.",
+      "symbol": "HINDUNILVR",
+      "sector": "Fast Moving Consumer Goods",
+      "weight": null
+    },
+    {
+      "name": "Hindustan Zinc Ltd.",
+      "symbol": "HINDZINC",
+      "sector": "Metals & Mining",
+      "weight": null
+    },
+    {
+      "name": "Housing & Urban Development Corporation Ltd.",
+      "symbol": "HUDCO",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Indian Bank",
+      "symbol": "INDIANB",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Indian Oil Corporation Ltd.",
+      "symbol": "IOC",
+      "sector": "Oil Gas & Consumable Fuels",
+      "weight": null
+    },
+    {
+      "name": "Indian Railway Finance Corporation Ltd.",
+      "symbol": "IRFC",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Infosys Ltd.",
+      "symbol": "INFY",
+      "sector": "Information Technology",
+      "weight": null
+    },
+    {
+      "name": "ITC Ltd.",
+      "symbol": "ITC",
+      "sector": "Fast Moving Consumer Goods",
+      "weight": null
+    },
+    {
+      "name": "Mahindra & Mahindra Financial Services Ltd.",
+      "symbol": "M&MFIN",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "MphasiS Ltd.",
+      "symbol": "MPHASIS",
+      "sector": "Information Technology",
+      "weight": null
+    },
+    {
+      "name": "National Aluminium Co. Ltd.",
+      "symbol": "NATIONALUM",
+      "sector": "Metals & Mining",
+      "weight": null
+    },
+    {
+      "name": "NHPC Ltd.",
+      "symbol": "NHPC",
+      "sector": "Power",
+      "weight": null
+    },
+    {
+      "name": "NMDC Ltd.",
+      "symbol": "NMDC",
+      "sector": "Metals & Mining",
+      "weight": null
+    },
+    {
+      "name": "NTPC Ltd.",
+      "symbol": "NTPC",
+      "sector": "Power",
+      "weight": null
+    },
+    {
+      "name": "Oil & Natural Gas Corporation Ltd.",
+      "symbol": "ONGC",
+      "sector": "Oil Gas & Consumable Fuels",
+      "weight": null
+    },
+    {
+      "name": "Oil India Ltd.",
+      "symbol": "OIL",
+      "sector": "Oil Gas & Consumable Fuels",
+      "weight": null
+    },
+    {
+      "name": "Oracle Financial Services Software Ltd.",
+      "symbol": "OFSS",
+      "sector": "Information Technology",
+      "weight": null
+    },
+    {
+      "name": "Page Industries Ltd.",
+      "symbol": "PAGEIND",
+      "sector": "Textiles",
+      "weight": null
+    },
+    {
+      "name": "Power Finance Corporation Ltd.",
+      "symbol": "PFC",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Power Grid Corporation of India Ltd.",
+      "symbol": "POWERGRID",
+      "sector": "Power",
+      "weight": null
+    },
+    {
+      "name": "Punjab National Bank",
+      "symbol": "PNB",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "REC Ltd.",
+      "symbol": "RECLTD",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Redington Ltd.",
+      "symbol": "REDINGTON",
+      "sector": "Services",
+      "weight": null
+    },
+    {
+      "name": "Shriram Finance Ltd.",
+      "symbol": "SHRIRAMFIN",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "State Bank of India",
+      "symbol": "SBIN",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Steel Authority of India Ltd.",
+      "symbol": "SAIL",
+      "sector": "Metals & Mining",
+      "weight": null
+    },
+    {
+      "name": "Tata Consultancy Services Ltd.",
+      "symbol": "TCS",
+      "sector": "Information Technology",
+      "weight": null
+    },
+    {
+      "name": "Tata Steel Ltd.",
+      "symbol": "TATASTEEL",
+      "sector": "Metals & Mining",
+      "weight": null
+    },
+    {
+      "name": "Tech Mahindra Ltd.",
+      "symbol": "TECHM",
+      "sector": "Information Technology",
+      "weight": null
+    },
+    {
+      "name": "Union Bank of India",
+      "symbol": "UNIONBANK",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Vedanta Ltd.",
+      "symbol": "VEDL",
+      "sector": "Metals & Mining",
+      "weight": null
+    },
+    {
+      "name": "Wipro Ltd.",
+      "symbol": "WIPRO",
+      "sector": "Information Technology",
+      "weight": null
+    }
+  ],
+  "sectors": [
+    {
+      "name": "Financial Services",
+      "count": 16,
+      "stock_share": 32.0,
+      "weight": null
+    },
+    {
+      "name": "Information Technology",
+      "count": 7,
+      "stock_share": 14.0,
+      "weight": null
+    },
+    {
+      "name": "Oil Gas & Consumable Fuels",
+      "count": 7,
+      "stock_share": 14.0,
+      "weight": null
+    },
+    {
+      "name": "Metals & Mining",
+      "count": 6,
+      "stock_share": 12.0,
+      "weight": null
+    },
+    {
+      "name": "Fast Moving Consumer Goods",
+      "count": 5,
+      "stock_share": 10.0,
+      "weight": null
+    },
+    {
+      "name": "Power",
+      "count": 3,
+      "stock_share": 6.0,
+      "weight": null
+    },
+    {
+      "name": "Automobile and Auto Components",
+      "count": 2,
+      "stock_share": 4.0,
+      "weight": null
+    },
+    {
+      "name": "Capital Goods",
+      "count": 2,
+      "stock_share": 4.0,
+      "weight": null
+    },
+    {
+      "name": "Services",
+      "count": 1,
+      "stock_share": 2.0,
+      "weight": null
+    },
+    {
+      "name": "Textiles",
+      "count": 1,
+      "stock_share": 2.0,
+      "weight": null
+    }
+  ]
+}

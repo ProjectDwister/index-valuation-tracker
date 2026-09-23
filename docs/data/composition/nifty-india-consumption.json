@@ -1,0 +1,252 @@
+{
+  "slug": "nifty-india-consumption",
+  "index_name": "NIFTY India Consumption",
+  "as_of": null,
+  "retrieved_on": "2026-09-23",
+  "source": "NSE Indices — Index Constituent CSV",
+  "source_url": "https://www.niftyindices.com/IndexConstituent/ind_niftyconsumptionlist.csv",
+  "source_type": "official_nse_indices_constituent_csv",
+  "completeness": "constituents",
+  "stock_count": 30,
+  "weight_coverage": null,
+  "top10_weight": null,
+  "coverage_note": "The official constituent file lists members but does not publish usable stock weights.",
+  "holdings": [
+    {
+      "name": "Adani Power Ltd.",
+      "symbol": "ADANIPOWER",
+      "sector": "Power",
+      "weight": null
+    },
+    {
+      "name": "Apollo Hospitals Enterprise Ltd.",
+      "symbol": "APOLLOHOSP",
+      "sector": "Healthcare",
+      "weight": null
+    },
+    {
+      "name": "Asian Paints Ltd.",
+      "symbol": "ASIANPAINT",
+      "sector": "Consumer Durables",
+      "weight": null
+    },
+    {
+      "name": "Avenue Supermarts Ltd.",
+      "symbol": "DMART",
+      "sector": "Consumer Services",
+      "weight": null
+    },
+    {
+      "name": "Bajaj Auto Ltd.",
+      "symbol": "BAJAJ-AUTO",
+      "sector": "Automobile and Auto Components",
+      "weight": null
+    },
+    {
+      "name": "Bharti Airtel Ltd.",
+      "symbol": "BHARTIARTL",
+      "sector": "Telecommunication",
+      "weight": null
+    },
+    {
+      "name": "Britannia Industries Ltd.",
+      "symbol": "BRITANNIA",
+      "sector": "Fast Moving Consumer Goods",
+      "weight": null
+    },
+    {
+      "name": "Dixon Technologies (India) Ltd.",
+      "symbol": "DIXON",
+      "sector": "Consumer Durables",
+      "weight": null
+    },
+    {
+      "name": "DLF Ltd.",
+      "symbol": "DLF",
+      "sector": "Realty",
+      "weight": null
+    },
+    {
+      "name": "Eicher Motors Ltd.",
+      "symbol": "EICHERMOT",
+      "sector": "Automobile and Auto Components",
+      "weight": null
+    },
+    {
+      "name": "Eternal Ltd.",
+      "symbol": "ETERNAL",
+      "sector": "Consumer Services",
+      "weight": null
+    },
+    {
+      "name": "Godrej Consumer Products Ltd.",
+      "symbol": "GODREJCP",
+      "sector": "Fast Moving Consumer Goods",
+      "weight": null
+    },
+    {
+      "name": "Havells India Ltd.",
+      "symbol": "HAVELLS",
+      "sector": "Consumer Durables",
+      "weight": null
+    },
+    {
+      "name": "Hero MotoCorp Ltd.",
+      "symbol": "HEROMOTOCO",
+      "sector": "Automobile and Auto Components",
+      "weight": null
+    },
+    {
+      "name": "Hindustan Unilever Ltd.",
+      "symbol": "HINDUNILVR",
+      "sector": "Fast Moving Consumer Goods",
+      "weight": null
+    },
+    {
+      "name": "Indian Hotels Co. Ltd.",
+      "symbol": "INDHOTEL",
+      "sector": "Consumer Services",
+      "weight": null
+    },
+    {
+      "name": "Info Edge (India) Ltd.",
+      "symbol": "NAUKRI",
+      "sector": "Consumer Services",
+      "weight": null
+    },
+    {
+      "name": "InterGlobe Aviation Ltd.",
+      "symbol": "INDIGO",
+      "sector": "Services",
+      "weight": null
+    },
+    {
+      "name": "ITC Ltd.",
+      "symbol": "ITC",
+      "sector": "Fast Moving Consumer Goods",
+      "weight": null
+    },
+    {
+      "name": "Mahindra & Mahindra Ltd.",
+      "symbol": "M&M",
+      "sector": "Automobile and Auto Components",
+      "weight": null
+    },
+    {
+      "name": "Maruti Suzuki India Ltd.",
+      "symbol": "MARUTI",
+      "sector": "Automobile and Auto Components",
+      "weight": null
+    },
+    {
+      "name": "Max Healthcare Institute Ltd.",
+      "symbol": "MAXHEALTH",
+      "sector": "Healthcare",
+      "weight": null
+    },
+    {
+      "name": "Nestle India Ltd.",
+      "symbol": "NESTLEIND",
+      "sector": "Fast Moving Consumer Goods",
+      "weight": null
+    },
+    {
+      "name": "Tata Consumer Products Ltd.",
+      "symbol": "TATACONSUM",
+      "sector": "Fast Moving Consumer Goods",
+      "weight": null
+    },
+    {
+      "name": "Tata Power Co. Ltd.",
+      "symbol": "TATAPOWER",
+      "sector": "Power",
+      "weight": null
+    },
+    {
+      "name": "Titan Company Ltd.",
+      "symbol": "TITAN",
+      "sector": "Consumer Durables",
+      "weight": null
+    },
+    {
+      "name": "Trent Ltd.",
+      "symbol": "TRENT",
+      "sector": "Consumer Services",
+      "weight": null
+    },
+    {
+      "name": "TVS Motor Company Ltd.",
+      "symbol": "TVSMOTOR",
+      "sector": "Automobile and Auto Components",
+      "weight": null
+    },
+    {
+      "name": "United Spirits Ltd.",
+      "symbol": "UNITDSPR",
+      "sector": "Fast Moving Consumer Goods",
+      "weight": null
+    },
+    {
+      "name": "Varun Beverages Ltd.",
+      "symbol": "VBL",
+      "sector": "Fast Moving Consumer Goods",
+      "weight": null
+    }
+  ],
+  "sectors": [
+    {
+      "name": "Fast Moving Consumer Goods",
+      "count": 8,
+      "stock_share": 26.6667,
+      "weight": null
+    },
+    {
+      "name": "Automobile and Auto Components",
+      "count": 6,
+      "stock_share": 20.0,
+      "weight": null
+    },
+    {
+      "name": "Consumer Services",
+      "count": 5,
+      "stock_share": 16.6667,
+      "weight": null
+    },
+    {
+      "name": "Consumer Durables",
+      "count": 4,
+      "stock_share": 13.3333,
+      "weight": null
+    },
+    {
+      "name": "Healthcare",
+      "count": 2,
+      "stock_share": 6.6667,
+      "weight": null
+    },
+    {
+      "name": "Power",
+      "count": 2,
+      "stock_share": 6.6667,
+      "weight": null
+    },
+    {
+      "name": "Realty",
+      "count": 1,
+      "stock_share": 3.3333,
+      "weight": null
+    },
+    {
+      "name": "Services",
+      "count": 1,
+      "stock_share": 3.3333,
+      "weight": null
+    },
+    {
+      "name": "Telecommunication",
+      "count": 1,
+      "stock_share": 3.3333,
+      "weight": null
+    }
+  ]
+}

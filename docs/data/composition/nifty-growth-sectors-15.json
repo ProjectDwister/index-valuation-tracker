@@ -1,0 +1,138 @@
+{
+  "slug": "nifty-growth-sectors-15",
+  "index_name": "NIFTY Growth Sectors 15",
+  "as_of": null,
+  "retrieved_on": "2026-09-23",
+  "source": "NSE Indices — Index Constituent CSV",
+  "source_url": "https://www.niftyindices.com/IndexConstituent/ind_NiftyGrowth_Sectors15_Index.csv",
+  "source_type": "official_nse_indices_constituent_csv",
+  "completeness": "constituents",
+  "stock_count": 15,
+  "weight_coverage": null,
+  "top10_weight": null,
+  "coverage_note": "The official constituent file lists members but does not publish usable stock weights.",
+  "holdings": [
+    {
+      "name": "Apollo Hospitals Enterprise Ltd.",
+      "symbol": "APOLLOHOSP",
+      "sector": "Healthcare",
+      "weight": null
+    },
+    {
+      "name": "Cipla Ltd.",
+      "symbol": "CIPLA",
+      "sector": "Healthcare",
+      "weight": null
+    },
+    {
+      "name": "Divi's Laboratories Ltd.",
+      "symbol": "DIVISLAB",
+      "sector": "Healthcare",
+      "weight": null
+    },
+    {
+      "name": "Eicher Motors Ltd.",
+      "symbol": "EICHERMOT",
+      "sector": "Automobile and Auto Components",
+      "weight": null
+    },
+    {
+      "name": "Hindustan Unilever Ltd.",
+      "symbol": "HINDUNILVR",
+      "sector": "Fast Moving Consumer Goods",
+      "weight": null
+    },
+    {
+      "name": "Infosys Ltd.",
+      "symbol": "INFY",
+      "sector": "Information Technology",
+      "weight": null
+    },
+    {
+      "name": "Mahindra & Mahindra Ltd.",
+      "symbol": "M&M",
+      "sector": "Automobile and Auto Components",
+      "weight": null
+    },
+    {
+      "name": "Maruti Suzuki India Ltd.",
+      "symbol": "MARUTI",
+      "sector": "Automobile and Auto Components",
+      "weight": null
+    },
+    {
+      "name": "Nestle India Ltd.",
+      "symbol": "NESTLEIND",
+      "sector": "Fast Moving Consumer Goods",
+      "weight": null
+    },
+    {
+      "name": "Persistent Systems Ltd.",
+      "symbol": "PERSISTENT",
+      "sector": "Information Technology",
+      "weight": null
+    },
+    {
+      "name": "Sun Pharmaceutical Industries Ltd.",
+      "symbol": "SUNPHARMA",
+      "sector": "Healthcare",
+      "weight": null
+    },
+    {
+      "name": "Tata Consultancy Services Ltd.",
+      "symbol": "TCS",
+      "sector": "Information Technology",
+      "weight": null
+    },
+    {
+      "name": "Tech Mahindra Ltd.",
+      "symbol": "TECHM",
+      "sector": "Information Technology",
+      "weight": null
+    },
+    {
+      "name": "Titan Company Ltd.",
+      "symbol": "TITAN",
+      "sector": "Consumer Durables",
+      "weight": null
+    },
+    {
+      "name": "TVS Motor Company Ltd.",
+      "symbol": "TVSMOTOR",
+      "sector": "Automobile and Auto Components",
+      "weight": null
+    }
+  ],
+  "sectors": [
+    {
+      "name": "Automobile and Auto Components",
+      "count": 4,
+      "stock_share": 26.6667,
+      "weight": null
+    },
+    {
+      "name": "Healthcare",
+      "count": 4,
+      "stock_share": 26.6667,
+      "weight": null
+    },
+    {
+      "name": "Information Technology",
+      "count": 4,
+      "stock_share": 26.6667,
+      "weight": null
+    },
+    {
+      "name": "Fast Moving Consumer Goods",
+      "count": 2,
+      "stock_share": 13.3333,
+      "weight": null
+    },
+    {
+      "name": "Consumer Durables",
+      "count": 1,
+      "stock_share": 6.6667,
+      "weight": null
+    }
+  ]
+}

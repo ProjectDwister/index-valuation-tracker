@@ -1,24 +1,39 @@
 {
-  "version": 2,
-  "generated_at": "2026-09-23T03:45:19Z",
+  "version": 3,
+  "generated_at": "2026-09-23T10:22:15Z",
   "report_month": "Aug 2026",
   "source_url": "https://www.niftyindices.com/Indices_-_Market_Capitalisation_and_Weightage/indices_dataAug2026.zip",
   "indices": {
     "nifty-100": {
+      "file": "nifty-100.json",
       "name": "NIFTY 100",
-      "available": false,
-      "reason": "Official constituent-weight data not parsed from the current monthly report."
+      "available": true,
+      "as_of": null,
+      "retrieved_on": "2026-09-23",
+      "completeness": "constituents",
+      "stock_count": 100,
+      "weight_coverage": null,
+      "top10_weight": null,
+      "source_type": "official_nse_indices_constituent_csv"
     },
     "nifty-200": {
+      "file": "nifty-200.json",
       "name": "NIFTY 200",
-      "available": false,
-      "reason": "Official constituent-weight data not parsed from the current monthly report."
+      "available": true,
+      "as_of": null,
+      "retrieved_on": "2026-09-23",
+      "completeness": "constituents",
+      "stock_count": 200,
+      "weight_coverage": null,
+      "top10_weight": null,
+      "source_type": "official_nse_indices_constituent_csv"
     },
     "nifty-50": {
       "file": "nifty-50.json",
       "name": "NIFTY 50",
       "available": true,
       "as_of": "2026-08-31",
+      "retrieved_on": null,
       "completeness": "full",
       "stock_count": 50,
       "weight_coverage": 99.99,
@@ -26,40 +41,83 @@
       "source_type": "official_nse_indices_monthly_report"
     },
     "nifty-500": {
+      "file": "nifty-500.json",
       "name": "NIFTY 500",
-      "available": false,
-      "reason": "Official constituent-weight data not parsed from the current monthly report."
+      "available": true,
+      "as_of": null,
+      "retrieved_on": "2026-09-23",
+      "completeness": "constituents",
+      "stock_count": 501,
+      "weight_coverage": null,
+      "top10_weight": null,
+      "source_type": "official_nse_indices_constituent_csv"
     },
     "nifty-largemidcap-250": {
+      "file": "nifty-largemidcap-250.json",
       "name": "NIFTY LargeMidcap 250",
-      "available": false,
-      "reason": "Official constituent-weight data not parsed from the current monthly report."
+      "available": true,
+      "as_of": null,
+      "retrieved_on": "2026-09-23",
+      "completeness": "constituents",
+      "stock_count": 250,
+      "weight_coverage": null,
+      "top10_weight": null,
+      "source_type": "official_nse_indices_constituent_csv"
     },
     "nifty-midcap-100": {
+      "file": "nifty-midcap-100.json",
       "name": "NIFTY Midcap 100",
-      "available": false,
-      "reason": "Official constituent-weight data not parsed from the current monthly report."
+      "available": true,
+      "as_of": null,
+      "retrieved_on": "2026-09-23",
+      "completeness": "constituents",
+      "stock_count": 100,
+      "weight_coverage": null,
+      "top10_weight": null,
+      "source_type": "official_nse_indices_constituent_csv"
     },
     "nifty-midcap-150": {
+      "file": "nifty-midcap-150.json",
       "name": "NIFTY Midcap 150",
-      "available": false,
-      "reason": "Official constituent-weight data not parsed from the current monthly report."
+      "available": true,
+      "as_of": null,
+      "retrieved_on": "2026-09-23",
+      "completeness": "constituents",
+      "stock_count": 150,
+      "weight_coverage": null,
+      "top10_weight": null,
+      "source_type": "official_nse_indices_constituent_csv"
     },
     "nifty-midcap-50": {
+      "file": "nifty-midcap-50.json",
       "name": "NIFTY Midcap 50",
-      "available": false,
-      "reason": "Official constituent-weight data not parsed from the current monthly report."
+      "available": true,
+      "as_of": null,
+      "retrieved_on": "2026-09-23",
+      "completeness": "constituents",
+      "stock_count": 50,
+      "weight_coverage": null,
+      "top10_weight": null,
+      "source_type": "official_nse_indices_constituent_csv"
     },
     "nifty-midsmallcap-400": {
+      "file": "nifty-midsmallcap-400.json",
       "name": "NIFTY Midsmallcap 400",
-      "available": false,
-      "reason": "Official constituent-weight data not parsed from the current monthly report."
+      "available": true,
+      "as_of": null,
+      "retrieved_on": "2026-09-23",
+      "completeness": "constituents",
+      "stock_count": 401,
+      "weight_coverage": null,
+      "top10_weight": null,
+      "source_type": "official_nse_indices_constituent_csv"
     },
     "nifty-next-50": {
       "file": "nifty-next-50.json",
       "name": "NIFTY Next 50",
       "available": true,
       "as_of": "2026-08-31",
+      "retrieved_on": null,
       "completeness": "full",
       "stock_count": 50,
       "weight_coverage": 100.03,
@@ -67,30 +125,52 @@
       "source_type": "official_nse_indices_monthly_report"
     },
     "nifty-smallcap-100": {
+      "file": "nifty-smallcap-100.json",
       "name": "NIFTY Smallcap 100",
-      "available": false,
-      "reason": "Official constituent-weight data not parsed from the current monthly report."
+      "available": true,
+      "as_of": null,
+      "retrieved_on": "2026-09-23",
+      "completeness": "constituents",
+      "stock_count": 100,
+      "weight_coverage": null,
+      "top10_weight": null,
+      "source_type": "official_nse_indices_constituent_csv"
     },
     "nifty-smallcap-250": {
+      "file": "nifty-smallcap-250.json",
       "name": "NIFTY Smallcap 250",
-      "available": false,
-      "reason": "Official constituent-weight data not parsed from the current monthly report."
+      "available": true,
+      "as_of": null,
+      "retrieved_on": "2026-09-23",
+      "completeness": "constituents",
+      "stock_count": 251,
+      "weight_coverage": null,
+      "top10_weight": null,
+      "source_type": "official_nse_indices_constituent_csv"
     },
     "nifty-smallcap-50": {
+      "file": "nifty-smallcap-50.json",
       "name": "NIFTY Smallcap 50",
-      "available": false,
-      "reason": "Official constituent-weight data not parsed from the current monthly report."
+      "available": true,
+      "as_of": null,
+      "retrieved_on": "2026-09-23",
+      "completeness": "constituents",
+      "stock_count": 50,
+      "weight_coverage": null,
+      "top10_weight": null,
+      "source_type": "official_nse_indices_constituent_csv"
     },
     "nifty-auto": {
       "name": "NIFTY Auto",
       "available": false,
-      "reason": "Official constituent-weight data not parsed from the current monthly report."
+      "reason": "An official constituent list could not be retrieved for this index."
     },
     "nifty-bank": {
       "file": "nifty-bank.json",
       "name": "NIFTY Bank",
       "available": true,
       "as_of": "2026-08-31",
+      "retrieved_on": null,
       "completeness": "full",
       "stock_count": 14,
       "weight_coverage": 100.01,
@@ -98,20 +178,35 @@
       "source_type": "official_nse_indices_monthly_report"
     },
     "nifty-energy": {
+      "file": "nifty-energy.json",
       "name": "NIFTY Energy",
-      "available": false,
-      "reason": "Official constituent-weight data not parsed from the current monthly report."
+      "available": true,
+      "as_of": null,
+      "retrieved_on": "2026-09-23",
+      "completeness": "constituents",
+      "stock_count": 40,
+      "weight_coverage": null,
+      "top10_weight": null,
+      "source_type": "official_nse_indices_constituent_csv"
     },
     "nifty-fmcg": {
+      "file": "nifty-fmcg.json",
       "name": "NIFTY FMCG",
-      "available": false,
-      "reason": "Official constituent-weight data not parsed from the current monthly report."
+      "available": true,
+      "as_of": null,
+      "retrieved_on": "2026-09-23",
+      "completeness": "constituents",
+      "stock_count": 15,
+      "weight_coverage": null,
+      "top10_weight": null,
+      "source_type": "official_nse_indices_constituent_csv"
     },
     "nifty-financial-services": {
       "file": "nifty-financial-services.json",
       "name": "NIFTY Financial Services",
       "available": true,
       "as_of": "2026-08-31",
+      "retrieved_on": null,
       "completeness": "full",
       "stock_count": 20,
       "weight_coverage": 100.02,
@@ -123,6 +218,7 @@
       "name": "NIFTY IT",
       "available": true,
       "as_of": "2026-08-31",
+      "retrieved_on": null,
       "completeness": "full",
       "stock_count": 10,
       "weight_coverage": 100.0,
@@ -130,164 +226,353 @@
       "source_type": "official_nse_indices_monthly_report"
     },
     "nifty-metal": {
+      "file": "nifty-metal.json",
       "name": "NIFTY Metal",
-      "available": false,
-      "reason": "Official constituent-weight data not parsed from the current monthly report."
+      "available": true,
+      "as_of": null,
+      "retrieved_on": "2026-09-23",
+      "completeness": "constituents",
+      "stock_count": 15,
+      "weight_coverage": null,
+      "top10_weight": null,
+      "source_type": "official_nse_indices_constituent_csv"
     },
     "nifty-pharma": {
+      "file": "nifty-pharma.json",
       "name": "NIFTY Pharma",
-      "available": false,
-      "reason": "Official constituent-weight data not parsed from the current monthly report."
+      "available": true,
+      "as_of": null,
+      "retrieved_on": "2026-09-23",
+      "completeness": "constituents",
+      "stock_count": 20,
+      "weight_coverage": null,
+      "top10_weight": null,
+      "source_type": "official_nse_indices_constituent_csv"
     },
     "nifty-private-bank": {
+      "file": "nifty-private-bank.json",
       "name": "NIFTY Private Bank",
-      "available": false,
-      "reason": "Official constituent-weight data not parsed from the current monthly report."
+      "available": true,
+      "as_of": null,
+      "retrieved_on": "2026-09-23",
+      "completeness": "constituents",
+      "stock_count": 10,
+      "weight_coverage": null,
+      "top10_weight": null,
+      "source_type": "official_nse_indices_constituent_csv"
     },
     "nifty-realty": {
+      "file": "nifty-realty.json",
       "name": "NIFTY Realty",
-      "available": false,
-      "reason": "Official constituent-weight data not parsed from the current monthly report."
+      "available": true,
+      "as_of": null,
+      "retrieved_on": "2026-09-23",
+      "completeness": "constituents",
+      "stock_count": 10,
+      "weight_coverage": null,
+      "top10_weight": null,
+      "source_type": "official_nse_indices_constituent_csv"
     },
     "nifty-alpha-50": {
+      "file": "nifty-alpha-50.json",
       "name": "NIFTY Alpha 50",
-      "available": false,
-      "reason": "Official constituent-weight data not parsed from the current monthly report."
+      "available": true,
+      "as_of": null,
+      "retrieved_on": "2026-09-23",
+      "completeness": "constituents",
+      "stock_count": 50,
+      "weight_coverage": null,
+      "top10_weight": null,
+      "source_type": "official_nse_indices_constituent_csv"
     },
     "nifty-alpha-low-volatility-30": {
+      "file": "nifty-alpha-low-volatility-30.json",
       "name": "NIFTY Alpha Low-Volatility 30",
-      "available": false,
-      "reason": "Official constituent-weight data not parsed from the current monthly report."
+      "available": true,
+      "as_of": null,
+      "retrieved_on": "2026-09-23",
+      "completeness": "constituents",
+      "stock_count": 30,
+      "weight_coverage": null,
+      "top10_weight": null,
+      "source_type": "official_nse_indices_constituent_csv"
     },
     "nifty-alpha-quality-low-volatility-30": {
+      "file": "nifty-alpha-quality-low-volatility-30.json",
       "name": "NIFTY Alpha Quality Low-Volatility 30",
-      "available": false,
-      "reason": "Official constituent-weight data not parsed from the current monthly report."
+      "available": true,
+      "as_of": null,
+      "retrieved_on": "2026-09-23",
+      "completeness": "constituents",
+      "stock_count": 30,
+      "weight_coverage": null,
+      "top10_weight": null,
+      "source_type": "official_nse_indices_constituent_csv"
     },
     "nifty-alpha-quality-value-low-volatility-30": {
+      "file": "nifty-alpha-quality-value-low-volatility-30.json",
       "name": "NIFTY Alpha Quality Value Low-Volatility 30",
-      "available": false,
-      "reason": "Official constituent-weight data not parsed from the current monthly report."
+      "available": true,
+      "as_of": null,
+      "retrieved_on": "2026-09-23",
+      "completeness": "constituents",
+      "stock_count": 30,
+      "weight_coverage": null,
+      "top10_weight": null,
+      "source_type": "official_nse_indices_constituent_csv"
     },
     "nifty-commodities": {
+      "file": "nifty-commodities.json",
       "name": "NIFTY Commodities",
-      "available": false,
-      "reason": "Official constituent-weight data not parsed from the current monthly report."
+      "available": true,
+      "as_of": null,
+      "retrieved_on": "2026-09-23",
+      "completeness": "constituents",
+      "stock_count": 30,
+      "weight_coverage": null,
+      "top10_weight": null,
+      "source_type": "official_nse_indices_constituent_csv"
     },
     "nifty-cpse": {
+      "file": "nifty-cpse.json",
       "name": "NIFTY Cpse",
-      "available": false,
-      "reason": "Official constituent-weight data not parsed from the current monthly report."
+      "available": true,
+      "as_of": null,
+      "retrieved_on": "2026-09-23",
+      "completeness": "constituents",
+      "stock_count": 11,
+      "weight_coverage": null,
+      "top10_weight": null,
+      "source_type": "official_nse_indices_constituent_csv"
     },
     "nifty-dividend-opportunities-50": {
+      "file": "nifty-dividend-opportunities-50.json",
       "name": "NIFTY Dividend Opportunities 50",
-      "available": false,
-      "reason": "Official constituent-weight data not parsed from the current monthly report."
+      "available": true,
+      "as_of": null,
+      "retrieved_on": "2026-09-23",
+      "completeness": "constituents",
+      "stock_count": 50,
+      "weight_coverage": null,
+      "top10_weight": null,
+      "source_type": "official_nse_indices_constituent_csv"
     },
     "nifty-growth-sectors-15": {
+      "file": "nifty-growth-sectors-15.json",
       "name": "NIFTY Growth Sectors 15",
-      "available": false,
-      "reason": "Official constituent-weight data not parsed from the current monthly report."
+      "available": true,
+      "as_of": null,
+      "retrieved_on": "2026-09-23",
+      "completeness": "constituents",
+      "stock_count": 15,
+      "weight_coverage": null,
+      "top10_weight": null,
+      "source_type": "official_nse_indices_constituent_csv"
     },
     "nifty-high-beta-50": {
+      "file": "nifty-high-beta-50.json",
       "name": "NIFTY High Beta 50",
-      "available": false,
-      "reason": "Official constituent-weight data not parsed from the current monthly report."
+      "available": true,
+      "as_of": null,
+      "retrieved_on": "2026-09-23",
+      "completeness": "constituents",
+      "stock_count": 50,
+      "weight_coverage": null,
+      "top10_weight": null,
+      "source_type": "official_nse_indices_constituent_csv"
     },
     "nifty-india-consumption": {
+      "file": "nifty-india-consumption.json",
       "name": "NIFTY India Consumption",
-      "available": false,
-      "reason": "Official constituent-weight data not parsed from the current monthly report."
+      "available": true,
+      "as_of": null,
+      "retrieved_on": "2026-09-23",
+      "completeness": "constituents",
+      "stock_count": 30,
+      "weight_coverage": null,
+      "top10_weight": null,
+      "source_type": "official_nse_indices_constituent_csv"
     },
     "nifty-infrastructure": {
+      "file": "nifty-infrastructure.json",
       "name": "NIFTY Infrastructure",
-      "available": false,
-      "reason": "Official constituent-weight data not parsed from the current monthly report."
+      "available": true,
+      "as_of": null,
+      "retrieved_on": "2026-09-23",
+      "completeness": "constituents",
+      "stock_count": 30,
+      "weight_coverage": null,
+      "top10_weight": null,
+      "source_type": "official_nse_indices_constituent_csv"
     },
     "nifty-low-volatility-50": {
+      "file": "nifty-low-volatility-50.json",
       "name": "NIFTY Low Volatility 50",
-      "available": false,
-      "reason": "Official constituent-weight data not parsed from the current monthly report."
+      "available": true,
+      "as_of": null,
+      "retrieved_on": "2026-09-23",
+      "completeness": "constituents",
+      "stock_count": 50,
+      "weight_coverage": null,
+      "top10_weight": null,
+      "source_type": "official_nse_indices_constituent_csv"
     },
     "nifty-mnc": {
+      "file": "nifty-mnc.json",
       "name": "NIFTY Mnc",
-      "available": false,
-      "reason": "Official constituent-weight data not parsed from the current monthly report."
+      "available": true,
+      "as_of": null,
+      "retrieved_on": "2026-09-23",
+      "completeness": "constituents",
+      "stock_count": 30,
+      "weight_coverage": null,
+      "top10_weight": null,
+      "source_type": "official_nse_indices_constituent_csv"
     },
     "nifty-pse": {
+      "file": "nifty-pse.json",
       "name": "NIFTY Pse",
-      "available": false,
-      "reason": "Official constituent-weight data not parsed from the current monthly report."
+      "available": true,
+      "as_of": null,
+      "retrieved_on": "2026-09-23",
+      "completeness": "constituents",
+      "stock_count": 20,
+      "weight_coverage": null,
+      "top10_weight": null,
+      "source_type": "official_nse_indices_constituent_csv"
     },
     "nifty-quality-low-volatility-30": {
+      "file": "nifty-quality-low-volatility-30.json",
       "name": "NIFTY Quality Low-Volatility 30",
-      "available": false,
-      "reason": "Official constituent-weight data not parsed from the current monthly report."
+      "available": true,
+      "as_of": null,
+      "retrieved_on": "2026-09-23",
+      "completeness": "constituents",
+      "stock_count": 30,
+      "weight_coverage": null,
+      "top10_weight": null,
+      "source_type": "official_nse_indices_constituent_csv"
     },
     "nifty-services-sector": {
+      "file": "nifty-services-sector.json",
       "name": "NIFTY Services Sector",
-      "available": false,
-      "reason": "Official constituent-weight data not parsed from the current monthly report."
+      "available": true,
+      "as_of": null,
+      "retrieved_on": "2026-09-23",
+      "completeness": "constituents",
+      "stock_count": 30,
+      "weight_coverage": null,
+      "top10_weight": null,
+      "source_type": "official_nse_indices_constituent_csv"
     },
     "nifty-shariah-25": {
       "name": "NIFTY Shariah 25",
       "available": false,
-      "reason": "Official constituent-weight data not parsed from the current monthly report."
+      "reason": "An official constituent list could not be retrieved for this index."
     },
     "nifty-sme-emerge": {
+      "file": "nifty-sme-emerge.json",
       "name": "NIFTY Sme Emerge",
-      "available": false,
-      "reason": "Official constituent-weight data not parsed from the current monthly report."
+      "available": true,
+      "as_of": null,
+      "retrieved_on": "2026-09-23",
+      "completeness": "constituents",
+      "stock_count": 529,
+      "weight_coverage": null,
+      "top10_weight": null,
+      "source_type": "official_nse_indices_constituent_csv"
     },
     "nifty100-esg": {
       "name": "Nifty100 ESG",
       "available": false,
-      "reason": "Official constituent-weight data not parsed from the current monthly report."
+      "reason": "An official constituent list could not be retrieved for this index."
     },
     "nifty100-enhanced-esg": {
       "name": "Nifty100 Enhanced ESG",
       "available": false,
-      "reason": "Official constituent-weight data not parsed from the current monthly report."
+      "reason": "An official constituent list could not be retrieved for this index."
     },
     "nifty100-equal-weight": {
+      "file": "nifty100-equal-weight.json",
       "name": "Nifty100 Equal Weight",
-      "available": false,
-      "reason": "Official constituent-weight data not parsed from the current monthly report."
+      "available": true,
+      "as_of": null,
+      "retrieved_on": "2026-09-23",
+      "completeness": "constituents",
+      "stock_count": 100,
+      "weight_coverage": null,
+      "top10_weight": null,
+      "source_type": "official_nse_indices_constituent_csv"
     },
     "nifty100-low-volatility-30": {
+      "file": "nifty100-low-volatility-30.json",
       "name": "Nifty100 Low Volatility 30",
-      "available": false,
-      "reason": "Official constituent-weight data not parsed from the current monthly report."
+      "available": true,
+      "as_of": null,
+      "retrieved_on": "2026-09-23",
+      "completeness": "constituents",
+      "stock_count": 30,
+      "weight_coverage": null,
+      "top10_weight": null,
+      "source_type": "official_nse_indices_constituent_csv"
     },
     "nifty100-quality-30": {
+      "file": "nifty100-quality-30.json",
       "name": "Nifty100 Quality 30",
-      "available": false,
-      "reason": "Official constituent-weight data not parsed from the current monthly report."
+      "available": true,
+      "as_of": null,
+      "retrieved_on": "2026-09-23",
+      "completeness": "constituents",
+      "stock_count": 30,
+      "weight_coverage": null,
+      "top10_weight": null,
+      "source_type": "official_nse_indices_constituent_csv"
     },
     "nifty200-quality-30": {
+      "file": "nifty200-quality-30.json",
       "name": "Nifty200 Quality 30",
-      "available": false,
-      "reason": "Official constituent-weight data not parsed from the current monthly report."
+      "available": true,
+      "as_of": null,
+      "retrieved_on": "2026-09-23",
+      "completeness": "constituents",
+      "stock_count": 30,
+      "weight_coverage": null,
+      "top10_weight": null,
+      "source_type": "official_nse_indices_constituent_csv"
     },
     "nifty50-equal-weight": {
+      "file": "nifty50-equal-weight.json",
       "name": "Nifty50 Equal Weight",
-      "available": false,
-      "reason": "Official constituent-weight data not parsed from the current monthly report."
+      "available": true,
+      "as_of": null,
+      "retrieved_on": "2026-09-23",
+      "completeness": "constituents",
+      "stock_count": 50,
+      "weight_coverage": null,
+      "top10_weight": null,
+      "source_type": "official_nse_indices_constituent_csv"
     },
     "nifty50-shariah": {
       "name": "Nifty50 Shariah",
       "available": false,
-      "reason": "Official constituent-weight data not parsed from the current monthly report."
+      "reason": "An official constituent list could not be retrieved for this index."
     },
     "nifty50-value-20": {
+      "file": "nifty50-value-20.json",
       "name": "Nifty50 Value 20",
-      "available": false,
-      "reason": "Official constituent-weight data not parsed from the current monthly report."
+      "available": true,
+      "as_of": null,
+      "retrieved_on": "2026-09-23",
+      "completeness": "constituents",
+      "stock_count": 20,
+      "weight_coverage": null,
+      "top10_weight": null,
+      "source_type": "official_nse_indices_constituent_csv"
     },
     "nifty500-shariah": {
       "name": "Nifty500 Shariah",
       "available": false,
-      "reason": "Official constituent-weight data not parsed from the current monthly report."
+      "reason": "An official constituent list could not be retrieved for this index."
     }
   }
 }

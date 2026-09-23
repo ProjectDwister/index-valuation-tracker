@@ -1,0 +1,390 @@
+{
+  "slug": "nifty-alpha-50",
+  "index_name": "NIFTY Alpha 50",
+  "as_of": null,
+  "retrieved_on": "2026-09-23",
+  "source": "NSE Indices — Index Constituent CSV",
+  "source_url": "https://www.niftyindices.com/IndexConstituent/ind_nifty_Alpha_Index.csv",
+  "source_type": "official_nse_indices_constituent_csv",
+  "completeness": "constituents",
+  "stock_count": 50,
+  "weight_coverage": null,
+  "top10_weight": null,
+  "coverage_note": "The official constituent file lists members but does not publish usable stock weights.",
+  "holdings": [
+    {
+      "name": "Acutaas Chemicals Ltd.",
+      "symbol": "ACUTAAS",
+      "sector": "Healthcare",
+      "weight": null
+    },
+    {
+      "name": "Adani Energy Solutions Ltd.",
+      "symbol": "ADANIENSOL",
+      "sector": "Power",
+      "weight": null
+    },
+    {
+      "name": "Adani Power Ltd.",
+      "symbol": "ADANIPOWER",
+      "sector": "Power",
+      "weight": null
+    },
+    {
+      "name": "Aditya Birla Capital Ltd.",
+      "symbol": "ABCAPITAL",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Amber Enterprises India Ltd.",
+      "symbol": "AMBER",
+      "sector": "Consumer Durables",
+      "weight": null
+    },
+    {
+      "name": "Anand Rathi Wealth Ltd.",
+      "symbol": "ANANDRATHI",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Apar Industries Ltd.",
+      "symbol": "APARINDS",
+      "sector": "Capital Goods",
+      "weight": null
+    },
+    {
+      "name": "Ashok Leyland Ltd.",
+      "symbol": "ASHOKLEY",
+      "sector": "Capital Goods",
+      "weight": null
+    },
+    {
+      "name": "Ather Energy Ltd.",
+      "symbol": "ATHERENERG",
+      "sector": "Automobile and Auto Components",
+      "weight": null
+    },
+    {
+      "name": "AU Small Finance Bank Ltd.",
+      "symbol": "AUBANK",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Bank of India",
+      "symbol": "BANKINDIA",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Bharat Forge Ltd.",
+      "symbol": "BHARATFORG",
+      "sector": "Automobile and Auto Components",
+      "weight": null
+    },
+    {
+      "name": "Bharat Heavy Electricals Ltd.",
+      "symbol": "BHEL",
+      "sector": "Capital Goods",
+      "weight": null
+    },
+    {
+      "name": "BSE Ltd.",
+      "symbol": "BSE",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Canara Bank",
+      "symbol": "CANBK",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Cummins India Ltd.",
+      "symbol": "CUMMINSIND",
+      "sector": "Capital Goods",
+      "weight": null
+    },
+    {
+      "name": "Delhivery Ltd.",
+      "symbol": "DELHIVERY",
+      "sector": "Services",
+      "weight": null
+    },
+    {
+      "name": "Eicher Motors Ltd.",
+      "symbol": "EICHERMOT",
+      "sector": "Automobile and Auto Components",
+      "weight": null
+    },
+    {
+      "name": "Federal Bank Ltd.",
+      "symbol": "FEDERALBNK",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Fortis Healthcare Ltd.",
+      "symbol": "FORTIS",
+      "sector": "Healthcare",
+      "weight": null
+    },
+    {
+      "name": "FSN E-Commerce Ventures Ltd.",
+      "symbol": "NYKAA",
+      "sector": "Consumer Services",
+      "weight": null
+    },
+    {
+      "name": "GE Vernova T&D India Ltd.",
+      "symbol": "GVT&D",
+      "sector": "Capital Goods",
+      "weight": null
+    },
+    {
+      "name": "Glenmark Pharmaceuticals Ltd.",
+      "symbol": "GLENMARK",
+      "sector": "Healthcare",
+      "weight": null
+    },
+    {
+      "name": "HDFC Asset Management Company Ltd.",
+      "symbol": "HDFCAMC",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Hindalco Industries Ltd.",
+      "symbol": "HINDALCO",
+      "sector": "Metals & Mining",
+      "weight": null
+    },
+    {
+      "name": "Hindustan Copper Ltd.",
+      "symbol": "HINDCOPPER",
+      "sector": "Metals & Mining",
+      "weight": null
+    },
+    {
+      "name": "Hitachi Energy India Ltd.",
+      "symbol": "POWERINDIA",
+      "sector": "Capital Goods",
+      "weight": null
+    },
+    {
+      "name": "IIFL Finance Ltd.",
+      "symbol": "IIFL",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Indian Bank",
+      "symbol": "INDIANB",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Karur Vysya Bank Ltd.",
+      "symbol": "KARURVYSYA",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "L&T Finance Ltd.",
+      "symbol": "LTF",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Laurus Labs Ltd.",
+      "symbol": "LAURUSLABS",
+      "sector": "Healthcare",
+      "weight": null
+    },
+    {
+      "name": "Manappuram Finance Ltd.",
+      "symbol": "MANAPPURAM",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Max Financial Services Ltd.",
+      "symbol": "MFSL",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Multi Commodity Exchange of India Ltd.",
+      "symbol": "MCX",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Muthoot Finance Ltd.",
+      "symbol": "MUTHOOTFIN",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "National Aluminium Co. Ltd.",
+      "symbol": "NATIONALUM",
+      "sector": "Metals & Mining",
+      "weight": null
+    },
+    {
+      "name": "Navin Fluorine International Ltd.",
+      "symbol": "NAVINFLUOR",
+      "sector": "Chemicals",
+      "weight": null
+    },
+    {
+      "name": "One 97 Communications Ltd.",
+      "symbol": "PAYTM",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Polycab India Ltd.",
+      "symbol": "POLYCAB",
+      "sector": "Capital Goods",
+      "weight": null
+    },
+    {
+      "name": "Radico Khaitan Ltd",
+      "symbol": "RADICO",
+      "sector": "Fast Moving Consumer Goods",
+      "weight": null
+    },
+    {
+      "name": "RBL Bank Ltd.",
+      "symbol": "RBLBANK",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Shriram Finance Ltd.",
+      "symbol": "SHRIRAMFIN",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Solar Industries India Ltd.",
+      "symbol": "SOLARINDS",
+      "sector": "Chemicals",
+      "weight": null
+    },
+    {
+      "name": "State Bank of India",
+      "symbol": "SBIN",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Steel Authority of India Ltd.",
+      "symbol": "SAIL",
+      "sector": "Metals & Mining",
+      "weight": null
+    },
+    {
+      "name": "TVS Motor Company Ltd.",
+      "symbol": "TVSMOTOR",
+      "sector": "Automobile and Auto Components",
+      "weight": null
+    },
+    {
+      "name": "Union Bank of India",
+      "symbol": "UNIONBANK",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Vedanta Ltd.",
+      "symbol": "VEDL",
+      "sector": "Metals & Mining",
+      "weight": null
+    },
+    {
+      "name": "Vodafone Idea Ltd.",
+      "symbol": "IDEA",
+      "sector": "Telecommunication",
+      "weight": null
+    }
+  ],
+  "sectors": [
+    {
+      "name": "Financial Services",
+      "count": 21,
+      "stock_share": 42.0,
+      "weight": null
+    },
+    {
+      "name": "Capital Goods",
+      "count": 7,
+      "stock_share": 14.0,
+      "weight": null
+    },
+    {
+      "name": "Metals & Mining",
+      "count": 5,
+      "stock_share": 10.0,
+      "weight": null
+    },
+    {
+      "name": "Automobile and Auto Components",
+      "count": 4,
+      "stock_share": 8.0,
+      "weight": null
+    },
+    {
+      "name": "Healthcare",
+      "count": 4,
+      "stock_share": 8.0,
+      "weight": null
+    },
+    {
+      "name": "Chemicals",
+      "count": 2,
+      "stock_share": 4.0,
+      "weight": null
+    },
+    {
+      "name": "Power",
+      "count": 2,
+      "stock_share": 4.0,
+      "weight": null
+    },
+    {
+      "name": "Consumer Durables",
+      "count": 1,
+      "stock_share": 2.0,
+      "weight": null
+    },
+    {
+      "name": "Consumer Services",
+      "count": 1,
+      "stock_share": 2.0,
+      "weight": null
+    },
+    {
+      "name": "Fast Moving Consumer Goods",
+      "count": 1,
+      "stock_share": 2.0,
+      "weight": null
+    },
+    {
+      "name": "Services",
+      "count": 1,
+      "stock_share": 2.0,
+      "weight": null
+    },
+    {
+      "name": "Telecommunication",
+      "count": 1,
+      "stock_share": 2.0,
+      "weight": null
+    }
+  ]
+}

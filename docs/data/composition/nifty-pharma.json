@@ -1,0 +1,144 @@
+{
+  "slug": "nifty-pharma",
+  "index_name": "NIFTY Pharma",
+  "as_of": null,
+  "retrieved_on": "2026-09-23",
+  "source": "NSE Indices — Index Constituent CSV",
+  "source_url": "https://www.niftyindices.com/IndexConstituent/ind_niftypharmalist.csv",
+  "source_type": "official_nse_indices_constituent_csv",
+  "completeness": "constituents",
+  "stock_count": 20,
+  "weight_coverage": null,
+  "top10_weight": null,
+  "coverage_note": "The official constituent file lists members but does not publish usable stock weights.",
+  "holdings": [
+    {
+      "name": "Abbott India Ltd.",
+      "symbol": "ABBOTINDIA",
+      "sector": "Healthcare",
+      "weight": null
+    },
+    {
+      "name": "Ajanta Pharmaceuticals Ltd.",
+      "symbol": "AJANTPHARM",
+      "sector": "Healthcare",
+      "weight": null
+    },
+    {
+      "name": "Alkem Laboratories Ltd.",
+      "symbol": "ALKEM",
+      "sector": "Healthcare",
+      "weight": null
+    },
+    {
+      "name": "Aurobindo Pharma Ltd.",
+      "symbol": "AUROPHARMA",
+      "sector": "Healthcare",
+      "weight": null
+    },
+    {
+      "name": "Biocon Ltd.",
+      "symbol": "BIOCON",
+      "sector": "Healthcare",
+      "weight": null
+    },
+    {
+      "name": "Cipla Ltd.",
+      "symbol": "CIPLA",
+      "sector": "Healthcare",
+      "weight": null
+    },
+    {
+      "name": "Divi's Laboratories Ltd.",
+      "symbol": "DIVISLAB",
+      "sector": "Healthcare",
+      "weight": null
+    },
+    {
+      "name": "Dr. Reddy's Laboratories Ltd.",
+      "symbol": "DRREDDY",
+      "sector": "Healthcare",
+      "weight": null
+    },
+    {
+      "name": "Gland Pharma Ltd.",
+      "symbol": "GLAND",
+      "sector": "Healthcare",
+      "weight": null
+    },
+    {
+      "name": "Glenmark Pharmaceuticals Ltd.",
+      "symbol": "GLENMARK",
+      "sector": "Healthcare",
+      "weight": null
+    },
+    {
+      "name": "Ipca Laboratories Ltd.",
+      "symbol": "IPCALAB",
+      "sector": "Healthcare",
+      "weight": null
+    },
+    {
+      "name": "Laurus Labs Ltd.",
+      "symbol": "LAURUSLABS",
+      "sector": "Healthcare",
+      "weight": null
+    },
+    {
+      "name": "Lupin Ltd.",
+      "symbol": "LUPIN",
+      "sector": "Healthcare",
+      "weight": null
+    },
+    {
+      "name": "Mankind Pharma Ltd.",
+      "symbol": "MANKIND",
+      "sector": "Healthcare",
+      "weight": null
+    },
+    {
+      "name": "Piramal Pharma Ltd.",
+      "symbol": "PPLPHARMA",
+      "sector": "Healthcare",
+      "weight": null
+    },
+    {
+      "name": "Sai Life Sciences Ltd.",
+      "symbol": "SAILIFE",
+      "sector": "Healthcare",
+      "weight": null
+    },
+    {
+      "name": "Sun Pharmaceutical Industries Ltd.",
+      "symbol": "SUNPHARMA",
+      "sector": "Healthcare",
+      "weight": null
+    },
+    {
+      "name": "Torrent Pharmaceuticals Ltd.",
+      "symbol": "TORNTPHARM",
+      "sector": "Healthcare",
+      "weight": null
+    },
+    {
+      "name": "Wockhardt Ltd.",
+      "symbol": "WOCKPHARMA",
+      "sector": "Healthcare",
+      "weight": null
+    },
+    {
+      "name": "Zydus Lifesciences Ltd.",
+      "symbol": "ZYDUSLIFE",
+      "sector": "Healthcare",
+      "weight": null
+    }
+  ],
+  "sectors": [
+    {
+      "name": "Healthcare",
+      "count": 20,
+      "stock_share": 100.0,
+      "weight": null
+    }
+  ]
+}

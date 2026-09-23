@@ -1,0 +1,258 @@
+{
+  "slug": "nifty200-quality-30",
+  "index_name": "Nifty200 Quality 30",
+  "as_of": null,
+  "retrieved_on": "2026-09-23",
+  "source": "NSE Indices — Index Constituent CSV",
+  "source_url": "https://www.niftyindices.com/IndexConstituent/ind_nifty200Quality30_list.csv",
+  "source_type": "official_nse_indices_constituent_csv",
+  "completeness": "constituents",
+  "stock_count": 30,
+  "weight_coverage": null,
+  "top10_weight": null,
+  "coverage_note": "The official constituent file lists members but does not publish usable stock weights.",
+  "holdings": [
+    {
+      "name": "Asian Paints Ltd.",
+      "symbol": "ASIANPAINT",
+      "sector": "Consumer Durables",
+      "weight": null
+    },
+    {
+      "name": "Bajaj Auto Ltd.",
+      "symbol": "BAJAJ-AUTO",
+      "sector": "Automobile and Auto Components",
+      "weight": null
+    },
+    {
+      "name": "Bharat Electronics Ltd.",
+      "symbol": "BEL",
+      "sector": "Capital Goods",
+      "weight": null
+    },
+    {
+      "name": "Britannia Industries Ltd.",
+      "symbol": "BRITANNIA",
+      "sector": "Fast Moving Consumer Goods",
+      "weight": null
+    },
+    {
+      "name": "Coal India Ltd.",
+      "symbol": "COALINDIA",
+      "sector": "Oil Gas & Consumable Fuels",
+      "weight": null
+    },
+    {
+      "name": "Colgate Palmolive (India) Ltd.",
+      "symbol": "COLPAL",
+      "sector": "Fast Moving Consumer Goods",
+      "weight": null
+    },
+    {
+      "name": "Cummins India Ltd.",
+      "symbol": "CUMMINSIND",
+      "sector": "Capital Goods",
+      "weight": null
+    },
+    {
+      "name": "Dixon Technologies (India) Ltd.",
+      "symbol": "DIXON",
+      "sector": "Consumer Durables",
+      "weight": null
+    },
+    {
+      "name": "Havells India Ltd.",
+      "symbol": "HAVELLS",
+      "sector": "Consumer Durables",
+      "weight": null
+    },
+    {
+      "name": "HCL Technologies Ltd.",
+      "symbol": "HCLTECH",
+      "sector": "Information Technology",
+      "weight": null
+    },
+    {
+      "name": "HDFC Asset Management Company Ltd.",
+      "symbol": "HDFCAMC",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Hero MotoCorp Ltd.",
+      "symbol": "HEROMOTOCO",
+      "sector": "Automobile and Auto Components",
+      "weight": null
+    },
+    {
+      "name": "Hindustan Aeronautics Ltd.",
+      "symbol": "HAL",
+      "sector": "Capital Goods",
+      "weight": null
+    },
+    {
+      "name": "Hindustan Unilever Ltd.",
+      "symbol": "HINDUNILVR",
+      "sector": "Fast Moving Consumer Goods",
+      "weight": null
+    },
+    {
+      "name": "Hindustan Zinc Ltd.",
+      "symbol": "HINDZINC",
+      "sector": "Metals & Mining",
+      "weight": null
+    },
+    {
+      "name": "Infosys Ltd.",
+      "symbol": "INFY",
+      "sector": "Information Technology",
+      "weight": null
+    },
+    {
+      "name": "ITC Ltd.",
+      "symbol": "ITC",
+      "sector": "Fast Moving Consumer Goods",
+      "weight": null
+    },
+    {
+      "name": "KPIT Technologies Ltd.",
+      "symbol": "KPITTECH",
+      "sector": "Information Technology",
+      "weight": null
+    },
+    {
+      "name": "LTM Ltd.",
+      "symbol": "LTM",
+      "sector": "Information Technology",
+      "weight": null
+    },
+    {
+      "name": "Marico Ltd.",
+      "symbol": "MARICO",
+      "sector": "Fast Moving Consumer Goods",
+      "weight": null
+    },
+    {
+      "name": "Mazagoan Dock Shipbuilders Ltd.",
+      "symbol": "MAZDOCK",
+      "sector": "Capital Goods",
+      "weight": null
+    },
+    {
+      "name": "Nestle India Ltd.",
+      "symbol": "NESTLEIND",
+      "sector": "Fast Moving Consumer Goods",
+      "weight": null
+    },
+    {
+      "name": "Oracle Financial Services Software Ltd.",
+      "symbol": "OFSS",
+      "sector": "Information Technology",
+      "weight": null
+    },
+    {
+      "name": "Page Industries Ltd.",
+      "symbol": "PAGEIND",
+      "sector": "Textiles",
+      "weight": null
+    },
+    {
+      "name": "Persistent Systems Ltd.",
+      "symbol": "PERSISTENT",
+      "sector": "Information Technology",
+      "weight": null
+    },
+    {
+      "name": "Pidilite Industries Ltd.",
+      "symbol": "PIDILITIND",
+      "sector": "Chemicals",
+      "weight": null
+    },
+    {
+      "name": "Polycab India Ltd.",
+      "symbol": "POLYCAB",
+      "sector": "Capital Goods",
+      "weight": null
+    },
+    {
+      "name": "Solar Industries India Ltd.",
+      "symbol": "SOLARINDS",
+      "sector": "Chemicals",
+      "weight": null
+    },
+    {
+      "name": "Tata Consultancy Services Ltd.",
+      "symbol": "TCS",
+      "sector": "Information Technology",
+      "weight": null
+    },
+    {
+      "name": "Tata Elxsi Ltd.",
+      "symbol": "TATAELXSI",
+      "sector": "Information Technology",
+      "weight": null
+    }
+  ],
+  "sectors": [
+    {
+      "name": "Information Technology",
+      "count": 8,
+      "stock_share": 26.6667,
+      "weight": null
+    },
+    {
+      "name": "Fast Moving Consumer Goods",
+      "count": 6,
+      "stock_share": 20.0,
+      "weight": null
+    },
+    {
+      "name": "Capital Goods",
+      "count": 5,
+      "stock_share": 16.6667,
+      "weight": null
+    },
+    {
+      "name": "Consumer Durables",
+      "count": 3,
+      "stock_share": 10.0,
+      "weight": null
+    },
+    {
+      "name": "Automobile and Auto Components",
+      "count": 2,
+      "stock_share": 6.6667,
+      "weight": null
+    },
+    {
+      "name": "Chemicals",
+      "count": 2,
+      "stock_share": 6.6667,
+      "weight": null
+    },
+    {
+      "name": "Financial Services",
+      "count": 1,
+      "stock_share": 3.3333,
+      "weight": null
+    },
+    {
+      "name": "Metals & Mining",
+      "count": 1,
+      "stock_share": 3.3333,
+      "weight": null
+    },
+    {
+      "name": "Oil Gas & Consumable Fuels",
+      "count": 1,
+      "stock_share": 3.3333,
+      "weight": null
+    },
+    {
+      "name": "Textiles",
+      "count": 1,
+      "stock_share": 3.3333,
+      "weight": null
+    }
+  ]
+}

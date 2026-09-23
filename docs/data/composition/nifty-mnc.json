@@ -1,0 +1,264 @@
+{
+  "slug": "nifty-mnc",
+  "index_name": "NIFTY Mnc",
+  "as_of": null,
+  "retrieved_on": "2026-09-23",
+  "source": "NSE Indices — Index Constituent CSV",
+  "source_url": "https://www.niftyindices.com/IndexConstituent/ind_niftymnclist.csv",
+  "source_type": "official_nse_indices_constituent_csv",
+  "completeness": "constituents",
+  "stock_count": 30,
+  "weight_coverage": null,
+  "top10_weight": null,
+  "coverage_note": "The official constituent file lists members but does not publish usable stock weights.",
+  "holdings": [
+    {
+      "name": "3M India Ltd.",
+      "symbol": "3MINDIA",
+      "sector": "Diversified",
+      "weight": null
+    },
+    {
+      "name": "ABB India Ltd.",
+      "symbol": "ABB",
+      "sector": "Capital Goods",
+      "weight": null
+    },
+    {
+      "name": "Abbott India Ltd.",
+      "symbol": "ABBOTINDIA",
+      "sector": "Healthcare",
+      "weight": null
+    },
+    {
+      "name": "Ambuja Cements Ltd.",
+      "symbol": "AMBUJACEM",
+      "sector": "Construction Materials",
+      "weight": null
+    },
+    {
+      "name": "Ashok Leyland Ltd.",
+      "symbol": "ASHOKLEY",
+      "sector": "Capital Goods",
+      "weight": null
+    },
+    {
+      "name": "AWL Agri Business Ltd.",
+      "symbol": "AWL",
+      "sector": "Fast Moving Consumer Goods",
+      "weight": null
+    },
+    {
+      "name": "Bosch Ltd.",
+      "symbol": "BOSCHLTD",
+      "sector": "Automobile and Auto Components",
+      "weight": null
+    },
+    {
+      "name": "Britannia Industries Ltd.",
+      "symbol": "BRITANNIA",
+      "sector": "Fast Moving Consumer Goods",
+      "weight": null
+    },
+    {
+      "name": "Castrol India Ltd.",
+      "symbol": "CASTROLIND",
+      "sector": "Oil Gas & Consumable Fuels",
+      "weight": null
+    },
+    {
+      "name": "Cohance Lifesciences Ltd.",
+      "symbol": "COHANCE",
+      "sector": "Healthcare",
+      "weight": null
+    },
+    {
+      "name": "Colgate Palmolive (India) Ltd.",
+      "symbol": "COLPAL",
+      "sector": "Fast Moving Consumer Goods",
+      "weight": null
+    },
+    {
+      "name": "CRISIL Ltd.",
+      "symbol": "CRISIL",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Cummins India Ltd.",
+      "symbol": "CUMMINSIND",
+      "sector": "Capital Goods",
+      "weight": null
+    },
+    {
+      "name": "Escorts Kubota Ltd.",
+      "symbol": "ESCORTS",
+      "sector": "Capital Goods",
+      "weight": null
+    },
+    {
+      "name": "Gland Pharma Ltd.",
+      "symbol": "GLAND",
+      "sector": "Healthcare",
+      "weight": null
+    },
+    {
+      "name": "Hindustan Unilever Ltd.",
+      "symbol": "HINDUNILVR",
+      "sector": "Fast Moving Consumer Goods",
+      "weight": null
+    },
+    {
+      "name": "Hitachi Energy India Ltd.",
+      "symbol": "POWERINDIA",
+      "sector": "Capital Goods",
+      "weight": null
+    },
+    {
+      "name": "Hyundai Motor India Ltd.",
+      "symbol": "HYUNDAI",
+      "sector": "Automobile and Auto Components",
+      "weight": null
+    },
+    {
+      "name": "Linde India Ltd.",
+      "symbol": "LINDEINDIA",
+      "sector": "Chemicals",
+      "weight": null
+    },
+    {
+      "name": "Maruti Suzuki India Ltd.",
+      "symbol": "MARUTI",
+      "sector": "Automobile and Auto Components",
+      "weight": null
+    },
+    {
+      "name": "Nestle India Ltd.",
+      "symbol": "NESTLEIND",
+      "sector": "Fast Moving Consumer Goods",
+      "weight": null
+    },
+    {
+      "name": "Nippon Life India Asset Management Ltd.",
+      "symbol": "NAM-INDIA",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Oracle Financial Services Software Ltd.",
+      "symbol": "OFSS",
+      "sector": "Information Technology",
+      "weight": null
+    },
+    {
+      "name": "Schaeffler India Ltd.",
+      "symbol": "SCHAEFFLER",
+      "sector": "Automobile and Auto Components",
+      "weight": null
+    },
+    {
+      "name": "Siemens Energy India Ltd.",
+      "symbol": "ENRIN",
+      "sector": "Capital Goods",
+      "weight": null
+    },
+    {
+      "name": "Siemens Ltd.",
+      "symbol": "SIEMENS",
+      "sector": "Capital Goods",
+      "weight": null
+    },
+    {
+      "name": "Timken India Ltd.",
+      "symbol": "TIMKEN",
+      "sector": "Capital Goods",
+      "weight": null
+    },
+    {
+      "name": "United Breweries Ltd.",
+      "symbol": "UBL",
+      "sector": "Fast Moving Consumer Goods",
+      "weight": null
+    },
+    {
+      "name": "United Spirits Ltd.",
+      "symbol": "UNITDSPR",
+      "sector": "Fast Moving Consumer Goods",
+      "weight": null
+    },
+    {
+      "name": "Vedanta Ltd.",
+      "symbol": "VEDL",
+      "sector": "Metals & Mining",
+      "weight": null
+    }
+  ],
+  "sectors": [
+    {
+      "name": "Capital Goods",
+      "count": 8,
+      "stock_share": 26.6667,
+      "weight": null
+    },
+    {
+      "name": "Fast Moving Consumer Goods",
+      "count": 7,
+      "stock_share": 23.3333,
+      "weight": null
+    },
+    {
+      "name": "Automobile and Auto Components",
+      "count": 4,
+      "stock_share": 13.3333,
+      "weight": null
+    },
+    {
+      "name": "Healthcare",
+      "count": 3,
+      "stock_share": 10.0,
+      "weight": null
+    },
+    {
+      "name": "Financial Services",
+      "count": 2,
+      "stock_share": 6.6667,
+      "weight": null
+    },
+    {
+      "name": "Chemicals",
+      "count": 1,
+      "stock_share": 3.3333,
+      "weight": null
+    },
+    {
+      "name": "Construction Materials",
+      "count": 1,
+      "stock_share": 3.3333,
+      "weight": null
+    },
+    {
+      "name": "Diversified",
+      "count": 1,
+      "stock_share": 3.3333,
+      "weight": null
+    },
+    {
+      "name": "Information Technology",
+      "count": 1,
+      "stock_share": 3.3333,
+      "weight": null
+    },
+    {
+      "name": "Metals & Mining",
+      "count": 1,
+      "stock_share": 3.3333,
+      "weight": null
+    },
+    {
+      "name": "Oil Gas & Consumable Fuels",
+      "count": 1,
+      "stock_share": 3.3333,
+      "weight": null
+    }
+  ]
+}

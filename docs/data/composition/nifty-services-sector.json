@@ -1,0 +1,246 @@
+{
+  "slug": "nifty-services-sector",
+  "index_name": "NIFTY Services Sector",
+  "as_of": null,
+  "retrieved_on": "2026-09-23",
+  "source": "NSE Indices — Index Constituent CSV",
+  "source_url": "https://www.niftyindices.com/IndexConstituent/ind_niftyservicelist.csv",
+  "source_type": "official_nse_indices_constituent_csv",
+  "completeness": "constituents",
+  "stock_count": 30,
+  "weight_coverage": null,
+  "top10_weight": null,
+  "coverage_note": "The official constituent file lists members but does not publish usable stock weights.",
+  "holdings": [
+    {
+      "name": "Adani Ports and Special Economic Zone Ltd.",
+      "symbol": "ADANIPORTS",
+      "sector": "Services",
+      "weight": null
+    },
+    {
+      "name": "Apollo Hospitals Enterprise Ltd.",
+      "symbol": "APOLLOHOSP",
+      "sector": "Healthcare",
+      "weight": null
+    },
+    {
+      "name": "Avenue Supermarts Ltd.",
+      "symbol": "DMART",
+      "sector": "Consumer Services",
+      "weight": null
+    },
+    {
+      "name": "Axis Bank Ltd.",
+      "symbol": "AXISBANK",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Bajaj Finance Ltd.",
+      "symbol": "BAJFINANCE",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Bajaj Finserv Ltd.",
+      "symbol": "BAJAJFINSV",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Bharti Airtel Ltd.",
+      "symbol": "BHARTIARTL",
+      "sector": "Telecommunication",
+      "weight": null
+    },
+    {
+      "name": "BSE Ltd.",
+      "symbol": "BSE",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Eternal Ltd.",
+      "symbol": "ETERNAL",
+      "sector": "Consumer Services",
+      "weight": null
+    },
+    {
+      "name": "GAIL (India) Ltd.",
+      "symbol": "GAIL",
+      "sector": "Oil Gas & Consumable Fuels",
+      "weight": null
+    },
+    {
+      "name": "HCL Technologies Ltd.",
+      "symbol": "HCLTECH",
+      "sector": "Information Technology",
+      "weight": null
+    },
+    {
+      "name": "HDFC Bank Ltd.",
+      "symbol": "HDFCBANK",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "HDFC Life Insurance Company Ltd.",
+      "symbol": "HDFCLIFE",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "ICICI Bank Ltd.",
+      "symbol": "ICICIBANK",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "IndusInd Bank Ltd.",
+      "symbol": "INDUSINDBK",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Info Edge (India) Ltd.",
+      "symbol": "NAUKRI",
+      "sector": "Consumer Services",
+      "weight": null
+    },
+    {
+      "name": "Infosys Ltd.",
+      "symbol": "INFY",
+      "sector": "Information Technology",
+      "weight": null
+    },
+    {
+      "name": "InterGlobe Aviation Ltd.",
+      "symbol": "INDIGO",
+      "sector": "Services",
+      "weight": null
+    },
+    {
+      "name": "Jio Financial Services Ltd.",
+      "symbol": "JIOFIN",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Kotak Mahindra Bank Ltd.",
+      "symbol": "KOTAKBANK",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Max Healthcare Institute Ltd.",
+      "symbol": "MAXHEALTH",
+      "sector": "Healthcare",
+      "weight": null
+    },
+    {
+      "name": "NTPC Ltd.",
+      "symbol": "NTPC",
+      "sector": "Power",
+      "weight": null
+    },
+    {
+      "name": "Power Grid Corporation of India Ltd.",
+      "symbol": "POWERGRID",
+      "sector": "Power",
+      "weight": null
+    },
+    {
+      "name": "SBI Life Insurance Company Ltd.",
+      "symbol": "SBILIFE",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Shriram Finance Ltd.",
+      "symbol": "SHRIRAMFIN",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "State Bank of India",
+      "symbol": "SBIN",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Tata Consultancy Services Ltd.",
+      "symbol": "TCS",
+      "sector": "Information Technology",
+      "weight": null
+    },
+    {
+      "name": "Tata Power Co. Ltd.",
+      "symbol": "TATAPOWER",
+      "sector": "Power",
+      "weight": null
+    },
+    {
+      "name": "Tech Mahindra Ltd.",
+      "symbol": "TECHM",
+      "sector": "Information Technology",
+      "weight": null
+    },
+    {
+      "name": "Wipro Ltd.",
+      "symbol": "WIPRO",
+      "sector": "Information Technology",
+      "weight": null
+    }
+  ],
+  "sectors": [
+    {
+      "name": "Financial Services",
+      "count": 13,
+      "stock_share": 43.3333,
+      "weight": null
+    },
+    {
+      "name": "Information Technology",
+      "count": 5,
+      "stock_share": 16.6667,
+      "weight": null
+    },
+    {
+      "name": "Consumer Services",
+      "count": 3,
+      "stock_share": 10.0,
+      "weight": null
+    },
+    {
+      "name": "Power",
+      "count": 3,
+      "stock_share": 10.0,
+      "weight": null
+    },
+    {
+      "name": "Healthcare",
+      "count": 2,
+      "stock_share": 6.6667,
+      "weight": null
+    },
+    {
+      "name": "Services",
+      "count": 2,
+      "stock_share": 6.6667,
+      "weight": null
+    },
+    {
+      "name": "Oil Gas & Consumable Fuels",
+      "count": 1,
+      "stock_share": 3.3333,
+      "weight": null
+    },
+    {
+      "name": "Telecommunication",
+      "count": 1,
+      "stock_share": 3.3333,
+      "weight": null
+    }
+  ]
+}

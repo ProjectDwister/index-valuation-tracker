@@ -1,0 +1,270 @@
+{
+  "slug": "nifty100-low-volatility-30",
+  "index_name": "Nifty100 Low Volatility 30",
+  "as_of": null,
+  "retrieved_on": "2026-09-23",
+  "source": "NSE Indices — Index Constituent CSV",
+  "source_url": "https://www.niftyindices.com/IndexConstituent/ind_Nifty100LowVolatility30list.csv",
+  "source_type": "official_nse_indices_constituent_csv",
+  "completeness": "constituents",
+  "stock_count": 30,
+  "weight_coverage": null,
+  "top10_weight": null,
+  "coverage_note": "The official constituent file lists members but does not publish usable stock weights.",
+  "holdings": [
+    {
+      "name": "Apollo Hospitals Enterprise Ltd.",
+      "symbol": "APOLLOHOSP",
+      "sector": "Healthcare",
+      "weight": null
+    },
+    {
+      "name": "Asian Paints Ltd.",
+      "symbol": "ASIANPAINT",
+      "sector": "Consumer Durables",
+      "weight": null
+    },
+    {
+      "name": "Bajaj Auto Ltd.",
+      "symbol": "BAJAJ-AUTO",
+      "sector": "Automobile and Auto Components",
+      "weight": null
+    },
+    {
+      "name": "Bajaj Finserv Ltd.",
+      "symbol": "BAJAJFINSV",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Bharti Airtel Ltd.",
+      "symbol": "BHARTIARTL",
+      "sector": "Telecommunication",
+      "weight": null
+    },
+    {
+      "name": "Britannia Industries Ltd.",
+      "symbol": "BRITANNIA",
+      "sector": "Fast Moving Consumer Goods",
+      "weight": null
+    },
+    {
+      "name": "Cipla Ltd.",
+      "symbol": "CIPLA",
+      "sector": "Healthcare",
+      "weight": null
+    },
+    {
+      "name": "Dr. Reddy's Laboratories Ltd.",
+      "symbol": "DRREDDY",
+      "sector": "Healthcare",
+      "weight": null
+    },
+    {
+      "name": "HCL Technologies Ltd.",
+      "symbol": "HCLTECH",
+      "sector": "Information Technology",
+      "weight": null
+    },
+    {
+      "name": "HDFC Bank Ltd.",
+      "symbol": "HDFCBANK",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Hindustan Unilever Ltd.",
+      "symbol": "HINDUNILVR",
+      "sector": "Fast Moving Consumer Goods",
+      "weight": null
+    },
+    {
+      "name": "ICICI Bank Ltd.",
+      "symbol": "ICICIBANK",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Infosys Ltd.",
+      "symbol": "INFY",
+      "sector": "Information Technology",
+      "weight": null
+    },
+    {
+      "name": "ITC Ltd.",
+      "symbol": "ITC",
+      "sector": "Fast Moving Consumer Goods",
+      "weight": null
+    },
+    {
+      "name": "Kotak Mahindra Bank Ltd.",
+      "symbol": "KOTAKBANK",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Larsen & Toubro Ltd.",
+      "symbol": "LT",
+      "sector": "Construction",
+      "weight": null
+    },
+    {
+      "name": "Maruti Suzuki India Ltd.",
+      "symbol": "MARUTI",
+      "sector": "Automobile and Auto Components",
+      "weight": null
+    },
+    {
+      "name": "Nestle India Ltd.",
+      "symbol": "NESTLEIND",
+      "sector": "Fast Moving Consumer Goods",
+      "weight": null
+    },
+    {
+      "name": "NTPC Ltd.",
+      "symbol": "NTPC",
+      "sector": "Power",
+      "weight": null
+    },
+    {
+      "name": "Pidilite Industries Ltd.",
+      "symbol": "PIDILITIND",
+      "sector": "Chemicals",
+      "weight": null
+    },
+    {
+      "name": "Reliance Industries Ltd.",
+      "symbol": "RELIANCE",
+      "sector": "Oil Gas & Consumable Fuels",
+      "weight": null
+    },
+    {
+      "name": "SBI Life Insurance Company Ltd.",
+      "symbol": "SBILIFE",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Shree Cement Ltd.",
+      "symbol": "SHREECEM",
+      "sector": "Construction Materials",
+      "weight": null
+    },
+    {
+      "name": "State Bank of India",
+      "symbol": "SBIN",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Sun Pharmaceutical Industries Ltd.",
+      "symbol": "SUNPHARMA",
+      "sector": "Healthcare",
+      "weight": null
+    },
+    {
+      "name": "Tata Consultancy Services Ltd.",
+      "symbol": "TCS",
+      "sector": "Information Technology",
+      "weight": null
+    },
+    {
+      "name": "Titan Company Ltd.",
+      "symbol": "TITAN",
+      "sector": "Consumer Durables",
+      "weight": null
+    },
+    {
+      "name": "Torrent Pharmaceuticals Ltd.",
+      "symbol": "TORNTPHARM",
+      "sector": "Healthcare",
+      "weight": null
+    },
+    {
+      "name": "UltraTech Cement Ltd.",
+      "symbol": "ULTRACEMCO",
+      "sector": "Construction Materials",
+      "weight": null
+    },
+    {
+      "name": "Wipro Ltd.",
+      "symbol": "WIPRO",
+      "sector": "Information Technology",
+      "weight": null
+    }
+  ],
+  "sectors": [
+    {
+      "name": "Financial Services",
+      "count": 6,
+      "stock_share": 20.0,
+      "weight": null
+    },
+    {
+      "name": "Healthcare",
+      "count": 5,
+      "stock_share": 16.6667,
+      "weight": null
+    },
+    {
+      "name": "Fast Moving Consumer Goods",
+      "count": 4,
+      "stock_share": 13.3333,
+      "weight": null
+    },
+    {
+      "name": "Information Technology",
+      "count": 4,
+      "stock_share": 13.3333,
+      "weight": null
+    },
+    {
+      "name": "Automobile and Auto Components",
+      "count": 2,
+      "stock_share": 6.6667,
+      "weight": null
+    },
+    {
+      "name": "Construction Materials",
+      "count": 2,
+      "stock_share": 6.6667,
+      "weight": null
+    },
+    {
+      "name": "Consumer Durables",
+      "count": 2,
+      "stock_share": 6.6667,
+      "weight": null
+    },
+    {
+      "name": "Chemicals",
+      "count": 1,
+      "stock_share": 3.3333,
+      "weight": null
+    },
+    {
+      "name": "Construction",
+      "count": 1,
+      "stock_share": 3.3333,
+      "weight": null
+    },
+    {
+      "name": "Oil Gas & Consumable Fuels",
+      "count": 1,
+      "stock_share": 3.3333,
+      "weight": null
+    },
+    {
+      "name": "Power",
+      "count": 1,
+      "stock_share": 3.3333,
+      "weight": null
+    },
+    {
+      "name": "Telecommunication",
+      "count": 1,
+      "stock_share": 3.3333,
+      "weight": null
+    }
+  ]
+}

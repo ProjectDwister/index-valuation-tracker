@@ -1,0 +1,384 @@
+{
+  "slug": "nifty-high-beta-50",
+  "index_name": "NIFTY High Beta 50",
+  "as_of": null,
+  "retrieved_on": "2026-09-23",
+  "source": "NSE Indices — Index Constituent CSV",
+  "source_url": "https://www.niftyindices.com/IndexConstituent/nifty_High_Beta50_Index.csv",
+  "source_type": "official_nse_indices_constituent_csv",
+  "completeness": "constituents",
+  "stock_count": 50,
+  "weight_coverage": null,
+  "top10_weight": null,
+  "coverage_note": "The official constituent file lists members but does not publish usable stock weights.",
+  "holdings": [
+    {
+      "name": "Adani Energy Solutions Ltd.",
+      "symbol": "ADANIENSOL",
+      "sector": "Power",
+      "weight": null
+    },
+    {
+      "name": "Adani Enterprises Ltd.",
+      "symbol": "ADANIENT",
+      "sector": "Metals & Mining",
+      "weight": null
+    },
+    {
+      "name": "Adani Green Energy Ltd.",
+      "symbol": "ADANIGREEN",
+      "sector": "Power",
+      "weight": null
+    },
+    {
+      "name": "Adani Ports and Special Economic Zone Ltd.",
+      "symbol": "ADANIPORTS",
+      "sector": "Services",
+      "weight": null
+    },
+    {
+      "name": "Aditya Birla Capital Ltd.",
+      "symbol": "ABCAPITAL",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Amber Enterprises India Ltd.",
+      "symbol": "AMBER",
+      "sector": "Consumer Durables",
+      "weight": null
+    },
+    {
+      "name": "Angel One Ltd.",
+      "symbol": "ANGELONE",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Apar Industries Ltd.",
+      "symbol": "APARINDS",
+      "sector": "Capital Goods",
+      "weight": null
+    },
+    {
+      "name": "Ashok Leyland Ltd.",
+      "symbol": "ASHOKLEY",
+      "sector": "Capital Goods",
+      "weight": null
+    },
+    {
+      "name": "Bandhan Bank Ltd.",
+      "symbol": "BANDHANBNK",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Bank of India",
+      "symbol": "BANKINDIA",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Bharat Heavy Electricals Ltd.",
+      "symbol": "BHEL",
+      "sector": "Capital Goods",
+      "weight": null
+    },
+    {
+      "name": "BSE Ltd.",
+      "symbol": "BSE",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Central Depository Services (India) Ltd.",
+      "symbol": "CDSL",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Cholamandalam Investment and Finance Company Ltd.",
+      "symbol": "CHOLAFIN",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Dixon Technologies (India) Ltd.",
+      "symbol": "DIXON",
+      "sector": "Consumer Durables",
+      "weight": null
+    },
+    {
+      "name": "DLF Ltd.",
+      "symbol": "DLF",
+      "sector": "Realty",
+      "weight": null
+    },
+    {
+      "name": "Godrej Properties Ltd.",
+      "symbol": "GODREJPROP",
+      "sector": "Realty",
+      "weight": null
+    },
+    {
+      "name": "HDFC Asset Management Company Ltd.",
+      "symbol": "HDFCAMC",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Hindustan Copper Ltd.",
+      "symbol": "HINDCOPPER",
+      "sector": "Metals & Mining",
+      "weight": null
+    },
+    {
+      "name": "Hindustan Petroleum Corporation Ltd.",
+      "symbol": "HINDPETRO",
+      "sector": "Oil Gas & Consumable Fuels",
+      "weight": null
+    },
+    {
+      "name": "Housing & Urban Development Corporation Ltd.",
+      "symbol": "HUDCO",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "IIFL Finance Ltd.",
+      "symbol": "IIFL",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Indian Railway Finance Corporation Ltd.",
+      "symbol": "IRFC",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Indian Renewable Energy Development Agency Ltd.",
+      "symbol": "IREDA",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "InterGlobe Aviation Ltd.",
+      "symbol": "INDIGO",
+      "sector": "Services",
+      "weight": null
+    },
+    {
+      "name": "Jio Financial Services Ltd.",
+      "symbol": "JIOFIN",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Kalyan Jewellers India Ltd.",
+      "symbol": "KALYANKJIL",
+      "sector": "Consumer Durables",
+      "weight": null
+    },
+    {
+      "name": "Kaynes Technology India Ltd.",
+      "symbol": "KAYNES",
+      "sector": "Capital Goods",
+      "weight": null
+    },
+    {
+      "name": "L&T Finance Ltd.",
+      "symbol": "LTF",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Lodha Developers Ltd.",
+      "symbol": "LODHA",
+      "sector": "Realty",
+      "weight": null
+    },
+    {
+      "name": "Mahindra & Mahindra Financial Services Ltd.",
+      "symbol": "M&MFIN",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Mahindra & Mahindra Ltd.",
+      "symbol": "M&M",
+      "sector": "Automobile and Auto Components",
+      "weight": null
+    },
+    {
+      "name": "Mazagoan Dock Shipbuilders Ltd.",
+      "symbol": "MAZDOCK",
+      "sector": "Capital Goods",
+      "weight": null
+    },
+    {
+      "name": "Motilal Oswal Financial Services Ltd.",
+      "symbol": "MOTILALOFS",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Multi Commodity Exchange of India Ltd.",
+      "symbol": "MCX",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "NBCC (India) Ltd.",
+      "symbol": "NBCC",
+      "sector": "Construction",
+      "weight": null
+    },
+    {
+      "name": "Nippon Life India Asset Management Ltd.",
+      "symbol": "NAM-INDIA",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "One 97 Communications Ltd.",
+      "symbol": "PAYTM",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "PNB Housing Finance Ltd.",
+      "symbol": "PNBHOUSING",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Power Finance Corporation Ltd.",
+      "symbol": "PFC",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Prestige Estates Projects Ltd.",
+      "symbol": "PRESTIGE",
+      "sector": "Realty",
+      "weight": null
+    },
+    {
+      "name": "Rail Vikas Nigam Ltd.",
+      "symbol": "RVNL",
+      "sector": "Construction",
+      "weight": null
+    },
+    {
+      "name": "REC Ltd.",
+      "symbol": "RECLTD",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Samvardhana Motherson International Ltd.",
+      "symbol": "MOTHERSON",
+      "sector": "Automobile and Auto Components",
+      "weight": null
+    },
+    {
+      "name": "Shriram Finance Ltd.",
+      "symbol": "SHRIRAMFIN",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Tata Steel Ltd.",
+      "symbol": "TATASTEEL",
+      "sector": "Metals & Mining",
+      "weight": null
+    },
+    {
+      "name": "Ujjivan Small Finance Bank Ltd.",
+      "symbol": "UJJIVANSFB",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Union Bank of India",
+      "symbol": "UNIONBANK",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Vodafone Idea Ltd.",
+      "symbol": "IDEA",
+      "sector": "Telecommunication",
+      "weight": null
+    }
+  ],
+  "sectors": [
+    {
+      "name": "Financial Services",
+      "count": 25,
+      "stock_share": 50.0,
+      "weight": null
+    },
+    {
+      "name": "Capital Goods",
+      "count": 5,
+      "stock_share": 10.0,
+      "weight": null
+    },
+    {
+      "name": "Realty",
+      "count": 4,
+      "stock_share": 8.0,
+      "weight": null
+    },
+    {
+      "name": "Consumer Durables",
+      "count": 3,
+      "stock_share": 6.0,
+      "weight": null
+    },
+    {
+      "name": "Metals & Mining",
+      "count": 3,
+      "stock_share": 6.0,
+      "weight": null
+    },
+    {
+      "name": "Automobile and Auto Components",
+      "count": 2,
+      "stock_share": 4.0,
+      "weight": null
+    },
+    {
+      "name": "Construction",
+      "count": 2,
+      "stock_share": 4.0,
+      "weight": null
+    },
+    {
+      "name": "Power",
+      "count": 2,
+      "stock_share": 4.0,
+      "weight": null
+    },
+    {
+      "name": "Services",
+      "count": 2,
+      "stock_share": 4.0,
+      "weight": null
+    },
+    {
+      "name": "Oil Gas & Consumable Fuels",
+      "count": 1,
+      "stock_share": 2.0,
+      "weight": null
+    },
+    {
+      "name": "Telecommunication",
+      "count": 1,
+      "stock_share": 2.0,
+      "weight": null
+    }
+  ]
+}

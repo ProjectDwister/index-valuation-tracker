@@ -1,0 +1,186 @@
+{
+  "slug": "nifty50-value-20",
+  "index_name": "Nifty50 Value 20",
+  "as_of": null,
+  "retrieved_on": "2026-09-23",
+  "source": "NSE Indices — Index Constituent CSV",
+  "source_url": "https://www.niftyindices.com/IndexConstituent/ind_Nifty50_Value20.csv",
+  "source_type": "official_nse_indices_constituent_csv",
+  "completeness": "constituents",
+  "stock_count": 20,
+  "weight_coverage": null,
+  "top10_weight": null,
+  "coverage_note": "The official constituent file lists members but does not publish usable stock weights.",
+  "holdings": [
+    {
+      "name": "Axis Bank Ltd.",
+      "symbol": "AXISBANK",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Bajaj Finserv Ltd.",
+      "symbol": "BAJAJFINSV",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Coal India Ltd.",
+      "symbol": "COALINDIA",
+      "sector": "Oil Gas & Consumable Fuels",
+      "weight": null
+    },
+    {
+      "name": "Grasim Industries Ltd.",
+      "symbol": "GRASIM",
+      "sector": "Construction Materials",
+      "weight": null
+    },
+    {
+      "name": "HCL Technologies Ltd.",
+      "symbol": "HCLTECH",
+      "sector": "Information Technology",
+      "weight": null
+    },
+    {
+      "name": "HDFC Bank Ltd.",
+      "symbol": "HDFCBANK",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Hindalco Industries Ltd.",
+      "symbol": "HINDALCO",
+      "sector": "Metals & Mining",
+      "weight": null
+    },
+    {
+      "name": "ICICI Bank Ltd.",
+      "symbol": "ICICIBANK",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Infosys Ltd.",
+      "symbol": "INFY",
+      "sector": "Information Technology",
+      "weight": null
+    },
+    {
+      "name": "ITC Ltd.",
+      "symbol": "ITC",
+      "sector": "Fast Moving Consumer Goods",
+      "weight": null
+    },
+    {
+      "name": "Kotak Mahindra Bank Ltd.",
+      "symbol": "KOTAKBANK",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "NTPC Ltd.",
+      "symbol": "NTPC",
+      "sector": "Power",
+      "weight": null
+    },
+    {
+      "name": "Oil & Natural Gas Corporation Ltd.",
+      "symbol": "ONGC",
+      "sector": "Oil Gas & Consumable Fuels",
+      "weight": null
+    },
+    {
+      "name": "Power Grid Corporation of India Ltd.",
+      "symbol": "POWERGRID",
+      "sector": "Power",
+      "weight": null
+    },
+    {
+      "name": "Reliance Industries Ltd.",
+      "symbol": "RELIANCE",
+      "sector": "Oil Gas & Consumable Fuels",
+      "weight": null
+    },
+    {
+      "name": "State Bank of India",
+      "symbol": "SBIN",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Tata Consultancy Services Ltd.",
+      "symbol": "TCS",
+      "sector": "Information Technology",
+      "weight": null
+    },
+    {
+      "name": "Tata Motors Passenger Vehicles Ltd.",
+      "symbol": "TMPV",
+      "sector": "Automobile and Auto Components",
+      "weight": null
+    },
+    {
+      "name": "Tata Steel Ltd.",
+      "symbol": "TATASTEEL",
+      "sector": "Metals & Mining",
+      "weight": null
+    },
+    {
+      "name": "Wipro Ltd.",
+      "symbol": "WIPRO",
+      "sector": "Information Technology",
+      "weight": null
+    }
+  ],
+  "sectors": [
+    {
+      "name": "Financial Services",
+      "count": 6,
+      "stock_share": 30.0,
+      "weight": null
+    },
+    {
+      "name": "Information Technology",
+      "count": 4,
+      "stock_share": 20.0,
+      "weight": null
+    },
+    {
+      "name": "Oil Gas & Consumable Fuels",
+      "count": 3,
+      "stock_share": 15.0,
+      "weight": null
+    },
+    {
+      "name": "Metals & Mining",
+      "count": 2,
+      "stock_share": 10.0,
+      "weight": null
+    },
+    {
+      "name": "Power",
+      "count": 2,
+      "stock_share": 10.0,
+      "weight": null
+    },
+    {
+      "name": "Automobile and Auto Components",
+      "count": 1,
+      "stock_share": 5.0,
+      "weight": null
+    },
+    {
+      "name": "Construction Materials",
+      "count": 1,
+      "stock_share": 5.0,
+      "weight": null
+    },
+    {
+      "name": "Fast Moving Consumer Goods",
+      "count": 1,
+      "stock_share": 5.0,
+      "weight": null
+    }
+  ]
+}

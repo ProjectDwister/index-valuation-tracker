@@ -1,0 +1,264 @@
+{
+  "slug": "nifty-infrastructure",
+  "index_name": "NIFTY Infrastructure",
+  "as_of": null,
+  "retrieved_on": "2026-09-23",
+  "source": "NSE Indices — Index Constituent CSV",
+  "source_url": "https://www.niftyindices.com/IndexConstituent/ind_niftyinfralist.csv",
+  "source_type": "official_nse_indices_constituent_csv",
+  "completeness": "constituents",
+  "stock_count": 30,
+  "weight_coverage": null,
+  "top10_weight": null,
+  "coverage_note": "The official constituent file lists members but does not publish usable stock weights.",
+  "holdings": [
+    {
+      "name": "Adani Green Energy Ltd.",
+      "symbol": "ADANIGREEN",
+      "sector": "Power",
+      "weight": null
+    },
+    {
+      "name": "Adani Ports and Special Economic Zone Ltd.",
+      "symbol": "ADANIPORTS",
+      "sector": "Services",
+      "weight": null
+    },
+    {
+      "name": "Ambuja Cements Ltd.",
+      "symbol": "AMBUJACEM",
+      "sector": "Construction Materials",
+      "weight": null
+    },
+    {
+      "name": "Apollo Hospitals Enterprise Ltd.",
+      "symbol": "APOLLOHOSP",
+      "sector": "Healthcare",
+      "weight": null
+    },
+    {
+      "name": "Ashok Leyland Ltd.",
+      "symbol": "ASHOKLEY",
+      "sector": "Capital Goods",
+      "weight": null
+    },
+    {
+      "name": "Bharat Forge Ltd.",
+      "symbol": "BHARATFORG",
+      "sector": "Automobile and Auto Components",
+      "weight": null
+    },
+    {
+      "name": "Bharat Petroleum Corporation Ltd.",
+      "symbol": "BPCL",
+      "sector": "Oil Gas & Consumable Fuels",
+      "weight": null
+    },
+    {
+      "name": "Bharti Airtel Ltd.",
+      "symbol": "BHARTIARTL",
+      "sector": "Telecommunication",
+      "weight": null
+    },
+    {
+      "name": "CG Power and Industrial Solutions Ltd.",
+      "symbol": "CGPOWER",
+      "sector": "Capital Goods",
+      "weight": null
+    },
+    {
+      "name": "Cummins India Ltd.",
+      "symbol": "CUMMINSIND",
+      "sector": "Capital Goods",
+      "weight": null
+    },
+    {
+      "name": "DLF Ltd.",
+      "symbol": "DLF",
+      "sector": "Realty",
+      "weight": null
+    },
+    {
+      "name": "Fortis Healthcare Ltd.",
+      "symbol": "FORTIS",
+      "sector": "Healthcare",
+      "weight": null
+    },
+    {
+      "name": "GAIL (India) Ltd.",
+      "symbol": "GAIL",
+      "sector": "Oil Gas & Consumable Fuels",
+      "weight": null
+    },
+    {
+      "name": "Grasim Industries Ltd.",
+      "symbol": "GRASIM",
+      "sector": "Construction Materials",
+      "weight": null
+    },
+    {
+      "name": "Hindustan Petroleum Corporation Ltd.",
+      "symbol": "HINDPETRO",
+      "sector": "Oil Gas & Consumable Fuels",
+      "weight": null
+    },
+    {
+      "name": "Indian Hotels Co. Ltd.",
+      "symbol": "INDHOTEL",
+      "sector": "Consumer Services",
+      "weight": null
+    },
+    {
+      "name": "Indian Oil Corporation Ltd.",
+      "symbol": "IOC",
+      "sector": "Oil Gas & Consumable Fuels",
+      "weight": null
+    },
+    {
+      "name": "Indus Towers Ltd.",
+      "symbol": "INDUSTOWER",
+      "sector": "Telecommunication",
+      "weight": null
+    },
+    {
+      "name": "InterGlobe Aviation Ltd.",
+      "symbol": "INDIGO",
+      "sector": "Services",
+      "weight": null
+    },
+    {
+      "name": "Larsen & Toubro Ltd.",
+      "symbol": "LT",
+      "sector": "Construction",
+      "weight": null
+    },
+    {
+      "name": "Max Healthcare Institute Ltd.",
+      "symbol": "MAXHEALTH",
+      "sector": "Healthcare",
+      "weight": null
+    },
+    {
+      "name": "NTPC Ltd.",
+      "symbol": "NTPC",
+      "sector": "Power",
+      "weight": null
+    },
+    {
+      "name": "Oil & Natural Gas Corporation Ltd.",
+      "symbol": "ONGC",
+      "sector": "Oil Gas & Consumable Fuels",
+      "weight": null
+    },
+    {
+      "name": "Power Grid Corporation of India Ltd.",
+      "symbol": "POWERGRID",
+      "sector": "Power",
+      "weight": null
+    },
+    {
+      "name": "Reliance Industries Ltd.",
+      "symbol": "RELIANCE",
+      "sector": "Oil Gas & Consumable Fuels",
+      "weight": null
+    },
+    {
+      "name": "Samvardhana Motherson International Ltd.",
+      "symbol": "MOTHERSON",
+      "sector": "Automobile and Auto Components",
+      "weight": null
+    },
+    {
+      "name": "Shree Cement Ltd.",
+      "symbol": "SHREECEM",
+      "sector": "Construction Materials",
+      "weight": null
+    },
+    {
+      "name": "Suzlon Energy Ltd.",
+      "symbol": "SUZLON",
+      "sector": "Capital Goods",
+      "weight": null
+    },
+    {
+      "name": "Tata Power Co. Ltd.",
+      "symbol": "TATAPOWER",
+      "sector": "Power",
+      "weight": null
+    },
+    {
+      "name": "UltraTech Cement Ltd.",
+      "symbol": "ULTRACEMCO",
+      "sector": "Construction Materials",
+      "weight": null
+    }
+  ],
+  "sectors": [
+    {
+      "name": "Oil Gas & Consumable Fuels",
+      "count": 6,
+      "stock_share": 20.0,
+      "weight": null
+    },
+    {
+      "name": "Capital Goods",
+      "count": 4,
+      "stock_share": 13.3333,
+      "weight": null
+    },
+    {
+      "name": "Construction Materials",
+      "count": 4,
+      "stock_share": 13.3333,
+      "weight": null
+    },
+    {
+      "name": "Power",
+      "count": 4,
+      "stock_share": 13.3333,
+      "weight": null
+    },
+    {
+      "name": "Healthcare",
+      "count": 3,
+      "stock_share": 10.0,
+      "weight": null
+    },
+    {
+      "name": "Automobile and Auto Components",
+      "count": 2,
+      "stock_share": 6.6667,
+      "weight": null
+    },
+    {
+      "name": "Services",
+      "count": 2,
+      "stock_share": 6.6667,
+      "weight": null
+    },
+    {
+      "name": "Telecommunication",
+      "count": 2,
+      "stock_share": 6.6667,
+      "weight": null
+    },
+    {
+      "name": "Construction",
+      "count": 1,
+      "stock_share": 3.3333,
+      "weight": null
+    },
+    {
+      "name": "Consumer Services",
+      "count": 1,
+      "stock_share": 3.3333,
+      "weight": null
+    },
+    {
+      "name": "Realty",
+      "count": 1,
+      "stock_share": 3.3333,
+      "weight": null
+    }
+  ]
+}

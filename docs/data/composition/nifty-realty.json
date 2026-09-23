@@ -1,0 +1,84 @@
+{
+  "slug": "nifty-realty",
+  "index_name": "NIFTY Realty",
+  "as_of": null,
+  "retrieved_on": "2026-09-23",
+  "source": "NSE Indices — Index Constituent CSV",
+  "source_url": "https://www.niftyindices.com/IndexConstituent/ind_niftyrealtylist.csv",
+  "source_type": "official_nse_indices_constituent_csv",
+  "completeness": "constituents",
+  "stock_count": 10,
+  "weight_coverage": null,
+  "top10_weight": null,
+  "coverage_note": "The official constituent file lists members but does not publish usable stock weights.",
+  "holdings": [
+    {
+      "name": "Aditya Birla Real Estate Ltd.",
+      "symbol": "ABREL",
+      "sector": "Realty",
+      "weight": null
+    },
+    {
+      "name": "Anant Raj Ltd.",
+      "symbol": "ANANTRAJ",
+      "sector": "Realty",
+      "weight": null
+    },
+    {
+      "name": "Brigade Enterprises Ltd.",
+      "symbol": "BRIGADE",
+      "sector": "Realty",
+      "weight": null
+    },
+    {
+      "name": "DLF Ltd.",
+      "symbol": "DLF",
+      "sector": "Realty",
+      "weight": null
+    },
+    {
+      "name": "Godrej Properties Ltd.",
+      "symbol": "GODREJPROP",
+      "sector": "Realty",
+      "weight": null
+    },
+    {
+      "name": "Lodha Developers Ltd.",
+      "symbol": "LODHA",
+      "sector": "Realty",
+      "weight": null
+    },
+    {
+      "name": "Oberoi Realty Ltd.",
+      "symbol": "OBEROIRLTY",
+      "sector": "Realty",
+      "weight": null
+    },
+    {
+      "name": "Phoenix Mills Ltd.",
+      "symbol": "PHOENIXLTD",
+      "sector": "Realty",
+      "weight": null
+    },
+    {
+      "name": "Prestige Estates Projects Ltd.",
+      "symbol": "PRESTIGE",
+      "sector": "Realty",
+      "weight": null
+    },
+    {
+      "name": "Sobha Ltd.",
+      "symbol": "SOBHA",
+      "sector": "Realty",
+      "weight": null
+    }
+  ],
+  "sectors": [
+    {
+      "name": "Realty",
+      "count": 10,
+      "stock_share": 100.0,
+      "weight": null
+    }
+  ]
+}
