@@ -1,0 +1,122 @@
+{
+  "slug": "nifty-shariah-25",
+  "index_name": "NIFTY Shariah 25",
+  "as_of": "2026-08-31",
+  "source": "NSE Indices — Index factsheet (top constituents)",
+  "source_url": "https://www.niftyindices.com/Factsheet/Factsheet_nifty_Shariah25.pdf",
+  "source_type": "official_nse_indices_factsheet",
+  "completeness": "partial (top stocks)",
+  "stock_count": 25,
+  "weight_coverage": 60.04,
+  "top10_weight": 60.04,
+  "coverage_note": "Partial composition: the official factsheet shows only its top constituents. Other stocks and their individual weights are not listed here.",
+  "holdings": [
+    {
+      "name": "Tata Consultancy Services Ltd.",
+      "symbol": "",
+      "sector": "",
+      "weight": 10.89
+    },
+    {
+      "name": "Hindustan Unilever Ltd.",
+      "symbol": "",
+      "sector": "",
+      "weight": 8.38
+    },
+    {
+      "name": "HCL Technologies Ltd.",
+      "symbol": "",
+      "sector": "",
+      "weight": 6.64
+    },
+    {
+      "name": "UltraTech Cement Ltd.",
+      "symbol": "",
+      "sector": "",
+      "weight": 6.51
+    },
+    {
+      "name": "Asian Paints Ltd.",
+      "symbol": "",
+      "sector": "",
+      "weight": 5.76
+    },
+    {
+      "name": "Nestle India Ltd.",
+      "symbol": "",
+      "sector": "",
+      "weight": 5.15
+    },
+    {
+      "name": "Tech Mahindra Ltd.",
+      "symbol": "",
+      "sector": "",
+      "weight": 4.96
+    },
+    {
+      "name": "Oil & Natural Gas Corporation Ltd.",
+      "symbol": "",
+      "sector": "",
+      "weight": 4.32
+    },
+    {
+      "name": "Cipla Ltd.",
+      "symbol": "",
+      "sector": "",
+      "weight": 3.81
+    },
+    {
+      "name": "Samvardhana Motherson International Ltd.",
+      "symbol": "",
+      "sector": "",
+      "weight": 3.62
+    }
+  ],
+  "sectors": [
+    {
+      "name": "Information Technology",
+      "count": null,
+      "weight": 30.75
+    },
+    {
+      "name": "Fast Moving Consumer Goods",
+      "count": null,
+      "weight": 18.52
+    },
+    {
+      "name": "Consumer Durables",
+      "count": null,
+      "weight": 10.23
+    },
+    {
+      "name": "Healthcare",
+      "count": null,
+      "weight": 9.74
+    },
+    {
+      "name": "Automobile and Auto Components",
+      "count": null,
+      "weight": 7.02
+    },
+    {
+      "name": "Oil, Gas & Consumable Fuels",
+      "count": null,
+      "weight": 6.62
+    },
+    {
+      "name": "Construction Materials",
+      "count": null,
+      "weight": 6.51
+    },
+    {
+      "name": "Capital Goods",
+      "count": null,
+      "weight": 6.33
+    },
+    {
+      "name": "Chemicals",
+      "count": null,
+      "weight": 4.3
+    }
+  ]
+}

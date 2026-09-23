@@ -1,0 +1,157 @@
+{
+  "slug": "nifty100-esg",
+  "index_name": "Nifty100 ESG",
+  "as_of": "2026-08-31",
+  "source": "NSE Indices — Index factsheet (top constituents)",
+  "source_url": "https://www.niftyindices.com/Factsheet/Factsheet_NIFTY100_ESG_Index.pdf",
+  "source_type": "official_nse_indices_factsheet",
+  "completeness": "partial (top stocks)",
+  "stock_count": 79,
+  "weight_coverage": 38.98,
+  "top10_weight": 38.98,
+  "coverage_note": "Partial composition: the official factsheet shows only its top constituents. Other stocks and their individual weights are not listed here.",
+  "holdings": [
+    {
+      "name": "ICICI Bank Ltd.",
+      "symbol": "",
+      "sector": "",
+      "weight": 6.41
+    },
+    {
+      "name": "Infosys Ltd.",
+      "symbol": "",
+      "sector": "",
+      "weight": 5.0
+    },
+    {
+      "name": "Bharti Airtel Ltd.",
+      "symbol": "",
+      "sector": "",
+      "weight": 4.69
+    },
+    {
+      "name": "HDFC Bank Ltd.",
+      "symbol": "",
+      "sector": "",
+      "weight": 4.23
+    },
+    {
+      "name": "Eternal Ltd.",
+      "symbol": "",
+      "sector": "",
+      "weight": 3.54
+    },
+    {
+      "name": "Axis Bank Ltd.",
+      "symbol": "",
+      "sector": "",
+      "weight": 3.4
+    },
+    {
+      "name": "Bajaj Finance Ltd.",
+      "symbol": "",
+      "sector": "",
+      "weight": 3.16
+    },
+    {
+      "name": "Mahindra & Mahindra Ltd.",
+      "symbol": "",
+      "sector": "",
+      "weight": 2.92
+    },
+    {
+      "name": "State Bank of India",
+      "symbol": "",
+      "sector": "",
+      "weight": 2.87
+    },
+    {
+      "name": "HCL Technologies Ltd.",
+      "symbol": "",
+      "sector": "",
+      "weight": 2.76
+    }
+  ],
+  "sectors": [
+    {
+      "name": "Financial Services",
+      "count": null,
+      "weight": 33.6
+    },
+    {
+      "name": "Information Technology",
+      "count": null,
+      "weight": 12.53
+    },
+    {
+      "name": "Automobile and Auto Components",
+      "count": null,
+      "weight": 12.4
+    },
+    {
+      "name": "Consumer Services",
+      "count": null,
+      "weight": 5.81
+    },
+    {
+      "name": "Fast Moving Consumer Goods",
+      "count": null,
+      "weight": 5.22
+    },
+    {
+      "name": "Power",
+      "count": null,
+      "weight": 4.69
+    },
+    {
+      "name": "Telecommunication",
+      "count": null,
+      "weight": 4.69
+    },
+    {
+      "name": "Metals & Mining",
+      "count": null,
+      "weight": 3.96
+    },
+    {
+      "name": "Capital Goods",
+      "count": null,
+      "weight": 3.75
+    },
+    {
+      "name": "Healthcare",
+      "count": null,
+      "weight": 3.6
+    },
+    {
+      "name": "Oil, Gas & Consumable Fuels",
+      "count": null,
+      "weight": 3.06
+    },
+    {
+      "name": "Consumer Durables",
+      "count": null,
+      "weight": 2.82
+    },
+    {
+      "name": "Construction Materials",
+      "count": null,
+      "weight": 1.86
+    },
+    {
+      "name": "Chemicals",
+      "count": null,
+      "weight": 0.94
+    },
+    {
+      "name": "Services",
+      "count": null,
+      "weight": 0.7
+    },
+    {
+      "name": "Realty",
+      "count": null,
+      "weight": 0.37
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "generated_at": "2026-09-23T10:30:06Z",
+  "generated_at": "2026-09-23T10:40:06Z",
   "report_month": "Aug 2026",
   "source_url": "https://www.niftyindices.com/Indices_-_Market_Capitalisation_and_Weightage/indices_dataAug2026.zip",
   "indices": {
@@ -473,9 +473,16 @@
       "source_type": "official_nse_indices_constituent_csv"
     },
     "nifty-shariah-25": {
+      "file": "nifty-shariah-25.json",
       "name": "NIFTY Shariah 25",
-      "available": false,
-      "reason": "An official constituent list could not be retrieved for this index."
+      "available": true,
+      "as_of": "2026-08-31",
+      "retrieved_on": null,
+      "completeness": "partial (top stocks)",
+      "stock_count": 25,
+      "weight_coverage": 60.04,
+      "top10_weight": 60.04,
+      "source_type": "official_nse_indices_factsheet"
     },
     "nifty-sme-emerge": {
       "file": "nifty-sme-emerge.json",
@@ -490,14 +497,28 @@
       "source_type": "official_nse_indices_constituent_csv"
     },
     "nifty100-esg": {
+      "file": "nifty100-esg.json",
       "name": "Nifty100 ESG",
-      "available": false,
-      "reason": "An official constituent list could not be retrieved for this index."
+      "available": true,
+      "as_of": "2026-08-31",
+      "retrieved_on": null,
+      "completeness": "partial (top stocks)",
+      "stock_count": 79,
+      "weight_coverage": 38.98,
+      "top10_weight": 38.98,
+      "source_type": "official_nse_indices_factsheet"
     },
     "nifty100-enhanced-esg": {
+      "file": "nifty100-enhanced-esg.json",
       "name": "Nifty100 Enhanced ESG",
-      "available": false,
-      "reason": "An official constituent list could not be retrieved for this index."
+      "available": true,
+      "as_of": "2026-08-31",
+      "retrieved_on": null,
+      "completeness": "partial (top stocks)",
+      "stock_count": 77,
+      "weight_coverage": 39.06,
+      "top10_weight": 39.06,
+      "source_type": "official_nse_indices_factsheet"
     },
     "nifty100-equal-weight": {
       "file": "nifty100-equal-weight.json",
@@ -560,9 +581,16 @@
       "source_type": "official_nse_indices_constituent_csv"
     },
     "nifty50-shariah": {
+      "file": "nifty50-shariah.json",
       "name": "Nifty50 Shariah",
-      "available": false,
-      "reason": "An official constituent list could not be retrieved for this index."
+      "available": true,
+      "as_of": "2026-08-31",
+      "retrieved_on": null,
+      "completeness": "partial (top stocks)",
+      "stock_count": 17,
+      "weight_coverage": 76.54,
+      "top10_weight": 76.54,
+      "source_type": "official_nse_indices_factsheet"
     },
     "nifty50-value-20": {
       "file": "nifty50-value-20.json",
@@ -577,9 +605,16 @@
       "source_type": "official_nse_indices_constituent_csv"
     },
     "nifty500-shariah": {
+      "file": "nifty500-shariah.json",
       "name": "Nifty500 Shariah",
-      "available": false,
-      "reason": "An official constituent list could not be retrieved for this index."
+      "available": true,
+      "as_of": "2026-08-31",
+      "retrieved_on": null,
+      "completeness": "partial (top stocks)",
+      "stock_count": 205,
+      "weight_coverage": 28.94,
+      "top10_weight": 28.94,
+      "source_type": "official_nse_indices_factsheet"
     }
   }
 }

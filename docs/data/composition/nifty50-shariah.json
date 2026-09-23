@@ -1,0 +1,122 @@
+{
+  "slug": "nifty50-shariah",
+  "index_name": "Nifty50 Shariah",
+  "as_of": "2026-08-31",
+  "source": "NSE Indices — Index factsheet (top constituents)",
+  "source_url": "https://www.niftyindices.com/Factsheet/Factsheet_Nifty50_Shariah.pdf",
+  "source_type": "official_nse_indices_factsheet",
+  "completeness": "partial (top stocks)",
+  "stock_count": 17,
+  "weight_coverage": 76.54,
+  "top10_weight": 76.54,
+  "coverage_note": "Partial composition: the official factsheet shows only its top constituents. Other stocks and their individual weights are not listed here.",
+  "holdings": [
+    {
+      "name": "Infosys Ltd.",
+      "symbol": "",
+      "sector": "",
+      "weight": 17.11
+    },
+    {
+      "name": "Tata Consultancy Services Ltd.",
+      "symbol": "",
+      "sector": "",
+      "weight": 10.54
+    },
+    {
+      "name": "Sun Pharmaceutical Industries Ltd.",
+      "symbol": "",
+      "sector": "",
+      "weight": 9.04
+    },
+    {
+      "name": "Hindustan Unilever Ltd.",
+      "symbol": "",
+      "sector": "",
+      "weight": 7.51
+    },
+    {
+      "name": "Hindalco Industries Ltd.",
+      "symbol": "",
+      "sector": "",
+      "weight": 6.33
+    },
+    {
+      "name": "HCL Technologies Ltd.",
+      "symbol": "",
+      "sector": "",
+      "weight": 5.95
+    },
+    {
+      "name": "UltraTech Cement Ltd.",
+      "symbol": "",
+      "sector": "",
+      "weight": 5.83
+    },
+    {
+      "name": "Asian Paints Ltd.",
+      "symbol": "",
+      "sector": "",
+      "weight": 5.16
+    },
+    {
+      "name": "Nestle India Ltd.",
+      "symbol": "",
+      "sector": "",
+      "weight": 4.62
+    },
+    {
+      "name": "Tech Mahindra Ltd.",
+      "symbol": "",
+      "sector": "",
+      "weight": 4.45
+    }
+  ],
+  "sectors": [
+    {
+      "name": "Information Technology",
+      "count": null,
+      "weight": 38.05
+    },
+    {
+      "name": "Healthcare",
+      "count": null,
+      "weight": 18.82
+    },
+    {
+      "name": "Fast Moving Consumer Goods",
+      "count": null,
+      "weight": 15.03
+    },
+    {
+      "name": "Metals & Mining",
+      "count": null,
+      "weight": 6.33
+    },
+    {
+      "name": "Construction Materials",
+      "count": null,
+      "weight": 5.83
+    },
+    {
+      "name": "Consumer Durables",
+      "count": null,
+      "weight": 5.16
+    },
+    {
+      "name": "Consumer Services",
+      "count": null,
+      "weight": 4.12
+    },
+    {
+      "name": "Oil, Gas & Consumable Fuels",
+      "count": null,
+      "weight": 3.87
+    },
+    {
+      "name": "Automobile and Auto Components",
+      "count": null,
+      "weight": 2.78
+    }
+  ]
+}
