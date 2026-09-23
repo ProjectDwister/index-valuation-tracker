@@ -66,6 +66,11 @@ INDEX_CATEGORIES = (
 )
 INDEX_BASE = "https://www.niftyindices.com/indices/equity/"
 CONSTITUENT_BASE = "https://www.niftyindices.com"
+# The Auto index page displays an empty download link; this CSV is still
+# published on the official host. Validate its content just like linked files.
+CONSTITUENT_URL_FALLBACKS = {
+    "nifty-auto": "https://www.niftyindices.com/IndexConstituent/ind_niftyautolist.csv",
+}
 MONTH_ABBR = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
 COMPANY_KEYS = ("company", "security", "constituent", "stock", "issuer", "name of security")
@@ -336,6 +341,9 @@ def fetch_constituent_file(item: dict, page_url: str, fetched_on: str) -> dict:
             url = official_url(href, "/IndexConstituent/")
             if url and urlparse(url).path.lower().endswith(".csv"):
                 return parse_constituent_csv(official_get(url), item, url, fetched_on)
+    fallback = CONSTITUENT_URL_FALLBACKS.get(item["slug"])
+    if fallback:
+        return parse_constituent_csv(official_get(fallback), item, fallback, fetched_on)
     raise ValueError("No official Index Constituent CSV link on index page")
 
 

@@ -72,6 +72,20 @@ class CompositionSourcesTest(unittest.TestCase):
         self.assertIsNone(data["weight_coverage"])
         self.assertTrue(all(row["weight"] is None for row in data["holdings"]))
 
+    def test_auto_page_with_empty_link_uses_the_official_csv(self):
+        item = {"slug": "nifty-auto", "name": "NIFTY Auto"}
+        csv = ("Company Name,Industry,Symbol\nAcme Motors,Auto,ACME\n"
+               "Beta Tyres,Auto,BETA\nGamma Motors,Auto,GAMMA\n")
+        with patch("composition_tracker.official_get", side_effect=[
+            b'<a>Index Constituent</a>', csv.encode()
+        ]):
+            data = fetch_constituent_file(item,
+                "https://www.niftyindices.com/indices/equity/sectoral-indices/nifty-auto",
+                "2026-09-23")
+        self.assertEqual(data["stock_count"], 3)
+        self.assertEqual(data["source_url"],
+                         "https://www.niftyindices.com/IndexConstituent/ind_niftyautolist.csv")
+
 
 if __name__ == "__main__":
     unittest.main()
