@@ -329,3 +329,28 @@ html.app-load-failed .loading-title::after{background:linear-gradient(90deg,#f59
     width:100%;
   }
 }
+
+/* Small screens: keep navigation discoverable and supporting text readable. */
+.nav-scroll-hint,.table-scroll-hint{display:none}
+.nav-scroll-hint[hidden]{display:none!important}
+@media (max-width:760px){
+  :root{--faint:#9fb1c5}
+  .tab-nav{gap:20px;margin-bottom:9px;scrollbar-width:thin;scrollbar-color:#628aaf transparent}
+  .tab-nav::-webkit-scrollbar{display:block;height:4px}
+  .tab-nav::-webkit-scrollbar-thumb{background:#628aaf;border-radius:4px}
+  .tab-button{min-height:44px;font-size:14px}
+  .nav-scroll-hint{display:block;margin:0 0 10px;color:var(--muted);font-size:11px;text-align:right}
+  .table-scroll-hint{display:block;margin:2px 0 6px;color:var(--muted);font-size:11px}
+  .table-wrap{scrollbar-width:thin;scrollbar-color:#628aaf transparent}
+  .table-wrap::-webkit-scrollbar{height:5px}
+  .table-wrap::-webkit-scrollbar-thumb{background:#628aaf;border-radius:5px}
+  .table-wrap th{font-size:11px}
+  .table-wrap td{font-size:12px}
+  .index-picker-wrap label,.index-summary-line,.context-label,.group-chip,.metric-label,.metric-footer,.metric-sub,
+  .hero-insight-compact span,.percentile-labels,.score-labels,.hint,.subhead-note,.boundary-tick span,
+  .boundary-scale-labels,.overview-threshold-item span,.boundary-summary-label,.backtest-bar-label,
+  .composition-chart-head small,.composition-bar-copy span,.site-footer{font-size:11px}
+  .composition-stat span{font-size:11px}
+  .composition-stat strong,.composition-stat a{font-size:14px}
+  .composition-bar-copy strong{font-size:13px}
+}

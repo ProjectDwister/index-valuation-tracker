@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#07111f" />
   <title>Index Valuation Tracker</title>
   <meta name="description" content="Multi-index valuation, earnings-growth and historical forward-return dashboard for NSE equity indices." />
-  <link rel="stylesheet" href="styles.css?v=20260923a" />
+  <link rel="stylesheet" href="styles.css?v=20260923b" />
 </head>
 <body>
   <div id="ambientGlow" class="ambient-glow" aria-hidden="true"></div>
@@ -56,6 +56,7 @@
       <button type="button" class="tab-button" data-tab="history">History</button>
       <button type="button" class="tab-button" data-tab="heatmap">Heatmap</button>
     </nav>
+    <div id="tabScrollHint" class="nav-scroll-hint" hidden>Swipe for more sections →</div>
 
     <section id="panel-overview" class="tab-panel active" data-panel="overview">
       <div id="availabilityBanner" class="availability-banner" hidden></div>
@@ -217,7 +218,7 @@
         <div id="compositionNotice" class="composition-notice" hidden></div>
 
         <div class="composition-summary-grid">
-          <div class="composition-stat"><span>Loaded rows</span><strong id="compositionCount">—</strong></div>
+          <div class="composition-stat"><span id="compositionCountLabel">Constituents in source</span><strong id="compositionCount">—</strong></div>
           <div class="composition-stat"><span>Weight coverage</span><strong id="compositionCoverage">—</strong></div>
           <div class="composition-stat"><span>Top 10 weight</span><strong id="compositionTop10">—</strong></div>
           <div class="composition-stat"><span>Data type</span><strong id="compositionSourceType">—</strong></div>
@@ -227,6 +228,7 @@
 
         <div id="compositionChart" class="composition-chart" aria-live="polite"></div>
 
+        <div class="table-scroll-hint">Swipe table sideways to see all columns →</div>
         <div class="table-wrap">
           <table class="backtest-table composition-table">
             <thead><tr id="compositionHeadRow"><th>#</th><th>Name</th><th>Symbol / Count</th><th>Sector / industry</th><th>Weight</th></tr></thead>
@@ -275,7 +277,7 @@
     <section id="panel-heatmap" class="tab-panel" data-panel="heatmap">
       <section class="card heatmap-card">
         <div class="section-head heatmap-head">
-          <div><h2>Cross-index valuation heatmap</h2><div class="subhead-note">Compare each index against its own history. Click a row to open its dashboard.</div></div>
+          <div><h2>Cross-index valuation heatmap</h2><div class="subhead-note">Compare each index against its own history. Click a row to open its dashboard. A dash in Top 10 means weights are unavailable.</div></div>
           <div class="heatmap-controls">
             <input id="heatmapSearch" class="heatmap-search" type="search" placeholder="Search indices…" aria-label="Search indices" />
             <select id="heatmapGroup" class="heatmap-group" aria-label="Filter index group"><option value="All">All groups</option><option>Broad Market</option><option>Sectoral</option><option>Strategy / Thematic / Other</option></select>
@@ -289,6 +291,7 @@
             </select>
           </div>
         </div>
+        <div class="table-scroll-hint">Swipe table sideways to see all columns →</div>
         <div class="table-wrap heatmap-wrap">
           <table class="heatmap-table">
             <thead><tr><th>Index</th><th>Group</th><th>P/E</th><th>Valuation %ile</th><th>EPS growth</th><th>Top 10</th><th>Score</th><th>Signal</th></tr></thead>
@@ -302,6 +305,6 @@
       <span id="lastUpdatedText">Last updated on —</span>
     </footer>
   </main>
-  <script src="app.js?v=20260923a"></script>
+  <script src="app.js?v=20260923b"></script>
 </body>
 </html>

@@ -262,6 +262,7 @@ async function getCompositionData(slug){
 }
 
 function setCompositionSummary(values={}){
+  $('compositionCountLabel').textContent=values.countLabel||'Constituents in source';
   $('compositionCount').textContent=values.count||'—';
   $('compositionCoverage').textContent=values.coverage||'—';
   $('compositionTop10').textContent=values.top10||'—';
@@ -381,7 +382,10 @@ async function renderComposition(slug){
   const coverage=compositionCoverageValue(data);
   const top10=compositionTop10Value(data);
   setCompositionSummary({
-    count: `${loadedRows}${totalCount?` / ${totalCount}`:''}`,
+    countLabel: compositionView==='sectors'?'Sector categories':'Constituents in source',
+    count: compositionView==='sectors'
+      ? `${loadedRows} sectors${totalCount?` · ${totalCount} stocks`:''}`
+      : `${loadedRows}${totalCount?` / ${totalCount}`:''}`,
     coverage: coverage==null?'—':`${coverage.toFixed(1)}%`,
     top10: top10==null?'—':`${top10.toFixed(1)}%`,
     sourceType: coverage==null?'Constituents':(data.completeness||'Weighted').replace(/^(.)/,m=>m.toUpperCase()),
@@ -390,7 +394,7 @@ async function renderComposition(slug){
     sourceUrl: data.source_url
   });
 
-  $('compositionMeta').textContent=`${data.index_name || latestBundle?.indices?.[slug]?.index_name || 'Selected index'} · ${compositionView==='sectors'?'Sector / industry mix':'Constituent mix'} · ${loadedRows} rows`;
+  $('compositionMeta').textContent=`${data.index_name || latestBundle?.indices?.[slug]?.index_name || 'Selected index'} · ${compositionView==='sectors'?'Sector / industry mix':'Constituent mix'} · ${loadedRows} ${compositionView==='sectors'?'sectors':'stocks'}`;
   setCompositionNotice(data.coverage_note || (data.source_type==='sample' ? 'Sample data file loaded for UI demonstration.' : ''));
   renderCompositionTableRows(data);
 }
@@ -481,7 +485,7 @@ function renderHeatmap(){
   }
   const search=($('heatmapSearch').value||'').toLowerCase(),group=$('heatmapGroup').value,sort=$('heatmapSort')?.value||'score-desc';
   const rows=catalog.items.map(i=>({...i,...latestBundle.indices[i.slug],composition:compositionManifest?.indices?.[i.slug]||{}})).filter(x=>(group==='All'||x.group===group)&&(!search||x.name.toLowerCase().includes(search)));
-  const n=v=>Number.isFinite(Number(v))?Number(v):null;
+  const n=v=>v==null || String(v).trim()==='' || !Number.isFinite(Number(v))?null:Number(v);
   const sorters={
     'score-desc':(a,b)=>(n(b.composite_score)??-Infinity)-(n(a.composite_score)??-Infinity),
     'valuation-asc':(a,b)=>(n(a.pe_percentile)??Infinity)-(n(b.pe_percentile)??Infinity),
@@ -494,13 +498,25 @@ function renderHeatmap(){
   $('heatmapBody').innerHTML=rows.map(x=>{
     const pp=n(x.pe_percentile), width=pp==null?0:clamp(pp*100,0,100);
     const top10=n(x.composition?.top10_weight);
-    return `<tr data-slug="${x.slug}"><td><strong>${x.name}</strong></td><td class="muted-cell">${x.group}</td><td>${x.pe?Number(x.pe).toFixed(2)+'×':'—'}</td><td><div class="heatmap-percentile"><span>${pct(x.pe_percentile,1)}</span><i><b style="width:${width}%"></b></i></div></td><td>${pct(x.yoy_eps_growth,1)}</td><td>${top10==null?'—':top10.toFixed(1)+'%'}</td><td class="score-cell ${x.signal||''}">${x.composite_score==null?'—':Number(x.composite_score).toFixed(1)}</td><td>${x.signal?`<span class="badge ${x.signal}">${x.signal}</span>`:'—'}</td></tr>`;
+    return `<tr data-slug="${x.slug}"><td><strong>${x.name}</strong></td><td class="muted-cell">${x.group}</td><td>${x.pe?Number(x.pe).toFixed(2)+'×':'—'}</td><td><div class="heatmap-percentile"><span>${pct(x.pe_percentile,1)}</span><i><b style="width:${width}%"></b></i></div></td><td>${pct(x.yoy_eps_growth,1)}</td><td>${top10==null?'<span title="Constituent weights unavailable">—</span>':top10.toFixed(1)+'%'}</td><td class="score-cell ${x.signal||''}">${x.composite_score==null?'—':Number(x.composite_score).toFixed(1)}</td><td>${x.signal?`<span class="badge ${x.signal}">${x.signal}</span>`:'—'}</td></tr>`;
   }).join('');
   $('heatmapBody').querySelectorAll('tr[data-slug]').forEach(tr=>tr.addEventListener('click',()=>{renderSelected(tr.dataset.slug);activateTab('overview');window.scrollTo({top:0,behavior:'smooth'});}));
 }
 
 function activateTab(name){document.querySelectorAll('.tab-button').forEach(b=>b.classList.toggle('active',b.dataset.tab===name));document.querySelectorAll('.tab-panel').forEach(p=>p.classList.toggle('active',p.dataset.panel===name));try{localStorage.setItem('niftyActiveTab',name);}catch(_e){} if(name==='heatmap' && catalog && latestBundle?.indices)renderHeatmap();}
-function initTabs(){document.querySelectorAll('.tab-button').forEach(b=>b.addEventListener('click',()=>activateTab(b.dataset.tab)));let name='overview';try{name=localStorage.getItem('niftyActiveTab')||'overview';}catch(_e){}activateTab(name);}
+function updateTabScrollHint(){
+  const nav=document.querySelector('.tab-nav'), hint=$('tabScrollHint');
+  if(!nav || !hint) return;
+  hint.hidden=nav.scrollWidth<=nav.clientWidth+8 || nav.scrollLeft+nav.clientWidth>=nav.scrollWidth-8;
+}
+function initTabs(){
+  const nav=document.querySelector('.tab-nav');
+  document.querySelectorAll('.tab-button').forEach(b=>b.addEventListener('click',()=>activateTab(b.dataset.tab)));
+  nav?.addEventListener('scroll',updateTabScrollHint,{passive:true});
+  addEventListener('resize',updateTabScrollHint,{passive:true});
+  let name='overview';try{name=localStorage.getItem('niftyActiveTab')||'overview';}catch(_e){}activateTab(name);
+  updateTabScrollHint();
+}
 function installSticky(){const s=$('stickySummary'),topbar=document.querySelector('.topbar');if(!s||!topbar)return;const u=()=>{const show=topbar.getBoundingClientRect().bottom<0;s.classList.toggle('visible',show);s.setAttribute('aria-hidden',show?'false':'true');};u();addEventListener('scroll',u,{passive:true});addEventListener('resize',u,{passive:true});}
 
 async function loadLegacyFallback(){
