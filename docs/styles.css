@@ -221,6 +221,12 @@ html.app-load-failed .loading-title::after{background:linear-gradient(90deg,#f59
   color:#f3f7fc;
 }
 
+.composition-stat a{
+  font-size:1rem;
+  color:#a7c9f6;
+  overflow-wrap:anywhere;
+}
+
 .composition-notice{
   padding:12px 14px;
   border-radius:14px;

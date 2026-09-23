@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Refresh official NSE/Nifty index constituent composition + weights.
+"""Refresh official NSE/Nifty index constituents and published weights.
 
 Data source
 -----------
@@ -7,7 +7,9 @@ NSE Indices monthly report: "Indices Market Capitalisation & Weightage".
 The public report is exposed as a ZIP whose filename follows the pattern
 ``indices_data{Mon}{YYYY}.zip``. The archive can contain PDF/CSV/XLS/XLSX
 files. This script is deliberately format-tolerant and parses whichever
-representation NSE publishes for that month.
+representation NSE publishes for that month. For indices absent from the
+monthly report, the official index pages link to constituent CSVs. Those CSVs
+are used for membership only when they do not publish weights.
 
 Outputs
 -------
@@ -16,15 +18,14 @@ Outputs
 - docs/data/composition/status.json
 - adds/replaces a "Composition" worksheet in docs/downloads/indices/*.xlsx
 
-The script never fabricates weights. If an index cannot be parsed from the
-official report, it is marked unavailable and the dashboard shows a clear
-message. Existing *official* files are retained if a transient download/parsing
-failure occurs; old sample/demo files are removed.
+The script never fabricates weights. Existing *official* files are retained
+if a transient download/parsing failure occurs; old demo files are removed.
 """
 from __future__ import annotations
 
 import argparse
 import calendar
+from concurrent.futures import ThreadPoolExecutor, as_completed
 import io
 import json
 import os
@@ -34,8 +35,10 @@ import tempfile
 import zipfile
 from dataclasses import dataclass
 from datetime import date, datetime, timezone
+from html.parser import HTMLParser
 from pathlib import Path
 from typing import Dict, Iterable, List, Optional, Tuple
+from urllib.parse import urljoin, urlparse
 
 import pandas as pd
 import requests
@@ -58,6 +61,11 @@ REPORT_BASES = [
     "https://www.niftyindices.com/Indices_-_Market_Capitalisation_and_Weightage",
     "https://niftyindices.com/Indices_-_Market_Capitalisation_and_Weightage",
 ]
+INDEX_CATEGORIES = (
+    "broad-based-indices", "sectoral-indices", "thematic-indices", "strategy-indices"
+)
+INDEX_BASE = "https://www.niftyindices.com/indices/equity/"
+CONSTITUENT_BASE = "https://www.niftyindices.com"
 MONTH_ABBR = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
 COMPANY_KEYS = ("company", "security", "constituent", "stock", "issuer", "name of security")
@@ -167,6 +175,191 @@ def browser_headers() -> dict:
         "Referer": REPORT_PAGE,
         "Connection": "keep-alive",
     }
+
+
+class LinkParser(HTMLParser):
+    """Collect anchor labels and destinations without depending on page layout."""
+
+    def __init__(self):
+        super().__init__()
+        self.links = []
+        self.href = None
+        self.label = []
+
+    def handle_starttag(self, tag, attrs):
+        if tag == "a":
+            self.href = dict(attrs).get("href")
+            self.label = []
+
+    def handle_data(self, data):
+        if self.href is not None:
+            self.label.append(data)
+
+    def handle_endtag(self, tag):
+        if tag == "a" and self.href is not None:
+            self.links.append((norm_space(" ".join(self.label)), self.href))
+            self.href = None
+
+
+def official_url(url: str, path_prefix: str) -> Optional[str]:
+    """Only follow HTTPS links on the actual NSE Indices host."""
+    absolute = urljoin(CONSTITUENT_BASE, url)
+    parsed = urlparse(absolute)
+    if (parsed.scheme == "https" and parsed.hostname in {"niftyindices.com", "www.niftyindices.com"}
+            and parsed.path.lower().startswith(path_prefix.lower())):
+        return absolute
+    return None
+
+
+def official_get(url: str) -> bytes:
+    headers = browser_headers()
+    headers["Accept"] = "text/html,text/csv,application/octet-stream,*/*"
+    r = requests.get(url, headers=headers, timeout=25)
+    r.raise_for_status()
+    return r.content
+
+
+def discover_index_pages(catalog: dict) -> Dict[str, str]:
+    """Match index names exactly against links on NSE Indices category pages."""
+    names = {compact(item["name"]): item["slug"] for item in catalog.get("items", [])}
+    pages = {}
+    for category in INDEX_CATEGORIES:
+        try:
+            root = f"{INDEX_BASE}{category}"
+            parser = LinkParser()
+            parser.feed(official_get(root).decode("utf-8", errors="replace"))
+            for label, href in parser.links:
+                slug = names.get(compact(label))
+                url = official_url(href, f"/indices/equity/{category}/")
+                if slug and url:
+                    pages[slug] = url
+        except Exception as e:
+            print(f"WARNING: official index page discovery failed for {category}: {e}")
+    return pages
+
+
+def parse_constituent_csv(content: bytes, item: dict, url: str, fetched_on: str) -> dict:
+    """Read a verified official stock list; a membership file may omit weights."""
+    if content.lstrip().lower().startswith((b"<!doctype", b"<html")):
+        raise ValueError("Constituent download returned HTML")
+    frame = None
+    for encoding in ("utf-8-sig", "cp1252", "latin1"):
+        try:
+            raw = pd.read_csv(io.BytesIO(content), encoding=encoding, dtype=str, header=None, on_bad_lines="skip")
+            for n in range(min(8, len(raw))):
+                names = [clean_header(c) for c in raw.iloc[n].fillna("")]
+                if any("company" in c or "security" in c for c in names) and any("symbol" in c for c in names):
+                    frame = raw.iloc[n + 1 :].copy()
+                    frame.columns = raw.iloc[n].fillna("").tolist()
+                    break
+            if frame is not None:
+                break
+        except (UnicodeError, pd.errors.ParserError, ValueError):
+            continue
+    if frame is None:
+        raise ValueError("Constituent CSV has no company/symbol columns")
+    cols = list(frame.columns)
+    company = pick_col(cols, COMPANY_KEYS)
+    symbol = pick_col(cols, SYMBOL_KEYS)
+    sector = pick_col(cols, SECTOR_KEYS)
+    weight = pick_col(cols, WEIGHT_KEYS)
+    holdings = []
+    seen = set()
+    for _, row in frame.iterrows():
+        ticker = norm_space(row.get(symbol))
+        name = clean_company(row.get(company))
+        if not ticker or not name or ticker.lower() in {"nan", "symbol"}:
+            continue
+        if ticker.upper() in seen:
+            continue
+        seen.add(ticker.upper())
+        w = parse_weight(row.get(weight)) if weight else None
+        holdings.append({
+            "name": name, "symbol": ticker,
+            "sector": norm_space(row.get(sector)) if sector and pd.notna(row.get(sector)) else "",
+            "weight": w if w is not None and 0 < w <= 100 else None,
+        })
+    if len(holdings) < 3:
+        raise ValueError(f"Only {len(holdings)} valid constituents found")
+    weighted = [h for h in holdings if h["weight"] is not None]
+    coverage = sum(h["weight"] for h in weighted)
+    if len(weighted) == len(holdings) and 0.97 <= coverage <= 1.03:
+        for h in holdings:
+            h["weight"] = round(h["weight"] * 100, 6)
+        coverage *= 100
+    complete_weights = len(weighted) == len(holdings) and 97 <= coverage <= 103
+    if not complete_weights:
+        # Partial/ambiguous columns cannot support index weight claims.
+        for h in holdings:
+            h["weight"] = None
+    if complete_weights:
+        holdings.sort(key=lambda h: h["weight"], reverse=True)
+    else:
+        holdings.sort(key=lambda h: h["name"].casefold())
+    sectors = sector_rows(holdings) if complete_weights else sector_count_rows(holdings)
+    return {
+        "slug": item["slug"], "index_name": item["name"],
+        "as_of": None, "retrieved_on": fetched_on,
+        "source": "NSE Indices — Index Constituent CSV", "source_url": url,
+        "source_type": "official_nse_indices_constituent_csv",
+        "completeness": "full" if complete_weights else "constituents",
+        "stock_count": len(holdings),
+        "weight_coverage": round(coverage, 4) if complete_weights else None,
+        "top10_weight": round(sum(h["weight"] for h in holdings[:10]), 4) if complete_weights else None,
+        "coverage_note": (
+            "The official constituent file publishes weights."
+            if complete_weights else
+            "The official constituent file lists members but does not publish usable stock weights."
+        ),
+        "holdings": holdings, "sectors": sectors,
+    }
+
+
+def sector_count_rows(holdings: List[dict]) -> List[dict]:
+    buckets = {}
+    for holding in holdings:
+        name = holding.get("sector")
+        if name:
+            buckets[name] = buckets.get(name, 0) + 1
+    total = len(holdings)
+    return [
+        {"name": name, "count": count, "stock_share": round(count / total * 100, 4), "weight": None}
+        for name, count in sorted(buckets.items(), key=lambda row: (-row[1], row[0]))
+    ]
+
+
+def fetch_constituent_file(item: dict, page_url: str, fetched_on: str) -> dict:
+    parser = LinkParser()
+    parser.feed(official_get(page_url).decode("utf-8", errors="replace"))
+    for label, href in parser.links:
+        if compact(label) == "INDEXCONSTITUENT":
+            url = official_url(href, "/IndexConstituent/")
+            if url and urlparse(url).path.lower().endswith(".csv"):
+                return parse_constituent_csv(official_get(url), item, url, fetched_on)
+    raise ValueError("No official Index Constituent CSV link on index page")
+
+
+def fetch_missing_constituents(catalog: dict, already_weighted: dict) -> Tuple[dict, dict]:
+    pages = discover_index_pages(catalog)
+    missing = [item for item in catalog.get("items", []) if item["slug"] not in already_weighted]
+    results = {}
+    errors = {}
+    fetched_on = date.today().isoformat()
+    with ThreadPoolExecutor(max_workers=4) as pool:
+        pending = {
+            pool.submit(fetch_constituent_file, item, pages[item["slug"]], fetched_on): item["slug"]
+            for item in missing if item["slug"] in pages
+        }
+        for future in as_completed(pending):
+            slug = pending[future]
+            try:
+                results[slug] = future.result()
+            except Exception as e:
+                errors[slug] = str(e)
+    for item in missing:
+        if item["slug"] not in pages:
+            errors[item["slug"]] = "Index page not found in official categories"
+    return results, errors
 
 
 def candidate_months(today: date, count: int = 8) -> Iterable[Tuple[int, int]]:
@@ -801,6 +994,7 @@ def build_manifest(catalog: dict, comp_dir: Path, parsed: Dict[str, dict], sourc
                 "name": item.get("name"),
                 "available": True,
                 "as_of": data.get("as_of"),
+                "retrieved_on": data.get("retrieved_on"),
                 "completeness": data.get("completeness"),
                 "stock_count": data.get("stock_count"),
                 "weight_coverage": data.get("weight_coverage"),
@@ -811,10 +1005,10 @@ def build_manifest(catalog: dict, comp_dir: Path, parsed: Dict[str, dict], sourc
             entries[slug] = {
                 "name": item.get("name"),
                 "available": False,
-                "reason": "Official constituent-weight data not parsed from the current monthly report.",
+                "reason": "An official constituent list could not be retrieved for this index.",
             }
     return {
-        "version": 2,
+        "version": 3,
         "generated_at": datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z"),
         "report_month": report_label,
         "source_url": source_url,
@@ -862,17 +1056,20 @@ def update_workbook_composition(book_path: Path, data: Optional[dict]):
         return
 
     ws["A2"] = "As of"
-    ws["B2"] = data.get("as_of") or data.get("report_month")
+    ws["B2"] = data.get("as_of") or (f"Retrieved {data['retrieved_on']}" if data.get("retrieved_on") else data.get("report_month"))
     ws["D2"] = "Weight coverage"
-    ws["E2"] = float(data.get("weight_coverage") or 0) / 100
-    ws["E2"].number_format = "0.0%"
+    has_weights = data.get("weight_coverage") is not None
+    ws["E2"] = float(data["weight_coverage"]) / 100 if has_weights else "Not published"
+    if has_weights:
+        ws["E2"].number_format = "0.0%"
     ws["A3"] = "Source"
     ws["B3"] = data.get("source")
     ws["B3"].hyperlink = data.get("source_url")
     ws["B3"].style = "Hyperlink"
     ws["D3"] = "Top 10 weight"
-    ws["E3"] = float(data.get("top10_weight") or 0) / 100
-    ws["E3"].number_format = "0.0%"
+    ws["E3"] = float(data["top10_weight"]) / 100 if has_weights else "Not published"
+    if has_weights:
+        ws["E3"].number_format = "0.0%"
     for c in ("A2", "D2", "A3", "D3"):
         ws[c].font = muted
     for c in ("B2", "E2", "E3"):
@@ -889,8 +1086,9 @@ def update_workbook_composition(book_path: Path, data: Optional[dict]):
         ws.cell(r, 2, h.get("name"))
         ws.cell(r, 3, h.get("symbol"))
         ws.cell(r, 4, h.get("sector"))
-        ws.cell(r, 5, float(h.get("weight") or 0) / 100)
-        ws.cell(r, 5).number_format = "0.00%"
+        if h.get("weight") is not None:
+            ws.cell(r, 5, float(h["weight"]) / 100)
+            ws.cell(r, 5).number_format = "0.00%"
     ws.freeze_panes = "A6"
     autosize(ws)
 
@@ -968,6 +1166,22 @@ def main() -> int:
         print(f"WARNING: composition refresh failed: {e}")
         if args.strict:
             return 2
+
+    # The monthly report currently publishes only a few indices. Discover the
+    # remaining official constituent lists from each index's own download link.
+    # When the ZIP fails entirely, retain previously stored monthly weights.
+    protected = dict(parsed)
+    if diagnostics["status"] == "refresh_failed":
+        for slug, entry in existing_manifest.get("indices", {}).items():
+            if entry.get("source_type") == "official_nse_indices_monthly_report" and entry.get("available"):
+                protected[slug] = True
+    constituents, csv_errors = fetch_missing_constituents(catalog, protected)
+    parsed.update(constituents)
+    diagnostics["constituent_csv_indices"] = len(constituents)
+    diagnostics["constituent_csv_errors"] = csv_errors
+    if diagnostics["status"] == "refresh_failed" and constituents:
+        diagnostics["status"] = "partial"
+    print(f"Composition: fetched {len(constituents)} official constituent CSVs")
 
     manifest = build_manifest(
         catalog,

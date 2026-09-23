@@ -4,28 +4,29 @@ The tracker now has a **Composition** tab for every eligible index.
 
 ## Official source
 
-Composition is refreshed from the NSE Indices monthly report:
+Constituent weights are refreshed from the NSE Indices monthly report:
 
 https://www.niftyindices.com/reports/monthly-reports
 
 Report: **Indices Market Capitalisation & Weightage**
 
-The updater searches the latest available monthly ZIP (`indices_data{Mon}{YYYY}.zip`), parses official constituent weights, and writes one JSON file per tracked index under:
+The updater searches the latest available monthly ZIP (`indices_data{Mon}{YYYY}.zip`) and parses official constituent weights. For tracked indices not covered by that ZIP, it discovers the **Index Constituent** CSV on each index's official NSE Indices page and imports the stock list. It writes one JSON file per tracked index under:
 
 `docs/data/composition/`
 
-No synthetic weights are created. If an official index table cannot be parsed, that index is marked unavailable rather than estimated.
+No synthetic weights are created. The CSVs can list constituent names, symbols and industries without weights. Those indices show membership and a count by industry, with stock weights marked unavailable. Weighted snapshots keep the report's month-end date; a CSV without an embedded effective date shows its retrieval date as such.
+
+Official example: [NIFTY 100 constituents](https://www.niftyindices.com/indices/equity/broad-based-indices/nifty-100).
 
 ## Dashboard
 
 The **Composition** tab provides:
 
-- constituent names and weights
+- constituent names and any officially published weights
 - symbols where provided by NSE
 - sector / industry where provided by NSE
-- top-10 concentration
-- weight coverage
-- Stocks / Sectors views
+- top-10 concentration and weight coverage where available
+- Stocks / Sectors views; the latter uses stock counts when weights are absent
 - constituent search
 
 The Heatmap also shows **Top 10** concentration when composition data is available.
@@ -43,4 +44,4 @@ The GitHub Action runs:
 3. official composition/weightage updater
 4. repository housekeeping / commit / Pages deployment
 
-If the NSE monthly ZIP is temporarily unavailable, the composition updater keeps the most recent previously stored **official** files and does not replace them with guesses.
+If an official download is temporarily unavailable, the composition updater keeps the most recent previously stored **official** file and does not replace it with guesses. The `status.json` file records missing indices and source errors.

@@ -19,4 +19,4 @@ The updater clears the per-index download directory before regeneration, so work
 
 ## Composition worksheet
 
-After the standard per-index workbook is generated, `composition_tracker.py` adds a **Composition** worksheet using the latest official NSE Indices monthly constituent-weight report. The sheet contains rank, company, symbol, sector/industry where available, and weight.
+After the standard per-index workbook is generated, `composition_tracker.py` adds a **Composition** worksheet using the official NSE Indices monthly report or the index's official constituent CSV. The sheet contains rank, company, symbol, sector/industry where available, and an official weight where published. Missing weights are left blank.

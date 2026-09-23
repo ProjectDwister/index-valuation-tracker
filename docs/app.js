@@ -221,6 +221,7 @@ function sumCompositionWeights(rows){
 
 function compositionCoverageValue(data){
   if(!data) return null;
+  if(data.weight_coverage==null && !(data.holdings||[]).some(row=>row.weight!=null)) return null;
   const explicit=Number(data.weight_coverage);
   if(Number.isFinite(explicit)) return explicit;
   return sumCompositionWeights(data.holdings);
@@ -228,6 +229,7 @@ function compositionCoverageValue(data){
 
 function compositionTop10Value(data){
   if(!data) return null;
+  if(data.top10_weight==null && !(data.holdings||[]).some(row=>row.weight!=null)) return null;
   const explicit=Number(data.top10_weight);
   if(Number.isFinite(explicit)) return explicit;
   return sumCompositionWeights([...(data.holdings||[])].sort((a,b)=>(Number(b.weight)||0)-(Number(a.weight)||0)).slice(0,10));
@@ -265,7 +267,16 @@ function setCompositionSummary(values={}){
   $('compositionTop10').textContent=values.top10||'—';
   $('compositionSourceType').textContent=values.sourceType||'—';
   $('compositionAsOf').textContent=values.asOf||'—';
-  $('compositionSource').textContent=values.source||'—';
+  const source=$('compositionSource');
+  source.textContent=values.source||'—';
+  const sourceUrl=values.sourceUrl;
+  let safeUrl='';
+  try{
+    const url=new URL(sourceUrl);
+    if(url.protocol==='https:' && ['www.niftyindices.com','niftyindices.com'].includes(url.hostname)) safeUrl=url.href;
+  }catch(_e){}
+  if(safeUrl){ source.href=safeUrl; source.hidden=false; }
+  else { source.removeAttribute('href'); source.hidden=!values.source; }
 }
 
 function setCompositionNotice(message=''){
@@ -279,24 +290,33 @@ function setCompositionHead(view){
   const head=$('compositionHeadRow');
   if(!head) return;
   head.innerHTML=view==='sectors'
-    ? '<th>#</th><th>Sector</th><th>Constituents</th><th>Coverage</th><th>Weight</th>'
-    : '<th>#</th><th>Name</th><th>Symbol</th><th>Sector</th><th>Weight</th>';
+    ? '<th>#</th><th>Sector</th><th>Constituents</th><th>Share of stocks</th><th>Weight</th>'
+    : '<th>#</th><th>Name</th><th>Symbol</th><th>Sector / industry</th><th>Weight</th>';
 }
 
-function renderCompositionChartRows(rows, view){
+function escapeCompositionText(value){
+  return String(value??'—').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function renderCompositionChartRows(rows, view, hasWeights){
   const host=$('compositionChart');
   if(!host) return;
+  if(view==='holdings' && !hasWeights){
+    host.innerHTML='<div class="empty-history">Constituent weights are not published in this source. Browse the stock list below.</div>';
+    return;
+  }
   if(!rows.length){
     host.innerHTML='<div class="empty-history">No matching rows for the current selection.</div>';
     return;
   }
   const topRows=rows.slice(0,10);
-  const max=Math.max(...topRows.map(row=>Number(row.weight)||0),0.01);
-  host.innerHTML=`<div class="composition-chart-head"><span>Top ${Math.min(10,rows.length)} by weight</span><small>${view==='sectors'?'Sector mix':'Constituent mix'}</small></div><div class="composition-bars">${topRows.map((row,idx)=>{
-    const weight=Number(row.weight)||0;
-    const label=view==='sectors' ? row.name : (row.name||row.symbol||'—');
+  const value=row=>Number(hasWeights?row.weight:row.stock_share)||0;
+  const max=Math.max(...topRows.map(value),0.01);
+  host.innerHTML=`<div class="composition-chart-head"><span>${hasWeights?`Top ${Math.min(10,rows.length)} by weight`:'Industries by stock count'}</span><small>${view==='sectors'?'Sector / industry mix':'Constituent mix'}</small></div><div class="composition-bars">${topRows.map((row,idx)=>{
+    const amount=value(row);
+    const label=escapeCompositionText(view==='sectors' ? row.name : (row.name||row.symbol||'—'));
     const sublabel=view==='sectors' ? `${row.count ?? '—'} stocks` : (row.symbol||'—');
-    return `<div class="composition-bar-row"><div class="composition-bar-copy"><strong>${idx+1}. ${label}</strong><span>${sublabel}</span></div><div class="composition-bar-track"><div class="composition-bar-fill" style="width:${clamp(weight/max*100,0,100)}%"></div></div><div class="composition-bar-value">${weight.toFixed(2)}%</div></div>`;
+    return `<div class="composition-bar-row"><div class="composition-bar-copy"><strong>${idx+1}. ${label}</strong><span>${escapeCompositionText(sublabel)}</span></div><div class="composition-bar-track"><div class="composition-bar-fill" style="width:${clamp(amount/max*100,0,100)}%"></div></div><div class="composition-bar-value">${amount.toFixed(2)}%</div></div>`;
   }).join('')}</div>`;
 }
 
@@ -304,27 +324,28 @@ function renderCompositionTableRows(data){
   const q=($('compositionSearch')?.value||'').trim().toLowerCase();
   const body=$('compositionBody');
   if(!body) return;
+  const hasWeights=compositionCoverageValue(data)!=null;
 
   if(compositionView==='sectors'){
     const sectors=data?.sectors||[];
-    const rows=[...sectors].sort((a,b)=>(Number(b.weight)||0)-(Number(a.weight)||0))
+    const rows=[...sectors].sort((a,b)=>hasWeights?(Number(b.weight)||0)-(Number(a.weight)||0):(b.count||0)-(a.count||0))
       .filter(row=>!q || `${row.name||''} ${row.count||''}`.toLowerCase().includes(q));
     setCompositionHead('sectors');
     if(!sectors.length){
-      const host=$('compositionChart'); if(host) host.innerHTML='<div class="empty-history">Sector classification is not included in the current official weightage report for this index.</div>';
-      body.innerHTML='<tr><td colspan="5">Sector split unavailable from the current source file.</td></tr>';
+      const host=$('compositionChart'); if(host) host.innerHTML='<div class="empty-history">Sector classification is not included in the official constituent file for this index.</div>';
+      body.innerHTML='<tr><td colspan="5">Sector / industry split unavailable from the current source file.</td></tr>';
       return;
     }
-    renderCompositionChartRows(rows,'sectors');
-    body.innerHTML=rows.length ? rows.map((row,idx)=>`<tr><td>${idx+1}</td><td><strong>${row.name||'—'}</strong></td><td>${row.count ?? '—'}</td><td>${pct((Number(row.weight)||0)/100,1)}</td><td>${Number(row.weight||0).toFixed(2)}%</td></tr>`).join('') : '<tr><td colspan="5">No sectors match the current search.</td></tr>';
+    renderCompositionChartRows(rows,'sectors',hasWeights);
+    body.innerHTML=rows.length ? rows.map((row,idx)=>`<tr><td>${idx+1}</td><td><strong>${escapeCompositionText(row.name)}</strong></td><td>${row.count ?? '—'}</td><td>${pct((row.count||0)/(data.stock_count||data.holdings?.length||1),1)}</td><td>${row.weight==null?'—':Number(row.weight).toFixed(2)+'%'}</td></tr>`).join('') : '<tr><td colspan="5">No sectors match the current search.</td></tr>';
     return;
   }
 
-  const rows=[...(data?.holdings||[])].sort((a,b)=>(Number(b.weight)||0)-(Number(a.weight)||0))
+  const rows=[...(data?.holdings||[])].sort((a,b)=>hasWeights?(Number(b.weight)||0)-(Number(a.weight)||0):String(a.name).localeCompare(String(b.name)))
     .filter(row=>!q || `${row.name||''} ${row.symbol||''} ${row.sector||''}`.toLowerCase().includes(q));
   setCompositionHead('holdings');
-  renderCompositionChartRows(rows,'holdings');
-  body.innerHTML=rows.length ? rows.map((row,idx)=>`<tr><td>${idx+1}</td><td><strong>${row.name||'—'}</strong></td><td>${row.symbol||'—'}</td><td>${row.sector||'—'}</td><td>${Number(row.weight||0).toFixed(2)}%</td></tr>`).join('') : '<tr><td colspan="5">No constituents match the current search.</td></tr>';
+  renderCompositionChartRows(rows,'holdings',hasWeights);
+  body.innerHTML=rows.length ? rows.map((row,idx)=>`<tr><td>${idx+1}</td><td><strong>${escapeCompositionText(row.name)}</strong></td><td>${escapeCompositionText(row.symbol)}</td><td>${escapeCompositionText(row.sector)}</td><td>${row.weight==null?'—':Number(row.weight).toFixed(2)+'%'}</td></tr>`).join('') : '<tr><td colspan="5">No constituents match the current search.</td></tr>';
 }
 
 function renderCompositionUnavailable(message,meta='Composition data is not yet available for the selected index.') {
@@ -339,7 +360,7 @@ function renderCompositionUnavailable(message,meta='Composition data is not yet 
 async function renderComposition(slug){
   const entry=compositionManifest?.indices?.[slug];
   if(!entry?.available || !entry?.file){
-    renderCompositionUnavailable(entry?.reason || 'Official NSE Indices constituent-weight data is not available for this index yet. Run the refresh workflow again to retry.','Constituent mix and weightage from the official NSE Indices monthly report.');
+    renderCompositionUnavailable(entry?.reason || 'Official index constituents are currently unavailable.','Index constituents from NSE Indices.');
     return;
   }
 
@@ -349,6 +370,7 @@ async function renderComposition(slug){
   const body=$('compositionBody'); if(body) body.innerHTML='<tr><td colspan="5">Loading composition…</td></tr>';
 
   const data=await getCompositionData(slug);
+  if(slug!==selectedSlug) return;
   if(!data){
     renderCompositionUnavailable('The manifest entry exists, but the underlying dataset could not be loaded.');
     return;
@@ -362,12 +384,13 @@ async function renderComposition(slug){
     count: `${loadedRows}${totalCount?` / ${totalCount}`:''}`,
     coverage: coverage==null?'—':`${coverage.toFixed(1)}%`,
     top10: top10==null?'—':`${top10.toFixed(1)}%`,
-    sourceType: (data.completeness||entry.label||data.source_type||'dataset').replace(/^(.)/,m=>m.toUpperCase()),
-    asOf: fmtDate(data.as_of),
-    source: data.source || entry.label || '—'
+    sourceType: coverage==null?'Constituents':(data.completeness||'Weighted').replace(/^(.)/,m=>m.toUpperCase()),
+    asOf: data.as_of?fmtDate(data.as_of):(data.retrieved_on?`Retrieved ${fmtDate(data.retrieved_on)}`:'—'),
+    source: data.source || entry.label || '—',
+    sourceUrl: data.source_url
   });
 
-  $('compositionMeta').textContent=`${data.index_name || latestBundle?.indices?.[slug]?.index_name || 'Selected index'} · ${compositionView==='sectors'?'Sector mix':'Constituent mix'} · ${loadedRows} rows`;
+  $('compositionMeta').textContent=`${data.index_name || latestBundle?.indices?.[slug]?.index_name || 'Selected index'} · ${compositionView==='sectors'?'Sector / industry mix':'Constituent mix'} · ${loadedRows} rows`;
   setCompositionNotice(data.coverage_note || (data.source_type==='sample' ? 'Sample data file loaded for UI demonstration.' : ''));
   renderCompositionTableRows(data);
 }

@@ -6,7 +6,7 @@ Live site: https://projectdwister.github.io/index-valuation-tracker/
 
 ## What the tracker does
 
-The GitHub Action refreshes the canonical NIFTY 50 model and the multi-index dataset, writes the website data under `docs/data/`, generates one Excel workbook per eligible index, evaluates multi-index email alerts, commits refreshed data back to `main`, and deploys `docs/` to GitHub Pages. It also refreshes official NSE Indices constituent weightage data and adds a `Composition` worksheet to each per-index Excel workbook.
+The GitHub Action refreshes the canonical NIFTY 50 model and the multi-index dataset, writes the website data under `docs/data/`, generates one Excel workbook per eligible index, evaluates multi-index email alerts, commits refreshed data back to `main`, and deploys `docs/` to GitHub Pages. It also refreshes official NSE Indices constituent lists and available weights, and adds a `Composition` worksheet to each per-index Excel workbook.
 
 The scheduled run is Monday-Friday at 7:00 PM Asia/Kolkata. It can also be run manually from **Actions -> Refresh Index Valuation Tracker and deploy Pages -> Run workflow**.
 
@@ -97,4 +97,4 @@ Do not store passwords, API keys or confidential information in `docs/` because 
 
 
 ## Composition and weightage
-See `README_COMPOSITION.md` for the official NSE Indices monthly composition pipeline.
+See `README_COMPOSITION.md` for the official NSE Indices composition pipeline. The monthly report supplies weights for certain indices; official constituent CSVs provide stock lists for the rest. Weights are left blank when a source does not publish them.

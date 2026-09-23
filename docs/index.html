@@ -202,15 +202,15 @@
         <div class="section-head composition-head">
           <div>
             <h2>Index composition</h2>
-            <div id="compositionMeta" class="subhead-note">Constituent mix and weightage for the selected index.</div>
+            <div id="compositionMeta" class="subhead-note">Constituents and available weightage for the selected index.</div>
           </div>
           <div class="composition-controls">
             <div class="composition-toggle" role="tablist" aria-label="Composition view">
               <button type="button" id="compositionStocksBtn" class="composition-toggle-button active" data-composition-view="holdings">Stocks</button>
-              <button type="button" id="compositionSectorsBtn" class="composition-toggle-button" data-composition-view="sectors">Sectors</button>
+              <button type="button" id="compositionSectorsBtn" class="composition-toggle-button" data-composition-view="sectors">Sectors / industries</button>
             </div>
             <label class="sr-only" for="compositionSearch">Search composition</label>
-            <input id="compositionSearch" class="control-input composition-search" type="search" placeholder="Search stock / sector" />
+            <input id="compositionSearch" class="control-input composition-search" type="search" placeholder="Search stock / industry" />
           </div>
         </div>
 
@@ -221,15 +221,15 @@
           <div class="composition-stat"><span>Weight coverage</span><strong id="compositionCoverage">—</strong></div>
           <div class="composition-stat"><span>Top 10 weight</span><strong id="compositionTop10">—</strong></div>
           <div class="composition-stat"><span>Data type</span><strong id="compositionSourceType">—</strong></div>
-          <div class="composition-stat"><span>As of</span><strong id="compositionAsOf">—</strong></div>
-          <div class="composition-stat"><span>Source</span><strong id="compositionSource">—</strong></div>
+          <div class="composition-stat"><span>Data date</span><strong id="compositionAsOf">—</strong></div>
+          <div class="composition-stat"><span>Source</span><a id="compositionSource" href="#" target="_blank" rel="noopener noreferrer">—</a></div>
         </div>
 
         <div id="compositionChart" class="composition-chart" aria-live="polite"></div>
 
         <div class="table-wrap">
           <table class="backtest-table composition-table">
-            <thead><tr id="compositionHeadRow"><th>#</th><th>Name</th><th>Symbol / Count</th><th>Sector</th><th>Weight</th></tr></thead>
+            <thead><tr id="compositionHeadRow"><th>#</th><th>Name</th><th>Symbol / Count</th><th>Sector / industry</th><th>Weight</th></tr></thead>
             <tbody id="compositionBody"><tr><td colspan="5">Select an index to view its composition.</td></tr></tbody>
           </table>
         </div>
