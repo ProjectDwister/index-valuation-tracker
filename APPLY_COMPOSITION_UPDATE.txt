@@ -1,0 +1,27 @@
+INDEX VALUATION TRACKER - OFFICIAL COMPOSITION UPDATE
+
+Upload/replace these files in the existing GitHub repository, preserving folders:
+
+  docs/index.html
+  docs/app.js
+  docs/styles.css
+  docs/data/composition/manifest.json
+  docs/data/composition/status.json
+  composition_tracker.py
+  requirements.txt
+  .github/workflows/nifty-tracker.yml
+  README_COMPOSITION.md
+  README.md
+  README_DYNAMIC_EXCEL.md
+
+Then run:
+  Actions -> Refresh Index Valuation Tracker and deploy Pages -> Run workflow
+
+The first run will download the latest available official NSE Indices monthly
+"Indices Market Capitalisation & Weightage" ZIP and create one composition JSON
+per tracked index wherever the official report can be parsed.
+
+The same run will add/replace a Composition worksheet in each per-index Excel file.
+
+No synthetic weights are generated. An index that is not present/parseable in the
+official report will show composition as unavailable instead of displaying an estimate.

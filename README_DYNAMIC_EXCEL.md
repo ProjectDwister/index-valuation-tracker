@@ -16,3 +16,7 @@ Each workbook contains:
 NIFTY 50 uses the canonical 1999-onward quarter-end backtest. Other indices use their own qualifying multi-index history.
 
 The updater clears the per-index download directory before regeneration, so workbooks for indices that no longer pass the useful-history filter are automatically removed.
+
+## Composition worksheet
+
+After the standard per-index workbook is generated, `composition_tracker.py` adds a **Composition** worksheet using the latest official NSE Indices monthly constituent-weight report. The sheet contains rank, company, symbol, sector/industry where available, and weight.

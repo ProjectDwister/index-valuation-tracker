@@ -1,3 +1,6 @@
 requests>=2.31
 pandas>=2.0
 openpyxl>=3.1
+cloudscraper>=1.2.71
+pdfplumber>=0.11
+xlrd>=2.0.1

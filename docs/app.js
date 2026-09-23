@@ -11,6 +11,9 @@ let latestBundle = null;
 let backtestBundle = null;
 let allHistory = [];
 let selectedSlug = null;
+let compositionManifest = {indices:{}};
+const compositionDatasetCache = {};
+let compositionView = "holdings";
 
 const APP_CACHE_PREFIX = 'ivt-cache-v2:';
 const sleep = ms => new Promise(resolve => window.setTimeout(resolve, ms));
@@ -211,6 +214,173 @@ function renderBacktest(slug,current){
   }).join('');
 }
 
+
+function sumCompositionWeights(rows){
+  return (rows||[]).reduce((sum,row)=>sum+(Number(row?.weight)||0),0);
+}
+
+function compositionCoverageValue(data){
+  if(!data) return null;
+  const explicit=Number(data.weight_coverage);
+  if(Number.isFinite(explicit)) return explicit;
+  return sumCompositionWeights(data.holdings);
+}
+
+function compositionTop10Value(data){
+  if(!data) return null;
+  const explicit=Number(data.top10_weight);
+  if(Number.isFinite(explicit)) return explicit;
+  return sumCompositionWeights([...(data.holdings||[])].sort((a,b)=>(Number(b.weight)||0)-(Number(a.weight)||0)).slice(0,10));
+}
+
+async function loadCompositionManifest(){
+  try{
+    const manifest=await fetchResource('data/composition/manifest.json','json',{attempts:2,timeoutMs:5000});
+    compositionManifest=manifest||{indices:{}};
+    cacheWrite('compositionManifest',compositionManifest);
+  }catch(err){
+    compositionManifest=cacheRead('compositionManifest')||{indices:{}};
+    console.warn('Composition manifest unavailable.',err);
+  }
+}
+
+async function getCompositionData(slug){
+  if(Object.prototype.hasOwnProperty.call(compositionDatasetCache,slug)) return compositionDatasetCache[slug];
+  const entry=compositionManifest?.indices?.[slug];
+  if(!entry?.file){ compositionDatasetCache[slug]=null; return null; }
+  try{
+    const data=await fetchResource(`data/composition/${entry.file}`,'json',{attempts:2,timeoutMs:5000});
+    compositionDatasetCache[slug]=data;
+    return data;
+  }catch(err){
+    console.warn(`Composition data unavailable for ${slug}.`,err);
+    compositionDatasetCache[slug]=null;
+    return null;
+  }
+}
+
+function setCompositionSummary(values={}){
+  $('compositionCount').textContent=values.count||'—';
+  $('compositionCoverage').textContent=values.coverage||'—';
+  $('compositionTop10').textContent=values.top10||'—';
+  $('compositionSourceType').textContent=values.sourceType||'—';
+  $('compositionAsOf').textContent=values.asOf||'—';
+  $('compositionSource').textContent=values.source||'—';
+}
+
+function setCompositionNotice(message=''){
+  const note=$('compositionNotice');
+  if(!note) return;
+  note.hidden=!message;
+  note.textContent=message||'';
+}
+
+function setCompositionHead(view){
+  const head=$('compositionHeadRow');
+  if(!head) return;
+  head.innerHTML=view==='sectors'
+    ? '<th>#</th><th>Sector</th><th>Constituents</th><th>Coverage</th><th>Weight</th>'
+    : '<th>#</th><th>Name</th><th>Symbol</th><th>Sector</th><th>Weight</th>';
+}
+
+function renderCompositionChartRows(rows, view){
+  const host=$('compositionChart');
+  if(!host) return;
+  if(!rows.length){
+    host.innerHTML='<div class="empty-history">No matching rows for the current selection.</div>';
+    return;
+  }
+  const topRows=rows.slice(0,10);
+  const max=Math.max(...topRows.map(row=>Number(row.weight)||0),0.01);
+  host.innerHTML=`<div class="composition-chart-head"><span>Top ${Math.min(10,rows.length)} by weight</span><small>${view==='sectors'?'Sector mix':'Constituent mix'}</small></div><div class="composition-bars">${topRows.map((row,idx)=>{
+    const weight=Number(row.weight)||0;
+    const label=view==='sectors' ? row.name : (row.name||row.symbol||'—');
+    const sublabel=view==='sectors' ? `${row.count ?? '—'} stocks` : (row.symbol||'—');
+    return `<div class="composition-bar-row"><div class="composition-bar-copy"><strong>${idx+1}. ${label}</strong><span>${sublabel}</span></div><div class="composition-bar-track"><div class="composition-bar-fill" style="width:${clamp(weight/max*100,0,100)}%"></div></div><div class="composition-bar-value">${weight.toFixed(2)}%</div></div>`;
+  }).join('')}</div>`;
+}
+
+function renderCompositionTableRows(data){
+  const q=($('compositionSearch')?.value||'').trim().toLowerCase();
+  const body=$('compositionBody');
+  if(!body) return;
+
+  if(compositionView==='sectors'){
+    const sectors=data?.sectors||[];
+    const rows=[...sectors].sort((a,b)=>(Number(b.weight)||0)-(Number(a.weight)||0))
+      .filter(row=>!q || `${row.name||''} ${row.count||''}`.toLowerCase().includes(q));
+    setCompositionHead('sectors');
+    if(!sectors.length){
+      const host=$('compositionChart'); if(host) host.innerHTML='<div class="empty-history">Sector classification is not included in the current official weightage report for this index.</div>';
+      body.innerHTML='<tr><td colspan="5">Sector split unavailable from the current source file.</td></tr>';
+      return;
+    }
+    renderCompositionChartRows(rows,'sectors');
+    body.innerHTML=rows.length ? rows.map((row,idx)=>`<tr><td>${idx+1}</td><td><strong>${row.name||'—'}</strong></td><td>${row.count ?? '—'}</td><td>${pct((Number(row.weight)||0)/100,1)}</td><td>${Number(row.weight||0).toFixed(2)}%</td></tr>`).join('') : '<tr><td colspan="5">No sectors match the current search.</td></tr>';
+    return;
+  }
+
+  const rows=[...(data?.holdings||[])].sort((a,b)=>(Number(b.weight)||0)-(Number(a.weight)||0))
+    .filter(row=>!q || `${row.name||''} ${row.symbol||''} ${row.sector||''}`.toLowerCase().includes(q));
+  setCompositionHead('holdings');
+  renderCompositionChartRows(rows,'holdings');
+  body.innerHTML=rows.length ? rows.map((row,idx)=>`<tr><td>${idx+1}</td><td><strong>${row.name||'—'}</strong></td><td>${row.symbol||'—'}</td><td>${row.sector||'—'}</td><td>${Number(row.weight||0).toFixed(2)}%</td></tr>`).join('') : '<tr><td colspan="5">No constituents match the current search.</td></tr>';
+}
+
+function renderCompositionUnavailable(message,meta='Composition data is not yet available for the selected index.') {
+  $('compositionMeta').textContent=meta;
+  setCompositionNotice(message||'');
+  setCompositionSummary();
+  setCompositionHead(compositionView);
+  const chart=$('compositionChart'); if(chart) chart.innerHTML='<div class="empty-history">Composition dataset unavailable.</div>';
+  const body=$('compositionBody'); if(body) body.innerHTML='<tr><td colspan="5">Composition dataset unavailable for the selected index.</td></tr>';
+}
+
+async function renderComposition(slug){
+  const entry=compositionManifest?.indices?.[slug];
+  if(!entry?.available || !entry?.file){
+    renderCompositionUnavailable(entry?.reason || 'Official NSE Indices constituent-weight data is not available for this index yet. Run the refresh workflow again to retry.','Constituent mix and weightage from the official NSE Indices monthly report.');
+    return;
+  }
+
+  $('compositionMeta').textContent='Loading composition…';
+  setCompositionNotice('');
+  const chart=$('compositionChart'); if(chart) chart.innerHTML='<div class="empty-history">Loading composition…</div>';
+  const body=$('compositionBody'); if(body) body.innerHTML='<tr><td colspan="5">Loading composition…</td></tr>';
+
+  const data=await getCompositionData(slug);
+  if(!data){
+    renderCompositionUnavailable('The manifest entry exists, but the underlying dataset could not be loaded.');
+    return;
+  }
+
+  const loadedRows=compositionView==='sectors' ? (data.sectors?.length||0) : (data.holdings?.length||0);
+  const totalCount=data.stock_count || data.holdings?.length || 0;
+  const coverage=compositionCoverageValue(data);
+  const top10=compositionTop10Value(data);
+  setCompositionSummary({
+    count: `${loadedRows}${totalCount?` / ${totalCount}`:''}`,
+    coverage: coverage==null?'—':`${coverage.toFixed(1)}%`,
+    top10: top10==null?'—':`${top10.toFixed(1)}%`,
+    sourceType: (data.completeness||entry.label||data.source_type||'dataset').replace(/^(.)/,m=>m.toUpperCase()),
+    asOf: fmtDate(data.as_of),
+    source: data.source || entry.label || '—'
+  });
+
+  $('compositionMeta').textContent=`${data.index_name || latestBundle?.indices?.[slug]?.index_name || 'Selected index'} · ${compositionView==='sectors'?'Sector mix':'Constituent mix'} · ${loadedRows} rows`;
+  setCompositionNotice(data.coverage_note || (data.source_type==='sample' ? 'Sample data file loaded for UI demonstration.' : ''));
+  renderCompositionTableRows(data);
+}
+
+function installCompositionControls(){
+  $('compositionSearch')?.addEventListener('input',()=>{ if(selectedSlug) renderComposition(selectedSlug); });
+  document.querySelectorAll('[data-composition-view]').forEach(btn=>btn.addEventListener('click',()=>{
+    compositionView=btn.dataset.compositionView||'holdings';
+    document.querySelectorAll('[data-composition-view]').forEach(node=>node.classList.toggle('active',node===btn));
+    if(selectedSlug) renderComposition(selectedSlug);
+  }));
+}
+
 function renderAvailability(x){
   const b=$('availabilityBanner');
   if(x.pe==null){b.hidden=false;b.textContent='Current aggregate P/E is unavailable for this index, so the live score is not computed.';}
@@ -269,7 +439,7 @@ function renderSelected(slug){
     setStrip({wrap:'overviewBoundaryStrip',buyHoldTick:'ovBuyHoldTick',holdSellTick:'ovHoldSellTick',currentTick:'ovCurrentPeTick',min:'ovBoundaryMin',max:'ovBoundaryMax'},null,null,null);
     setStrip({wrap:'boundaryStrip',buyHoldTick:'buyHoldTick',holdSellTick:'holdSellTick',currentTick:'currentPeTick',min:'boundaryMin',max:'boundaryMax'},null,null,null);
   }
-  renderSparklines(slug,x);renderBacktest(slug,x);renderHistory(slug,x);
+  renderSparklines(slug,x);renderBacktest(slug,x);renderHistory(slug,x);renderComposition(slug);
   $('coverageStats').innerHTML=`<div><span>Monthly P/E observations</span><strong>${x.live_pe_history_months||0}</strong></div><div><span>Quarter-end P/E observations</span><strong>${x.backtest_valid_pe_quarters||0}</strong></div>`;
 }
 
@@ -283,23 +453,25 @@ function buildSelector(){
 function renderHeatmap(){
   const body=$('heatmapBody');
   if(!catalog || !latestBundle?.indices){
-    if(body) body.innerHTML='<tr><td colspan="7" class="heatmap-loading-row">Loading index data…</td></tr>';
+    if(body) body.innerHTML='<tr><td colspan="8" class="heatmap-loading-row">Loading index data…</td></tr>';
     return;
   }
   const search=($('heatmapSearch').value||'').toLowerCase(),group=$('heatmapGroup').value,sort=$('heatmapSort')?.value||'score-desc';
-  const rows=catalog.items.map(i=>({...i,...latestBundle.indices[i.slug]})).filter(x=>(group==='All'||x.group===group)&&(!search||x.name.toLowerCase().includes(search)));
+  const rows=catalog.items.map(i=>({...i,...latestBundle.indices[i.slug],composition:compositionManifest?.indices?.[i.slug]||{}})).filter(x=>(group==='All'||x.group===group)&&(!search||x.name.toLowerCase().includes(search)));
   const n=v=>Number.isFinite(Number(v))?Number(v):null;
   const sorters={
     'score-desc':(a,b)=>(n(b.composite_score)??-Infinity)-(n(a.composite_score)??-Infinity),
     'valuation-asc':(a,b)=>(n(a.pe_percentile)??Infinity)-(n(b.pe_percentile)??Infinity),
     'eps-desc':(a,b)=>(n(b.yoy_eps_growth)??-Infinity)-(n(a.yoy_eps_growth)??-Infinity),
     'pe-asc':(a,b)=>(n(a.pe)??Infinity)-(n(b.pe)??Infinity),
+    'concentration-desc':(a,b)=>(n(b.composition?.top10_weight)??-Infinity)-(n(a.composition?.top10_weight)??-Infinity),
     'name-asc':(a,b)=>a.name.localeCompare(b.name)
   };
   rows.sort(sorters[sort]||sorters['score-desc']);
   $('heatmapBody').innerHTML=rows.map(x=>{
     const pp=n(x.pe_percentile), width=pp==null?0:clamp(pp*100,0,100);
-    return `<tr data-slug="${x.slug}"><td><strong>${x.name}</strong></td><td class="muted-cell">${x.group}</td><td>${x.pe?Number(x.pe).toFixed(2)+'×':'—'}</td><td><div class="heatmap-percentile"><span>${pct(x.pe_percentile,1)}</span><i><b style="width:${width}%"></b></i></div></td><td>${pct(x.yoy_eps_growth,1)}</td><td class="score-cell ${x.signal||''}">${x.composite_score==null?'—':Number(x.composite_score).toFixed(1)}</td><td>${x.signal?`<span class="badge ${x.signal}">${x.signal}</span>`:'—'}</td></tr>`;
+    const top10=n(x.composition?.top10_weight);
+    return `<tr data-slug="${x.slug}"><td><strong>${x.name}</strong></td><td class="muted-cell">${x.group}</td><td>${x.pe?Number(x.pe).toFixed(2)+'×':'—'}</td><td><div class="heatmap-percentile"><span>${pct(x.pe_percentile,1)}</span><i><b style="width:${width}%"></b></i></div></td><td>${pct(x.yoy_eps_growth,1)}</td><td>${top10==null?'—':top10.toFixed(1)+'%'}</td><td class="score-cell ${x.signal||''}">${x.composite_score==null?'—':Number(x.composite_score).toFixed(1)}</td><td>${x.signal?`<span class="badge ${x.signal}">${x.signal}</span>`:'—'}</td></tr>`;
   }).join('');
   $('heatmapBody').querySelectorAll('tr[data-slug]').forEach(tr=>tr.addEventListener('click',()=>{renderSelected(tr.dataset.slug);activateTab('overview');window.scrollTo({top:0,behavior:'smooth'});}));
 }
@@ -364,6 +536,7 @@ function showFatalLoadError(error){
 async function boot(){
   setLoadProgress(4);
   initTabs();
+  installCompositionControls();
   setLoadProgress(10);
   setLoadProgress(22);
   try{
@@ -374,6 +547,8 @@ async function boot(){
       await loadLegacyFallback();
     }
 
+    setLoadProgress(74);
+    await loadCompositionManifest();
     setLoadProgress(78);
     buildSelector();
     $('heatmapSearch').addEventListener('input',renderHeatmap);

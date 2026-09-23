@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#07111f" />
   <title>Index Valuation Tracker</title>
   <meta name="description" content="Multi-index valuation, earnings-growth and historical forward-return dashboard for NSE equity indices." />
-  <link rel="stylesheet" href="styles.css?v=20260922b" />
+  <link rel="stylesheet" href="styles.css?v=20260923a" />
 </head>
 <body>
   <div id="ambientGlow" class="ambient-glow" aria-hidden="true"></div>
@@ -51,6 +51,7 @@
     <nav class="tab-nav" aria-label="Dashboard sections">
       <button type="button" class="tab-button active" data-tab="overview">Overview</button>
       <button type="button" class="tab-button" data-tab="valuation">Valuation</button>
+      <button type="button" class="tab-button" data-tab="composition">Composition</button>
       <button type="button" class="tab-button" data-tab="backtest">Backtest</button>
       <button type="button" class="tab-button" data-tab="history">History</button>
       <button type="button" class="tab-button" data-tab="heatmap">Heatmap</button>
@@ -195,6 +196,46 @@
       </section>
     </section>
 
+
+    <section id="panel-composition" class="tab-panel" data-panel="composition">
+      <section class="card composition-card">
+        <div class="section-head composition-head">
+          <div>
+            <h2>Index composition</h2>
+            <div id="compositionMeta" class="subhead-note">Constituent mix and weightage for the selected index.</div>
+          </div>
+          <div class="composition-controls">
+            <div class="composition-toggle" role="tablist" aria-label="Composition view">
+              <button type="button" id="compositionStocksBtn" class="composition-toggle-button active" data-composition-view="holdings">Stocks</button>
+              <button type="button" id="compositionSectorsBtn" class="composition-toggle-button" data-composition-view="sectors">Sectors</button>
+            </div>
+            <label class="sr-only" for="compositionSearch">Search composition</label>
+            <input id="compositionSearch" class="control-input composition-search" type="search" placeholder="Search stock / sector" />
+          </div>
+        </div>
+
+        <div id="compositionNotice" class="composition-notice" hidden></div>
+
+        <div class="composition-summary-grid">
+          <div class="composition-stat"><span>Loaded rows</span><strong id="compositionCount">—</strong></div>
+          <div class="composition-stat"><span>Weight coverage</span><strong id="compositionCoverage">—</strong></div>
+          <div class="composition-stat"><span>Top 10 weight</span><strong id="compositionTop10">—</strong></div>
+          <div class="composition-stat"><span>Data type</span><strong id="compositionSourceType">—</strong></div>
+          <div class="composition-stat"><span>As of</span><strong id="compositionAsOf">—</strong></div>
+          <div class="composition-stat"><span>Source</span><strong id="compositionSource">—</strong></div>
+        </div>
+
+        <div id="compositionChart" class="composition-chart" aria-live="polite"></div>
+
+        <div class="table-wrap">
+          <table class="backtest-table composition-table">
+            <thead><tr id="compositionHeadRow"><th>#</th><th>Name</th><th>Symbol / Count</th><th>Sector</th><th>Weight</th></tr></thead>
+            <tbody id="compositionBody"><tr><td colspan="5">Select an index to view its composition.</td></tr></tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+
     <section id="panel-backtest" class="tab-panel" data-panel="backtest">
       <section class="card backtest-card">
         <div class="section-head"><div><h2>Forward returns by valuation</h2><div id="backtestMeta" class="subhead-note"></div></div></div>
@@ -243,13 +284,14 @@
               <option value="valuation-asc">Valuation: cheapest first</option>
               <option value="eps-desc">EPS growth: high to low</option>
               <option value="pe-asc">P/E: low to high</option>
+              <option value="concentration-desc">Top 10 concentration: high to low</option>
               <option value="name-asc">Index: A to Z</option>
             </select>
           </div>
         </div>
         <div class="table-wrap heatmap-wrap">
           <table class="heatmap-table">
-            <thead><tr><th>Index</th><th>Group</th><th>P/E</th><th>Valuation %ile</th><th>EPS growth</th><th>Score</th><th>Signal</th></tr></thead>
+            <thead><tr><th>Index</th><th>Group</th><th>P/E</th><th>Valuation %ile</th><th>EPS growth</th><th>Top 10</th><th>Score</th><th>Signal</th></tr></thead>
             <tbody id="heatmapBody"></tbody>
           </table>
         </div>
@@ -260,6 +302,6 @@
       <span id="lastUpdatedText">Last updated on —</span>
     </footer>
   </main>
-  <script src="app.js?v=20260922b"></script>
+  <script src="app.js?v=20260923a"></script>
 </body>
 </html>

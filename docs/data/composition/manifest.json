@@ -1,0 +1,263 @@
+{
+  "version": 2,
+  "generated_at": null,
+  "report_month": null,
+  "source_url": "https://www.niftyindices.com/reports/monthly-reports",
+  "indices": {
+    "nifty-100": {
+      "name": "NIFTY 100",
+      "available": false,
+      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+    },
+    "nifty-200": {
+      "name": "NIFTY 200",
+      "available": false,
+      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+    },
+    "nifty-50": {
+      "name": "NIFTY 50",
+      "available": false,
+      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+    },
+    "nifty-500": {
+      "name": "NIFTY 500",
+      "available": false,
+      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+    },
+    "nifty-largemidcap-250": {
+      "name": "NIFTY LargeMidcap 250",
+      "available": false,
+      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+    },
+    "nifty-midcap-100": {
+      "name": "NIFTY Midcap 100",
+      "available": false,
+      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+    },
+    "nifty-midcap-150": {
+      "name": "NIFTY Midcap 150",
+      "available": false,
+      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+    },
+    "nifty-midcap-50": {
+      "name": "NIFTY Midcap 50",
+      "available": false,
+      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+    },
+    "nifty-midsmallcap-400": {
+      "name": "NIFTY Midsmallcap 400",
+      "available": false,
+      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+    },
+    "nifty-next-50": {
+      "name": "NIFTY Next 50",
+      "available": false,
+      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+    },
+    "nifty-smallcap-100": {
+      "name": "NIFTY Smallcap 100",
+      "available": false,
+      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+    },
+    "nifty-smallcap-250": {
+      "name": "NIFTY Smallcap 250",
+      "available": false,
+      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+    },
+    "nifty-smallcap-50": {
+      "name": "NIFTY Smallcap 50",
+      "available": false,
+      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+    },
+    "nifty-auto": {
+      "name": "NIFTY Auto",
+      "available": false,
+      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+    },
+    "nifty-bank": {
+      "name": "NIFTY Bank",
+      "available": false,
+      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+    },
+    "nifty-energy": {
+      "name": "NIFTY Energy",
+      "available": false,
+      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+    },
+    "nifty-fmcg": {
+      "name": "NIFTY FMCG",
+      "available": false,
+      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+    },
+    "nifty-financial-services": {
+      "name": "NIFTY Financial Services",
+      "available": false,
+      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+    },
+    "nifty-it": {
+      "name": "NIFTY IT",
+      "available": false,
+      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+    },
+    "nifty-metal": {
+      "name": "NIFTY Metal",
+      "available": false,
+      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+    },
+    "nifty-pharma": {
+      "name": "NIFTY Pharma",
+      "available": false,
+      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+    },
+    "nifty-private-bank": {
+      "name": "NIFTY Private Bank",
+      "available": false,
+      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+    },
+    "nifty-realty": {
+      "name": "NIFTY Realty",
+      "available": false,
+      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+    },
+    "nifty-alpha-50": {
+      "name": "NIFTY Alpha 50",
+      "available": false,
+      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+    },
+    "nifty-alpha-low-volatility-30": {
+      "name": "NIFTY Alpha Low-Volatility 30",
+      "available": false,
+      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+    },
+    "nifty-alpha-quality-low-volatility-30": {
+      "name": "NIFTY Alpha Quality Low-Volatility 30",
+      "available": false,
+      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+    },
+    "nifty-alpha-quality-value-low-volatility-30": {
+      "name": "NIFTY Alpha Quality Value Low-Volatility 30",
+      "available": false,
+      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+    },
+    "nifty-commodities": {
+      "name": "NIFTY Commodities",
+      "available": false,
+      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+    },
+    "nifty-cpse": {
+      "name": "NIFTY Cpse",
+      "available": false,
+      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+    },
+    "nifty-dividend-opportunities-50": {
+      "name": "NIFTY Dividend Opportunities 50",
+      "available": false,
+      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+    },
+    "nifty-growth-sectors-15": {
+      "name": "NIFTY Growth Sectors 15",
+      "available": false,
+      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+    },
+    "nifty-high-beta-50": {
+      "name": "NIFTY High Beta 50",
+      "available": false,
+      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+    },
+    "nifty-india-consumption": {
+      "name": "NIFTY India Consumption",
+      "available": false,
+      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+    },
+    "nifty-infrastructure": {
+      "name": "NIFTY Infrastructure",
+      "available": false,
+      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+    },
+    "nifty-low-volatility-50": {
+      "name": "NIFTY Low Volatility 50",
+      "available": false,
+      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+    },
+    "nifty-mnc": {
+      "name": "NIFTY Mnc",
+      "available": false,
+      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+    },
+    "nifty-pse": {
+      "name": "NIFTY Pse",
+      "available": false,
+      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+    },
+    "nifty-quality-low-volatility-30": {
+      "name": "NIFTY Quality Low-Volatility 30",
+      "available": false,
+      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+    },
+    "nifty-services-sector": {
+      "name": "NIFTY Services Sector",
+      "available": false,
+      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+    },
+    "nifty-shariah-25": {
+      "name": "NIFTY Shariah 25",
+      "available": false,
+      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+    },
+    "nifty-sme-emerge": {
+      "name": "NIFTY Sme Emerge",
+      "available": false,
+      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+    },
+    "nifty100-esg": {
+      "name": "Nifty100 ESG",
+      "available": false,
+      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+    },
+    "nifty100-enhanced-esg": {
+      "name": "Nifty100 Enhanced ESG",
+      "available": false,
+      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+    },
+    "nifty100-equal-weight": {
+      "name": "Nifty100 Equal Weight",
+      "available": false,
+      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+    },
+    "nifty100-low-volatility-30": {
+      "name": "Nifty100 Low Volatility 30",
+      "available": false,
+      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+    },
+    "nifty100-quality-30": {
+      "name": "Nifty100 Quality 30",
+      "available": false,
+      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+    },
+    "nifty200-quality-30": {
+      "name": "Nifty200 Quality 30",
+      "available": false,
+      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+    },
+    "nifty50-equal-weight": {
+      "name": "Nifty50 Equal Weight",
+      "available": false,
+      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+    },
+    "nifty50-shariah": {
+      "name": "Nifty50 Shariah",
+      "available": false,
+      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+    },
+    "nifty50-value-20": {
+      "name": "Nifty50 Value 20",
+      "available": false,
+      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+    },
+    "nifty500-shariah": {
+      "name": "Nifty500 Shariah",
+      "available": false,
+      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+    }
+  }
+}
