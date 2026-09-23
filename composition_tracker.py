@@ -442,20 +442,151 @@ def pdf_word_table_records(page, default_slug: Optional[str], filename: str) -> 
             break
     return out
 
+
+def _group_pdf_words_into_lines(page, tolerance: float = 2.5) -> List[List[dict]]:
+    try:
+        words = page.extract_words(use_text_flow=True, keep_blank_chars=False) or []
+    except Exception:
+        return []
+    lines: List[List[dict]] = []
+    for w in sorted(words, key=lambda z: (float(z.get("top", 0)), float(z.get("x0", 0)))):
+        top = float(w.get("top", 0))
+        target = None
+        for line in reversed(lines[-5:]):
+            if abs(float(line[0].get("top", 0)) - top) <= tolerance:
+                target = line
+                break
+        if target is None:
+            target = []
+            lines.append(target)
+        target.append(w)
+    return [sorted(line, key=lambda z: float(z.get("x0", 0))) for line in lines]
+
+
+def _numeric_token_value(text: str) -> Optional[float]:
+    s = norm_space(text).replace(",", "").replace("%", "")
+    if not s:
+        return None
+    # Accept plain signed numbers only. This intentionally rejects symbols such
+    # as 3M, dates, ISINs and alpha-numeric tickers.
+    if not re.fullmatch(r"[-+]?\d+(?:\.\d+)?", s):
+        return None
+    try:
+        return float(s)
+    except Exception:
+        return None
+
+
+def pdf_loose_row_records(page, default_slug: Optional[str], filename: str) -> Dict[str, List[dict]]:
+    """Last-resort PDF parser for NSE weightage reports.
+
+    Some monthly PDFs are visually tabular but expose neither table borders nor
+    a single-line header to pdfplumber. In those files each constituent row
+    still has a stable visual line: optional rank, company name, one or more
+    market-cap columns and a final weight/weightage percentage. This parser
+    takes the final numeric token as weight and the leading text block as the
+    company name. It deliberately leaves symbol/sector blank rather than
+    guessing them.
+    """
+    if not default_slug:
+        return {}
+    out: Dict[str, List[dict]] = {}
+    skip_phrases = (
+        "market capitalisation", "market capitalization", "weightage", "weight (%)",
+        "weight(%)", "company name", "company's name", "company’s name", "name of security",
+        "free float", "full market cap", "rank", "constituent", "index name",
+        "as on", "total", "source", "note", "nse indices", "page ",
+    )
+    for line in _group_pdf_words_into_lines(page):
+        if len(line) < 2:
+            continue
+        tokens = [norm_space(w.get("text", "")) for w in line if norm_space(w.get("text", ""))]
+        if len(tokens) < 2:
+            continue
+        joined = " ".join(tokens)
+        low = joined.lower()
+        if any(p in low for p in skip_phrases):
+            continue
+
+        numeric_positions = [(i, _numeric_token_value(tok)) for i, tok in enumerate(tokens)]
+        numeric_positions = [(i, v) for i, v in numeric_positions if v is not None]
+        if not numeric_positions:
+            continue
+        last_i, weight = numeric_positions[-1]
+        if weight is None or weight <= 0 or weight > 100:
+            continue
+
+        # Exclude a leading serial/rank from the company-name slice.
+        start = 0
+        if numeric_positions and numeric_positions[0][0] == 0:
+            v0 = numeric_positions[0][1]
+            if v0 is not None and float(v0).is_integer() and 0 < v0 <= 2000:
+                start = 1
+
+        # Company name usually ends immediately before the first numeric market-
+        # cap field. If the only number is the final weight, everything between
+        # rank and weight is treated as the name.
+        first_data_numeric = None
+        for i, v in numeric_positions:
+            if i >= start and i != last_i:
+                first_data_numeric = i
+                break
+        end = first_data_numeric if first_data_numeric is not None else last_i
+        if end <= start:
+            continue
+        company = clean_company(" ".join(tokens[start:end]))
+        # pdfplumber can occasionally attach the first numeric market-cap token
+        # to the preceding text run. Remove trailing standalone numeric fields
+        # rather than showing them as part of the company name.
+        company = re.sub(r"(?:\s+[-+]?\d[\d,]*(?:\.\d+)?)+\s*$", "", company).strip()
+        if not company or len(company) < 3:
+            continue
+        # Avoid lines that are clearly headings/summary labels rather than stocks.
+        if compact(company) in {"NIFTY50", "NIFTY100", "NIFTY200", "NIFTY500"}:
+            continue
+        if not re.search(r"[A-Za-z]", company):
+            continue
+
+        out.setdefault(default_slug, []).append({
+            "name": company,
+            "symbol": "",
+            "sector": "",
+            "weight": round(float(weight), 6),
+            "source_hint": filename,
+        })
+    return out
+
+
+def detect_page_slug(page_text: str, match_title, prior_slug: Optional[str]) -> Optional[str]:
+    """Prefer a title match from the top of a page; otherwise carry prior index."""
+    lines = [norm_space(x) for x in (page_text or "").splitlines() if norm_space(x)]
+    # Report section headings are normally near the top of a page. Looking line
+    # by line prevents a parent-index reference in descriptive text from
+    # overriding the actual section heading.
+    for line in lines[:18]:
+        slug = match_title(line)
+        if slug:
+            return slug
+    slug = match_title(" ".join(lines[:40]))
+    return slug or prior_slug
+
 def parse_pdf_bytes(data: bytes, filename: str, match_title) -> Tuple[Dict[str, List[dict]], Dict[str, str]]:
     out: Dict[str, List[dict]] = {}
     dates: Dict[str, str] = {}
     if pdfplumber is None:
         return out, dates
     try:
+        current_slug: Optional[str] = None
         with pdfplumber.open(io.BytesIO(data)) as pdf:
-            for page in pdf.pages:
+            for page_no, page in enumerate(pdf.pages, start=1):
                 text = page.extract_text() or ""
-                slug = match_title(f"{filename} {text[:2500]}")
+                current_slug = detect_page_slug(text, match_title, current_slug)
+                slug = current_slug
                 if slug:
                     dt = pdf_date(text)
                     if dt:
                         dates[slug] = dt
+
                 tables = []
                 try:
                     tables = page.extract_tables() or []
@@ -466,11 +597,24 @@ def parse_pdf_bytes(data: bytes, filename: str, match_title) -> Tuple[Dict[str, 
                     if not tbl or len(tbl) < 2:
                         continue
                     raw = pd.DataFrame(tbl)
-                    merge_records(out, dataframe_records(raw, slug, match_title, filename))
-                # PDFs without drawn table rules need a positional-word fallback.
+                    merge_records(out, dataframe_records(raw, slug, match_title, f"{filename}:p{page_no}"))
+
                 page_after = sum(len(v) for v in out.values())
                 if page_after == page_before and slug:
-                    merge_records(out, pdf_word_table_records(page, slug, filename))
+                    word_candidate = pdf_word_table_records(page, slug, f"{filename}:p{page_no}")
+                    loose_candidate = pdf_loose_row_records(page, slug, f"{filename}:p{page_no}")
+
+                    def candidate_score(candidate):
+                        rows = candidate.get(slug, []) if candidate else []
+                        unique = len({compact(clean_company(r.get("name"))) for r in rows if clean_company(r.get("name"))})
+                        weight_sum = sum(float(r.get("weight") or 0) for r in rows)
+                        # Unique names are the strongest signal; row count is next.
+                        # A plausible cumulative weight breaks ties.
+                        plausibility = 1 if 0 < weight_sum <= 105 else 0
+                        return (unique, len(rows), plausibility)
+
+                    chosen = loose_candidate if candidate_score(loose_candidate) > candidate_score(word_candidate) else word_candidate
+                    merge_records(out, chosen)
     except Exception as e:
         print(f"WARNING: PDF parse failed for {filename}: {e}")
     return out, dates
@@ -520,32 +664,60 @@ def sector_rows(holdings: List[dict]) -> List[dict]:
     return sorted(rows, key=lambda x: x["weight"], reverse=True)
 
 
-def parse_report_zip(content: bytes, catalog: dict, report_label: str, source_url: str) -> Tuple[Dict[str, dict], dict]:
-    match_title = title_matcher(catalog)
-    all_rows: Dict[str, List[dict]] = {}
-    asof_by_slug: Dict[str, str] = {}
-    files_seen = []
-    with zipfile.ZipFile(io.BytesIO(content)) as z:
-        for info in z.infolist():
+
+def parse_archive_members(content: bytes, archive_name: str, match_title, depth: int = 0) -> Tuple[Dict[str, List[dict]], Dict[str, str], List[str], List[str]]:
+    """Parse an NSE report ZIP recursively, including nested ZIP archives."""
+    out: Dict[str, List[dict]] = {}
+    dates: Dict[str, str] = {}
+    files_seen: List[str] = []
+    errors: List[str] = []
+    if depth > 3:
+        return out, dates, files_seen, [f"nested ZIP depth exceeded: {archive_name}"]
+    try:
+        zf = zipfile.ZipFile(io.BytesIO(content))
+    except Exception as e:
+        return out, dates, files_seen, [f"invalid ZIP {archive_name}: {e}"]
+    with zf:
+        for info in zf.infolist():
             if info.is_dir():
                 continue
             name = info.filename
+            qualified = f"{archive_name}!{name}" if archive_name else name
             suffix = Path(name).suffix.lower()
-            if suffix not in {".csv", ".txt", ".xls", ".xlsx", ".pdf"}:
-                continue
-            files_seen.append(name)
-            data = z.read(info)
+            data = zf.read(info)
+            files_seen.append(qualified)
             try:
-                if suffix in {".csv", ".txt"}:
-                    merge_records(all_rows, parse_csv_bytes(data, name, match_title))
+                if suffix == ".zip" or is_zip_bytes(data):
+                    nested, ndates, nfiles, nerrors = parse_archive_members(data, qualified, match_title, depth + 1)
+                    merge_records(out, nested)
+                    dates.update(ndates)
+                    files_seen.extend(nfiles)
+                    errors.extend(nerrors)
+                elif suffix in {".csv", ".txt"}:
+                    merge_records(out, parse_csv_bytes(data, qualified, match_title))
                 elif suffix in {".xls", ".xlsx"}:
-                    merge_records(all_rows, parse_excel_bytes(data, name, match_title))
+                    merge_records(out, parse_excel_bytes(data, qualified, match_title))
                 elif suffix == ".pdf":
-                    parsed, dates = parse_pdf_bytes(data, name, match_title)
-                    merge_records(all_rows, parsed)
-                    asof_by_slug.update(dates)
+                    parsed, pdates = parse_pdf_bytes(data, qualified, match_title)
+                    merge_records(out, parsed)
+                    dates.update(pdates)
+                elif suffix in {".html", ".htm"}:
+                    try:
+                        for idx, df in enumerate(pd.read_html(io.BytesIO(data))):
+                            intro = " ".join(map(str, df.head(8).fillna("").values.flatten()))
+                            slug = match_title(f"{qualified} {intro}")
+                            merge_records(out, dataframe_records(df, slug, match_title, f"{qualified}:table{idx+1}"))
+                    except Exception as e:
+                        errors.append(f"HTML parse failed {qualified}: {e}")
             except Exception as e:
-                print(f"WARNING: parse failed for {name}: {e}")
+                errors.append(f"parse failed {qualified}: {e}")
+    return out, dates, files_seen, errors
+
+def parse_report_zip(content: bytes, catalog: dict, report_label: str, source_url: str) -> Tuple[Dict[str, dict], dict]:
+    match_title = title_matcher(catalog)
+    all_rows, asof_by_slug, files_seen, parse_errors = parse_archive_members(
+        content, "report.zip", match_title
+    )
 
     # Fallback report month date if exact date is not printed in the underlying file.
     m = re.search(r"([A-Z][a-z]{2})\s+(20\d{2})", report_label)
@@ -592,6 +764,8 @@ def parse_report_zip(content: bytes, catalog: dict, report_label: str, source_ur
         "report_label": report_label,
         "source_url": source_url,
         "files_seen": files_seen,
+        "parse_errors": parse_errors,
+        "raw_rows_by_slug": {k: len(v) for k, v in sorted(all_rows.items())},
         "indices_parsed": len(results),
         "catalog_indices": len(catalog_by_slug),
         "missing_slugs": [s for s in catalog_by_slug if s not in results],
