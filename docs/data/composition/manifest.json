@@ -1,263 +1,293 @@
 {
   "version": 2,
-  "generated_at": null,
-  "report_month": null,
-  "source_url": "https://www.niftyindices.com/reports/monthly-reports",
+  "generated_at": "2026-09-23T03:28:19Z",
+  "report_month": "Aug 2026",
+  "source_url": "https://www.niftyindices.com/Indices_-_Market_Capitalisation_and_Weightage/indices_dataAug2026.zip",
   "indices": {
     "nifty-100": {
       "name": "NIFTY 100",
       "available": false,
-      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+      "reason": "Official constituent-weight data not parsed from the current monthly report."
     },
     "nifty-200": {
       "name": "NIFTY 200",
       "available": false,
-      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+      "reason": "Official constituent-weight data not parsed from the current monthly report."
     },
     "nifty-50": {
+      "file": "nifty-50.json",
       "name": "NIFTY 50",
-      "available": false,
-      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+      "available": true,
+      "as_of": "2026-08-31",
+      "completeness": "full",
+      "stock_count": 50,
+      "weight_coverage": 99.99,
+      "top10_weight": 52.87,
+      "source_type": "official_nse_indices_monthly_report"
     },
     "nifty-500": {
       "name": "NIFTY 500",
       "available": false,
-      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+      "reason": "Official constituent-weight data not parsed from the current monthly report."
     },
     "nifty-largemidcap-250": {
       "name": "NIFTY LargeMidcap 250",
       "available": false,
-      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+      "reason": "Official constituent-weight data not parsed from the current monthly report."
     },
     "nifty-midcap-100": {
       "name": "NIFTY Midcap 100",
       "available": false,
-      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+      "reason": "Official constituent-weight data not parsed from the current monthly report."
     },
     "nifty-midcap-150": {
       "name": "NIFTY Midcap 150",
       "available": false,
-      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+      "reason": "Official constituent-weight data not parsed from the current monthly report."
     },
     "nifty-midcap-50": {
       "name": "NIFTY Midcap 50",
       "available": false,
-      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+      "reason": "Official constituent-weight data not parsed from the current monthly report."
     },
     "nifty-midsmallcap-400": {
       "name": "NIFTY Midsmallcap 400",
       "available": false,
-      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+      "reason": "Official constituent-weight data not parsed from the current monthly report."
     },
     "nifty-next-50": {
+      "file": "nifty-next-50.json",
       "name": "NIFTY Next 50",
-      "available": false,
-      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+      "available": true,
+      "as_of": "2026-08-31",
+      "completeness": "full",
+      "stock_count": 50,
+      "weight_coverage": 100.03,
+      "top10_weight": 33.85,
+      "source_type": "official_nse_indices_monthly_report"
     },
     "nifty-smallcap-100": {
       "name": "NIFTY Smallcap 100",
       "available": false,
-      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+      "reason": "Official constituent-weight data not parsed from the current monthly report."
     },
     "nifty-smallcap-250": {
       "name": "NIFTY Smallcap 250",
       "available": false,
-      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+      "reason": "Official constituent-weight data not parsed from the current monthly report."
     },
     "nifty-smallcap-50": {
       "name": "NIFTY Smallcap 50",
       "available": false,
-      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+      "reason": "Official constituent-weight data not parsed from the current monthly report."
     },
     "nifty-auto": {
       "name": "NIFTY Auto",
       "available": false,
-      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+      "reason": "Official constituent-weight data not parsed from the current monthly report."
     },
     "nifty-bank": {
+      "file": "nifty-bank.json",
       "name": "NIFTY Bank",
-      "available": false,
-      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+      "available": true,
+      "as_of": "2026-08-31",
+      "completeness": "full",
+      "stock_count": 14,
+      "weight_coverage": 100.01,
+      "top10_weight": 86.81,
+      "source_type": "official_nse_indices_monthly_report"
     },
     "nifty-energy": {
       "name": "NIFTY Energy",
       "available": false,
-      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+      "reason": "Official constituent-weight data not parsed from the current monthly report."
     },
     "nifty-fmcg": {
       "name": "NIFTY FMCG",
       "available": false,
-      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+      "reason": "Official constituent-weight data not parsed from the current monthly report."
     },
     "nifty-financial-services": {
+      "file": "nifty-financial-services.json",
       "name": "NIFTY Financial Services",
-      "available": false,
-      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+      "available": true,
+      "as_of": "2026-08-31",
+      "completeness": "full",
+      "stock_count": 20,
+      "weight_coverage": 100.02,
+      "top10_weight": 85.88,
+      "source_type": "official_nse_indices_monthly_report"
     },
     "nifty-it": {
+      "file": "nifty-it.json",
       "name": "NIFTY IT",
-      "available": false,
-      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+      "available": true,
+      "as_of": "2026-08-31",
+      "completeness": "full",
+      "stock_count": 10,
+      "weight_coverage": 100.0,
+      "top10_weight": 100.0,
+      "source_type": "official_nse_indices_monthly_report"
     },
     "nifty-metal": {
       "name": "NIFTY Metal",
       "available": false,
-      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+      "reason": "Official constituent-weight data not parsed from the current monthly report."
     },
     "nifty-pharma": {
       "name": "NIFTY Pharma",
       "available": false,
-      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+      "reason": "Official constituent-weight data not parsed from the current monthly report."
     },
     "nifty-private-bank": {
       "name": "NIFTY Private Bank",
       "available": false,
-      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+      "reason": "Official constituent-weight data not parsed from the current monthly report."
     },
     "nifty-realty": {
       "name": "NIFTY Realty",
       "available": false,
-      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+      "reason": "Official constituent-weight data not parsed from the current monthly report."
     },
     "nifty-alpha-50": {
       "name": "NIFTY Alpha 50",
       "available": false,
-      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+      "reason": "Official constituent-weight data not parsed from the current monthly report."
     },
     "nifty-alpha-low-volatility-30": {
       "name": "NIFTY Alpha Low-Volatility 30",
       "available": false,
-      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+      "reason": "Official constituent-weight data not parsed from the current monthly report."
     },
     "nifty-alpha-quality-low-volatility-30": {
       "name": "NIFTY Alpha Quality Low-Volatility 30",
       "available": false,
-      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+      "reason": "Official constituent-weight data not parsed from the current monthly report."
     },
     "nifty-alpha-quality-value-low-volatility-30": {
       "name": "NIFTY Alpha Quality Value Low-Volatility 30",
       "available": false,
-      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+      "reason": "Official constituent-weight data not parsed from the current monthly report."
     },
     "nifty-commodities": {
       "name": "NIFTY Commodities",
       "available": false,
-      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+      "reason": "Official constituent-weight data not parsed from the current monthly report."
     },
     "nifty-cpse": {
       "name": "NIFTY Cpse",
       "available": false,
-      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+      "reason": "Official constituent-weight data not parsed from the current monthly report."
     },
     "nifty-dividend-opportunities-50": {
       "name": "NIFTY Dividend Opportunities 50",
       "available": false,
-      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+      "reason": "Official constituent-weight data not parsed from the current monthly report."
     },
     "nifty-growth-sectors-15": {
       "name": "NIFTY Growth Sectors 15",
       "available": false,
-      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+      "reason": "Official constituent-weight data not parsed from the current monthly report."
     },
     "nifty-high-beta-50": {
       "name": "NIFTY High Beta 50",
       "available": false,
-      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+      "reason": "Official constituent-weight data not parsed from the current monthly report."
     },
     "nifty-india-consumption": {
       "name": "NIFTY India Consumption",
       "available": false,
-      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+      "reason": "Official constituent-weight data not parsed from the current monthly report."
     },
     "nifty-infrastructure": {
       "name": "NIFTY Infrastructure",
       "available": false,
-      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+      "reason": "Official constituent-weight data not parsed from the current monthly report."
     },
     "nifty-low-volatility-50": {
       "name": "NIFTY Low Volatility 50",
       "available": false,
-      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+      "reason": "Official constituent-weight data not parsed from the current monthly report."
     },
     "nifty-mnc": {
       "name": "NIFTY Mnc",
       "available": false,
-      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+      "reason": "Official constituent-weight data not parsed from the current monthly report."
     },
     "nifty-pse": {
       "name": "NIFTY Pse",
       "available": false,
-      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+      "reason": "Official constituent-weight data not parsed from the current monthly report."
     },
     "nifty-quality-low-volatility-30": {
       "name": "NIFTY Quality Low-Volatility 30",
       "available": false,
-      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+      "reason": "Official constituent-weight data not parsed from the current monthly report."
     },
     "nifty-services-sector": {
       "name": "NIFTY Services Sector",
       "available": false,
-      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+      "reason": "Official constituent-weight data not parsed from the current monthly report."
     },
     "nifty-shariah-25": {
       "name": "NIFTY Shariah 25",
       "available": false,
-      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+      "reason": "Official constituent-weight data not parsed from the current monthly report."
     },
     "nifty-sme-emerge": {
       "name": "NIFTY Sme Emerge",
       "available": false,
-      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+      "reason": "Official constituent-weight data not parsed from the current monthly report."
     },
     "nifty100-esg": {
       "name": "Nifty100 ESG",
       "available": false,
-      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+      "reason": "Official constituent-weight data not parsed from the current monthly report."
     },
     "nifty100-enhanced-esg": {
       "name": "Nifty100 Enhanced ESG",
       "available": false,
-      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+      "reason": "Official constituent-weight data not parsed from the current monthly report."
     },
     "nifty100-equal-weight": {
       "name": "Nifty100 Equal Weight",
       "available": false,
-      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+      "reason": "Official constituent-weight data not parsed from the current monthly report."
     },
     "nifty100-low-volatility-30": {
       "name": "Nifty100 Low Volatility 30",
       "available": false,
-      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+      "reason": "Official constituent-weight data not parsed from the current monthly report."
     },
     "nifty100-quality-30": {
       "name": "Nifty100 Quality 30",
       "available": false,
-      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+      "reason": "Official constituent-weight data not parsed from the current monthly report."
     },
     "nifty200-quality-30": {
       "name": "Nifty200 Quality 30",
       "available": false,
-      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+      "reason": "Official constituent-weight data not parsed from the current monthly report."
     },
     "nifty50-equal-weight": {
       "name": "Nifty50 Equal Weight",
       "available": false,
-      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+      "reason": "Official constituent-weight data not parsed from the current monthly report."
     },
     "nifty50-shariah": {
       "name": "Nifty50 Shariah",
       "available": false,
-      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+      "reason": "Official constituent-weight data not parsed from the current monthly report."
     },
     "nifty50-value-20": {
       "name": "Nifty50 Value 20",
       "available": false,
-      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+      "reason": "Official constituent-weight data not parsed from the current monthly report."
     },
     "nifty500-shariah": {
       "name": "Nifty500 Shariah",
       "available": false,
-      "reason": "Run the GitHub Action once to fetch the official NSE Indices monthly constituent-weight report."
+      "reason": "Official constituent-weight data not parsed from the current monthly report."
     }
   }
 }

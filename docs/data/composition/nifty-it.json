@@ -1,0 +1,83 @@
+{
+  "slug": "nifty-it",
+  "index_name": "NIFTY IT",
+  "as_of": "2026-08-31",
+  "report_month": "Aug 2026",
+  "source": "NSE Indices — Indices Market Capitalisation & Weightage",
+  "source_url": "https://www.niftyindices.com/Indices_-_Market_Capitalisation_and_Weightage/indices_dataAug2026.zip",
+  "source_type": "official_nse_indices_monthly_report",
+  "completeness": "full",
+  "stock_count": 10,
+  "weight_coverage": 100.0,
+  "top10_weight": 100.0,
+  "coverage_note": "Official NSE Indices monthly constituent-weight report.",
+  "holdings": [
+    {
+      "name": "Infosys Ltd.",
+      "symbol": "INFY",
+      "sector": "Information Technology",
+      "weight": 28.87
+    },
+    {
+      "name": "Tata Consultancy Services Ltd.",
+      "symbol": "TCS",
+      "sector": "Information Technology",
+      "weight": 20.26
+    },
+    {
+      "name": "HCL Technologies Ltd.",
+      "symbol": "HCLTECH",
+      "sector": "Information Technology",
+      "weight": 11.44
+    },
+    {
+      "name": "Tech Mahindra Ltd.",
+      "symbol": "TECHM",
+      "sector": "Information Technology",
+      "weight": 10.52
+    },
+    {
+      "name": "Coforge Ltd.",
+      "symbol": "COFORGE",
+      "sector": "Information Technology",
+      "weight": 7.03
+    },
+    {
+      "name": "Persistent Systems Ltd.",
+      "symbol": "PERSISTENT",
+      "sector": "Information Technology",
+      "weight": 6.19
+    },
+    {
+      "name": "Wipro Ltd.",
+      "symbol": "WIPRO",
+      "sector": "Information Technology",
+      "weight": 5.09
+    },
+    {
+      "name": "LTM Ltd.",
+      "symbol": "LTM",
+      "sector": "Information Technology",
+      "weight": 4.29
+    },
+    {
+      "name": "MphasiS Ltd.",
+      "symbol": "MPHASIS",
+      "sector": "Information Technology",
+      "weight": 3.27
+    },
+    {
+      "name": "Oracle Financial Services Software Ltd.",
+      "symbol": "OFSS",
+      "sector": "Information Technology",
+      "weight": 3.04
+    }
+  ],
+  "sectors": [
+    {
+      "name": "Information Technology",
+      "weight": 100.0,
+      "count": 10
+    }
+  ]
+}

@@ -1,0 +1,383 @@
+{
+  "slug": "nifty-next-50",
+  "index_name": "NIFTY Next 50",
+  "as_of": "2026-08-31",
+  "report_month": "Aug 2026",
+  "source": "NSE Indices — Indices Market Capitalisation & Weightage",
+  "source_url": "https://www.niftyindices.com/Indices_-_Market_Capitalisation_and_Weightage/indices_dataAug2026.zip",
+  "source_type": "official_nse_indices_monthly_report",
+  "completeness": "full",
+  "stock_count": 50,
+  "weight_coverage": 100.03,
+  "top10_weight": 33.85,
+  "coverage_note": "Official NSE Indices monthly constituent-weight report.",
+  "holdings": [
+    {
+      "name": "Divi's Laboratories Ltd.",
+      "symbol": "DIVISLAB",
+      "sector": "Healthcare",
+      "weight": 4.74
+    },
+    {
+      "name": "TVS Motor Company Ltd.",
+      "symbol": "TVSMOTOR",
+      "sector": "Automobile and Auto Components",
+      "weight": 4.02
+    },
+    {
+      "name": "Tata Motors Ltd.",
+      "symbol": "TMCV",
+      "sector": "Capital Goods",
+      "weight": 3.88
+    },
+    {
+      "name": "Hindustan Aeronautics Ltd.",
+      "symbol": "HAL",
+      "sector": "Capital Goods",
+      "weight": 3.59
+    },
+    {
+      "name": "Adani Power Ltd.",
+      "symbol": "ADANIPOWER",
+      "sector": "Power",
+      "weight": 3.24
+    },
+    {
+      "name": "Cholamandalam Investment and Finance Company Ltd.",
+      "symbol": "CHOLAFIN",
+      "sector": "Financial Services",
+      "weight": 3.17
+    },
+    {
+      "name": "Samvardhana Motherson International Ltd.",
+      "symbol": "MOTHERSON",
+      "sector": "Automobile and Auto Components",
+      "weight": 2.97
+    },
+    {
+      "name": "Torrent Pharmaceuticals Ltd.",
+      "symbol": "TORNTPHARM",
+      "sector": "Healthcare",
+      "weight": 2.93
+    },
+    {
+      "name": "Cummins India Ltd.",
+      "symbol": "CUMMINSIND",
+      "sector": "Capital Goods",
+      "weight": 2.72
+    },
+    {
+      "name": "Bharat Petroleum Corporation Ltd.",
+      "symbol": "BPCL",
+      "sector": "Oil, Gas & Consumable Fuels",
+      "weight": 2.59
+    },
+    {
+      "name": "Indian Hotels Co. Ltd.",
+      "symbol": "INDHOTEL",
+      "sector": "Consumer Services",
+      "weight": 2.55
+    },
+    {
+      "name": "Avenue Supermarts Ltd.",
+      "symbol": "DMART",
+      "sector": "Consumer Services",
+      "weight": 2.48
+    },
+    {
+      "name": "CG Power and Industrial Solutions Ltd.",
+      "symbol": "CGPOWER",
+      "sector": "Capital Goods",
+      "weight": 2.47
+    },
+    {
+      "name": "Britannia Industries Ltd.",
+      "symbol": "BRITANNIA",
+      "sector": "Fast Moving Consumer Goods",
+      "weight": 2.44
+    },
+    {
+      "name": "Tata Power Co. Ltd.",
+      "symbol": "TATAPOWER",
+      "sector": "Power",
+      "weight": 2.28
+    },
+    {
+      "name": "Varun Beverages Ltd.",
+      "symbol": "VBL",
+      "sector": "Fast Moving Consumer Goods",
+      "weight": 2.16
+    },
+    {
+      "name": "HDFC Asset Management Company Ltd.",
+      "symbol": "HDFCAMC",
+      "sector": "Financial Services",
+      "weight": 2.11
+    },
+    {
+      "name": "Pidilite Industries Ltd.",
+      "symbol": "PIDILITIND",
+      "sector": "Chemicals",
+      "weight": 2.06
+    },
+    {
+      "name": "Indian Oil Corporation Ltd.",
+      "symbol": "IOC",
+      "sector": "Oil, Gas & Consumable Fuels",
+      "weight": 2.05
+    },
+    {
+      "name": "Bajaj Holdings & Investment Ltd.",
+      "symbol": "BAJAJHLDNG",
+      "sector": "Financial Services",
+      "weight": 1.99
+    },
+    {
+      "name": "Power Finance Corporation Ltd.",
+      "symbol": "PFC",
+      "sector": "Financial Services",
+      "weight": 1.93
+    },
+    {
+      "name": "Solar Industries India Ltd.",
+      "symbol": "SOLARINDS",
+      "sector": "Chemicals",
+      "weight": 1.93
+    },
+    {
+      "name": "GAIL (India) Ltd.",
+      "symbol": "GAIL",
+      "sector": "Oil, Gas & Consumable Fuels",
+      "weight": 1.89
+    },
+    {
+      "name": "Vedanta Ltd.",
+      "symbol": "VEDL",
+      "sector": "Metals & Mining",
+      "weight": 1.86
+    },
+    {
+      "name": "Adani Energy Solutions Ltd.",
+      "symbol": "ADANIENSOL",
+      "sector": "Power",
+      "weight": 1.83
+    },
+    {
+      "name": "DLF Ltd.",
+      "symbol": "DLF",
+      "sector": "Realty",
+      "weight": 1.75
+    },
+    {
+      "name": "Bank of Baroda",
+      "symbol": "BANKBARODA",
+      "sector": "Financial Services",
+      "weight": 1.74
+    },
+    {
+      "name": "Jindal Steel Ltd.",
+      "symbol": "JINDALSTEL",
+      "sector": "Metals & Mining",
+      "weight": 1.74
+    },
+    {
+      "name": "United Spirits Ltd.",
+      "symbol": "UNITDSPR",
+      "sector": "Fast Moving Consumer Goods",
+      "weight": 1.73
+    },
+    {
+      "name": "Bosch Ltd.",
+      "symbol": "BOSCHLTD",
+      "sector": "Automobile and Auto Components",
+      "weight": 1.71
+    },
+    {
+      "name": "Canara Bank",
+      "symbol": "CANBK",
+      "sector": "Financial Services",
+      "weight": 1.68
+    },
+    {
+      "name": "LTM Ltd.",
+      "symbol": "LTM",
+      "sector": "Information Technology",
+      "weight": 1.66
+    },
+    {
+      "name": "Adani Green Energy Ltd.",
+      "symbol": "ADANIGREEN",
+      "sector": "Power",
+      "weight": 1.6
+    },
+    {
+      "name": "REC Ltd.",
+      "symbol": "RECLTD",
+      "sector": "Financial Services",
+      "weight": 1.59
+    },
+    {
+      "name": "ABB India Ltd.",
+      "symbol": "ABB",
+      "sector": "Capital Goods",
+      "weight": 1.58
+    },
+    {
+      "name": "Punjab National Bank",
+      "symbol": "PNB",
+      "sector": "Financial Services",
+      "weight": 1.55
+    },
+    {
+      "name": "Union Bank of India",
+      "symbol": "UNIONBANK",
+      "sector": "Financial Services",
+      "weight": 1.44
+    },
+    {
+      "name": "Godrej Consumer Products Ltd.",
+      "symbol": "GODREJCP",
+      "sector": "Fast Moving Consumer Goods",
+      "weight": 1.43
+    },
+    {
+      "name": "Siemens Ltd.",
+      "symbol": "SIEMENS",
+      "sector": "Capital Goods",
+      "weight": 1.4
+    },
+    {
+      "name": "Lodha Developers Ltd.",
+      "symbol": "LODHA",
+      "sector": "Realty",
+      "weight": 1.31
+    },
+    {
+      "name": "Muthoot Finance Ltd.",
+      "symbol": "MUTHOOTFIN",
+      "sector": "Financial Services",
+      "weight": 1.26
+    },
+    {
+      "name": "Hyundai Motor India Ltd.",
+      "symbol": "HYUNDAI",
+      "sector": "Automobile and Auto Components",
+      "weight": 1.24
+    },
+    {
+      "name": "Shree Cement Ltd.",
+      "symbol": "SHREECEM",
+      "sector": "Construction Materials",
+      "weight": 1.22
+    },
+    {
+      "name": "Zydus Lifesciences Ltd.",
+      "symbol": "ZYDUSLIFE",
+      "sector": "Healthcare",
+      "weight": 1.14
+    },
+    {
+      "name": "Hindustan Zinc Ltd.",
+      "symbol": "HINDZINC",
+      "sector": "Metals & Mining",
+      "weight": 1.13
+    },
+    {
+      "name": "Siemens Energy India Ltd.",
+      "symbol": "ENRIN",
+      "sector": "Capital Goods",
+      "weight": 1.13
+    },
+    {
+      "name": "Ambuja Cements Ltd.",
+      "symbol": "AMBUJACEM",
+      "sector": "Construction Materials",
+      "weight": 0.99
+    },
+    {
+      "name": "Mazagoan Dock Shipbuilders Ltd.",
+      "symbol": "MAZDOCK",
+      "sector": "Capital Goods",
+      "weight": 0.74
+    },
+    {
+      "name": "Tata Capital Ltd.",
+      "symbol": "TATACAP",
+      "sector": "Financial Services",
+      "weight": 0.73
+    },
+    {
+      "name": "Indian Railway Finance Corporation Ltd.",
+      "symbol": "IRFC",
+      "sector": "Financial Services",
+      "weight": 0.66
+    }
+  ],
+  "sectors": [
+    {
+      "name": "Financial Services",
+      "weight": 19.85,
+      "count": 12
+    },
+    {
+      "name": "Capital Goods",
+      "weight": 17.51,
+      "count": 8
+    },
+    {
+      "name": "Automobile and Auto Components",
+      "weight": 9.94,
+      "count": 4
+    },
+    {
+      "name": "Power",
+      "weight": 8.95,
+      "count": 4
+    },
+    {
+      "name": "Healthcare",
+      "weight": 8.81,
+      "count": 3
+    },
+    {
+      "name": "Fast Moving Consumer Goods",
+      "weight": 7.76,
+      "count": 4
+    },
+    {
+      "name": "Oil, Gas & Consumable Fuels",
+      "weight": 6.53,
+      "count": 3
+    },
+    {
+      "name": "Consumer Services",
+      "weight": 5.03,
+      "count": 2
+    },
+    {
+      "name": "Metals & Mining",
+      "weight": 4.73,
+      "count": 3
+    },
+    {
+      "name": "Chemicals",
+      "weight": 3.99,
+      "count": 2
+    },
+    {
+      "name": "Realty",
+      "weight": 3.06,
+      "count": 2
+    },
+    {
+      "name": "Construction Materials",
+      "weight": 2.21,
+      "count": 2
+    },
+    {
+      "name": "Information Technology",
+      "weight": 1.66,
+      "count": 1
+    }
+  ]
+}
