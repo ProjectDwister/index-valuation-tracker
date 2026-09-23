@@ -2,14 +2,22 @@
   "report_label": "Aug 2026",
   "source_url": "https://www.niftyindices.com/Indices_-_Market_Capitalisation_and_Weightage/indices_dataAug2026.zip",
   "files_seen": [
-    "NIFTY_50_Aug2026.pdf",
-    "NIFTY_Bank_Aug2026.pdf",
-    "NIFTY_Financial_Services_Aug2026.pdf",
-    "NIFTY_Midcap_Select_Aug2026.pdf",
-    "NIFTY_IT_Aug2026.pdf",
-    "NIFTY_Next_50_Aug2026.pdf",
-    "NIFTY_India_FPI_150_Aug2026.pdf"
+    "report.zip!NIFTY_50_Aug2026.pdf",
+    "report.zip!NIFTY_Bank_Aug2026.pdf",
+    "report.zip!NIFTY_Financial_Services_Aug2026.pdf",
+    "report.zip!NIFTY_Midcap_Select_Aug2026.pdf",
+    "report.zip!NIFTY_IT_Aug2026.pdf",
+    "report.zip!NIFTY_Next_50_Aug2026.pdf",
+    "report.zip!NIFTY_India_FPI_150_Aug2026.pdf"
   ],
+  "parse_errors": [],
+  "raw_rows_by_slug": {
+    "nifty-50": 50,
+    "nifty-bank": 14,
+    "nifty-financial-services": 20,
+    "nifty-it": 10,
+    "nifty-next-50": 50
+  },
   "indices_parsed": 5,
   "catalog_indices": 51,
   "missing_slugs": [
@@ -61,7 +69,7 @@
     "nifty500-shariah"
   ],
   "status": "ok",
-  "generated_at": "2026-09-23T03:28:19Z",
+  "generated_at": "2026-09-23T03:45:19Z",
   "available_indices": 5,
   "tracked_indices": 51
 }
