@@ -333,17 +333,94 @@ def sector_count_rows(holdings: List[dict]) -> List[dict]:
     ]
 
 
+def parse_factsheet_pdf(content: bytes, item: dict, url: str) -> dict:
+    """Use only the explicitly listed top stocks and full sector mix."""
+    if pdfplumber is None:
+        raise RuntimeError("pdfplumber is needed for official factsheet fallback")
+    with pdfplumber.open(io.BytesIO(content)) as pdf:
+        page = pdf.pages[0]
+        page_text = page.extract_text() or ""
+        tables = page.extract_tables() or []
+    stock_count = None
+    holdings = []
+    sectors = []
+    for table in tables:
+        for i, row in enumerate(table[:5]):
+            if not row:
+                continue
+            headers = [clean_header(value) for value in row]
+            company_col = next((n for n, h in enumerate(headers) if "company" in h), None)
+            sector_col = next((n for n, h in enumerate(headers) if h == "sector"), None)
+            weight_col = next((n for n, h in enumerate(headers) if "weight" in h), None)
+            if weight_col is not None and (company_col is not None or sector_col is not None):
+                target = holdings if company_col is not None else sectors
+                label_col = company_col if company_col is not None else sector_col
+                for values in table[i + 1 :]:
+                    if not values or len(values) <= max(label_col, weight_col):
+                        continue
+                    label = clean_company(values[label_col])
+                    weight = parse_weight(values[weight_col])
+                    if label and weight is not None and 0 < weight <= 100:
+                        if company_col is not None:
+                            target.append({"name": label, "symbol": "", "sector": "", "weight": weight})
+                        else:
+                            target.append({"name": label, "count": None, "weight": weight})
+                break
+            for n, h in enumerate(headers):
+                if "no. of constituents" in h or "no of constituents" in h:
+                    if n + 1 < len(row):
+                        try:
+                            stock_count = int(norm_space(row[n + 1]))
+                        except ValueError:
+                            pass
+    # Extracted table geometry can vary by factsheet. Never present a section
+    # as complete if the extracted weights are implausible or repeated.
+    dedup = {compact(h["name"]): h for h in holdings if compact(h["name"])}
+    holdings = sorted(dedup.values(), key=lambda row: row["weight"], reverse=True)
+    coverage = sum(h["weight"] for h in holdings)
+    if not 3 <= len(holdings) <= 10 or not 10 < coverage <= 100.5:
+        raise ValueError("Could not reliably extract the factsheet's top constituents")
+    if stock_count is None:
+        match = re.search(r"No\. of Constituents\s+(\d{1,4})", page_text, re.I)
+        stock_count = int(match.group(1)) if match else None
+    if stock_count is not None and stock_count < len(holdings):
+        raise ValueError("Factsheet stock count is smaller than its extracted top list")
+    unique_sectors = {compact(s["name"]): s for s in sectors if compact(s["name"])}
+    sectors = sorted(unique_sectors.values(), key=lambda row: row["weight"], reverse=True)
+    if not 97 <= sum(s["weight"] for s in sectors) <= 103:
+        sectors = []
+    return {
+        "slug": item["slug"], "index_name": item["name"],
+        "as_of": pdf_date(page_text), "source": "NSE Indices — Index factsheet (top constituents)",
+        "source_url": url, "source_type": "official_nse_indices_factsheet",
+        "completeness": "partial (top stocks)", "stock_count": stock_count,
+        "weight_coverage": round(coverage, 4), "top10_weight": round(coverage, 4),
+        "coverage_note": (
+            "Partial composition: the official factsheet shows only its top constituents. "
+            "Other stocks and their individual weights are not listed here."
+        ),
+        "holdings": holdings, "sectors": sectors,
+    }
+
+
 def fetch_constituent_file(item: dict, page_url: str, fetched_on: str) -> dict:
     parser = LinkParser()
     parser.feed(official_get(page_url).decode("utf-8", errors="replace"))
+    factsheet = None
     for label, href in parser.links:
         if compact(label) == "INDEXCONSTITUENT":
             url = official_url(href, "/IndexConstituent/")
             if url and urlparse(url).path.lower().endswith(".csv"):
                 return parse_constituent_csv(official_get(url), item, url, fetched_on)
+        elif compact(label) == "FACTSHEET":
+            url = official_url(href, "/Factsheet/")
+            if url and urlparse(url).path.lower().endswith(".pdf"):
+                factsheet = url
     fallback = CONSTITUENT_URL_FALLBACKS.get(item["slug"])
     if fallback:
         return parse_constituent_csv(official_get(fallback), item, fallback, fetched_on)
+    if factsheet:
+        return parse_factsheet_pdf(official_get(factsheet), item, factsheet)
     raise ValueError("No official Index Constituent CSV link on index page")
 
 

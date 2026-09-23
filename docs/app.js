@@ -315,7 +315,7 @@ function renderCompositionChartRows(rows, view, hasWeights){
   host.innerHTML=`<div class="composition-chart-head"><span>${hasWeights?`Top ${Math.min(10,rows.length)} by weight`:'Industries by stock count'}</span><small>${view==='sectors'?'Sector / industry mix':'Constituent mix'}</small></div><div class="composition-bars">${topRows.map((row,idx)=>{
     const amount=value(row);
     const label=escapeCompositionText(view==='sectors' ? row.name : (row.name||row.symbol||'—'));
-    const sublabel=view==='sectors' ? `${row.count ?? '—'} stocks` : (row.symbol||'—');
+    const sublabel=view==='sectors' ? (row.count==null?'Official sector weight':`${row.count} stocks`) : (row.symbol||'—');
     return `<div class="composition-bar-row"><div class="composition-bar-copy"><strong>${idx+1}. ${label}</strong><span>${escapeCompositionText(sublabel)}</span></div><div class="composition-bar-track"><div class="composition-bar-fill" style="width:${clamp(amount/max*100,0,100)}%"></div></div><div class="composition-bar-value">${amount.toFixed(2)}%</div></div>`;
   }).join('')}</div>`;
 }
@@ -337,7 +337,7 @@ function renderCompositionTableRows(data){
       return;
     }
     renderCompositionChartRows(rows,'sectors',hasWeights);
-    body.innerHTML=rows.length ? rows.map((row,idx)=>`<tr><td>${idx+1}</td><td><strong>${escapeCompositionText(row.name)}</strong></td><td>${row.count ?? '—'}</td><td>${pct((row.count||0)/(data.stock_count||data.holdings?.length||1),1)}</td><td>${row.weight==null?'—':Number(row.weight).toFixed(2)+'%'}</td></tr>`).join('') : '<tr><td colspan="5">No sectors match the current search.</td></tr>';
+    body.innerHTML=rows.length ? rows.map((row,idx)=>`<tr><td>${idx+1}</td><td><strong>${escapeCompositionText(row.name)}</strong></td><td>${row.count ?? '—'}</td><td>${row.count==null?'—':pct(row.count/(data.stock_count||data.holdings?.length||1),1)}</td><td>${row.weight==null?'—':Number(row.weight).toFixed(2)+'%'}</td></tr>`).join('') : '<tr><td colspan="5">No sectors match the current search.</td></tr>';
     return;
   }
 

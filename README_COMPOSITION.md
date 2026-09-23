@@ -16,6 +16,8 @@ The updater searches the latest available monthly ZIP (`indices_data{Mon}{YYYY}.
 
 No synthetic weights are created. The CSVs can list constituent names, symbols and industries without weights. Those indices show membership and a count by industry, with stock weights marked unavailable. Weighted snapshots keep the report's month-end date; a CSV without an embedded effective date shows its retrieval date as such.
 
+For indices whose official page has no downloadable constituent CSV, the official factsheet supplies a **partial** view: its top weighted companies and the published sector weights. The page explicitly labels this as partial and reports the number of stocks shown against the index's total.
+
 Official example: [NIFTY 100 constituents](https://www.niftyindices.com/indices/equity/broad-based-indices/nifty-100).
 
 ## Dashboard
