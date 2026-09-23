@@ -69,9 +69,10 @@
     "nifty500-shariah"
   ],
   "status": "ok",
-  "constituent_csv_indices": 46,
-  "constituent_csv_errors": {},
-  "generated_at": "2026-09-23T10:40:06Z",
+  "constituent_csv_indices": 41,
+  "factsheet_partial_indices": 5,
+  "constituent_source_errors": {},
+  "generated_at": "2026-09-23T10:43:03Z",
   "available_indices": 51,
   "tracked_indices": 51
 }
