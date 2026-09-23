@@ -1262,8 +1262,15 @@ def main() -> int:
                 protected[slug] = True
     constituents, csv_errors = fetch_missing_constituents(catalog, protected)
     parsed.update(constituents)
-    diagnostics["constituent_csv_indices"] = len(constituents)
-    diagnostics["constituent_csv_errors"] = csv_errors
+    diagnostics["constituent_csv_indices"] = sum(
+        data.get("source_type") == "official_nse_indices_constituent_csv"
+        for data in constituents.values()
+    )
+    diagnostics["factsheet_partial_indices"] = sum(
+        data.get("source_type") == "official_nse_indices_factsheet"
+        for data in constituents.values()
+    )
+    diagnostics["constituent_source_errors"] = csv_errors
     if diagnostics["status"] == "refresh_failed" and constituents:
         diagnostics["status"] = "partial"
     print(f"Composition: fetched {len(constituents)} official constituent CSVs")
