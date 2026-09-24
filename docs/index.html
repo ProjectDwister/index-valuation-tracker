@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#07111f" />
   <title>Index Valuation Tracker</title>
   <meta name="description" content="Multi-index valuation, earnings-growth and historical forward-return dashboard for NSE equity indices." />
-  <link rel="stylesheet" href="styles.css?v=20260923b" />
+  <link rel="stylesheet" href="styles.css?v=20260924a" />
 </head>
 <body>
   <div id="ambientGlow" class="ambient-glow" aria-hidden="true"></div>
@@ -277,7 +277,7 @@
     <section id="panel-heatmap" class="tab-panel" data-panel="heatmap">
       <section class="card heatmap-card">
         <div class="section-head heatmap-head">
-          <div><h2>Cross-index valuation heatmap</h2><div class="subhead-note">Compare each index against its own history. Click a row to open its dashboard. A dash in Top 10 means weights are unavailable.</div></div>
+          <div><h2>Cross-index valuation heatmap</h2><div class="subhead-note">Compare each index against its own history. Click a row to open its dashboard. A dash in Top 10 means weights are unavailable.</div><div class="heatmap-trend-legend">Score vs previous reading: ↑ higher · ↓ lower · → unchanged to 0.1 point · — no earlier score</div></div>
           <div class="heatmap-controls">
             <input id="heatmapSearch" class="heatmap-search" type="search" placeholder="Search indices…" aria-label="Search indices" />
             <select id="heatmapGroup" class="heatmap-group" aria-label="Filter index group"><option value="All">All groups</option><option>Broad Market</option><option>Sectoral</option><option>Strategy / Thematic / Other</option></select>
@@ -305,6 +305,6 @@
       <span id="lastUpdatedText">Last updated on —</span>
     </footer>
   </main>
-  <script src="app.js?v=20260923b"></script>
+  <script src="app.js?v=20260924a"></script>
 </body>
 </html>
