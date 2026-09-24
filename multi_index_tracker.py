@@ -1206,12 +1206,14 @@ def _trigger_description(alert: Dict) -> str:
         prev = alert.get("previous", {}).get("signal")
         curr = alert.get("current", {}).get("signal")
         parts.append(f"Signal {prev} → {curr}")
-    boundary_labels = [c["label"] for c in alert.get("changes", []) if c.get("triggered")]
+    elif alert.get("current", {}).get("signal"):
+        parts.append(f"Signal stayed {alert['current']['signal']}")
+    boundary_labels = [c["label"].replace(" → ", "/") for c in alert.get("changes", []) if c.get("triggered")]
     if boundary_labels:
         if len(boundary_labels) == 2:
-            parts.append("Both thresholds changed")
+            parts.append("Both valuation boundaries moved")
         else:
-            parts.append(f"{boundary_labels[0]} threshold changed")
+            parts.append(f"{boundary_labels[0]} valuation boundary moved")
     if alert.get("test") and not parts:
         parts.append("Test alert")
     return "; ".join(parts) if parts else "Threshold update"
@@ -1309,6 +1311,7 @@ def _build_multi_index_email(alerts: List[Dict], base_url: str, force_test: bool
     <html><body style="font-family:Arial,sans-serif;color:#142033;line-height:1.45">
       <h1 style="font-size:22px;margin-bottom:6px">Index Valuation Tracker</h1>
       <p style="color:#5f6f82;margin-top:0">{summary_heading}</p>
+      <p style="color:#5f6f82">Heatmap arrows track BUY/HOLD/SELL signal changes. Valuation boundary updates can trigger an email while the signal stays the same.</p>
       <table cellpadding="7" cellspacing="0" border="1" style="border-collapse:collapse;border-color:#d8dee8;width:100%;max-width:760px">
         <tr style="background:#f5f7fa"><th>Index</th><th>Signal</th><th>Score</th><th>P/E</th><th>Trigger</th></tr>
         {''.join(summary_rows)}
@@ -1317,7 +1320,7 @@ def _build_multi_index_email(alerts: List[Dict], base_url: str, force_test: bool
     </body></html>
     """
 
-    plain = ["Index Valuation Tracker", ""]
+    plain = ["Index Valuation Tracker", "", "Heatmap arrows track BUY/HOLD/SELL signal changes. Valuation boundary updates can trigger an email while the signal stays the same.", ""]
     for a in alerts:
         c = a["current"]
         plain += [
