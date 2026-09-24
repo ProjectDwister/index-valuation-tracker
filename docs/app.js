@@ -478,16 +478,15 @@ function buildSelector(){
 }
 
 function heatmapTrend(x, previous){
-  const current=Number(x.composite_score), prior=Number(previous?.composite_score);
-  if(x.composite_score==null || x.composite_score==='' || !Number.isFinite(current) || !previous || !Number.isFinite(prior)){
-    return '<span class="signal-trend unavailable" role="img" aria-label="No previous score available" title="No previous score available">—</span>';
+  const signalRank={SELL:0,HOLD:1,BUY:2};
+  if(signalRank[x.signal]==null || signalRank[previous?.signal]==null){
+    return '<span class="signal-trend unavailable" role="img" aria-label="No previous signal available" title="No previous signal available">—</span>';
   }
-  const now=Number(current.toFixed(1)), before=Number(prior.toFixed(1));
-  const direction=now>before?'up':now<before?'down':'flat';
+  const direction=signalRank[x.signal]>signalRank[previous.signal]?'up':signalRank[x.signal]<signalRank[previous.signal]?'down':'flat';
   const arrow={up:'↑',down:'↓',flat:'→'}[direction];
   const label=direction==='flat'
-    ? `Score unchanged at ${now.toFixed(1)} since ${fmtDate(previous.date)}`
-    : `Score ${direction==='up'?'rose':'fell'} from ${before.toFixed(1)} to ${now.toFixed(1)} since ${fmtDate(previous.date)}`;
+    ? `Signal stayed ${x.signal} since ${fmtDate(previous.date)}`
+    : `Signal ${direction==='up'?'improved':'weakened'} from ${previous.signal} to ${x.signal} since ${fmtDate(previous.date)}`;
   return `<span class="signal-trend ${direction}" role="img" aria-label="${escapeCompositionText(label)}" title="${escapeCompositionText(label)}">${arrow}</span>`;
 }
 
@@ -504,7 +503,7 @@ function renderHeatmap(){
   for(const row of allHistory){
     const asOf=latestBundle.indices[row.slug]?.as_of;
     const previous=previousBySlug.get(row.slug);
-    if(asOf && row.date && row.date<asOf && n(row.composite_score)!=null && (!previous || row.date>previous.date)) previousBySlug.set(row.slug,row);
+    if(asOf && row.date && row.date<asOf && ['BUY','HOLD','SELL'].includes(row.signal) && (!previous || row.date>previous.date)) previousBySlug.set(row.slug,row);
   }
   const sorters={
     'score-desc':(a,b)=>(n(b.composite_score)??-Infinity)-(n(a.composite_score)??-Infinity),
