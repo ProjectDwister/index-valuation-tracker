@@ -477,6 +477,20 @@ function buildSelector(){
   sel.addEventListener('change',()=>renderSelected(sel.value));
 }
 
+function heatmapTrend(x, previous){
+  const current=Number(x.composite_score), prior=Number(previous?.composite_score);
+  if(x.composite_score==null || x.composite_score==='' || !Number.isFinite(current) || !previous || !Number.isFinite(prior)){
+    return '<span class="signal-trend unavailable" role="img" aria-label="No previous score available" title="No previous score available">—</span>';
+  }
+  const now=Number(current.toFixed(1)), before=Number(prior.toFixed(1));
+  const direction=now>before?'up':now<before?'down':'flat';
+  const arrow={up:'↑',down:'↓',flat:'→'}[direction];
+  const label=direction==='flat'
+    ? `Score unchanged at ${now.toFixed(1)} since ${fmtDate(previous.date)}`
+    : `Score ${direction==='up'?'rose':'fell'} from ${before.toFixed(1)} to ${now.toFixed(1)} since ${fmtDate(previous.date)}`;
+  return `<span class="signal-trend ${direction}" role="img" aria-label="${escapeCompositionText(label)}" title="${escapeCompositionText(label)}">${arrow}</span>`;
+}
+
 function renderHeatmap(){
   const body=$('heatmapBody');
   if(!catalog || !latestBundle?.indices){
@@ -486,6 +500,12 @@ function renderHeatmap(){
   const search=($('heatmapSearch').value||'').toLowerCase(),group=$('heatmapGroup').value,sort=$('heatmapSort')?.value||'score-desc';
   const rows=catalog.items.map(i=>({...i,...latestBundle.indices[i.slug],composition:compositionManifest?.indices?.[i.slug]||{}})).filter(x=>(group==='All'||x.group===group)&&(!search||x.name.toLowerCase().includes(search)));
   const n=v=>v==null || String(v).trim()==='' || !Number.isFinite(Number(v))?null:Number(v);
+  const previousBySlug=new Map();
+  for(const row of allHistory){
+    const asOf=latestBundle.indices[row.slug]?.as_of;
+    const previous=previousBySlug.get(row.slug);
+    if(asOf && row.date && row.date<asOf && n(row.composite_score)!=null && (!previous || row.date>previous.date)) previousBySlug.set(row.slug,row);
+  }
   const sorters={
     'score-desc':(a,b)=>(n(b.composite_score)??-Infinity)-(n(a.composite_score)??-Infinity),
     'valuation-asc':(a,b)=>(n(a.pe_percentile)??Infinity)-(n(b.pe_percentile)??Infinity),
@@ -498,7 +518,7 @@ function renderHeatmap(){
   $('heatmapBody').innerHTML=rows.map(x=>{
     const pp=n(x.pe_percentile), width=pp==null?0:clamp(pp*100,0,100);
     const top10=n(x.composition?.top10_weight);
-    return `<tr data-slug="${x.slug}"><td><strong>${x.name}</strong></td><td class="muted-cell">${x.group}</td><td>${x.pe?Number(x.pe).toFixed(2)+'×':'—'}</td><td><div class="heatmap-percentile"><span>${pct(x.pe_percentile,1)}</span><i><b style="width:${width}%"></b></i></div></td><td>${pct(x.yoy_eps_growth,1)}</td><td>${top10==null?'<span title="Constituent weights unavailable">—</span>':top10.toFixed(1)+'%'}</td><td class="score-cell ${x.signal||''}">${x.composite_score==null?'—':Number(x.composite_score).toFixed(1)}</td><td>${x.signal?`<span class="badge ${x.signal}">${x.signal}</span>`:'—'}</td></tr>`;
+    return `<tr data-slug="${x.slug}"><td><strong>${x.name}</strong></td><td class="muted-cell">${x.group}</td><td>${x.pe?Number(x.pe).toFixed(2)+'×':'—'}</td><td><div class="heatmap-percentile"><span>${pct(x.pe_percentile,1)}</span><i><b style="width:${width}%"></b></i></div></td><td>${pct(x.yoy_eps_growth,1)}</td><td>${top10==null?'<span title="Constituent weights unavailable">—</span>':top10.toFixed(1)+'%'}</td><td class="score-cell ${x.signal||''}">${x.composite_score==null?'—':Number(x.composite_score).toFixed(1)}</td><td>${x.signal?`<span class="signal-with-trend"><span class="badge ${x.signal}">${x.signal}</span>${heatmapTrend(x,previousBySlug.get(x.slug))}</span>`:'—'}</td></tr>`;
   }).join('');
   $('heatmapBody').querySelectorAll('tr[data-slug]').forEach(tr=>tr.addEventListener('click',()=>{renderSelected(tr.dataset.slug);activateTab('overview');window.scrollTo({top:0,behavior:'smooth'});}));
 }
