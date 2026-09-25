@@ -9,7 +9,10 @@ on:
         default: false
         type: boolean
   schedule:
-    - cron: '0 19 * * 1-5'
+    # Two chances after the NSE close. The second checks whether data is already current.
+    - cron: '17 18 * * 1-5'
+      timezone: 'Asia/Kolkata'
+    - cron: '47 21 * * 1-5'
       timezone: 'Asia/Kolkata'
   push:
     branches: ['main']
@@ -46,20 +49,51 @@ jobs:
         uses: actions/checkout@v6
         with:
           fetch-depth: 0
+          # A queued backup must see the first run's published data.
+          ref: main
+
+      - name: Check whether the trading day is already published
+        id: freshness
+        if: github.event_name == 'schedule'
+        run: |
+          python3 - <<'PY'
+          import json
+          import os
+          from datetime import datetime, time, timedelta
+          from pathlib import Path
+          from zoneinfo import ZoneInfo
+
+          now = datetime.now(ZoneInfo('Asia/Kolkata'))
+          target = now.date()
+          if now.time() < time(15, 30):
+              target -= timedelta(days=1)
+
+          holiday_file = Path('docs/data/nse_market_holidays.json')
+          holidays = json.loads(holiday_file.read_text()).get('holidays', {}) if holiday_file.exists() else {}
+          while target.weekday() >= 5 or target.isoformat() in holidays:
+              target -= timedelta(days=1)
+
+          latest_file = Path('docs/data/multi_index_latest.json')
+          latest = json.loads(latest_file.read_text()).get('as_of', '') if latest_file.exists() else ''
+          needs_refresh = latest < target.isoformat()
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+              output.write(f"needs_refresh={str(needs_refresh).lower()}\n")
+          print(f"Latest: {latest or 'none'}; expected trading day: {target}; refresh: {needs_refresh}")
+          PY
 
       - name: Set up Python
-        if: github.event_name != 'push' || contains(github.event.head_commit.message, '[refresh composition]')
+        if: (github.event_name != 'push' && steps.freshness.outputs.needs_refresh != 'false') || contains(github.event.head_commit.message, '[refresh composition]')
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
           cache: 'pip'
 
       - name: Install dependencies
-        if: github.event_name != 'push' || contains(github.event.head_commit.message, '[refresh composition]')
+        if: (github.event_name != 'push' && steps.freshness.outputs.needs_refresh != 'false') || contains(github.event.head_commit.message, '[refresh composition]')
         run: python -m pip install -r requirements.txt
 
       - name: Refresh NIFTY 50 canonical model
-        if: github.event_name != 'push'
+        if: github.event_name != 'push' && steps.freshness.outputs.needs_refresh != 'false'
         run: >-
           python nifty_tracker_update.py
           --workbook NIFTY_Valuation_Backtest_Live_Tracker.xlsx
@@ -67,7 +101,7 @@ jobs:
           --web-dir docs
 
       - name: Refresh multi-index universe, backtests and alerts
-        if: github.event_name != 'push'
+        if: github.event_name != 'push' && steps.freshness.outputs.needs_refresh != 'false'
         env:
           ALERT_EMAIL_TO: ${{ secrets.ALERT_EMAIL_TO }}
           SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
@@ -86,13 +120,13 @@ jobs:
           --monthly-csv multi_index_monthly.csv
 
       - name: Refresh official index composition and weightage
-        if: github.event_name != 'push' || contains(github.event.head_commit.message, '[refresh composition]')
+        if: (github.event_name != 'push' && steps.freshness.outputs.needs_refresh != 'false') || contains(github.event.head_commit.message, '[refresh composition]')
         run: >-
           python composition_tracker.py
           --web-dir docs
 
       - name: Repository housekeeping
-        if: github.event_name != 'push' || contains(github.event.head_commit.message, '[refresh composition]')
+        if: (github.event_name != 'push' && steps.freshness.outputs.needs_refresh != 'false') || contains(github.event.head_commit.message, '[refresh composition]')
         run: |
           # GitHub Pages is served only from docs/. Remove old webpage copies and
           # the superseded NIFTY-only threshold alert state if they still exist.
@@ -101,7 +135,7 @@ jobs:
           rm -f docs/data/threshold_alert_state.json
 
       - name: Commit refreshed model history
-        if: github.event_name != 'push' || contains(github.event.head_commit.message, '[refresh composition]')
+        if: (github.event_name != 'push' && steps.freshness.outputs.needs_refresh != 'false') || contains(github.event.head_commit.message, '[refresh composition]')
         run: |
           git config user.name "Index Valuation Tracker Bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -120,13 +154,16 @@ jobs:
           fi
 
       - name: Configure GitHub Pages
+        if: github.event_name != 'schedule' || steps.freshness.outputs.needs_refresh == 'true'
         uses: actions/configure-pages@v5
 
       - name: Upload Pages artifact
+        if: github.event_name != 'schedule' || steps.freshness.outputs.needs_refresh == 'true'
         uses: actions/upload-pages-artifact@v4
         with:
           path: docs
 
       - name: Deploy to GitHub Pages
+        if: github.event_name != 'schedule' || steps.freshness.outputs.needs_refresh == 'true'
         id: deployment
         uses: actions/deploy-pages@v4
