@@ -2,7 +2,7 @@
   "slug": "nifty-sme-emerge",
   "index_name": "NIFTY Sme Emerge",
   "as_of": null,
-  "retrieved_on": "2026-09-24",
+  "retrieved_on": "2026-09-25",
   "source": "NSE Indices — Index Constituent CSV",
   "source_url": "https://www.niftyindices.com/IndexConstituent/ind_niftysmelist.csv",
   "source_type": "official_nse_indices_constituent_csv",

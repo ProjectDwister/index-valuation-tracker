@@ -2,7 +2,7 @@
   "slug": "nifty-100",
   "index_name": "NIFTY 100",
   "as_of": null,
-  "retrieved_on": "2026-09-24",
+  "retrieved_on": "2026-09-25",
   "source": "NSE Indices — Index Constituent CSV",
   "source_url": "https://www.niftyindices.com/IndexConstituent/ind_nifty100list.csv",
   "source_type": "official_nse_indices_constituent_csv",
