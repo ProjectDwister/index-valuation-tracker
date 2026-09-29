@@ -2,7 +2,7 @@
   "slug": "nifty-energy",
   "index_name": "NIFTY Energy",
   "as_of": null,
-  "retrieved_on": "2026-09-28",
+  "retrieved_on": "2026-09-29",
   "source": "NSE Indices — Index Constituent CSV",
   "source_url": "https://www.niftyindices.com/IndexConstituent/ind_niftyenergylist.csv",
   "source_type": "official_nse_indices_constituent_csv",
@@ -223,12 +223,6 @@
       "weight": null
     },
     {
-      "name": "SJVN Ltd.",
-      "symbol": "SJVN",
-      "sector": "Power",
-      "weight": null
-    },
-    {
       "name": "Suzlon Energy Ltd.",
       "symbol": "SUZLON",
       "sector": "Capital Goods",
@@ -238,6 +232,12 @@
       "name": "Tata Power Co. Ltd.",
       "symbol": "TATAPOWER",
       "sector": "Power",
+      "weight": null
+    },
+    {
+      "name": "TD Power Systems Ltd.",
+      "symbol": "TDPOWERSYS",
+      "sector": "Capital Goods",
       "weight": null
     },
     {
@@ -256,8 +256,8 @@
   "sectors": [
     {
       "name": "Power",
-      "count": 16,
-      "stock_share": 40.0,
+      "count": 15,
+      "stock_share": 37.5,
       "weight": null
     },
     {
@@ -268,8 +268,8 @@
     },
     {
       "name": "Capital Goods",
-      "count": 10,
-      "stock_share": 25.0,
+      "count": 11,
+      "stock_share": 27.5,
       "weight": null
     }
   ]

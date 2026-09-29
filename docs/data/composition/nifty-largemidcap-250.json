@@ -2,7 +2,7 @@
   "slug": "nifty-largemidcap-250",
   "index_name": "NIFTY LargeMidcap 250",
   "as_of": null,
-  "retrieved_on": "2026-09-28",
+  "retrieved_on": "2026-09-29",
   "source": "NSE Indices — Index Constituent CSV",
   "source_url": "https://www.niftyindices.com/IndexConstituent/ind_niftylargemidcap250list.csv",
   "source_type": "official_nse_indices_constituent_csv",
@@ -13,12 +13,6 @@
   "coverage_note": "The official constituent file lists members but does not publish usable stock weights.",
   "holdings": [
     {
-      "name": "3M India Ltd.",
-      "symbol": "3MINDIA",
-      "sector": "Diversified",
-      "weight": null
-    },
-    {
       "name": "ABB India Ltd.",
       "symbol": "ABB",
       "sector": "Capital Goods",
@@ -28,12 +22,6 @@
       "name": "Abbott India Ltd.",
       "symbol": "ABBOTINDIA",
       "sector": "Healthcare",
-      "weight": null
-    },
-    {
-      "name": "ACC Ltd.",
-      "symbol": "ACC",
-      "sector": "Construction Materials",
       "weight": null
     },
     {
@@ -127,12 +115,6 @@
       "weight": null
     },
     {
-      "name": "Apollo Tyres Ltd.",
-      "symbol": "APOLLOTYRE",
-      "sector": "Automobile and Auto Components",
-      "weight": null
-    },
-    {
       "name": "Ashok Leyland Ltd.",
       "symbol": "ASHOKLEY",
       "sector": "Capital Goods",
@@ -142,6 +124,12 @@
       "name": "Asian Paints Ltd.",
       "symbol": "ASIANPAINT",
       "sector": "Consumer Durables",
+      "weight": null
+    },
+    {
+      "name": "Aster DM Quality Care Ltd.",
+      "symbol": "ASTERDM",
+      "sector": "Healthcare",
       "weight": null
     },
     {
@@ -172,12 +160,6 @@
       "name": "Avenue Supermarts Ltd.",
       "symbol": "DMART",
       "sector": "Consumer Services",
-      "weight": null
-    },
-    {
-      "name": "AWL Agri Business Ltd.",
-      "symbol": "AWL",
-      "sector": "Fast Moving Consumer Goods",
       "weight": null
     },
     {
@@ -439,6 +421,12 @@
       "weight": null
     },
     {
+      "name": "EMBASSY OFFICE PARKS REIT",
+      "symbol": "EMBASSY",
+      "sector": "Realty",
+      "weight": null
+    },
+    {
       "name": "Endurance Technologies Ltd.",
       "symbol": "ENDURANCE",
       "sector": "Automobile and Auto Components",
@@ -466,6 +454,12 @@
       "name": "Federal Bank Ltd.",
       "symbol": "FEDERALBNK",
       "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Fertilisers and Chemicals Travancore Ltd.",
+      "symbol": "FACT",
+      "sector": "Chemicals",
       "weight": null
     },
     {
@@ -619,6 +613,12 @@
       "weight": null
     },
     {
+      "name": "Hindustan Copper Ltd.",
+      "symbol": "HINDCOPPER",
+      "sector": "Metals & Mining",
+      "weight": null
+    },
+    {
       "name": "Hindustan Petroleum Corporation Ltd.",
       "symbol": "HINDPETRO",
       "sector": "Oil Gas & Consumable Fuels",
@@ -639,12 +639,6 @@
     {
       "name": "Hitachi Energy India Ltd.",
       "symbol": "POWERINDIA",
-      "sector": "Capital Goods",
-      "weight": null
-    },
-    {
-      "name": "Honeywell Automation India Ltd.",
-      "symbol": "HONAUT",
       "sector": "Capital Goods",
       "weight": null
     },
@@ -706,6 +700,12 @@
       "name": "Indian Oil Corporation Ltd.",
       "symbol": "IOC",
       "sector": "Oil Gas & Consumable Fuels",
+      "weight": null
+    },
+    {
+      "name": "Indian Overseas Bank",
+      "symbol": "IOB",
+      "sector": "Financial Services",
       "weight": null
     },
     {
@@ -847,12 +847,6 @@
       "weight": null
     },
     {
-      "name": "KPIT Technologies Ltd.",
-      "symbol": "KPITTECH",
-      "sector": "Information Technology",
-      "weight": null
-    },
-    {
       "name": "L&T Finance Ltd.",
       "symbol": "LTF",
       "sector": "Financial Services",
@@ -979,6 +973,12 @@
       "weight": null
     },
     {
+      "name": "Meesho Ltd.",
+      "symbol": "MEESHO",
+      "sector": "Consumer Services",
+      "weight": null
+    },
+    {
       "name": "Motilal Oswal Financial Services Ltd.",
       "symbol": "MOTILALOFS",
       "sector": "Financial Services",
@@ -1006,6 +1006,12 @@
       "name": "Muthoot Finance Ltd.",
       "symbol": "MUTHOOTFIN",
       "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Narayana Hrudayalaya Ltd.",
+      "symbol": "NH",
+      "sector": "Healthcare",
       "weight": null
     },
     {
@@ -1141,6 +1147,12 @@
       "weight": null
     },
     {
+      "name": "Piramal Finance Ltd.",
+      "symbol": "PIRAMALFIN",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
       "name": "Polycab India Ltd.",
       "symbol": "POLYCAB",
       "sector": "Capital Goods",
@@ -1249,12 +1261,6 @@
       "weight": null
     },
     {
-      "name": "SJVN Ltd.",
-      "symbol": "SJVN",
-      "sector": "Power",
-      "weight": null
-    },
-    {
       "name": "Solar Industries India Ltd.",
       "symbol": "SOLARINDS",
       "sector": "Chemicals",
@@ -1333,12 +1339,6 @@
       "weight": null
     },
     {
-      "name": "Tata Elxsi Ltd.",
-      "symbol": "TATAELXSI",
-      "sector": "Information Technology",
-      "weight": null
-    },
-    {
       "name": "Tata Investment Corporation Ltd.",
       "symbol": "TATAINVEST",
       "sector": "Financial Services",
@@ -1372,12 +1372,6 @@
       "name": "Tech Mahindra Ltd.",
       "symbol": "TECHM",
       "sector": "Information Technology",
-      "weight": null
-    },
-    {
-      "name": "The New India Assurance Company Ltd.",
-      "symbol": "NIACL",
-      "sector": "Financial Services",
       "weight": null
     },
     {
@@ -1465,6 +1459,12 @@
       "weight": null
     },
     {
+      "name": "Vedanta Aluminium Metal Ltd.",
+      "symbol": "VAML",
+      "sector": "Metals & Mining",
+      "weight": null
+    },
+    {
       "name": "Vedanta Ltd.",
       "symbol": "VEDL",
       "sector": "Metals & Mining",
@@ -1516,56 +1516,56 @@
   "sectors": [
     {
       "name": "Financial Services",
-      "count": 59,
-      "stock_share": 23.6,
+      "count": 60,
+      "stock_share": 24.0,
       "weight": null
     },
     {
       "name": "Capital Goods",
-      "count": 28,
-      "stock_share": 11.2,
+      "count": 27,
+      "stock_share": 10.8,
       "weight": null
     },
     {
       "name": "Healthcare",
-      "count": 22,
-      "stock_share": 8.8,
+      "count": 24,
+      "stock_share": 9.6,
       "weight": null
     },
     {
       "name": "Automobile and Auto Components",
-      "count": 19,
-      "stock_share": 7.6,
+      "count": 18,
+      "stock_share": 7.2,
       "weight": null
     },
     {
       "name": "Fast Moving Consumer Goods",
-      "count": 16,
-      "stock_share": 6.4,
+      "count": 15,
+      "stock_share": 6.0,
       "weight": null
     },
     {
-      "name": "Information Technology",
+      "name": "Metals & Mining",
       "count": 14,
       "stock_share": 5.6,
       "weight": null
     },
     {
       "name": "Consumer Services",
-      "count": 12,
-      "stock_share": 4.8,
+      "count": 13,
+      "stock_share": 5.2,
       "weight": null
     },
     {
-      "name": "Metals & Mining",
+      "name": "Information Technology",
       "count": 12,
       "stock_share": 4.8,
       "weight": null
     },
     {
       "name": "Power",
-      "count": 12,
-      "stock_share": 4.8,
+      "count": 11,
+      "stock_share": 4.4,
       "weight": null
     },
     {
@@ -1575,25 +1575,25 @@
       "weight": null
     },
     {
+      "name": "Chemicals",
+      "count": 9,
+      "stock_share": 3.6,
+      "weight": null
+    },
+    {
       "name": "Consumer Durables",
       "count": 9,
       "stock_share": 3.6,
       "weight": null
     },
     {
-      "name": "Chemicals",
-      "count": 8,
-      "stock_share": 3.2,
-      "weight": null
-    },
-    {
-      "name": "Construction Materials",
+      "name": "Realty",
       "count": 7,
       "stock_share": 2.8,
       "weight": null
     },
     {
-      "name": "Realty",
+      "name": "Construction Materials",
       "count": 6,
       "stock_share": 2.4,
       "weight": null
@@ -1617,15 +1617,15 @@
       "weight": null
     },
     {
-      "name": "Diversified",
+      "name": "Textiles",
       "count": 2,
       "stock_share": 0.8,
       "weight": null
     },
     {
-      "name": "Textiles",
-      "count": 2,
-      "stock_share": 0.8,
+      "name": "Diversified",
+      "count": 1,
+      "stock_share": 0.4,
       "weight": null
     }
   ]

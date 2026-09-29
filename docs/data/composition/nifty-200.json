@@ -2,7 +2,7 @@
   "slug": "nifty-200",
   "index_name": "NIFTY 200",
   "as_of": null,
-  "retrieved_on": "2026-09-28",
+  "retrieved_on": "2026-09-29",
   "source": "NSE Indices — Index Constituent CSV",
   "source_url": "https://www.niftyindices.com/IndexConstituent/ind_nifty200list.csv",
   "source_type": "official_nse_indices_constituent_csv",
@@ -61,15 +61,15 @@
       "weight": null
     },
     {
-      "name": "Alkem Laboratories Ltd.",
-      "symbol": "ALKEM",
-      "sector": "Healthcare",
-      "weight": null
-    },
-    {
       "name": "Ambuja Cements Ltd.",
       "symbol": "AMBUJACEM",
       "sector": "Construction Materials",
+      "weight": null
+    },
+    {
+      "name": "Apar Industries Ltd.",
+      "symbol": "APARINDS",
+      "sector": "Capital Goods",
       "weight": null
     },
     {
@@ -159,6 +159,12 @@
     {
       "name": "Bank of India",
       "symbol": "BANKINDIA",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Bank of Maharashtra",
+      "symbol": "MAHABANK",
       "sector": "Financial Services",
       "weight": null
     },
@@ -286,12 +292,6 @@
       "name": "Container Corporation of India Ltd.",
       "symbol": "CONCOR",
       "sector": "Services",
-      "weight": null
-    },
-    {
-      "name": "Coromandel International Ltd.",
-      "symbol": "COROMANDEL",
-      "sector": "Chemicals",
       "weight": null
     },
     {
@@ -463,6 +463,12 @@
       "weight": null
     },
     {
+      "name": "Hindustan Copper Ltd.",
+      "symbol": "HINDCOPPER",
+      "sector": "Metals & Mining",
+      "weight": null
+    },
+    {
       "name": "Hindustan Petroleum Corporation Ltd.",
       "symbol": "HINDPETRO",
       "sector": "Oil Gas & Consumable Fuels",
@@ -484,12 +490,6 @@
       "name": "Hitachi Energy India Ltd.",
       "symbol": "POWERINDIA",
       "sector": "Capital Goods",
-      "weight": null
-    },
-    {
-      "name": "Housing & Urban Development Corporation Ltd.",
-      "symbol": "HUDCO",
-      "sector": "Financial Services",
       "weight": null
     },
     {
@@ -643,12 +643,6 @@
       "weight": null
     },
     {
-      "name": "KPIT Technologies Ltd.",
-      "symbol": "KPITTECH",
-      "sector": "Information Technology",
-      "weight": null
-    },
-    {
       "name": "L&T Finance Ltd.",
       "symbol": "LTF",
       "sector": "Financial Services",
@@ -681,6 +675,12 @@
     {
       "name": "LIC Housing Finance Ltd.",
       "symbol": "LICHSGFIN",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Life Insurance Corporation of India",
+      "symbol": "LICI",
       "sector": "Financial Services",
       "weight": null
     },
@@ -751,6 +751,12 @@
       "weight": null
     },
     {
+      "name": "Meesho Ltd.",
+      "symbol": "MEESHO",
+      "sector": "Consumer Services",
+      "weight": null
+    },
+    {
       "name": "Motilal Oswal Financial Services Ltd.",
       "symbol": "MOTILALOFS",
       "sector": "Financial Services",
@@ -795,6 +801,12 @@
     {
       "name": "NHPC Ltd.",
       "symbol": "NHPC",
+      "sector": "Power",
+      "weight": null
+    },
+    {
+      "name": "NLC India Ltd.",
+      "symbol": "NLCINDIA",
       "sector": "Power",
       "weight": null
     },
@@ -967,12 +979,6 @@
       "weight": null
     },
     {
-      "name": "Shree Cement Ltd.",
-      "symbol": "SHREECEM",
-      "sector": "Construction Materials",
-      "weight": null
-    },
-    {
       "name": "Shriram Finance Ltd.",
       "symbol": "SHRIRAMFIN",
       "sector": "Financial Services",
@@ -1060,18 +1066,6 @@
       "name": "Tata Consumer Products Ltd.",
       "symbol": "TATACONSUM",
       "sector": "Fast Moving Consumer Goods",
-      "weight": null
-    },
-    {
-      "name": "Tata Elxsi Ltd.",
-      "symbol": "TATAELXSI",
-      "sector": "Information Technology",
-      "weight": null
-    },
-    {
-      "name": "Tata Investment Corporation Ltd.",
-      "symbol": "TATAINVEST",
-      "sector": "Financial Services",
       "weight": null
     },
     {
@@ -1165,6 +1159,12 @@
       "weight": null
     },
     {
+      "name": "Vedanta Aluminium Metal Ltd.",
+      "symbol": "VAML",
+      "sector": "Metals & Mining",
+      "weight": null
+    },
+    {
       "name": "Vedanta Ltd.",
       "symbol": "VEDL",
       "sector": "Metals & Mining",
@@ -1222,14 +1222,14 @@
     },
     {
       "name": "Capital Goods",
-      "count": 23,
-      "stock_share": 11.5,
+      "count": 24,
+      "stock_share": 12.0,
       "weight": null
     },
     {
       "name": "Healthcare",
-      "count": 16,
-      "stock_share": 8.0,
+      "count": 15,
+      "stock_share": 7.5,
       "weight": null
     },
     {
@@ -1245,19 +1245,19 @@
       "weight": null
     },
     {
-      "name": "Information Technology",
+      "name": "Consumer Services",
       "count": 12,
       "stock_share": 6.0,
       "weight": null
     },
     {
-      "name": "Consumer Services",
-      "count": 11,
-      "stock_share": 5.5,
+      "name": "Metals & Mining",
+      "count": 12,
+      "stock_share": 6.0,
       "weight": null
     },
     {
-      "name": "Metals & Mining",
+      "name": "Information Technology",
       "count": 10,
       "stock_share": 5.0,
       "weight": null
@@ -1269,21 +1269,15 @@
       "weight": null
     },
     {
+      "name": "Power",
+      "count": 9,
+      "stock_share": 4.5,
+      "weight": null
+    },
+    {
       "name": "Consumer Durables",
       "count": 8,
       "stock_share": 4.0,
-      "weight": null
-    },
-    {
-      "name": "Power",
-      "count": 8,
-      "stock_share": 4.0,
-      "weight": null
-    },
-    {
-      "name": "Chemicals",
-      "count": 6,
-      "stock_share": 3.0,
       "weight": null
     },
     {
@@ -1293,9 +1287,9 @@
       "weight": null
     },
     {
-      "name": "Construction Materials",
-      "count": 4,
-      "stock_share": 2.0,
+      "name": "Chemicals",
+      "count": 5,
+      "stock_share": 2.5,
       "weight": null
     },
     {
@@ -1308,6 +1302,12 @@
       "name": "Telecommunication",
       "count": 4,
       "stock_share": 2.0,
+      "weight": null
+    },
+    {
+      "name": "Construction Materials",
+      "count": 3,
+      "stock_share": 1.5,
       "weight": null
     },
     {

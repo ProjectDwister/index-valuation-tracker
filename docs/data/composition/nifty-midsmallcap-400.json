@@ -2,7 +2,7 @@
   "slug": "nifty-midsmallcap-400",
   "index_name": "NIFTY Midsmallcap 400",
   "as_of": null,
-  "retrieved_on": "2026-09-28",
+  "retrieved_on": "2026-09-29",
   "source": "NSE Indices — Index Constituent CSV",
   "source_url": "https://www.niftyindices.com/IndexConstituent/ind_niftymidsmallcap400list.csv",
   "source_type": "official_nse_indices_constituent_csv",
@@ -12,12 +12,6 @@
   "top10_weight": null,
   "coverage_note": "The official constituent file lists members but does not publish usable stock weights.",
   "holdings": [
-    {
-      "name": "3M India Ltd.",
-      "symbol": "3MINDIA",
-      "sector": "Diversified",
-      "weight": null
-    },
     {
       "name": "Aadhar Housing Finance Ltd.",
       "symbol": "AADHARHFC",
@@ -79,18 +73,6 @@
       "weight": null
     },
     {
-      "name": "Aditya Birla Fashion and Retail Ltd.",
-      "symbol": "ABFRL",
-      "sector": "Consumer Services",
-      "weight": null
-    },
-    {
-      "name": "Aditya Birla Lifestyle Brands Ltd.",
-      "symbol": "ABLBL",
-      "sector": "Consumer Services",
-      "weight": null
-    },
-    {
       "name": "Aditya Birla Real Estate Ltd.",
       "symbol": "ABREL",
       "sector": "Realty",
@@ -118,6 +100,12 @@
       "name": "Aegis Vopak Terminals Ltd.",
       "symbol": "AEGISVOPAK",
       "sector": "Oil Gas & Consumable Fuels",
+      "weight": null
+    },
+    {
+      "name": "Aether Industries Ltd.",
+      "symbol": "AETHER",
+      "sector": "Chemicals",
       "weight": null
     },
     {
@@ -277,9 +265,27 @@
       "weight": null
     },
     {
+      "name": "Avanti Feeds Ltd.",
+      "symbol": "AVANTIFEED",
+      "sector": "Fast Moving Consumer Goods",
+      "weight": null
+    },
+    {
       "name": "AWL Agri Business Ltd.",
       "symbol": "AWL",
       "sector": "Fast Moving Consumer Goods",
+      "weight": null
+    },
+    {
+      "name": "Azad Engineering Ltd.",
+      "symbol": "AZAD",
+      "sector": "Capital Goods",
+      "weight": null
+    },
+    {
+      "name": "Bagmane Prime Office REIT",
+      "symbol": "BAGMANE",
+      "sector": "Realty",
       "weight": null
     },
     {
@@ -325,12 +331,6 @@
       "weight": null
     },
     {
-      "name": "Bayer Cropscience Ltd.",
-      "symbol": "BAYERCROP",
-      "sector": "Chemicals",
-      "weight": null
-    },
-    {
       "name": "Belrise Industries Ltd.",
       "symbol": "BELRISE",
       "sector": "Automobile and Auto Components",
@@ -346,6 +346,12 @@
       "name": "Berger Paints India Ltd.",
       "symbol": "BERGEPAINT",
       "sector": "Consumer Durables",
+      "weight": null
+    },
+    {
+      "name": "Bharat Coking Coal Ltd.",
+      "symbol": "BHARATCOAL",
+      "sector": "Oil Gas & Consumable Fuels",
       "weight": null
     },
     {
@@ -373,12 +379,6 @@
       "weight": null
     },
     {
-      "name": "Bikaji Foods International Ltd.",
-      "symbol": "BIKAJI",
-      "sector": "Fast Moving Consumer Goods",
-      "weight": null
-    },
-    {
       "name": "Billionbrains Garage Ventures Ltd.",
       "symbol": "GROWW",
       "sector": "Financial Services",
@@ -397,33 +397,21 @@
       "weight": null
     },
     {
+      "name": "Black Box Ltd.",
+      "symbol": "BBOX",
+      "sector": "Information Technology",
+      "weight": null
+    },
+    {
       "name": "BLS International Services Ltd.",
       "symbol": "BLS",
       "sector": "Consumer Services",
       "weight": null
     },
     {
-      "name": "Blue Dart Express Ltd.",
-      "symbol": "BLUEDART",
-      "sector": "Services",
-      "weight": null
-    },
-    {
-      "name": "Blue Jet Healthcare Ltd.",
-      "symbol": "BLUEJET",
-      "sector": "Healthcare",
-      "weight": null
-    },
-    {
       "name": "Blue Star Ltd.",
       "symbol": "BLUESTARCO",
       "sector": "Consumer Durables",
-      "weight": null
-    },
-    {
-      "name": "Bombay Burmah Trading Corporation Ltd.",
-      "symbol": "BBTC",
-      "sector": "Fast Moving Consumer Goods",
       "weight": null
     },
     {
@@ -439,15 +427,9 @@
       "weight": null
     },
     {
-      "name": "BSE Ltd.",
-      "symbol": "BSE",
-      "sector": "Financial Services",
-      "weight": null
-    },
-    {
-      "name": "C.E. Info Systems Ltd.",
-      "symbol": "MAPMYINDIA",
-      "sector": "Information Technology",
+      "name": "Brookfield India Real Estate Trust",
+      "symbol": "BIRET",
+      "sector": "Realty",
       "weight": null
     },
     {
@@ -523,15 +505,15 @@
       "weight": null
     },
     {
-      "name": "CESC Ltd.",
-      "symbol": "CESC",
-      "sector": "Power",
+      "name": "Central Mine Planning & Design Institute Ltd.",
+      "symbol": "CMPDI",
+      "sector": "Services",
       "weight": null
     },
     {
-      "name": "Chalet Hotels Ltd.",
-      "symbol": "CHALET",
-      "sector": "Consumer Services",
+      "name": "CESC Ltd.",
+      "symbol": "CESC",
+      "sector": "Power",
       "weight": null
     },
     {
@@ -568,6 +550,12 @@
       "name": "City Union Bank Ltd.",
       "symbol": "CUB",
       "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Clean Max Enviro Energy Solutions Ltd.",
+      "symbol": "CLEANMAX",
+      "sector": "Power",
       "weight": null
     },
     {
@@ -649,6 +637,12 @@
       "weight": null
     },
     {
+      "name": "Cupid Ltd.",
+      "symbol": "CUPID",
+      "sector": "Fast Moving Consumer Goods",
+      "weight": null
+    },
+    {
       "name": "Cyient Ltd.",
       "symbol": "CYIENT",
       "sector": "Information Technology",
@@ -670,12 +664,6 @@
       "name": "Data Patterns (India) Ltd.",
       "symbol": "DATAPATTNS",
       "sector": "Capital Goods",
-      "weight": null
-    },
-    {
-      "name": "DCM Shriram Ltd.",
-      "symbol": "DCMSHRIRAM",
-      "sector": "Diversified",
       "weight": null
     },
     {
@@ -763,6 +751,12 @@
       "weight": null
     },
     {
+      "name": "EMBASSY OFFICE PARKS REIT",
+      "symbol": "EMBASSY",
+      "sector": "Realty",
+      "weight": null
+    },
+    {
       "name": "Emcure Pharmaceuticals Ltd.",
       "symbol": "EMCURE",
       "sector": "Healthcare",
@@ -784,12 +778,6 @@
       "name": "Engineers India Ltd.",
       "symbol": "ENGINERSIN",
       "sector": "Construction",
-      "weight": null
-    },
-    {
-      "name": "Eris Lifesciences Ltd.",
-      "symbol": "ERIS",
-      "sector": "Healthcare",
       "weight": null
     },
     {
@@ -844,6 +832,12 @@
       "name": "Fortis Healthcare Ltd.",
       "symbol": "FORTIS",
       "sector": "Healthcare",
+      "weight": null
+    },
+    {
+      "name": "Fractal Analytics Ltd.",
+      "symbol": "FRACTAL",
+      "sector": "Information Technology",
       "weight": null
     },
     {
@@ -916,12 +910,6 @@
       "name": "GMR Airports Ltd.",
       "symbol": "GMRAIRPORT",
       "sector": "Services",
-      "weight": null
-    },
-    {
-      "name": "Go Digit General Insurance Ltd.",
-      "symbol": "GODIGIT",
-      "sector": "Financial Services",
       "weight": null
     },
     {
@@ -1045,12 +1033,6 @@
       "weight": null
     },
     {
-      "name": "Hitachi Energy India Ltd.",
-      "symbol": "POWERINDIA",
-      "sector": "Capital Goods",
-      "weight": null
-    },
-    {
       "name": "Home First Finance Company India Ltd.",
       "symbol": "HOMEFIRST",
       "sector": "Financial Services",
@@ -1117,12 +1099,6 @@
       "weight": null
     },
     {
-      "name": "Indegene Ltd.",
-      "symbol": "INDGN",
-      "sector": "Healthcare",
-      "weight": null
-    },
-    {
       "name": "India Cements Ltd.",
       "symbol": "INDIACEM",
       "sector": "Construction Materials",
@@ -1144,6 +1120,12 @@
       "name": "Indian Energy Exchange Ltd.",
       "symbol": "IEX",
       "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Indian Hotels Co. Ltd.",
+      "symbol": "INDHOTEL",
+      "sector": "Consumer Services",
       "weight": null
     },
     {
@@ -1186,6 +1168,12 @@
       "name": "Info Edge (India) Ltd.",
       "symbol": "NAUKRI",
       "sector": "Consumer Services",
+      "weight": null
+    },
+    {
+      "name": "INOX India Ltd.",
+      "symbol": "INOXINDIA",
+      "sector": "Capital Goods",
       "weight": null
     },
     {
@@ -1303,12 +1291,6 @@
       "weight": null
     },
     {
-      "name": "JSW Dulux Ltd.",
-      "symbol": "JSWDULUX",
-      "sector": "Consumer Durables",
-      "weight": null
-    },
-    {
       "name": "JSW Energy Ltd.",
       "symbol": "JSWENERGY",
       "sector": "Power",
@@ -1330,12 +1312,6 @@
       "name": "Jubilant Ingrevia Ltd.",
       "symbol": "JUBLINGREA",
       "sector": "Chemicals",
-      "weight": null
-    },
-    {
-      "name": "Jubilant Pharmova Ltd.",
-      "symbol": "JUBLPHARMA",
-      "sector": "Healthcare",
       "weight": null
     },
     {
@@ -1405,6 +1381,12 @@
       "weight": null
     },
     {
+      "name": "Kirloskar Brothers Ltd.",
+      "symbol": "KIRLOSBROS",
+      "sector": "Capital Goods",
+      "weight": null
+    },
+    {
       "name": "Kirloskar Oil Eng Ltd.",
       "symbol": "KIRLOSENG",
       "sector": "Capital Goods",
@@ -1423,6 +1405,12 @@
       "weight": null
     },
     {
+      "name": "KSB Ltd.",
+      "symbol": "KSB",
+      "sector": "Capital Goods",
+      "weight": null
+    },
+    {
       "name": "L&T Finance Ltd.",
       "symbol": "LTF",
       "sector": "Financial Services",
@@ -1435,21 +1423,9 @@
       "weight": null
     },
     {
-      "name": "Latent View Analytics Ltd.",
-      "symbol": "LATENTVIEW",
-      "sector": "Information Technology",
-      "weight": null
-    },
-    {
       "name": "Laurus Labs Ltd.",
       "symbol": "LAURUSLABS",
       "sector": "Healthcare",
-      "weight": null
-    },
-    {
-      "name": "Leela Palaces Hotels & Resorts Ltd.",
-      "symbol": "THELEELA",
-      "sector": "Consumer Services",
       "weight": null
     },
     {
@@ -1492,6 +1468,12 @@
       "name": "Lloyds Metals And Energy Ltd.",
       "symbol": "LLOYDSME",
       "sector": "Metals & Mining",
+      "weight": null
+    },
+    {
+      "name": "Lodha Developers Ltd.",
+      "symbol": "LODHA",
+      "sector": "Realty",
       "weight": null
     },
     {
@@ -1591,6 +1573,12 @@
       "weight": null
     },
     {
+      "name": "MTAR Technologies Ltd.",
+      "symbol": "MTARTECH",
+      "sector": "Capital Goods",
+      "weight": null
+    },
+    {
       "name": "Multi Commodity Exchange of India Ltd.",
       "symbol": "MCX",
       "sector": "Financial Services",
@@ -1651,12 +1639,6 @@
       "weight": null
     },
     {
-      "name": "Newgen Software Technologies Ltd.",
-      "symbol": "NEWGEN",
-      "sector": "Information Technology",
-      "weight": null
-    },
-    {
       "name": "NHPC Ltd.",
       "symbol": "NHPC",
       "sector": "Power",
@@ -1665,12 +1647,6 @@
     {
       "name": "Nippon Life India Asset Management Ltd.",
       "symbol": "NAM-INDIA",
-      "sector": "Financial Services",
-      "weight": null
-    },
-    {
-      "name": "Niva Bupa Health Insurance Company Ltd.",
-      "symbol": "NIVABUPA",
       "sector": "Financial Services",
       "weight": null
     },
@@ -1801,12 +1777,6 @@
       "weight": null
     },
     {
-      "name": "Pfizer Ltd.",
-      "symbol": "PFIZER",
-      "sector": "Healthcare",
-      "weight": null
-    },
-    {
       "name": "PG Electroplast Ltd.",
       "symbol": "PGEL",
       "sector": "Consumer Durables",
@@ -1861,12 +1831,6 @@
       "weight": null
     },
     {
-      "name": "Polycab India Ltd.",
-      "symbol": "POLYCAB",
-      "sector": "Capital Goods",
-      "weight": null
-    },
-    {
       "name": "Poonawalla Fincorp Ltd.",
       "symbol": "POONAWALLA",
       "sector": "Financial Services",
@@ -1888,6 +1852,12 @@
       "name": "Prime Focus Ltd.",
       "symbol": "PFOCUS",
       "sector": "Media Entertainment & Publication",
+      "weight": null
+    },
+    {
+      "name": "Privi Speciality Chemicals Ltd.",
+      "symbol": "PRIVISCL",
+      "sector": "Chemicals",
       "weight": null
     },
     {
@@ -1945,6 +1915,12 @@
       "weight": null
     },
     {
+      "name": "REC Ltd.",
+      "symbol": "RECLTD",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
       "name": "Redington Ltd.",
       "symbol": "REDINGTON",
       "sector": "Services",
@@ -1969,6 +1945,12 @@
       "weight": null
     },
     {
+      "name": "Rubicon Research Ltd.",
+      "symbol": "RUBICON",
+      "sector": "Healthcare",
+      "weight": null
+    },
+    {
       "name": "Sagility Ltd.",
       "symbol": "SAGILITY",
       "sector": "Information Technology",
@@ -1987,27 +1969,15 @@
       "weight": null
     },
     {
-      "name": "Sapphire Foods India Ltd.",
-      "symbol": "SAPPHIRE",
-      "sector": "Consumer Services",
+      "name": "Sansera Engineering Ltd.",
+      "symbol": "SANSERA",
+      "sector": "Automobile and Auto Components",
       "weight": null
     },
     {
       "name": "Sarda Energy and Minerals Ltd.",
       "symbol": "SARDAEN",
       "sector": "Metals & Mining",
-      "weight": null
-    },
-    {
-      "name": "Saregama India Ltd",
-      "symbol": "SAREGAMA",
-      "sector": "Media Entertainment & Publication",
-      "weight": null
-    },
-    {
-      "name": "SBFC Finance Ltd.",
-      "symbol": "SBFC",
-      "sector": "Financial Services",
       "weight": null
     },
     {
@@ -2032,6 +2002,12 @@
       "name": "Shipping Corporation of India Ltd.",
       "symbol": "SCI",
       "sector": "Services",
+      "weight": null
+    },
+    {
+      "name": "Shree Cement Ltd.",
+      "symbol": "SHREECEM",
+      "sector": "Construction Materials",
       "weight": null
     },
     {
@@ -2065,9 +2041,9 @@
       "weight": null
     },
     {
-      "name": "Sonata Software Ltd.",
-      "symbol": "SONATSOFTW",
-      "sector": "Information Technology",
+      "name": "SPR Auto Technologies Ltd.",
+      "symbol": "SHRIPISTON",
+      "sector": "Automobile and Auto Components",
       "weight": null
     },
     {
@@ -2086,6 +2062,12 @@
       "name": "Steel Authority of India Ltd.",
       "symbol": "SAIL",
       "sector": "Metals & Mining",
+      "weight": null
+    },
+    {
+      "name": "Sterlite Technologies Ltd.",
+      "symbol": "STLTECH",
+      "sector": "Telecommunication",
       "weight": null
     },
     {
@@ -2110,12 +2092,6 @@
       "name": "Supreme Industries Ltd.",
       "symbol": "SUPREMEIND",
       "sector": "Capital Goods",
-      "weight": null
-    },
-    {
-      "name": "Supreme Petrochem Ltd.",
-      "symbol": "SPLPETRO",
-      "sector": "Chemicals",
       "weight": null
     },
     {
@@ -2191,6 +2167,12 @@
       "weight": null
     },
     {
+      "name": "TD Power Systems Ltd.",
+      "symbol": "TDPOWERSYS",
+      "sector": "Capital Goods",
+      "weight": null
+    },
+    {
       "name": "Techno Electric & Engineering Company Ltd.",
       "symbol": "TECHNOE",
       "sector": "Construction",
@@ -2212,6 +2194,12 @@
       "name": "Tenneco Clean Air India Ltd.",
       "symbol": "TENNIND",
       "sector": "Automobile and Auto Components",
+      "weight": null
+    },
+    {
+      "name": "Thangamayil Jewellery Ltd.",
+      "symbol": "THANGAMAYL",
+      "sector": "Consumer Durables",
       "weight": null
     },
     {
@@ -2257,12 +2245,6 @@
       "weight": null
     },
     {
-      "name": "Travel Food Services Ltd.",
-      "symbol": "TRAVELFOOD",
-      "sector": "Consumer Services",
-      "weight": null
-    },
-    {
       "name": "Trident Ltd.",
       "symbol": "TRIDENT",
       "sector": "Textiles",
@@ -2289,6 +2271,12 @@
     {
       "name": "United Breweries Ltd.",
       "symbol": "UBL",
+      "sector": "Fast Moving Consumer Goods",
+      "weight": null
+    },
+    {
+      "name": "United Spirits Ltd.",
+      "symbol": "UNITDSPR",
       "sector": "Fast Moving Consumer Goods",
       "weight": null
     },
@@ -2329,6 +2317,24 @@
       "weight": null
     },
     {
+      "name": "Vedanta Iron and Steel Ltd.",
+      "symbol": "VISL",
+      "sector": "Metals & Mining",
+      "weight": null
+    },
+    {
+      "name": "Vedanta Oil and Gas Ltd.",
+      "symbol": "VOGL",
+      "sector": "Oil Gas & Consumable Fuels",
+      "weight": null
+    },
+    {
+      "name": "Vedanta Power Ltd.",
+      "symbol": "VEDPOWER",
+      "sector": "Power",
+      "weight": null
+    },
+    {
       "name": "Vijaya Diagnostic Centre Ltd.",
       "symbol": "VIJAYA",
       "sector": "Healthcare",
@@ -2338,12 +2344,6 @@
       "name": "Vishal Mega Mart Ltd.",
       "symbol": "VMM",
       "sector": "Consumer Services",
-      "weight": null
-    },
-    {
-      "name": "Vodafone Idea Ltd.",
-      "symbol": "IDEA",
-      "sector": "Telecommunication",
       "weight": null
     },
     {
@@ -2422,32 +2422,26 @@
   "sectors": [
     {
       "name": "Financial Services",
-      "count": 78,
-      "stock_share": 19.4514,
+      "count": 75,
+      "stock_share": 18.7032,
       "weight": null
     },
     {
       "name": "Capital Goods",
-      "count": 54,
-      "stock_share": 13.4663,
+      "count": 58,
+      "stock_share": 14.4638,
       "weight": null
     },
     {
       "name": "Healthcare",
-      "count": 40,
-      "stock_share": 9.9751,
+      "count": 36,
+      "stock_share": 8.9776,
       "weight": null
     },
     {
       "name": "Automobile and Auto Components",
-      "count": 29,
-      "stock_share": 7.2319,
-      "weight": null
-    },
-    {
-      "name": "Consumer Services",
-      "count": 25,
-      "stock_share": 6.2344,
+      "count": 31,
+      "stock_share": 7.7307,
       "weight": null
     },
     {
@@ -2457,15 +2451,21 @@
       "weight": null
     },
     {
-      "name": "Information Technology",
+      "name": "Fast Moving Consumer Goods",
       "count": 21,
       "stock_share": 5.2369,
       "weight": null
     },
     {
-      "name": "Fast Moving Consumer Goods",
+      "name": "Consumer Services",
       "count": 20,
       "stock_share": 4.9875,
+      "weight": null
+    },
+    {
+      "name": "Information Technology",
+      "count": 19,
+      "stock_share": 4.7382,
       "weight": null
     },
     {
@@ -2475,13 +2475,31 @@
       "weight": null
     },
     {
-      "name": "Construction",
-      "count": 12,
-      "stock_share": 2.9925,
+      "name": "Metals & Mining",
+      "count": 13,
+      "stock_share": 3.2419,
       "weight": null
     },
     {
-      "name": "Metals & Mining",
+      "name": "Oil Gas & Consumable Fuels",
+      "count": 13,
+      "stock_share": 3.2419,
+      "weight": null
+    },
+    {
+      "name": "Power",
+      "count": 13,
+      "stock_share": 3.2419,
+      "weight": null
+    },
+    {
+      "name": "Realty",
+      "count": 13,
+      "stock_share": 3.2419,
+      "weight": null
+    },
+    {
+      "name": "Construction",
       "count": 12,
       "stock_share": 2.9925,
       "weight": null
@@ -2493,24 +2511,6 @@
       "weight": null
     },
     {
-      "name": "Oil Gas & Consumable Fuels",
-      "count": 11,
-      "stock_share": 2.7431,
-      "weight": null
-    },
-    {
-      "name": "Power",
-      "count": 11,
-      "stock_share": 2.7431,
-      "weight": null
-    },
-    {
-      "name": "Realty",
-      "count": 9,
-      "stock_share": 2.2444,
-      "weight": null
-    },
-    {
       "name": "Telecommunication",
       "count": 9,
       "stock_share": 2.2444,
@@ -2518,14 +2518,8 @@
     },
     {
       "name": "Construction Materials",
-      "count": 7,
-      "stock_share": 1.7456,
-      "weight": null
-    },
-    {
-      "name": "Media Entertainment & Publication",
-      "count": 5,
-      "stock_share": 1.2469,
+      "count": 8,
+      "stock_share": 1.995,
       "weight": null
     },
     {
@@ -2535,9 +2529,15 @@
       "weight": null
     },
     {
+      "name": "Media Entertainment & Publication",
+      "count": 4,
+      "stock_share": 0.9975,
+      "weight": null
+    },
+    {
       "name": "Diversified",
-      "count": 3,
-      "stock_share": 0.7481,
+      "count": 1,
+      "stock_share": 0.2494,
       "weight": null
     }
   ]

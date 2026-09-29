@@ -2,7 +2,7 @@
   "slug": "nifty100-low-volatility-30",
   "index_name": "Nifty100 Low Volatility 30",
   "as_of": null,
-  "retrieved_on": "2026-09-28",
+  "retrieved_on": "2026-09-29",
   "source": "NSE Indices — Index Constituent CSV",
   "source_url": "https://www.niftyindices.com/IndexConstituent/ind_Nifty100LowVolatility30list.csv",
   "source_type": "official_nse_indices_constituent_csv",
@@ -61,14 +61,14 @@
       "weight": null
     },
     {
-      "name": "HCL Technologies Ltd.",
-      "symbol": "HCLTECH",
-      "sector": "Information Technology",
+      "name": "HDFC Bank Ltd.",
+      "symbol": "HDFCBANK",
+      "sector": "Financial Services",
       "weight": null
     },
     {
-      "name": "HDFC Bank Ltd.",
-      "symbol": "HDFCBANK",
+      "name": "HDFC Life Insurance Company Ltd.",
+      "symbol": "HDFCLIFE",
       "sector": "Financial Services",
       "weight": null
     },
@@ -82,12 +82,6 @@
       "name": "ICICI Bank Ltd.",
       "symbol": "ICICIBANK",
       "sector": "Financial Services",
-      "weight": null
-    },
-    {
-      "name": "Infosys Ltd.",
-      "symbol": "INFY",
-      "sector": "Information Technology",
       "weight": null
     },
     {
@@ -133,6 +127,12 @@
       "weight": null
     },
     {
+      "name": "Power Grid Corporation of India Ltd.",
+      "symbol": "POWERGRID",
+      "sector": "Power",
+      "weight": null
+    },
+    {
       "name": "Reliance Industries Ltd.",
       "symbol": "RELIANCE",
       "sector": "Oil Gas & Consumable Fuels",
@@ -142,12 +142,6 @@
       "name": "SBI Life Insurance Company Ltd.",
       "symbol": "SBILIFE",
       "sector": "Financial Services",
-      "weight": null
-    },
-    {
-      "name": "Shree Cement Ltd.",
-      "symbol": "SHREECEM",
-      "sector": "Construction Materials",
       "weight": null
     },
     {
@@ -166,6 +160,12 @@
       "name": "Tata Consultancy Services Ltd.",
       "symbol": "TCS",
       "sector": "Information Technology",
+      "weight": null
+    },
+    {
+      "name": "Tata Power Co. Ltd.",
+      "symbol": "TATAPOWER",
+      "sector": "Power",
       "weight": null
     },
     {
@@ -196,8 +196,8 @@
   "sectors": [
     {
       "name": "Financial Services",
-      "count": 6,
-      "stock_share": 20.0,
+      "count": 7,
+      "stock_share": 23.3333,
       "weight": null
     },
     {
@@ -213,9 +213,9 @@
       "weight": null
     },
     {
-      "name": "Information Technology",
-      "count": 4,
-      "stock_share": 13.3333,
+      "name": "Power",
+      "count": 3,
+      "stock_share": 10.0,
       "weight": null
     },
     {
@@ -225,13 +225,13 @@
       "weight": null
     },
     {
-      "name": "Construction Materials",
+      "name": "Consumer Durables",
       "count": 2,
       "stock_share": 6.6667,
       "weight": null
     },
     {
-      "name": "Consumer Durables",
+      "name": "Information Technology",
       "count": 2,
       "stock_share": 6.6667,
       "weight": null
@@ -249,13 +249,13 @@
       "weight": null
     },
     {
-      "name": "Oil Gas & Consumable Fuels",
+      "name": "Construction Materials",
       "count": 1,
       "stock_share": 3.3333,
       "weight": null
     },
     {
-      "name": "Power",
+      "name": "Oil Gas & Consumable Fuels",
       "count": 1,
       "stock_share": 3.3333,
       "weight": null

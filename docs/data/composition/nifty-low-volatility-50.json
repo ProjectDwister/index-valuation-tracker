@@ -2,7 +2,7 @@
   "slug": "nifty-low-volatility-50",
   "index_name": "NIFTY Low Volatility 50",
   "as_of": null,
-  "retrieved_on": "2026-09-28",
+  "retrieved_on": "2026-09-29",
   "source": "NSE Indices — Index Constituent CSV",
   "source_url": "https://www.niftyindices.com/IndexConstituent/nifty_low_Volatility50_Index.csv",
   "source_type": "official_nse_indices_constituent_csv",
@@ -67,15 +67,9 @@
       "weight": null
     },
     {
-      "name": "Colgate Palmolive (India) Ltd.",
-      "symbol": "COLPAL",
-      "sector": "Fast Moving Consumer Goods",
-      "weight": null
-    },
-    {
-      "name": "Dabur India Ltd.",
-      "symbol": "DABUR",
-      "sector": "Fast Moving Consumer Goods",
+      "name": "Coal India Ltd.",
+      "symbol": "COALINDIA",
+      "sector": "Oil Gas & Consumable Fuels",
       "weight": null
     },
     {
@@ -100,6 +94,12 @@
       "name": "Grasim Industries Ltd.",
       "symbol": "GRASIM",
       "sector": "Construction Materials",
+      "weight": null
+    },
+    {
+      "name": "Havells India Ltd.",
+      "symbol": "HAVELLS",
+      "sector": "Consumer Durables",
       "weight": null
     },
     {
@@ -145,18 +145,6 @@
       "weight": null
     },
     {
-      "name": "Indian Railway Catering And Tourism Corporation Ltd.",
-      "symbol": "IRCTC",
-      "sector": "Consumer Services",
-      "weight": null
-    },
-    {
-      "name": "Infosys Ltd.",
-      "symbol": "INFY",
-      "sector": "Information Technology",
-      "weight": null
-    },
-    {
       "name": "ITC Ltd.",
       "symbol": "ITC",
       "sector": "Fast Moving Consumer Goods",
@@ -199,12 +187,6 @@
       "weight": null
     },
     {
-      "name": "MRF Ltd.",
-      "symbol": "MRF",
-      "sector": "Automobile and Auto Components",
-      "weight": null
-    },
-    {
       "name": "Nestle India Ltd.",
       "symbol": "NESTLEIND",
       "sector": "Fast Moving Consumer Goods",
@@ -214,6 +196,12 @@
       "name": "NTPC Ltd.",
       "symbol": "NTPC",
       "sector": "Power",
+      "weight": null
+    },
+    {
+      "name": "Oil & Natural Gas Corporation Ltd.",
+      "symbol": "ONGC",
+      "sector": "Oil Gas & Consumable Fuels",
       "weight": null
     },
     {
@@ -277,6 +265,12 @@
       "weight": null
     },
     {
+      "name": "Tata Power Co. Ltd.",
+      "symbol": "TATAPOWER",
+      "sector": "Power",
+      "weight": null
+    },
+    {
       "name": "Tech Mahindra Ltd.",
       "symbol": "TECHM",
       "sector": "Information Technology",
@@ -311,15 +305,15 @@
       "symbol": "WIPRO",
       "sector": "Information Technology",
       "weight": null
+    },
+    {
+      "name": "Zydus Lifesciences Ltd.",
+      "symbol": "ZYDUSLIFE",
+      "sector": "Healthcare",
+      "weight": null
     }
   ],
   "sectors": [
-    {
-      "name": "Fast Moving Consumer Goods",
-      "count": 10,
-      "stock_share": 20.0,
-      "weight": null
-    },
     {
       "name": "Financial Services",
       "count": 10,
@@ -327,43 +321,49 @@
       "weight": null
     },
     {
+      "name": "Fast Moving Consumer Goods",
+      "count": 8,
+      "stock_share": 16.0,
+      "weight": null
+    },
+    {
       "name": "Healthcare",
-      "count": 7,
-      "stock_share": 14.0,
+      "count": 8,
+      "stock_share": 16.0,
       "weight": null
     },
     {
       "name": "Information Technology",
-      "count": 5,
-      "stock_share": 10.0,
-      "weight": null
-    },
-    {
-      "name": "Automobile and Auto Components",
       "count": 4,
       "stock_share": 8.0,
       "weight": null
     },
     {
-      "name": "Construction Materials",
-      "count": 2,
-      "stock_share": 4.0,
+      "name": "Automobile and Auto Components",
+      "count": 3,
+      "stock_share": 6.0,
       "weight": null
     },
     {
       "name": "Consumer Durables",
-      "count": 2,
-      "stock_share": 4.0,
+      "count": 3,
+      "stock_share": 6.0,
       "weight": null
     },
     {
-      "name": "Consumer Services",
-      "count": 2,
-      "stock_share": 4.0,
+      "name": "Oil Gas & Consumable Fuels",
+      "count": 3,
+      "stock_share": 6.0,
       "weight": null
     },
     {
       "name": "Power",
+      "count": 3,
+      "stock_share": 6.0,
+      "weight": null
+    },
+    {
+      "name": "Construction Materials",
       "count": 2,
       "stock_share": 4.0,
       "weight": null
@@ -381,13 +381,13 @@
       "weight": null
     },
     {
-      "name": "Metals & Mining",
+      "name": "Consumer Services",
       "count": 1,
       "stock_share": 2.0,
       "weight": null
     },
     {
-      "name": "Oil Gas & Consumable Fuels",
+      "name": "Metals & Mining",
       "count": 1,
       "stock_share": 2.0,
       "weight": null

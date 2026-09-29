@@ -2,7 +2,7 @@
   "slug": "nifty-midcap-100",
   "index_name": "NIFTY Midcap 100",
   "as_of": null,
-  "retrieved_on": "2026-09-28",
+  "retrieved_on": "2026-09-29",
   "source": "NSE Indices — Index Constituent CSV",
   "source_url": "https://www.niftyindices.com/IndexConstituent/ind_niftymidcap100list.csv",
   "source_type": "official_nse_indices_constituent_csv",
@@ -25,9 +25,9 @@
       "weight": null
     },
     {
-      "name": "Alkem Laboratories Ltd.",
-      "symbol": "ALKEM",
-      "sector": "Healthcare",
+      "name": "Apar Industries Ltd.",
+      "symbol": "APARINDS",
+      "sector": "Capital Goods",
       "weight": null
     },
     {
@@ -63,6 +63,12 @@
     {
       "name": "Bank of India",
       "symbol": "BANKINDIA",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Bank of Maharashtra",
+      "symbol": "MAHABANK",
       "sector": "Financial Services",
       "weight": null
     },
@@ -103,12 +109,6 @@
       "weight": null
     },
     {
-      "name": "BSE Ltd.",
-      "symbol": "BSE",
-      "sector": "Financial Services",
-      "weight": null
-    },
-    {
       "name": "Cochin Shipyard Ltd.",
       "symbol": "COCHINSHIP",
       "sector": "Capital Goods",
@@ -130,12 +130,6 @@
       "name": "Container Corporation of India Ltd.",
       "symbol": "CONCOR",
       "sector": "Services",
-      "weight": null
-    },
-    {
-      "name": "Coromandel International Ltd.",
-      "symbol": "COROMANDEL",
-      "sector": "Chemicals",
       "weight": null
     },
     {
@@ -217,21 +211,15 @@
       "weight": null
     },
     {
+      "name": "Hindustan Copper Ltd.",
+      "symbol": "HINDCOPPER",
+      "sector": "Metals & Mining",
+      "weight": null
+    },
+    {
       "name": "Hindustan Petroleum Corporation Ltd.",
       "symbol": "HINDPETRO",
       "sector": "Oil Gas & Consumable Fuels",
-      "weight": null
-    },
-    {
-      "name": "Hitachi Energy India Ltd.",
-      "symbol": "POWERINDIA",
-      "sector": "Capital Goods",
-      "weight": null
-    },
-    {
-      "name": "Housing & Urban Development Corporation Ltd.",
-      "symbol": "HUDCO",
-      "sector": "Financial Services",
       "weight": null
     },
     {
@@ -256,6 +244,12 @@
       "name": "Indian Bank",
       "symbol": "INDIANB",
       "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Indian Hotels Co. Ltd.",
+      "symbol": "INDHOTEL",
+      "sector": "Consumer Services",
       "weight": null
     },
     {
@@ -313,12 +307,6 @@
       "weight": null
     },
     {
-      "name": "KPIT Technologies Ltd.",
-      "symbol": "KPITTECH",
-      "sector": "Information Technology",
-      "weight": null
-    },
-    {
       "name": "L&T Finance Ltd.",
       "symbol": "LTF",
       "sector": "Financial Services",
@@ -349,6 +337,18 @@
       "weight": null
     },
     {
+      "name": "Life Insurance Corporation of India",
+      "symbol": "LICI",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Lodha Developers Ltd.",
+      "symbol": "LODHA",
+      "sector": "Realty",
+      "weight": null
+    },
+    {
       "name": "Lupin Ltd.",
       "symbol": "LUPIN",
       "sector": "Healthcare",
@@ -376,6 +376,12 @@
       "name": "Max Financial Services Ltd.",
       "symbol": "MFSL",
       "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Meesho Ltd.",
+      "symbol": "MEESHO",
+      "sector": "Consumer Services",
       "weight": null
     },
     {
@@ -411,6 +417,12 @@
     {
       "name": "NHPC Ltd.",
       "symbol": "NHPC",
+      "sector": "Power",
+      "weight": null
+    },
+    {
+      "name": "NLC India Ltd.",
+      "symbol": "NLCINDIA",
       "sector": "Power",
       "weight": null
     },
@@ -487,12 +499,6 @@
       "weight": null
     },
     {
-      "name": "Polycab India Ltd.",
-      "symbol": "POLYCAB",
-      "sector": "Capital Goods",
-      "weight": null
-    },
-    {
       "name": "Premier Energies Ltd.",
       "symbol": "PREMIERENE",
       "sector": "Capital Goods",
@@ -514,6 +520,12 @@
       "name": "Rail Vikas Nigam Ltd.",
       "symbol": "RVNL",
       "sector": "Construction",
+      "weight": null
+    },
+    {
+      "name": "REC Ltd.",
+      "symbol": "RECLTD",
+      "sector": "Financial Services",
       "weight": null
     },
     {
@@ -559,21 +571,15 @@
       "weight": null
     },
     {
-      "name": "Tata Elxsi Ltd.",
-      "symbol": "TATAELXSI",
-      "sector": "Information Technology",
-      "weight": null
-    },
-    {
-      "name": "Tata Investment Corporation Ltd.",
-      "symbol": "TATAINVEST",
-      "sector": "Financial Services",
-      "weight": null
-    },
-    {
       "name": "Tube Investments of India Ltd.",
       "symbol": "TIINDIA",
       "sector": "Automobile and Auto Components",
+      "weight": null
+    },
+    {
+      "name": "United Spirits Ltd.",
+      "symbol": "UNITDSPR",
+      "sector": "Fast Moving Consumer Goods",
       "weight": null
     },
     {
@@ -586,12 +592,6 @@
       "name": "Vishal Mega Mart Ltd.",
       "symbol": "VMM",
       "sector": "Consumer Services",
-      "weight": null
-    },
-    {
-      "name": "Vodafone Idea Ltd.",
-      "symbol": "IDEA",
-      "sector": "Telecommunication",
       "weight": null
     },
     {
@@ -622,18 +622,24 @@
     },
     {
       "name": "Capital Goods",
-      "count": 14,
-      "stock_share": 14.0,
-      "weight": null
-    },
-    {
-      "name": "Healthcare",
-      "count": 8,
-      "stock_share": 8.0,
+      "count": 13,
+      "stock_share": 13.0,
       "weight": null
     },
     {
       "name": "Consumer Services",
+      "count": 9,
+      "stock_share": 9.0,
+      "weight": null
+    },
+    {
+      "name": "Fast Moving Consumer Goods",
+      "count": 7,
+      "stock_share": 7.0,
+      "weight": null
+    },
+    {
+      "name": "Healthcare",
       "count": 7,
       "stock_share": 7.0,
       "weight": null
@@ -645,37 +651,31 @@
       "weight": null
     },
     {
-      "name": "Fast Moving Consumer Goods",
-      "count": 6,
-      "stock_share": 6.0,
-      "weight": null
-    },
-    {
-      "name": "Information Technology",
-      "count": 6,
-      "stock_share": 6.0,
-      "weight": null
-    },
-    {
       "name": "Automobile and Auto Components",
       "count": 5,
       "stock_share": 5.0,
       "weight": null
     },
     {
-      "name": "Chemicals",
-      "count": 4,
-      "stock_share": 4.0,
+      "name": "Realty",
+      "count": 5,
+      "stock_share": 5.0,
       "weight": null
     },
     {
-      "name": "Realty",
+      "name": "Information Technology",
       "count": 4,
       "stock_share": 4.0,
       "weight": null
     },
     {
       "name": "Metals & Mining",
+      "count": 4,
+      "stock_share": 4.0,
+      "weight": null
+    },
+    {
+      "name": "Chemicals",
       "count": 3,
       "stock_share": 3.0,
       "weight": null
@@ -687,19 +687,19 @@
       "weight": null
     },
     {
-      "name": "Telecommunication",
+      "name": "Power",
       "count": 3,
       "stock_share": 3.0,
       "weight": null
     },
     {
-      "name": "Power",
+      "name": "Services",
       "count": 2,
       "stock_share": 2.0,
       "weight": null
     },
     {
-      "name": "Services",
+      "name": "Telecommunication",
       "count": 2,
       "stock_share": 2.0,
       "weight": null

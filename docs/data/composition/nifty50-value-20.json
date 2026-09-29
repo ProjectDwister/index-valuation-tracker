@@ -2,7 +2,7 @@
   "slug": "nifty50-value-20",
   "index_name": "Nifty50 Value 20",
   "as_of": null,
-  "retrieved_on": "2026-09-28",
+  "retrieved_on": "2026-09-29",
   "source": "NSE Indices — Index Constituent CSV",
   "source_url": "https://www.niftyindices.com/IndexConstituent/ind_Nifty50_Value20.csv",
   "source_type": "official_nse_indices_constituent_csv",
@@ -28,6 +28,12 @@
       "name": "Coal India Ltd.",
       "symbol": "COALINDIA",
       "sector": "Oil Gas & Consumable Fuels",
+      "weight": null
+    },
+    {
+      "name": "Dr. Reddy's Laboratories Ltd.",
+      "symbol": "DRREDDY",
+      "sector": "Healthcare",
       "weight": null
     },
     {
@@ -125,12 +131,6 @@
       "symbol": "TATASTEEL",
       "sector": "Metals & Mining",
       "weight": null
-    },
-    {
-      "name": "Wipro Ltd.",
-      "symbol": "WIPRO",
-      "sector": "Information Technology",
-      "weight": null
     }
   ],
   "sectors": [
@@ -142,8 +142,8 @@
     },
     {
       "name": "Information Technology",
-      "count": 4,
-      "stock_share": 20.0,
+      "count": 3,
+      "stock_share": 15.0,
       "weight": null
     },
     {
@@ -178,6 +178,12 @@
     },
     {
       "name": "Fast Moving Consumer Goods",
+      "count": 1,
+      "stock_share": 5.0,
+      "weight": null
+    },
+    {
+      "name": "Healthcare",
       "count": 1,
       "stock_share": 5.0,
       "weight": null

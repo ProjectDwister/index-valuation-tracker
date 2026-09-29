@@ -2,7 +2,7 @@
   "slug": "nifty-metal",
   "index_name": "NIFTY Metal",
   "as_of": null,
-  "retrieved_on": "2026-09-28",
+  "retrieved_on": "2026-09-29",
   "source": "NSE Indices — Index Constituent CSV",
   "source_url": "https://www.niftyindices.com/IndexConstituent/ind_niftymetallist.csv",
   "source_type": "official_nse_indices_constituent_csv",
@@ -91,29 +91,29 @@
       "weight": null
     },
     {
-      "name": "Vedanta Ltd.",
-      "symbol": "VEDL",
+      "name": "Vedanta Aluminium Metal Ltd.",
+      "symbol": "VAML",
       "sector": "Metals & Mining",
       "weight": null
     },
     {
-      "name": "Welspun Corp Ltd.",
-      "symbol": "WELCORP",
-      "sector": "Capital Goods",
+      "name": "Vedanta Ltd.",
+      "symbol": "VEDL",
+      "sector": "Metals & Mining",
       "weight": null
     }
   ],
   "sectors": [
     {
       "name": "Metals & Mining",
-      "count": 13,
-      "stock_share": 86.6667,
+      "count": 14,
+      "stock_share": 93.3333,
       "weight": null
     },
     {
       "name": "Capital Goods",
-      "count": 2,
-      "stock_share": 13.3333,
+      "count": 1,
+      "stock_share": 6.6667,
       "weight": null
     }
   ]

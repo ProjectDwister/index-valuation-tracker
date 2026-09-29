@@ -2,7 +2,7 @@
   "slug": "nifty-high-beta-50",
   "index_name": "NIFTY High Beta 50",
   "as_of": null,
-  "retrieved_on": "2026-09-28",
+  "retrieved_on": "2026-09-29",
   "source": "NSE Indices — Index Constituent CSV",
   "source_url": "https://www.niftyindices.com/IndexConstituent/nifty_High_Beta50_Index.csv",
   "source_type": "official_nse_indices_constituent_csv",
@@ -49,6 +49,12 @@
       "weight": null
     },
     {
+      "name": "Ambuja Cements Ltd.",
+      "symbol": "AMBUJACEM",
+      "sector": "Construction Materials",
+      "weight": null
+    },
+    {
       "name": "Angel One Ltd.",
       "symbol": "ANGELONE",
       "sector": "Financial Services",
@@ -67,6 +73,12 @@
       "weight": null
     },
     {
+      "name": "Bajaj Finance Ltd.",
+      "symbol": "BAJFINANCE",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
       "name": "Bandhan Bank Ltd.",
       "symbol": "BANDHANBNK",
       "sector": "Financial Services",
@@ -75,6 +87,12 @@
     {
       "name": "Bank of India",
       "symbol": "BANKINDIA",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Bank of Maharashtra",
+      "symbol": "MAHABANK",
       "sector": "Financial Services",
       "weight": null
     },
@@ -115,6 +133,12 @@
       "weight": null
     },
     {
+      "name": "GMR Airports Ltd.",
+      "symbol": "GMRAIRPORT",
+      "sector": "Services",
+      "weight": null
+    },
+    {
       "name": "Godrej Properties Ltd.",
       "symbol": "GODREJPROP",
       "sector": "Realty",
@@ -139,12 +163,6 @@
       "weight": null
     },
     {
-      "name": "Housing & Urban Development Corporation Ltd.",
-      "symbol": "HUDCO",
-      "sector": "Financial Services",
-      "weight": null
-    },
-    {
       "name": "IIFL Finance Ltd.",
       "symbol": "IIFL",
       "sector": "Financial Services",
@@ -153,12 +171,6 @@
     {
       "name": "Indian Railway Finance Corporation Ltd.",
       "symbol": "IRFC",
-      "sector": "Financial Services",
-      "weight": null
-    },
-    {
-      "name": "Indian Renewable Energy Development Agency Ltd.",
-      "symbol": "IREDA",
       "sector": "Financial Services",
       "weight": null
     },
@@ -193,6 +205,12 @@
       "weight": null
     },
     {
+      "name": "Larsen & Toubro Ltd.",
+      "symbol": "LT",
+      "sector": "Construction",
+      "weight": null
+    },
+    {
       "name": "Lodha Developers Ltd.",
       "symbol": "LODHA",
       "sector": "Realty",
@@ -217,21 +235,9 @@
       "weight": null
     },
     {
-      "name": "Motilal Oswal Financial Services Ltd.",
-      "symbol": "MOTILALOFS",
-      "sector": "Financial Services",
-      "weight": null
-    },
-    {
-      "name": "Multi Commodity Exchange of India Ltd.",
-      "symbol": "MCX",
-      "sector": "Financial Services",
-      "weight": null
-    },
-    {
-      "name": "NBCC (India) Ltd.",
-      "symbol": "NBCC",
-      "sector": "Construction",
+      "name": "MTAR Technologies Ltd.",
+      "symbol": "MTARTECH",
+      "sector": "Capital Goods",
       "weight": null
     },
     {
@@ -249,12 +255,6 @@
     {
       "name": "PNB Housing Finance Ltd.",
       "symbol": "PNBHOUSING",
-      "sector": "Financial Services",
-      "weight": null
-    },
-    {
-      "name": "Power Finance Corporation Ltd.",
-      "symbol": "PFC",
       "sector": "Financial Services",
       "weight": null
     },
@@ -277,6 +277,12 @@
       "weight": null
     },
     {
+      "name": "Redington Ltd.",
+      "symbol": "REDINGTON",
+      "sector": "Services",
+      "weight": null
+    },
+    {
       "name": "Samvardhana Motherson International Ltd.",
       "symbol": "MOTHERSON",
       "sector": "Automobile and Auto Components",
@@ -289,15 +295,9 @@
       "weight": null
     },
     {
-      "name": "Tata Steel Ltd.",
-      "symbol": "TATASTEEL",
-      "sector": "Metals & Mining",
-      "weight": null
-    },
-    {
-      "name": "Ujjivan Small Finance Bank Ltd.",
-      "symbol": "UJJIVANSFB",
-      "sector": "Financial Services",
+      "name": "Tata Motors Passenger Vehicles Ltd.",
+      "symbol": "TMPV",
+      "sector": "Automobile and Auto Components",
       "weight": null
     },
     {
@@ -316,14 +316,14 @@
   "sectors": [
     {
       "name": "Financial Services",
-      "count": 25,
-      "stock_share": 50.0,
+      "count": 21,
+      "stock_share": 42.0,
       "weight": null
     },
     {
       "name": "Capital Goods",
-      "count": 5,
-      "stock_share": 10.0,
+      "count": 6,
+      "stock_share": 12.0,
       "weight": null
     },
     {
@@ -333,25 +333,31 @@
       "weight": null
     },
     {
+      "name": "Services",
+      "count": 4,
+      "stock_share": 8.0,
+      "weight": null
+    },
+    {
+      "name": "Automobile and Auto Components",
+      "count": 3,
+      "stock_share": 6.0,
+      "weight": null
+    },
+    {
       "name": "Consumer Durables",
       "count": 3,
       "stock_share": 6.0,
       "weight": null
     },
     {
-      "name": "Metals & Mining",
-      "count": 3,
-      "stock_share": 6.0,
-      "weight": null
-    },
-    {
-      "name": "Automobile and Auto Components",
+      "name": "Construction",
       "count": 2,
       "stock_share": 4.0,
       "weight": null
     },
     {
-      "name": "Construction",
+      "name": "Metals & Mining",
       "count": 2,
       "stock_share": 4.0,
       "weight": null
@@ -363,9 +369,9 @@
       "weight": null
     },
     {
-      "name": "Services",
-      "count": 2,
-      "stock_share": 4.0,
+      "name": "Construction Materials",
+      "count": 1,
+      "stock_share": 2.0,
       "weight": null
     },
     {

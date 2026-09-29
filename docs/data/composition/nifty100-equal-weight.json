@@ -2,7 +2,7 @@
   "slug": "nifty100-equal-weight",
   "index_name": "Nifty100 Equal Weight",
   "as_of": null,
-  "retrieved_on": "2026-09-28",
+  "retrieved_on": "2026-09-29",
   "source": "NSE Indices — Index Constituent CSV",
   "source_url": "https://www.niftyindices.com/IndexConstituent/ind_nifty100list.csv",
   "source_type": "official_nse_indices_constituent_csv",
@@ -139,6 +139,12 @@
       "weight": null
     },
     {
+      "name": "BSE Ltd.",
+      "symbol": "BSE",
+      "sector": "Financial Services",
+      "weight": null
+    },
+    {
       "name": "Canara Bank",
       "symbol": "CANBK",
       "sector": "Financial Services",
@@ -271,6 +277,12 @@
       "weight": null
     },
     {
+      "name": "Hitachi Energy India Ltd.",
+      "symbol": "POWERINDIA",
+      "sector": "Capital Goods",
+      "weight": null
+    },
+    {
       "name": "Hyundai Motor India Ltd.",
       "symbol": "HYUNDAI",
       "sector": "Automobile and Auto Components",
@@ -280,12 +292,6 @@
       "name": "ICICI Bank Ltd.",
       "symbol": "ICICIBANK",
       "sector": "Financial Services",
-      "weight": null
-    },
-    {
-      "name": "Indian Hotels Co. Ltd.",
-      "symbol": "INDHOTEL",
-      "sector": "Consumer Services",
       "weight": null
     },
     {
@@ -349,12 +355,6 @@
       "weight": null
     },
     {
-      "name": "Lodha Developers Ltd.",
-      "symbol": "LODHA",
-      "sector": "Realty",
-      "weight": null
-    },
-    {
       "name": "LTM Ltd.",
       "symbol": "LTM",
       "sector": "Information Technology",
@@ -415,6 +415,12 @@
       "weight": null
     },
     {
+      "name": "Polycab India Ltd.",
+      "symbol": "POLYCAB",
+      "sector": "Capital Goods",
+      "weight": null
+    },
+    {
       "name": "Power Finance Corporation Ltd.",
       "symbol": "PFC",
       "sector": "Financial Services",
@@ -429,12 +435,6 @@
     {
       "name": "Punjab National Bank",
       "symbol": "PNB",
-      "sector": "Financial Services",
-      "weight": null
-    },
-    {
-      "name": "REC Ltd.",
-      "symbol": "RECLTD",
       "sector": "Financial Services",
       "weight": null
     },
@@ -454,12 +454,6 @@
       "name": "SBI Life Insurance Company Ltd.",
       "symbol": "SBILIFE",
       "sector": "Financial Services",
-      "weight": null
-    },
-    {
-      "name": "Shree Cement Ltd.",
-      "symbol": "SHREECEM",
-      "sector": "Construction Materials",
       "weight": null
     },
     {
@@ -583,21 +577,27 @@
       "weight": null
     },
     {
-      "name": "United Spirits Ltd.",
-      "symbol": "UNITDSPR",
-      "sector": "Fast Moving Consumer Goods",
-      "weight": null
-    },
-    {
       "name": "Varun Beverages Ltd.",
       "symbol": "VBL",
       "sector": "Fast Moving Consumer Goods",
       "weight": null
     },
     {
+      "name": "Vedanta Aluminium Metal Ltd.",
+      "symbol": "VAML",
+      "sector": "Metals & Mining",
+      "weight": null
+    },
+    {
       "name": "Vedanta Ltd.",
       "symbol": "VEDL",
       "sector": "Metals & Mining",
+      "weight": null
+    },
+    {
+      "name": "Vodafone Idea Ltd.",
+      "symbol": "IDEA",
+      "sector": "Telecommunication",
       "weight": null
     },
     {
@@ -621,21 +621,15 @@
       "weight": null
     },
     {
+      "name": "Capital Goods",
+      "count": 11,
+      "stock_share": 11.0,
+      "weight": null
+    },
+    {
       "name": "Automobile and Auto Components",
       "count": 9,
       "stock_share": 9.0,
-      "weight": null
-    },
-    {
-      "name": "Capital Goods",
-      "count": 9,
-      "stock_share": 9.0,
-      "weight": null
-    },
-    {
-      "name": "Fast Moving Consumer Goods",
-      "count": 8,
-      "stock_share": 8.0,
       "weight": null
     },
     {
@@ -646,6 +640,12 @@
     },
     {
       "name": "Metals & Mining",
+      "count": 8,
+      "stock_share": 8.0,
+      "weight": null
+    },
+    {
+      "name": "Fast Moving Consumer Goods",
       "count": 7,
       "stock_share": 7.0,
       "weight": null
@@ -670,14 +670,14 @@
     },
     {
       "name": "Construction Materials",
-      "count": 4,
-      "stock_share": 4.0,
+      "count": 3,
+      "stock_share": 3.0,
       "weight": null
     },
     {
       "name": "Consumer Services",
-      "count": 4,
-      "stock_share": 4.0,
+      "count": 3,
+      "stock_share": 3.0,
       "weight": null
     },
     {
@@ -693,13 +693,13 @@
       "weight": null
     },
     {
-      "name": "Realty",
+      "name": "Services",
       "count": 2,
       "stock_share": 2.0,
       "weight": null
     },
     {
-      "name": "Services",
+      "name": "Telecommunication",
       "count": 2,
       "stock_share": 2.0,
       "weight": null
@@ -711,7 +711,7 @@
       "weight": null
     },
     {
-      "name": "Telecommunication",
+      "name": "Realty",
       "count": 1,
       "stock_share": 1.0,
       "weight": null

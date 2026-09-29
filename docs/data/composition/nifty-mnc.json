@@ -2,7 +2,7 @@
   "slug": "nifty-mnc",
   "index_name": "NIFTY Mnc",
   "as_of": null,
-  "retrieved_on": "2026-09-28",
+  "retrieved_on": "2026-09-29",
   "source": "NSE Indices — Index Constituent CSV",
   "source_url": "https://www.niftyindices.com/IndexConstituent/ind_niftymnclist.csv",
   "source_type": "official_nse_indices_constituent_csv",
@@ -12,12 +12,6 @@
   "top10_weight": null,
   "coverage_note": "The official constituent file lists members but does not publish usable stock weights.",
   "holdings": [
-    {
-      "name": "3M India Ltd.",
-      "symbol": "3MINDIA",
-      "sector": "Diversified",
-      "weight": null
-    },
     {
       "name": "ABB India Ltd.",
       "symbol": "ABB",
@@ -67,12 +61,6 @@
       "weight": null
     },
     {
-      "name": "Cohance Lifesciences Ltd.",
-      "symbol": "COHANCE",
-      "sector": "Healthcare",
-      "weight": null
-    },
-    {
       "name": "Colgate Palmolive (India) Ltd.",
       "symbol": "COLPAL",
       "sector": "Fast Moving Consumer Goods",
@@ -118,6 +106,12 @@
       "name": "Hyundai Motor India Ltd.",
       "symbol": "HYUNDAI",
       "sector": "Automobile and Auto Components",
+      "weight": null
+    },
+    {
+      "name": "LG Electronics India Ltd.",
+      "symbol": "LGEINDIA",
+      "sector": "Consumer Durables",
       "weight": null
     },
     {
@@ -187,6 +181,12 @@
       "weight": null
     },
     {
+      "name": "Vedanta Aluminium Metal Ltd.",
+      "symbol": "VAML",
+      "sector": "Metals & Mining",
+      "weight": null
+    },
+    {
       "name": "Vedanta Ltd.",
       "symbol": "VEDL",
       "sector": "Metals & Mining",
@@ -213,13 +213,19 @@
       "weight": null
     },
     {
-      "name": "Healthcare",
-      "count": 3,
-      "stock_share": 10.0,
+      "name": "Financial Services",
+      "count": 2,
+      "stock_share": 6.6667,
       "weight": null
     },
     {
-      "name": "Financial Services",
+      "name": "Healthcare",
+      "count": 2,
+      "stock_share": 6.6667,
+      "weight": null
+    },
+    {
+      "name": "Metals & Mining",
       "count": 2,
       "stock_share": 6.6667,
       "weight": null
@@ -237,19 +243,13 @@
       "weight": null
     },
     {
-      "name": "Diversified",
+      "name": "Consumer Durables",
       "count": 1,
       "stock_share": 3.3333,
       "weight": null
     },
     {
       "name": "Information Technology",
-      "count": 1,
-      "stock_share": 3.3333,
-      "weight": null
-    },
-    {
-      "name": "Metals & Mining",
       "count": 1,
       "stock_share": 3.3333,
       "weight": null

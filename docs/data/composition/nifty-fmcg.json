@@ -2,7 +2,7 @@
   "slug": "nifty-fmcg",
   "index_name": "NIFTY FMCG",
   "as_of": null,
-  "retrieved_on": "2026-09-28",
+  "retrieved_on": "2026-09-29",
   "source": "NSE Indices — Index Constituent CSV",
   "source_url": "https://www.niftyindices.com/IndexConstituent/ind_niftyfmcglist.csv",
   "source_type": "official_nse_indices_constituent_csv",
@@ -31,8 +31,8 @@
       "weight": null
     },
     {
-      "name": "Emami Ltd.",
-      "symbol": "EMAMILTD",
+      "name": "Godfrey Phillips India Ltd.",
+      "symbol": "GODFRYPHLP",
       "sector": "Fast Moving Consumer Goods",
       "weight": null
     },

@@ -2,7 +2,7 @@
   "slug": "nifty-infrastructure",
   "index_name": "NIFTY Infrastructure",
   "as_of": null,
-  "retrieved_on": "2026-09-28",
+  "retrieved_on": "2026-09-29",
   "source": "NSE Indices — Index Constituent CSV",
   "source_url": "https://www.niftyindices.com/IndexConstituent/ind_niftyinfralist.csv",
   "source_type": "official_nse_indices_constituent_csv",
@@ -25,9 +25,9 @@
       "weight": null
     },
     {
-      "name": "Ambuja Cements Ltd.",
-      "symbol": "AMBUJACEM",
-      "sector": "Construction Materials",
+      "name": "Adani Power Ltd.",
+      "symbol": "ADANIPOWER",
+      "sector": "Power",
       "weight": null
     },
     {
@@ -88,6 +88,12 @@
       "name": "GAIL (India) Ltd.",
       "symbol": "GAIL",
       "sector": "Oil Gas & Consumable Fuels",
+      "weight": null
+    },
+    {
+      "name": "GE Vernova T&D India Ltd.",
+      "symbol": "GVT&D",
+      "sector": "Capital Goods",
       "weight": null
     },
     {
@@ -169,12 +175,6 @@
       "weight": null
     },
     {
-      "name": "Shree Cement Ltd.",
-      "symbol": "SHREECEM",
-      "sector": "Construction Materials",
-      "weight": null
-    },
-    {
       "name": "Suzlon Energy Ltd.",
       "symbol": "SUZLON",
       "sector": "Capital Goods",
@@ -202,20 +202,14 @@
     },
     {
       "name": "Capital Goods",
-      "count": 4,
-      "stock_share": 13.3333,
-      "weight": null
-    },
-    {
-      "name": "Construction Materials",
-      "count": 4,
-      "stock_share": 13.3333,
+      "count": 5,
+      "stock_share": 16.6667,
       "weight": null
     },
     {
       "name": "Power",
-      "count": 4,
-      "stock_share": 13.3333,
+      "count": 5,
+      "stock_share": 16.6667,
       "weight": null
     },
     {
@@ -226,6 +220,12 @@
     },
     {
       "name": "Automobile and Auto Components",
+      "count": 2,
+      "stock_share": 6.6667,
+      "weight": null
+    },
+    {
+      "name": "Construction Materials",
       "count": 2,
       "stock_share": 6.6667,
       "weight": null

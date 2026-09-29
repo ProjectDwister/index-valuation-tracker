@@ -2,7 +2,7 @@
   "slug": "nifty-pse",
   "index_name": "NIFTY Pse",
   "as_of": null,
-  "retrieved_on": "2026-09-28",
+  "retrieved_on": "2026-09-29",
   "source": "NSE Indices — Index Constituent CSV",
   "source_url": "https://www.niftyindices.com/IndexConstituent/ind_niftypselist.csv",
   "source_type": "official_nse_indices_constituent_csv",
@@ -67,15 +67,15 @@
       "weight": null
     },
     {
-      "name": "Indian Railway Catering And Tourism Corporation Ltd.",
-      "symbol": "IRCTC",
-      "sector": "Consumer Services",
-      "weight": null
-    },
-    {
       "name": "Indian Railway Finance Corporation Ltd.",
       "symbol": "IRFC",
       "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "National Aluminium Co. Ltd.",
+      "symbol": "NATIONALUM",
+      "sector": "Metals & Mining",
       "weight": null
     },
     {
@@ -121,15 +121,15 @@
       "weight": null
     },
     {
-      "name": "Rail Vikas Nigam Ltd.",
-      "symbol": "RVNL",
-      "sector": "Construction",
-      "weight": null
-    },
-    {
       "name": "REC Ltd.",
       "symbol": "RECLTD",
       "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Steel Authority of India Ltd.",
+      "symbol": "SAIL",
+      "sector": "Metals & Mining",
       "weight": null
     }
   ],
@@ -153,27 +153,15 @@
       "weight": null
     },
     {
-      "name": "Power",
+      "name": "Metals & Mining",
       "count": 3,
       "stock_share": 15.0,
       "weight": null
     },
     {
-      "name": "Construction",
-      "count": 1,
-      "stock_share": 5.0,
-      "weight": null
-    },
-    {
-      "name": "Consumer Services",
-      "count": 1,
-      "stock_share": 5.0,
-      "weight": null
-    },
-    {
-      "name": "Metals & Mining",
-      "count": 1,
-      "stock_share": 5.0,
+      "name": "Power",
+      "count": 3,
+      "stock_share": 15.0,
       "weight": null
     },
     {

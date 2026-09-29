@@ -2,7 +2,7 @@
   "slug": "nifty-alpha-50",
   "index_name": "NIFTY Alpha 50",
   "as_of": null,
-  "retrieved_on": "2026-09-28",
+  "retrieved_on": "2026-09-29",
   "source": "NSE Indices — Index Constituent CSV",
   "source_url": "https://www.niftyindices.com/IndexConstituent/ind_nifty_Alpha_Index.csv",
   "source_type": "official_nse_indices_constituent_csv",
@@ -33,18 +33,6 @@
     {
       "name": "Aditya Birla Capital Ltd.",
       "symbol": "ABCAPITAL",
-      "sector": "Financial Services",
-      "weight": null
-    },
-    {
-      "name": "Amber Enterprises India Ltd.",
-      "symbol": "AMBER",
-      "sector": "Consumer Durables",
-      "weight": null
-    },
-    {
-      "name": "Anand Rathi Wealth Ltd.",
-      "symbol": "ANANDRATHI",
       "sector": "Financial Services",
       "weight": null
     },
@@ -109,9 +97,9 @@
       "weight": null
     },
     {
-      "name": "Delhivery Ltd.",
-      "symbol": "DELHIVERY",
-      "sector": "Services",
+      "name": "Cupid Ltd.",
+      "symbol": "CUPID",
+      "sector": "Fast Moving Consumer Goods",
       "weight": null
     },
     {
@@ -124,12 +112,6 @@
       "name": "Federal Bank Ltd.",
       "symbol": "FEDERALBNK",
       "sector": "Financial Services",
-      "weight": null
-    },
-    {
-      "name": "Fortis Healthcare Ltd.",
-      "symbol": "FORTIS",
-      "sector": "Healthcare",
       "weight": null
     },
     {
@@ -151,9 +133,9 @@
       "weight": null
     },
     {
-      "name": "HDFC Asset Management Company Ltd.",
-      "symbol": "HDFCAMC",
-      "sector": "Financial Services",
+      "name": "HFCL Ltd.",
+      "symbol": "HFCL",
+      "sector": "Telecommunication",
       "weight": null
     },
     {
@@ -193,6 +175,12 @@
       "weight": null
     },
     {
+      "name": "Kirloskar Oil Eng Ltd.",
+      "symbol": "KIRLOSENG",
+      "sector": "Capital Goods",
+      "weight": null
+    },
+    {
       "name": "L&T Finance Ltd.",
       "symbol": "LTF",
       "sector": "Financial Services",
@@ -211,20 +199,14 @@
       "weight": null
     },
     {
-      "name": "Max Financial Services Ltd.",
-      "symbol": "MFSL",
-      "sector": "Financial Services",
+      "name": "MTAR Technologies Ltd.",
+      "symbol": "MTARTECH",
+      "sector": "Capital Goods",
       "weight": null
     },
     {
       "name": "Multi Commodity Exchange of India Ltd.",
       "symbol": "MCX",
-      "sector": "Financial Services",
-      "weight": null
-    },
-    {
-      "name": "Muthoot Finance Ltd.",
-      "symbol": "MUTHOOTFIN",
       "sector": "Financial Services",
       "weight": null
     },
@@ -289,6 +271,18 @@
       "weight": null
     },
     {
+      "name": "Sterlite Technologies Ltd.",
+      "symbol": "STLTECH",
+      "sector": "Telecommunication",
+      "weight": null
+    },
+    {
+      "name": "TD Power Systems Ltd.",
+      "symbol": "TDPOWERSYS",
+      "sector": "Capital Goods",
+      "weight": null
+    },
+    {
       "name": "TVS Motor Company Ltd.",
       "symbol": "TVSMOTOR",
       "sector": "Automobile and Auto Components",
@@ -311,19 +305,25 @@
       "symbol": "IDEA",
       "sector": "Telecommunication",
       "weight": null
+    },
+    {
+      "name": "Welspun Corp Ltd.",
+      "symbol": "WELCORP",
+      "sector": "Capital Goods",
+      "weight": null
     }
   ],
   "sectors": [
     {
       "name": "Financial Services",
-      "count": 21,
-      "stock_share": 42.0,
+      "count": 17,
+      "stock_share": 34.0,
       "weight": null
     },
     {
       "name": "Capital Goods",
-      "count": 7,
-      "stock_share": 14.0,
+      "count": 11,
+      "stock_share": 22.0,
       "weight": null
     },
     {
@@ -340,12 +340,24 @@
     },
     {
       "name": "Healthcare",
-      "count": 4,
-      "stock_share": 8.0,
+      "count": 3,
+      "stock_share": 6.0,
+      "weight": null
+    },
+    {
+      "name": "Telecommunication",
+      "count": 3,
+      "stock_share": 6.0,
       "weight": null
     },
     {
       "name": "Chemicals",
+      "count": 2,
+      "stock_share": 4.0,
+      "weight": null
+    },
+    {
+      "name": "Fast Moving Consumer Goods",
       "count": 2,
       "stock_share": 4.0,
       "weight": null
@@ -357,31 +369,7 @@
       "weight": null
     },
     {
-      "name": "Consumer Durables",
-      "count": 1,
-      "stock_share": 2.0,
-      "weight": null
-    },
-    {
       "name": "Consumer Services",
-      "count": 1,
-      "stock_share": 2.0,
-      "weight": null
-    },
-    {
-      "name": "Fast Moving Consumer Goods",
-      "count": 1,
-      "stock_share": 2.0,
-      "weight": null
-    },
-    {
-      "name": "Services",
-      "count": 1,
-      "stock_share": 2.0,
-      "weight": null
-    },
-    {
-      "name": "Telecommunication",
       "count": 1,
       "stock_share": 2.0,
       "weight": null

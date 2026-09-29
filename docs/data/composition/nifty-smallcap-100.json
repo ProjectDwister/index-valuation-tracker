@@ -2,7 +2,7 @@
   "slug": "nifty-smallcap-100",
   "index_name": "NIFTY Smallcap 100",
   "as_of": null,
-  "retrieved_on": "2026-09-28",
+  "retrieved_on": "2026-09-29",
   "source": "NSE Indices — Index Constituent CSV",
   "source_url": "https://www.niftyindices.com/IndexConstituent/ind_niftysmallcap100list.csv",
   "source_type": "official_nse_indices_constituent_csv",
@@ -19,21 +19,15 @@
       "weight": null
     },
     {
-      "name": "Aditya Birla Real Estate Ltd.",
-      "symbol": "ABREL",
-      "sector": "Realty",
+      "name": "Acutaas Chemicals Ltd.",
+      "symbol": "ACUTAAS",
+      "sector": "Healthcare",
       "weight": null
     },
     {
       "name": "Aegis Logistics Ltd.",
       "symbol": "AEGISLOG",
       "sector": "Oil Gas & Consumable Fuels",
-      "weight": null
-    },
-    {
-      "name": "Afcons Infrastructure Ltd.",
-      "symbol": "AFCONS",
-      "sector": "Construction",
       "weight": null
     },
     {
@@ -73,15 +67,9 @@
       "weight": null
     },
     {
-      "name": "Aptus Value Housing Finance India Ltd.",
-      "symbol": "APTUS",
-      "sector": "Financial Services",
-      "weight": null
-    },
-    {
-      "name": "Aster DM Quality Care Ltd.",
-      "symbol": "ASTERDM",
-      "sector": "Healthcare",
+      "name": "Apollo Tyres Ltd.",
+      "symbol": "APOLLOTYRE",
+      "sector": "Automobile and Auto Components",
       "weight": null
     },
     {
@@ -91,9 +79,21 @@
       "weight": null
     },
     {
+      "name": "Avanti Feeds Ltd.",
+      "symbol": "AVANTIFEED",
+      "sector": "Fast Moving Consumer Goods",
+      "weight": null
+    },
+    {
       "name": "Bandhan Bank Ltd.",
       "symbol": "BANDHANBNK",
       "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Belrise Industries Ltd.",
+      "symbol": "BELRISE",
+      "sector": "Automobile and Auto Components",
       "weight": null
     },
     {
@@ -103,15 +103,9 @@
       "weight": null
     },
     {
-      "name": "BLS International Services Ltd.",
-      "symbol": "BLS",
-      "sector": "Consumer Services",
-      "weight": null
-    },
-    {
-      "name": "Brainbees Solutions Ltd.",
-      "symbol": "FIRSTCRY",
-      "sector": "Consumer Services",
+      "name": "Bharat Coking Coal Ltd.",
+      "symbol": "BHARATCOAL",
+      "sector": "Oil Gas & Consumable Fuels",
       "weight": null
     },
     {
@@ -127,9 +121,9 @@
       "weight": null
     },
     {
-      "name": "Castrol India Ltd.",
-      "symbol": "CASTROLIND",
-      "sector": "Oil Gas & Consumable Fuels",
+      "name": "Cemindia Projects Ltd.",
+      "symbol": "CEMPRO",
+      "sector": "Construction",
       "weight": null
     },
     {
@@ -139,15 +133,21 @@
       "weight": null
     },
     {
+      "name": "Central Mine Planning & Design Institute Ltd.",
+      "symbol": "CMPDI",
+      "sector": "Services",
+      "weight": null
+    },
+    {
       "name": "CESC Ltd.",
       "symbol": "CESC",
       "sector": "Power",
       "weight": null
     },
     {
-      "name": "Chambal Fertilizers & Chemicals Ltd.",
-      "symbol": "CHAMBLFERT",
-      "sector": "Chemicals",
+      "name": "Chennai Petroleum Corporation Ltd.",
+      "symbol": "CHENNPETRO",
+      "sector": "Oil Gas & Consumable Fuels",
       "weight": null
     },
     {
@@ -187,6 +187,12 @@
       "weight": null
     },
     {
+      "name": "Cupid Ltd.",
+      "symbol": "CUPID",
+      "sector": "Fast Moving Consumer Goods",
+      "weight": null
+    },
+    {
       "name": "Data Patterns (India) Ltd.",
       "symbol": "DATAPATTNS",
       "sector": "Capital Goods",
@@ -217,21 +223,27 @@
       "weight": null
     },
     {
+      "name": "Emmvee Photovoltaic Power Ltd.",
+      "symbol": "EMMVEE",
+      "sector": "Capital Goods",
+      "weight": null
+    },
+    {
       "name": "Firstsource Solutions Ltd.",
       "symbol": "FSL",
       "sector": "Services",
       "weight": null
     },
     {
-      "name": "Five-Star Business Finance Ltd.",
-      "symbol": "FIVESTAR",
-      "sector": "Financial Services",
-      "weight": null
-    },
-    {
       "name": "Force Motors Ltd.",
       "symbol": "FORCEMOT",
       "sector": "Automobile and Auto Components",
+      "weight": null
+    },
+    {
+      "name": "Gallantt Ispat Ltd.",
+      "symbol": "GALLANTT",
+      "sector": "Capital Goods",
       "weight": null
     },
     {
@@ -271,15 +283,15 @@
       "weight": null
     },
     {
-      "name": "Himadri Speciality Chemical Ltd.",
-      "symbol": "HSCL",
-      "sector": "Chemicals",
+      "name": "HFCL Ltd.",
+      "symbol": "HFCL",
+      "sector": "Telecommunication",
       "weight": null
     },
     {
-      "name": "Hindustan Copper Ltd.",
-      "symbol": "HINDCOPPER",
-      "sector": "Metals & Mining",
+      "name": "Himadri Speciality Chemical Ltd.",
+      "symbol": "HSCL",
+      "sector": "Chemicals",
       "weight": null
     },
     {
@@ -319,12 +331,6 @@
       "weight": null
     },
     {
-      "name": "IRCON International Ltd.",
-      "symbol": "IRCON",
-      "sector": "Construction",
-      "weight": null
-    },
-    {
       "name": "ITI Ltd.",
       "symbol": "ITI",
       "sector": "Telecommunication",
@@ -334,12 +340,6 @@
       "name": "JBM Auto Ltd.",
       "symbol": "JBMA",
       "sector": "Automobile and Auto Components",
-      "weight": null
-    },
-    {
-      "name": "JM Financial Ltd.",
-      "symbol": "JMFINANCIL",
-      "sector": "Financial Services",
       "weight": null
     },
     {
@@ -379,6 +379,18 @@
       "weight": null
     },
     {
+      "name": "Kirloskar Oil Eng Ltd.",
+      "symbol": "KIRLOSENG",
+      "sector": "Capital Goods",
+      "weight": null
+    },
+    {
+      "name": "KPIT Technologies Ltd.",
+      "symbol": "KPITTECH",
+      "sector": "Information Technology",
+      "weight": null
+    },
+    {
       "name": "Manappuram Finance Ltd.",
       "symbol": "MANAPPURAM",
       "sector": "Financial Services",
@@ -391,15 +403,9 @@
       "weight": null
     },
     {
-      "name": "Meesho Ltd.",
-      "symbol": "MEESHO",
-      "sector": "Consumer Services",
-      "weight": null
-    },
-    {
-      "name": "Narayana Hrudayalaya Ltd.",
-      "symbol": "NH",
-      "sector": "Healthcare",
+      "name": "MTAR Technologies Ltd.",
+      "symbol": "MTARTECH",
+      "sector": "Capital Goods",
       "weight": null
     },
     {
@@ -445,6 +451,12 @@
       "weight": null
     },
     {
+      "name": "Onesource Specialty Pharma Ltd.",
+      "symbol": "ONESOURCE",
+      "sector": "Healthcare",
+      "weight": null
+    },
+    {
       "name": "PG Electroplast Ltd.",
       "symbol": "PGEL",
       "sector": "Consumer Durables",
@@ -459,12 +471,6 @@
     {
       "name": "Pine Labs Ltd.",
       "symbol": "PINELABS",
-      "sector": "Financial Services",
-      "weight": null
-    },
-    {
-      "name": "Piramal Finance Ltd.",
-      "symbol": "PIRAMALFIN",
       "sector": "Financial Services",
       "weight": null
     },
@@ -487,6 +493,12 @@
       "weight": null
     },
     {
+      "name": "R R Kabel Ltd.",
+      "symbol": "RRKABEL",
+      "sector": "Capital Goods",
+      "weight": null
+    },
+    {
       "name": "RBL Bank Ltd.",
       "symbol": "RBLBANK",
       "sector": "Financial Services",
@@ -496,12 +508,6 @@
       "name": "Redington Ltd.",
       "symbol": "REDINGTON",
       "sector": "Services",
-      "weight": null
-    },
-    {
-      "name": "Reliance Power Ltd.",
-      "symbol": "RPOWER",
-      "sector": "Power",
       "weight": null
     },
     {
@@ -517,15 +523,9 @@
       "weight": null
     },
     {
-      "name": "Sarda Energy and Minerals Ltd.",
-      "symbol": "SARDAEN",
-      "sector": "Metals & Mining",
-      "weight": null
-    },
-    {
-      "name": "Signatureglobal (India) Ltd.",
-      "symbol": "SIGNATURE",
-      "sector": "Realty",
+      "name": "Sammaan Capital Ltd.",
+      "symbol": "SAMMAANCAP",
+      "sector": "Financial Services",
       "weight": null
     },
     {
@@ -535,15 +535,9 @@
       "weight": null
     },
     {
-      "name": "Star Health and Allied Insurance Company Ltd.",
-      "symbol": "STARHEALTH",
-      "sector": "Financial Services",
-      "weight": null
-    },
-    {
-      "name": "Swan Corp Ltd.",
-      "symbol": "SWANCORP",
-      "sector": "Chemicals",
+      "name": "Sterlite Technologies Ltd.",
+      "symbol": "STLTECH",
+      "sector": "Telecommunication",
       "weight": null
     },
     {
@@ -553,9 +547,21 @@
       "weight": null
     },
     {
+      "name": "Syrma SGS Technology Ltd.",
+      "symbol": "SYRMA",
+      "sector": "Capital Goods",
+      "weight": null
+    },
+    {
       "name": "Tata Chemicals Ltd.",
       "symbol": "TATACHEM",
       "sector": "Chemicals",
+      "weight": null
+    },
+    {
+      "name": "Tata Elxsi Ltd.",
+      "symbol": "TATAELXSI",
+      "sector": "Information Technology",
       "weight": null
     },
     {
@@ -565,15 +571,15 @@
       "weight": null
     },
     {
-      "name": "Tenneco Clean Air India Ltd.",
-      "symbol": "TENNIND",
-      "sector": "Automobile and Auto Components",
+      "name": "TD Power Systems Ltd.",
+      "symbol": "TDPOWERSYS",
+      "sector": "Capital Goods",
       "weight": null
     },
     {
-      "name": "The Ramco Cements Ltd.",
-      "symbol": "RAMCOCEM",
-      "sector": "Construction Materials",
+      "name": "Tenneco Clean Air India Ltd.",
+      "symbol": "TENNIND",
+      "sector": "Automobile and Auto Components",
       "weight": null
     },
     {
@@ -589,15 +595,15 @@
       "weight": null
     },
     {
-      "name": "Welspun Corp Ltd.",
-      "symbol": "WELCORP",
-      "sector": "Capital Goods",
+      "name": "Vedanta Power Ltd.",
+      "symbol": "VEDPOWER",
+      "sector": "Power",
       "weight": null
     },
     {
-      "name": "Whirlpool of India Ltd.",
-      "symbol": "WHIRLPOOL",
-      "sector": "Consumer Durables",
+      "name": "Welspun Corp Ltd.",
+      "symbol": "WELCORP",
+      "sector": "Capital Goods",
       "weight": null
     },
     {
@@ -605,19 +611,19 @@
       "symbol": "WOCKPHARMA",
       "sector": "Healthcare",
       "weight": null
-    },
-    {
-      "name": "Zensar Technolgies Ltd.",
-      "symbol": "ZENSARTECH",
-      "sector": "Information Technology",
-      "weight": null
     }
   ],
   "sectors": [
     {
       "name": "Financial Services",
-      "count": 25,
-      "stock_share": 25.0,
+      "count": 21,
+      "stock_share": 21.0,
+      "weight": null
+    },
+    {
+      "name": "Capital Goods",
+      "count": 17,
+      "stock_share": 17.0,
       "weight": null
     },
     {
@@ -627,73 +633,61 @@
       "weight": null
     },
     {
-      "name": "Capital Goods",
-      "count": 10,
-      "stock_share": 10.0,
+      "name": "Automobile and Auto Components",
+      "count": 9,
+      "stock_share": 9.0,
       "weight": null
     },
     {
-      "name": "Automobile and Auto Components",
+      "name": "Information Technology",
       "count": 7,
       "stock_share": 7.0,
       "weight": null
     },
     {
       "name": "Chemicals",
-      "count": 7,
-      "stock_share": 7.0,
-      "weight": null
-    },
-    {
-      "name": "Consumer Services",
-      "count": 6,
-      "stock_share": 6.0,
-      "weight": null
-    },
-    {
-      "name": "Information Technology",
-      "count": 6,
-      "stock_share": 6.0,
-      "weight": null
-    },
-    {
-      "name": "Construction",
-      "count": 4,
-      "stock_share": 4.0,
-      "weight": null
-    },
-    {
-      "name": "Consumer Durables",
-      "count": 4,
-      "stock_share": 4.0,
+      "count": 5,
+      "stock_share": 5.0,
       "weight": null
     },
     {
       "name": "Oil Gas & Consumable Fuels",
-      "count": 4,
-      "stock_share": 4.0,
-      "weight": null
-    },
-    {
-      "name": "Realty",
-      "count": 4,
-      "stock_share": 4.0,
+      "count": 5,
+      "stock_share": 5.0,
       "weight": null
     },
     {
       "name": "Services",
-      "count": 4,
-      "stock_share": 4.0,
+      "count": 5,
+      "stock_share": 5.0,
       "weight": null
     },
     {
-      "name": "Metals & Mining",
+      "name": "Construction",
       "count": 3,
       "stock_share": 3.0,
       "weight": null
     },
     {
-      "name": "Construction Materials",
+      "name": "Consumer Durables",
+      "count": 3,
+      "stock_share": 3.0,
+      "weight": null
+    },
+    {
+      "name": "Consumer Services",
+      "count": 3,
+      "stock_share": 3.0,
+      "weight": null
+    },
+    {
+      "name": "Telecommunication",
+      "count": 3,
+      "stock_share": 3.0,
+      "weight": null
+    },
+    {
+      "name": "Fast Moving Consumer Goods",
       "count": 2,
       "stock_share": 2.0,
       "weight": null
@@ -705,7 +699,19 @@
       "weight": null
     },
     {
-      "name": "Telecommunication",
+      "name": "Realty",
+      "count": 2,
+      "stock_share": 2.0,
+      "weight": null
+    },
+    {
+      "name": "Construction Materials",
+      "count": 1,
+      "stock_share": 1.0,
+      "weight": null
+    },
+    {
+      "name": "Metals & Mining",
       "count": 1,
       "stock_share": 1.0,
       "weight": null

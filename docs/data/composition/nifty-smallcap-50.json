@@ -2,7 +2,7 @@
   "slug": "nifty-smallcap-50",
   "index_name": "NIFTY Smallcap 50",
   "as_of": null,
-  "retrieved_on": "2026-09-28",
+  "retrieved_on": "2026-09-29",
   "source": "NSE Indices — Index Constituent CSV",
   "source_url": "https://www.niftyindices.com/IndexConstituent/ind_niftysmallcap50list.csv",
   "source_type": "official_nse_indices_constituent_csv",
@@ -12,6 +12,12 @@
   "top10_weight": null,
   "coverage_note": "The official constituent file lists members but does not publish usable stock weights.",
   "holdings": [
+    {
+      "name": "Acutaas Chemicals Ltd.",
+      "symbol": "ACUTAAS",
+      "sector": "Healthcare",
+      "weight": null
+    },
     {
       "name": "Aegis Logistics Ltd.",
       "symbol": "AEGISLOG",
@@ -49,9 +55,15 @@
       "weight": null
     },
     {
-      "name": "Aster DM Quality Care Ltd.",
-      "symbol": "ASTERDM",
-      "sector": "Healthcare",
+      "name": "Apollo Tyres Ltd.",
+      "symbol": "APOLLOTYRE",
+      "sector": "Automobile and Auto Components",
+      "weight": null
+    },
+    {
+      "name": "Ather Energy Ltd.",
+      "symbol": "ATHERENERG",
+      "sector": "Automobile and Auto Components",
       "weight": null
     },
     {
@@ -61,26 +73,8 @@
       "weight": null
     },
     {
-      "name": "Castrol India Ltd.",
-      "symbol": "CASTROLIND",
-      "sector": "Oil Gas & Consumable Fuels",
-      "weight": null
-    },
-    {
       "name": "Central Depository Services (India) Ltd.",
       "symbol": "CDSL",
-      "sector": "Financial Services",
-      "weight": null
-    },
-    {
-      "name": "CESC Ltd.",
-      "symbol": "CESC",
-      "sector": "Power",
-      "weight": null
-    },
-    {
-      "name": "Cholamandalam Financial Holdings Ltd.",
-      "symbol": "CHOLAHLDNG",
       "sector": "Financial Services",
       "weight": null
     },
@@ -88,12 +82,6 @@
       "name": "City Union Bank Ltd.",
       "symbol": "CUB",
       "sector": "Financial Services",
-      "weight": null
-    },
-    {
-      "name": "Cohance Lifesciences Ltd.",
-      "symbol": "COHANCE",
-      "sector": "Healthcare",
       "weight": null
     },
     {
@@ -121,27 +109,27 @@
       "weight": null
     },
     {
-      "name": "Five-Star Business Finance Ltd.",
-      "symbol": "FIVESTAR",
-      "sector": "Financial Services",
-      "weight": null
-    },
-    {
       "name": "Gland Pharma Ltd.",
       "symbol": "GLAND",
       "sector": "Healthcare",
       "weight": null
     },
     {
-      "name": "Himadri Speciality Chemical Ltd.",
-      "symbol": "HSCL",
-      "sector": "Chemicals",
+      "name": "Great Eastern Shipping Co. Ltd.",
+      "symbol": "GESHIP",
+      "sector": "Services",
       "weight": null
     },
     {
-      "name": "Hindustan Copper Ltd.",
-      "symbol": "HINDCOPPER",
-      "sector": "Metals & Mining",
+      "name": "HFCL Ltd.",
+      "symbol": "HFCL",
+      "sector": "Telecommunication",
+      "weight": null
+    },
+    {
+      "name": "Himadri Speciality Chemical Ltd.",
+      "symbol": "HSCL",
+      "sector": "Chemicals",
       "weight": null
     },
     {
@@ -175,15 +163,21 @@
       "weight": null
     },
     {
-      "name": "Kec International Ltd.",
-      "symbol": "KEC",
-      "sector": "Construction",
-      "weight": null
-    },
-    {
       "name": "Kfin Technologies Ltd.",
       "symbol": "KFINTECH",
       "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "Kirloskar Oil Eng Ltd.",
+      "symbol": "KIRLOSENG",
+      "sector": "Capital Goods",
+      "weight": null
+    },
+    {
+      "name": "KPIT Technologies Ltd.",
+      "symbol": "KPITTECH",
+      "sector": "Information Technology",
       "weight": null
     },
     {
@@ -193,9 +187,9 @@
       "weight": null
     },
     {
-      "name": "Narayana Hrudayalaya Ltd.",
-      "symbol": "NH",
-      "sector": "Healthcare",
+      "name": "MTAR Technologies Ltd.",
+      "symbol": "MTARTECH",
+      "sector": "Capital Goods",
       "weight": null
     },
     {
@@ -223,15 +217,15 @@
       "weight": null
     },
     {
-      "name": "PG Electroplast Ltd.",
-      "symbol": "PGEL",
-      "sector": "Consumer Durables",
+      "name": "Onesource Specialty Pharma Ltd.",
+      "symbol": "ONESOURCE",
+      "sector": "Healthcare",
       "weight": null
     },
     {
-      "name": "Piramal Finance Ltd.",
-      "symbol": "PIRAMALFIN",
-      "sector": "Financial Services",
+      "name": "PG Electroplast Ltd.",
+      "symbol": "PGEL",
+      "sector": "Consumer Durables",
       "weight": null
     },
     {
@@ -265,12 +259,6 @@
       "weight": null
     },
     {
-      "name": "Reliance Power Ltd.",
-      "symbol": "RPOWER",
-      "sector": "Power",
-      "weight": null
-    },
-    {
       "name": "Sai Life Sciences Ltd.",
       "symbol": "SAILIFE",
       "sector": "Healthcare",
@@ -295,9 +283,21 @@
       "weight": null
     },
     {
+      "name": "Tata Elxsi Ltd.",
+      "symbol": "TATAELXSI",
+      "sector": "Information Technology",
+      "weight": null
+    },
+    {
       "name": "Tata Technologies Ltd.",
       "symbol": "TATATECH",
       "sector": "Information Technology",
+      "weight": null
+    },
+    {
+      "name": "TD Power Systems Ltd.",
+      "symbol": "TDPOWERSYS",
+      "sector": "Capital Goods",
       "weight": null
     },
     {
@@ -316,20 +316,32 @@
   "sectors": [
     {
       "name": "Financial Services",
-      "count": 16,
-      "stock_share": 32.0,
+      "count": 13,
+      "stock_share": 26.0,
       "weight": null
     },
     {
       "name": "Healthcare",
-      "count": 11,
-      "stock_share": 22.0,
+      "count": 10,
+      "stock_share": 20.0,
       "weight": null
     },
     {
       "name": "Capital Goods",
-      "count": 3,
-      "stock_share": 6.0,
+      "count": 6,
+      "stock_share": 12.0,
+      "weight": null
+    },
+    {
+      "name": "Automobile and Auto Components",
+      "count": 4,
+      "stock_share": 8.0,
+      "weight": null
+    },
+    {
+      "name": "Information Technology",
+      "count": 4,
+      "stock_share": 8.0,
       "weight": null
     },
     {
@@ -345,43 +357,25 @@
       "weight": null
     },
     {
-      "name": "Oil Gas & Consumable Fuels",
+      "name": "Services",
       "count": 3,
       "stock_share": 6.0,
       "weight": null
     },
     {
-      "name": "Automobile and Auto Components",
+      "name": "Oil Gas & Consumable Fuels",
       "count": 2,
       "stock_share": 4.0,
       "weight": null
     },
     {
       "name": "Construction",
-      "count": 2,
-      "stock_share": 4.0,
+      "count": 1,
+      "stock_share": 2.0,
       "weight": null
     },
     {
-      "name": "Information Technology",
-      "count": 2,
-      "stock_share": 4.0,
-      "weight": null
-    },
-    {
-      "name": "Power",
-      "count": 2,
-      "stock_share": 4.0,
-      "weight": null
-    },
-    {
-      "name": "Services",
-      "count": 2,
-      "stock_share": 4.0,
-      "weight": null
-    },
-    {
-      "name": "Metals & Mining",
+      "name": "Telecommunication",
       "count": 1,
       "stock_share": 2.0,
       "weight": null

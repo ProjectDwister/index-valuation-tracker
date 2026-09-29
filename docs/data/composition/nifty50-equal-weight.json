@@ -2,7 +2,7 @@
   "slug": "nifty50-equal-weight",
   "index_name": "Nifty50 Equal Weight",
   "as_of": null,
-  "retrieved_on": "2026-09-28",
+  "retrieved_on": "2026-09-29",
   "source": "NSE Indices — Index Constituent CSV",
   "source_url": "https://www.niftyindices.com/IndexConstituent/ind_Nifty50EqualWeight.csv",
   "source_type": "official_nse_indices_constituent_csv",
@@ -70,6 +70,12 @@
       "name": "Bharti Airtel Ltd.",
       "symbol": "BHARTIARTL",
       "sector": "Telecommunication",
+      "weight": null
+    },
+    {
+      "name": "BSE Ltd.",
+      "symbol": "BSE",
+      "sector": "Financial Services",
       "weight": null
     },
     {
@@ -305,19 +311,13 @@
       "symbol": "ULTRACEMCO",
       "sector": "Construction Materials",
       "weight": null
-    },
-    {
-      "name": "Wipro Ltd.",
-      "symbol": "WIPRO",
-      "sector": "Information Technology",
-      "weight": null
     }
   ],
   "sectors": [
     {
       "name": "Financial Services",
-      "count": 11,
-      "stock_share": 22.0,
+      "count": 12,
+      "stock_share": 24.0,
       "weight": null
     },
     {
@@ -333,13 +333,13 @@
       "weight": null
     },
     {
-      "name": "Information Technology",
-      "count": 5,
-      "stock_share": 10.0,
+      "name": "Fast Moving Consumer Goods",
+      "count": 4,
+      "stock_share": 8.0,
       "weight": null
     },
     {
-      "name": "Fast Moving Consumer Goods",
+      "name": "Information Technology",
       "count": 4,
       "stock_share": 8.0,
       "weight": null

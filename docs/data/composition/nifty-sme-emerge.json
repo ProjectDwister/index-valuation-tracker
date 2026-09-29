@@ -2,12 +2,12 @@
   "slug": "nifty-sme-emerge",
   "index_name": "NIFTY Sme Emerge",
   "as_of": null,
-  "retrieved_on": "2026-09-28",
+  "retrieved_on": "2026-09-29",
   "source": "NSE Indices — Index Constituent CSV",
   "source_url": "https://www.niftyindices.com/IndexConstituent/ind_niftysmelist.csv",
   "source_type": "official_nse_indices_constituent_csv",
   "completeness": "constituents",
-  "stock_count": 528,
+  "stock_count": 539,
   "weight_coverage": null,
   "top10_weight": null,
   "coverage_note": "The official constituent file lists members but does not publish usable stock weights.",
@@ -361,6 +361,12 @@
       "weight": null
     },
     {
+      "name": "Avience Biomedicals Ltd.",
+      "symbol": "AVIENCE",
+      "sector": "Healthcare",
+      "weight": null
+    },
+    {
       "name": "AVP Infracon Ltd.",
       "symbol": "AVPINFRA",
       "sector": "Construction",
@@ -430,6 +436,12 @@
       "name": "Bikewo Green Tech Ltd.",
       "symbol": "BIKEWO",
       "sector": "Automobile and Auto Components",
+      "weight": null
+    },
+    {
+      "name": "Bio Medica Laboratories Ltd.",
+      "symbol": "BMLL",
+      "sector": "Healthcare",
       "weight": null
     },
     {
@@ -568,6 +580,12 @@
       "name": "Classic Electrodes (India) Ltd.",
       "symbol": "CLASSICEIL",
       "sector": "Capital Goods",
+      "weight": null
+    },
+    {
+      "name": "Clay Craft India Ltd.",
+      "symbol": "CLAYCRAFT",
+      "sector": "Consumer Durables",
       "weight": null
     },
     {
@@ -1027,6 +1045,12 @@
       "weight": null
     },
     {
+      "name": "GenXAI Analytics Ltd.",
+      "symbol": "GENXAI",
+      "sector": "Information Technology",
+      "weight": null
+    },
+    {
       "name": "Giriraj Civil Developers Ltd.",
       "symbol": "GIRIRAJ",
       "sector": "Construction",
@@ -1129,6 +1153,12 @@
       "weight": null
     },
     {
+      "name": "Happy Steels Ltd.",
+      "symbol": "HAPPY",
+      "sector": "Automobile and Auto Components",
+      "weight": null
+    },
+    {
       "name": "Hi-Green Carbon Ltd.",
       "symbol": "HIGREEN",
       "sector": "Utilities",
@@ -1174,6 +1204,12 @@
       "name": "IBL Finance Ltd.",
       "symbol": "IBLFL",
       "sector": "Financial Services",
+      "weight": null
+    },
+    {
+      "name": "IC Electricals Company Ltd.",
+      "symbol": "ICELCO",
+      "sector": "Capital Goods",
       "weight": null
     },
     {
@@ -1795,6 +1831,12 @@
       "weight": null
     },
     {
+      "name": "NFP Sampoorna Foods Ltd.",
+      "symbol": "NFPSAMPOOR",
+      "sector": "Fast Moving Consumer Goods",
+      "weight": null
+    },
+    {
       "name": "Nidan Laboratories And Healthcare Ltd.",
       "symbol": "NIDAN",
       "sector": "Healthcare",
@@ -1923,12 +1965,6 @@
     {
       "name": "Patil Automation Ltd.",
       "symbol": "PATILAUTOM",
-      "sector": "Capital Goods",
-      "weight": null
-    },
-    {
-      "name": "PATTECH FITWELL TUBE COMPONENTS Ltd.",
-      "symbol": "PATTECH",
       "sector": "Capital Goods",
       "weight": null
     },
@@ -2089,6 +2125,12 @@
       "weight": null
     },
     {
+      "name": "Q-Line Biotech Ltd.",
+      "symbol": "QLINE",
+      "sector": "Healthcare",
+      "weight": null
+    },
+    {
       "name": "QUADPRO ITES Ltd.",
       "symbol": "QUADPRO",
       "sector": "Information Technology",
@@ -2212,6 +2254,12 @@
       "name": "Rexpro Enterprises Ltd.",
       "symbol": "REXPRO",
       "sector": "Consumer Durables",
+      "weight": null
+    },
+    {
+      "name": "RFBL Flexi Pack Ltd.",
+      "symbol": "RFBL",
+      "sector": "Capital Goods",
       "weight": null
     },
     {
@@ -2470,6 +2518,12 @@
       "name": "Shree Tirupati Balajee FIBC Ltd.",
       "symbol": "TIRUPATI",
       "sector": "Capital Goods",
+      "weight": null
+    },
+    {
+      "name": "Shreedhar Spinners Ltd.",
+      "symbol": "SHREEDHAR",
+      "sector": "Textiles",
       "weight": null
     },
     {
@@ -2779,6 +2833,12 @@
       "weight": null
     },
     {
+      "name": "Teamtech Formwork Solutions Ltd.",
+      "symbol": "TEAMTECH",
+      "sector": "Construction Materials",
+      "weight": null
+    },
+    {
       "name": "TechD Cybersecurity Ltd.",
       "symbol": "TECHD",
       "sector": "Information Technology",
@@ -2794,6 +2854,12 @@
       "name": "TEERTH GOPICON Ltd.",
       "symbol": "TGL",
       "sector": "Construction",
+      "weight": null
+    },
+    {
+      "name": "Teja Engineering Industries Ltd.",
+      "symbol": "TEJA",
+      "sector": "Oil Gas & Consumable Fuels",
       "weight": null
     },
     {
@@ -2923,6 +2989,12 @@
       "weight": null
     },
     {
+      "name": "Utkal Speciality Industries India Ltd.",
+      "symbol": "UTKAL",
+      "sector": "Forest Materials",
+      "weight": null
+    },
+    {
       "name": "Utssav CZ Gold Jewels Ltd.",
       "symbol": "UTSSAV",
       "sector": "Consumer Durables",
@@ -2983,12 +3055,6 @@
       "weight": null
     },
     {
-      "name": "Vels Film International Ltd.",
-      "symbol": "VELS",
-      "sector": "Media Entertainment & Publication",
-      "weight": null
-    },
-    {
       "name": "Veritaas Advertising Ltd.",
       "symbol": "VERITAAS",
       "sector": "Media Entertainment & Publication",
@@ -3037,6 +3103,12 @@
       "weight": null
     },
     {
+      "name": "Vinit Mobile Ltd.",
+      "symbol": "VMOBILE",
+      "sector": "Consumer Services",
+      "weight": null
+    },
+    {
       "name": "Vinsys IT Services India Ltd.",
       "symbol": "VINSYS",
       "sector": "Consumer Services",
@@ -3052,12 +3124,6 @@
       "name": "Virtual Galaxy Infotech Ltd.",
       "symbol": "VGINFOTECH",
       "sector": "Information Technology",
-      "weight": null
-    },
-    {
-      "name": "Visaman Global Sales Ltd.",
-      "symbol": "VISAMAN",
-      "sector": "Capital Goods",
       "weight": null
     },
     {
@@ -3185,127 +3251,127 @@
     {
       "name": "Capital Goods",
       "count": 128,
-      "stock_share": 24.2424,
+      "stock_share": 23.7477,
       "weight": null
     },
     {
       "name": "Services",
       "count": 64,
-      "stock_share": 12.1212,
+      "stock_share": 11.8738,
       "weight": null
     },
     {
       "name": "Consumer Durables",
-      "count": 35,
-      "stock_share": 6.6288,
+      "count": 36,
+      "stock_share": 6.679,
       "weight": null
     },
     {
       "name": "Fast Moving Consumer Goods",
-      "count": 33,
-      "stock_share": 6.25,
+      "count": 34,
+      "stock_share": 6.308,
+      "weight": null
+    },
+    {
+      "name": "Healthcare",
+      "count": 34,
+      "stock_share": 6.308,
       "weight": null
     },
     {
       "name": "Information Technology",
-      "count": 33,
-      "stock_share": 6.25,
+      "count": 34,
+      "stock_share": 6.308,
       "weight": null
     },
     {
       "name": "Construction",
       "count": 31,
-      "stock_share": 5.8712,
-      "weight": null
-    },
-    {
-      "name": "Healthcare",
-      "count": 31,
-      "stock_share": 5.8712,
+      "stock_share": 5.7514,
       "weight": null
     },
     {
       "name": "Chemicals",
       "count": 29,
-      "stock_share": 5.4924,
+      "stock_share": 5.3803,
       "weight": null
     },
     {
       "name": "Consumer Services",
-      "count": 28,
-      "stock_share": 5.303,
+      "count": 29,
+      "stock_share": 5.3803,
       "weight": null
     },
     {
       "name": "Media Entertainment & Publication",
-      "count": 26,
-      "stock_share": 4.9242,
+      "count": 25,
+      "stock_share": 4.6382,
       "weight": null
     },
     {
       "name": "Automobile and Auto Components",
-      "count": 21,
-      "stock_share": 3.9773,
+      "count": 22,
+      "stock_share": 4.0816,
       "weight": null
     },
     {
       "name": "Textiles",
-      "count": 20,
-      "stock_share": 3.7879,
+      "count": 21,
+      "stock_share": 3.8961,
       "weight": null
     },
     {
       "name": "Financial Services",
       "count": 10,
-      "stock_share": 1.8939,
+      "stock_share": 1.8553,
       "weight": null
     },
     {
       "name": "Utilities",
       "count": 9,
-      "stock_share": 1.7045,
+      "stock_share": 1.6698,
       "weight": null
     },
     {
       "name": "Metals & Mining",
       "count": 8,
-      "stock_share": 1.5152,
+      "stock_share": 1.4842,
+      "weight": null
+    },
+    {
+      "name": "Oil Gas & Consumable Fuels",
+      "count": 6,
+      "stock_share": 1.1132,
       "weight": null
     },
     {
       "name": "Realty",
       "count": 6,
-      "stock_share": 1.1364,
+      "stock_share": 1.1132,
       "weight": null
     },
     {
       "name": "Telecommunication",
       "count": 6,
-      "stock_share": 1.1364,
-      "weight": null
-    },
-    {
-      "name": "Oil Gas & Consumable Fuels",
-      "count": 5,
-      "stock_share": 0.947,
+      "stock_share": 1.1132,
       "weight": null
     },
     {
       "name": "Forest Materials",
-      "count": 3,
-      "stock_share": 0.5682,
+      "count": 4,
+      "stock_share": 0.7421,
       "weight": null
     },
     {
       "name": "Construction Materials",
-      "count": 1,
-      "stock_share": 0.1894,
+      "count": 2,
+      "stock_share": 0.3711,
       "weight": null
     },
     {
       "name": "Power",
       "count": 1,
-      "stock_share": 0.1894,
+      "stock_share": 0.1855,
       "weight": null
     }
   ]

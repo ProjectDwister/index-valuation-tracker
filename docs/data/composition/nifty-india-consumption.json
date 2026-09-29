@@ -2,7 +2,7 @@
   "slug": "nifty-india-consumption",
   "index_name": "NIFTY India Consumption",
   "as_of": null,
-  "retrieved_on": "2026-09-28",
+  "retrieved_on": "2026-09-29",
   "source": "NSE Indices — Index Constituent CSV",
   "source_url": "https://www.niftyindices.com/IndexConstituent/ind_niftyconsumptionlist.csv",
   "source_type": "official_nse_indices_constituent_csv",
@@ -12,12 +12,6 @@
   "top10_weight": null,
   "coverage_note": "The official constituent file lists members but does not publish usable stock weights.",
   "holdings": [
-    {
-      "name": "Adani Power Ltd.",
-      "symbol": "ADANIPOWER",
-      "sector": "Power",
-      "weight": null
-    },
     {
       "name": "Apollo Hospitals Enterprise Ltd.",
       "symbol": "APOLLOHOSP",
@@ -79,15 +73,15 @@
       "weight": null
     },
     {
-      "name": "Godrej Consumer Products Ltd.",
-      "symbol": "GODREJCP",
-      "sector": "Fast Moving Consumer Goods",
+      "name": "Fortis Healthcare Ltd.",
+      "symbol": "FORTIS",
+      "sector": "Healthcare",
       "weight": null
     },
     {
-      "name": "Havells India Ltd.",
-      "symbol": "HAVELLS",
-      "sector": "Consumer Durables",
+      "name": "Godrej Consumer Products Ltd.",
+      "symbol": "GODREJCP",
+      "sector": "Fast Moving Consumer Goods",
       "weight": null
     },
     {
@@ -169,6 +163,12 @@
       "weight": null
     },
     {
+      "name": "Torrent Pharmaceuticals Ltd.",
+      "symbol": "TORNTPHARM",
+      "sector": "Healthcare",
+      "weight": null
+    },
+    {
       "name": "Trent Ltd.",
       "symbol": "TRENT",
       "sector": "Consumer Services",
@@ -213,21 +213,21 @@
       "weight": null
     },
     {
-      "name": "Consumer Durables",
+      "name": "Healthcare",
       "count": 4,
       "stock_share": 13.3333,
       "weight": null
     },
     {
-      "name": "Healthcare",
-      "count": 2,
-      "stock_share": 6.6667,
+      "name": "Consumer Durables",
+      "count": 3,
+      "stock_share": 10.0,
       "weight": null
     },
     {
       "name": "Power",
-      "count": 2,
-      "stock_share": 6.6667,
+      "count": 1,
+      "stock_share": 3.3333,
       "weight": null
     },
     {
