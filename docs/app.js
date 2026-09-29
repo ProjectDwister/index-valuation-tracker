@@ -175,6 +175,44 @@ function renderSparklines(slug,current){
   drawSparkline('sparkNifty',rows,'close');drawSparkline('sparkPe',rows,'pe');drawSparkline('sparkPercentile',rows,'pe_percentile');drawSparkline('sparkEps',rows,'yoy_eps_growth');
 }
 
+function scoreHistoryChart(rows){
+  const scores=rows.map(r=>Number(r.composite_score));
+  let low=Math.max(0,Math.floor((Math.min(...scores)-3)/5)*5);
+  let high=Math.min(100,Math.ceil((Math.max(...scores)+3)/5)*5);
+  if(high-low<10){if(low===0)high=10;else if(high===100)low=90;else{low=Math.max(0,low-5);high=Math.min(100,high+5);}}
+  const span=high-low,step=span<=25?5:span<=50?10:20;
+  const y=v=>(high-v)/span*100,x=i=>2+i/(rows.length-1)*96;
+  const values=new Set([low,high]);
+  for(let v=Math.ceil(low/step)*step;v<=high;v+=step)values.add(v);
+  [40,70].filter(v=>v>low&&v<high).forEach(v=>values.add(v));
+  const ticks=[...values].sort((a,b)=>a-b);
+  const zones=[[0,40,'SELL'],[40,70,'HOLD'],[70,100,'BUY']].map(([start,end,signal])=>{
+    const bottom=Math.max(low,start),top=Math.min(high,end);
+    return top>bottom?`<div class="score-chart-zone ${signal}" style="top:${y(top)}%;height:${(top-bottom)/span*100}%"></div>`:'';
+  }).join('');
+  const grid=ticks.map(v=>`<div class="score-chart-gridline ${v===40||v===70?'boundary':''}" style="top:${y(v)}%"></div>`).join('');
+  const labels=ticks.map(v=>`<span style="top:${y(v)}%">${v}</span>`).join('');
+  const path=rows.map((r,i)=>`${i?'L':'M'} ${(x(i)*10).toFixed(2)} ${(y(Number(r.composite_score))*1.8).toFixed(2)}`).join(' ');
+  const pointStep=Math.max(1,Math.ceil(rows.length/24));
+  const points=rows.map((r,i)=>{
+    if(i%pointStep!==0&&i!==rows.length-1)return '';
+    const score=Number(r.composite_score).toFixed(1),label=`${fmtDate(r.date)} · Score ${score}${r.signal?` · ${r.signal}`:''}`;
+    return `<button type="button" class="score-chart-point ${i===rows.length-1?'latest':''}" style="left:${x(i)}%;top:${y(Number(r.composite_score))}%" data-label="${label}" data-edge="${i===0?'start':i===rows.length-1?'end':''}" aria-label="${label}"></button>`;
+  }).join('');
+  const first=rows[0],latest=rows[rows.length-1];
+  const change=Number(latest.composite_score)-Number(first.composite_score);
+  const mid=rows[Math.floor((rows.length-1)/2)];
+  return `<div class="score-history-chart">
+    <div class="score-chart-head"><div><span class="score-chart-caption">Latest · ${fmtDate(latest.date)}</span><strong>${Number(latest.composite_score).toFixed(1)}</strong></div><div class="score-chart-change">${signedPoints(change)} points <span>since ${fmtDate(first.date)}</span></div></div>
+    <div class="score-chart-stage" role="group" aria-label="Composite score history from ${fmtDate(first.date)} to ${fmtDate(latest.date)}; vertical scale ${low} to ${high}">
+      <div class="score-chart-y-axis">${labels}</div>
+      <div class="score-chart-plot">${zones}${grid}<svg viewBox="0 0 1000 180" preserveAspectRatio="none" aria-hidden="true"><path d="${path}" fill="none" stroke="#78b5ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/></svg>${points}</div>
+    </div>
+    <div class="score-chart-x-axis"><span>${fmtDate(first.date)}</span><span>${fmtDate(mid.date)}</span><span>${fmtDate(latest.date)}</span></div>
+    <p class="score-chart-note">Zoomed vertical scale ${low}–${high} for detail · Full score range 0–100</p>
+  </div>`;
+}
+
 function renderHistory(slug,current){
   const historyRows=allHistory.filter(r=>r.slug===slug);
   if(current.as_of && historyRows[historyRows.length-1]?.date!==current.as_of){
@@ -185,12 +223,7 @@ function renderHistory(slug,current){
   const minPoints=2;
   if(rows.length>=minPoints){
     mode.textContent=`${rows.length} observations`; mode.className='history-mode';
-    const W=760,H=210,p={l:34,r:12,t:12,b:28},iw=W-p.l-p.r,ih=H-p.t-p.b;
-    const x=i=>p.l+(rows.length===1?iw/2:i/(rows.length-1)*iw),y=v=>p.t+(100-v)/100*ih;
-    const path=rows.map((o,i)=>`${i?'L':'M'} ${x(i).toFixed(1)} ${y(Number(o.composite_score)).toFixed(1)}`).join(' ');
-    const grid=[40,70].map(v=>`<line x1="${p.l}" x2="${W-p.r}" y1="${y(v)}" y2="${y(v)}" stroke="rgba(255,255,255,.10)" stroke-dasharray="4 5"/><text x="6" y="${y(v)+3}" fill="#617791" font-size="9">${v}</text>`).join('');
-    const dots=rows.map((o,i)=>`<circle cx="${x(i)}" cy="${y(Number(o.composite_score))}" r="${i===rows.length-1?'4':'3'}" fill="${i===rows.length-1?'#f3f7fc':'#78b5ff'}"><title>${fmtDate(o.date)}: ${Number(o.composite_score).toFixed(1)}</title></circle>`).join('');
-    host.innerHTML=`<div class="chart" role="img" aria-label="Composite score from ${fmtDate(rows[0].date)} to ${fmtDate(rows[rows.length-1].date)}; latest ${Number(rows[rows.length-1].composite_score).toFixed(1)}"><svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none">${grid}<path d="${path}" fill="none" stroke="#78b5ff" stroke-width="2.2" vector-effect="non-scaling-stroke"/>${dots}<text x="${p.l}" y="${H-4}" fill="#617791" font-size="9">${fmtDate(rows[0].date)}</text><text x="${W-p.r}" y="${H-4}" text-anchor="end" fill="#617791" font-size="9">${fmtDate(rows[rows.length-1].date)}</text></svg></div>`;
+    host.innerHTML=scoreHistoryChart(rows);
   } else {
     mode.textContent=`${rows.length}/${minPoints} observations`;
     const score=current.composite_score==null?NaN:Number(current.composite_score),change5=rows.length>=6?score-Number(rows[rows.length-6].composite_score):null,range20=rows.length>=20?rows.slice(-20).map(r=>Number(r.composite_score)):null;
