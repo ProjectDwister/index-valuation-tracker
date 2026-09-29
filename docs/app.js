@@ -176,23 +176,28 @@ function renderSparklines(slug,current){
 }
 
 function renderHistory(slug,current){
-  const rows=allHistory.filter(r=>r.slug===slug && r.composite_score!=='').slice(-120);
+  const historyRows=allHistory.filter(r=>r.slug===slug);
+  if(current.as_of && historyRows[historyRows.length-1]?.date!==current.as_of){
+    historyRows.push({date:current.as_of,pe:current.pe,composite_score:current.composite_score,signal:current.signal});
+  }
+  const rows=historyRows.filter(r=>r.composite_score!=null && r.composite_score!=='' && Number.isFinite(Number(r.composite_score))).slice(-120);
   const host=$('scoreHistoryHost'),mode=$('scoreHistoryMode');
-  const minPoints=10;
+  const minPoints=2;
   if(rows.length>=minPoints){
     mode.textContent=`${rows.length} observations`; mode.className='history-mode';
     const W=760,H=210,p={l:34,r:12,t:12,b:28},iw=W-p.l-p.r,ih=H-p.t-p.b;
     const x=i=>p.l+(rows.length===1?iw/2:i/(rows.length-1)*iw),y=v=>p.t+(100-v)/100*ih;
     const path=rows.map((o,i)=>`${i?'L':'M'} ${x(i).toFixed(1)} ${y(Number(o.composite_score)).toFixed(1)}`).join(' ');
     const grid=[40,70].map(v=>`<line x1="${p.l}" x2="${W-p.r}" y1="${y(v)}" y2="${y(v)}" stroke="rgba(255,255,255,.10)" stroke-dasharray="4 5"/><text x="6" y="${y(v)+3}" fill="#617791" font-size="9">${v}</text>`).join('');
-    host.innerHTML=`<div class="chart"><svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none">${grid}<path d="${path}" fill="none" stroke="#78b5ff" stroke-width="2.2" vector-effect="non-scaling-stroke"/><circle cx="${x(rows.length-1)}" cy="${y(Number(rows[rows.length-1].composite_score))}" r="3.6" fill="#f3f7fc"/><text x="${p.l}" y="${H-4}" fill="#617791" font-size="9">${fmtDate(rows[0].date)}</text><text x="${W-p.r}" y="${H-4}" text-anchor="end" fill="#617791" font-size="9">${fmtDate(rows[rows.length-1].date)}</text></svg></div>`;
+    const dots=rows.map((o,i)=>`<circle cx="${x(i)}" cy="${y(Number(o.composite_score))}" r="${i===rows.length-1?'4':'3'}" fill="${i===rows.length-1?'#f3f7fc':'#78b5ff'}"><title>${fmtDate(o.date)}: ${Number(o.composite_score).toFixed(1)}</title></circle>`).join('');
+    host.innerHTML=`<div class="chart" role="img" aria-label="Composite score from ${fmtDate(rows[0].date)} to ${fmtDate(rows[rows.length-1].date)}; latest ${Number(rows[rows.length-1].composite_score).toFixed(1)}"><svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none">${grid}<path d="${path}" fill="none" stroke="#78b5ff" stroke-width="2.2" vector-effect="non-scaling-stroke"/>${dots}<text x="${p.l}" y="${H-4}" fill="#617791" font-size="9">${fmtDate(rows[0].date)}</text><text x="${W-p.r}" y="${H-4}" text-anchor="end" fill="#617791" font-size="9">${fmtDate(rows[rows.length-1].date)}</text></svg></div>`;
   } else {
     mode.textContent=`${rows.length}/${minPoints} observations`;
-    const score=Number(current.composite_score),change5=rows.length>=6?score-Number(rows[rows.length-6].composite_score):null,range20=rows.length>=20?rows.slice(-20).map(r=>Number(r.composite_score)):null;
+    const score=current.composite_score==null?NaN:Number(current.composite_score),change5=rows.length>=6?score-Number(rows[rows.length-6].composite_score):null,range20=rows.length>=20?rows.slice(-20).map(r=>Number(r.composite_score)):null;
     let days=1;for(let i=rows.length-1;i>0;i--){if(rows[i].signal===current.signal)days++;else break;}
     host.innerHTML=`<div class="score-summary"><div class="summary-score ${current.signal||''}">${Number.isFinite(score)?score.toFixed(1):'—'}</div><div class="summary-stat-grid"><div class="summary-stat"><span>5-day change</span><strong>${change5==null?'—':signedPoints(change5)}</strong></div><div class="summary-stat"><span>20-day range</span><strong>${range20?`${Math.min(...range20).toFixed(1)}–${Math.max(...range20).toFixed(1)}`:'—'}</strong></div><div class="summary-stat"><span>Days in current signal</span><strong>${current.signal?days:'—'}</strong></div></div></div>`;
   }
-  const log=allHistory.filter(r=>r.slug===slug).slice(-5).reverse();
+  const log=historyRows.slice(-5).reverse();
   $('historyBody').innerHTML=(log.length?log:[{date:current.as_of,pe:current.pe,composite_score:current.composite_score,signal:current.signal}]).map(r=>`<tr><td>${fmtDate(r.date)}</td><td>${r.pe?Number(r.pe).toFixed(2)+'×':'—'}</td><td class="log-score ${r.signal||''}">${r.composite_score?Number(r.composite_score).toFixed(1):'—'}</td><td>${r.signal?`<span class="badge ${r.signal}">${r.signal}</span>`:'—'}</td></tr>`).join('');
 }
 
