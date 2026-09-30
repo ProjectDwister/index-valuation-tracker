@@ -1,24 +1,24 @@
 {
   "model_version": "1.5",
-  "as_of": "2026-09-29",
-  "generated_at_utc": "2026-09-29T18:15:44+00:00",
+  "as_of": "2026-09-30",
+  "generated_at_utc": "2026-09-30T18:08:34+00:00",
   "signal": "BUY",
-  "composite_score": 80.19,
+  "composite_score": 79.44,
   "valuation_score": 99.24,
-  "growth_score": 35.72,
-  "nifty_close": 22716.2,
-  "pe": 19.2,
-  "earnings_yield": 0.05208333,
+  "growth_score": 33.22,
+  "nifty_close": 22620.45,
+  "pe": 19.36,
+  "earnings_yield": 0.05165289,
   "pe_percentile": 0.00757576,
   "valuation_quintile": "Q1 Cheapest",
   "era_median_pe": 22.0,
-  "implied_eps": 1183.14,
-  "yoy_eps_growth": 0.03929995,
+  "implied_eps": 1168.41,
+  "yoy_eps_growth": 0.03305574,
   "prior_year": {
-    "date": "2025-09-29",
-    "nifty_close": 24634.9,
-    "pe": 21.64,
-    "implied_eps": 1138.4
+    "date": "2025-09-30",
+    "nifty_close": 24611.1,
+    "pe": 21.76,
+    "implied_eps": 1131.02
   },
   "thresholds": {
     "buy": 70,
@@ -27,19 +27,19 @@
   "signal_boundaries": {
     "buy_hold": {
       "score_threshold": 70.0,
-      "valuation_score_required": 84.6914366,
-      "pe_percentile": 0.15308563,
-      "pe": 20.59011324,
-      "nifty_level": 24360.89221022,
-      "move_from_current": 0.07240173
+      "valuation_score_required": 85.76187388,
+      "pe_percentile": 0.14238126,
+      "pe": 20.4509564,
+      "nifty_level": 23895.13618758,
+      "move_from_current": 0.05635105
     },
     "hold_sell": {
       "score_threshold": 40.0,
-      "valuation_score_required": 41.83429374,
-      "pe_percentile": 0.58165706,
-      "pe": 22.28077091,
-      "nifty_level": 26361.16917058,
-      "move_from_current": 0.16045682
+      "valuation_score_required": 42.90473103,
+      "pe_percentile": 0.57095269,
+      "pe": 22.21119248,
+      "nifty_level": 25951.8165811,
+      "move_from_current": 0.14727234
     },
     "assumption": "Current implied EPS and earnings-growth score held constant",
     "note": "Approximate because regime-relative P/E percentiles are based on a discrete historical distribution."

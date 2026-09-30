@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-29T18:15:48Z",
+  "generated_at": "2026-09-30T18:08:40Z",
   "default_slug": "nifty-50",
   "groups": [
     "Broad Market",
@@ -12,459 +12,468 @@
       "name": "NIFTY 100",
       "group": "Broad Market",
       "status": "ok",
-      "valid_pe_quarters": 43,
-      "matured_3y_obs": 31,
-      "live_pe_history_months": 65
+      "valid_pe_quarters": 44,
+      "matured_3y_obs": 32,
+      "live_pe_history_months": 66
     },
     {
       "slug": "nifty-200",
       "name": "NIFTY 200",
       "group": "Broad Market",
       "status": "ok",
-      "valid_pe_quarters": 43,
-      "matured_3y_obs": 31,
-      "live_pe_history_months": 65
+      "valid_pe_quarters": 44,
+      "matured_3y_obs": 32,
+      "live_pe_history_months": 66
     },
     {
       "slug": "nifty-50",
       "name": "NIFTY 50",
       "group": "Broad Market",
       "status": "ok",
-      "valid_pe_quarters": 110,
-      "matured_3y_obs": 98,
-      "live_pe_history_months": 65
+      "valid_pe_quarters": 111,
+      "matured_3y_obs": 99,
+      "live_pe_history_months": 66
     },
     {
       "slug": "nifty-500",
       "name": "NIFTY 500",
       "group": "Broad Market",
       "status": "ok",
-      "valid_pe_quarters": 43,
-      "matured_3y_obs": 31,
-      "live_pe_history_months": 65
+      "valid_pe_quarters": 44,
+      "matured_3y_obs": 32,
+      "live_pe_history_months": 66
     },
     {
       "slug": "nifty-largemidcap-250",
       "name": "NIFTY LargeMidcap 250",
       "group": "Broad Market",
       "status": "ok",
-      "valid_pe_quarters": 35,
-      "matured_3y_obs": 23,
-      "live_pe_history_months": 65
+      "valid_pe_quarters": 36,
+      "matured_3y_obs": 24,
+      "live_pe_history_months": 66
     },
     {
       "slug": "nifty-midcap-100",
       "name": "NIFTY Midcap 100",
       "group": "Broad Market",
       "status": "ok",
-      "valid_pe_quarters": 34,
-      "matured_3y_obs": 22,
-      "live_pe_history_months": 65
+      "valid_pe_quarters": 35,
+      "matured_3y_obs": 23,
+      "live_pe_history_months": 66
     },
     {
       "slug": "nifty-midcap-150",
       "name": "NIFTY Midcap 150",
       "group": "Broad Market",
       "status": "ok",
-      "valid_pe_quarters": 40,
-      "matured_3y_obs": 28,
-      "live_pe_history_months": 65
+      "valid_pe_quarters": 41,
+      "matured_3y_obs": 29,
+      "live_pe_history_months": 66
     },
     {
       "slug": "nifty-midcap-50",
       "name": "NIFTY Midcap 50",
       "group": "Broad Market",
       "status": "ok",
-      "valid_pe_quarters": 56,
-      "matured_3y_obs": 44,
-      "live_pe_history_months": 65
+      "valid_pe_quarters": 57,
+      "matured_3y_obs": 45,
+      "live_pe_history_months": 66
     },
     {
       "slug": "nifty-midsmallcap-400",
       "name": "NIFTY Midsmallcap 400",
       "group": "Broad Market",
       "status": "ok",
-      "valid_pe_quarters": 41,
-      "matured_3y_obs": 29,
-      "live_pe_history_months": 65
+      "valid_pe_quarters": 42,
+      "matured_3y_obs": 30,
+      "live_pe_history_months": 66
     },
     {
       "slug": "nifty-next-50",
       "name": "NIFTY Next 50",
       "group": "Broad Market",
       "status": "ok",
-      "valid_pe_quarters": 43,
-      "matured_3y_obs": 31,
-      "live_pe_history_months": 65
+      "valid_pe_quarters": 44,
+      "matured_3y_obs": 32,
+      "live_pe_history_months": 66
     },
     {
       "slug": "nifty-smallcap-100",
       "name": "NIFTY Smallcap 100",
       "group": "Broad Market",
       "status": "ok",
-      "valid_pe_quarters": 34,
-      "matured_3y_obs": 22,
-      "live_pe_history_months": 65
+      "valid_pe_quarters": 35,
+      "matured_3y_obs": 23,
+      "live_pe_history_months": 66
     },
     {
       "slug": "nifty-smallcap-250",
       "name": "NIFTY Smallcap 250",
       "group": "Broad Market",
       "status": "ok",
-      "valid_pe_quarters": 39,
-      "matured_3y_obs": 27,
-      "live_pe_history_months": 65
+      "valid_pe_quarters": 40,
+      "matured_3y_obs": 28,
+      "live_pe_history_months": 66
     },
     {
       "slug": "nifty-smallcap-50",
       "name": "NIFTY Smallcap 50",
       "group": "Broad Market",
       "status": "ok",
-      "valid_pe_quarters": 39,
-      "matured_3y_obs": 27,
-      "live_pe_history_months": 65
+      "valid_pe_quarters": 40,
+      "matured_3y_obs": 28,
+      "live_pe_history_months": 66
     },
     {
       "slug": "nifty-auto",
       "name": "NIFTY Auto",
       "group": "Sectoral",
       "status": "ok",
-      "valid_pe_quarters": 43,
-      "matured_3y_obs": 31,
-      "live_pe_history_months": 65
+      "valid_pe_quarters": 44,
+      "matured_3y_obs": 32,
+      "live_pe_history_months": 66
     },
     {
       "slug": "nifty-bank",
       "name": "NIFTY Bank",
       "group": "Sectoral",
       "status": "ok",
-      "valid_pe_quarters": 43,
-      "matured_3y_obs": 31,
-      "live_pe_history_months": 65
+      "valid_pe_quarters": 44,
+      "matured_3y_obs": 32,
+      "live_pe_history_months": 66
     },
     {
       "slug": "nifty-energy",
       "name": "NIFTY Energy",
       "group": "Sectoral",
       "status": "ok",
-      "valid_pe_quarters": 43,
-      "matured_3y_obs": 31,
-      "live_pe_history_months": 65
+      "valid_pe_quarters": 44,
+      "matured_3y_obs": 32,
+      "live_pe_history_months": 66
     },
     {
       "slug": "nifty-fmcg",
       "name": "NIFTY FMCG",
       "group": "Sectoral",
       "status": "ok",
-      "valid_pe_quarters": 43,
-      "matured_3y_obs": 31,
-      "live_pe_history_months": 65
+      "valid_pe_quarters": 44,
+      "matured_3y_obs": 32,
+      "live_pe_history_months": 66
     },
     {
       "slug": "nifty-financial-services",
       "name": "NIFTY Financial Services",
       "group": "Sectoral",
       "status": "ok",
-      "valid_pe_quarters": 43,
-      "matured_3y_obs": 31,
-      "live_pe_history_months": 65
+      "valid_pe_quarters": 44,
+      "matured_3y_obs": 32,
+      "live_pe_history_months": 66
     },
     {
       "slug": "nifty-it",
       "name": "NIFTY IT",
       "group": "Sectoral",
       "status": "ok",
-      "valid_pe_quarters": 43,
-      "matured_3y_obs": 31,
-      "live_pe_history_months": 65
+      "valid_pe_quarters": 44,
+      "matured_3y_obs": 32,
+      "live_pe_history_months": 66
     },
     {
       "slug": "nifty-metal",
       "name": "NIFTY Metal",
       "group": "Sectoral",
       "status": "ok",
-      "valid_pe_quarters": 43,
-      "matured_3y_obs": 31,
-      "live_pe_history_months": 65
+      "valid_pe_quarters": 44,
+      "matured_3y_obs": 32,
+      "live_pe_history_months": 66
     },
     {
       "slug": "nifty-pharma",
       "name": "NIFTY Pharma",
       "group": "Sectoral",
       "status": "ok",
-      "valid_pe_quarters": 43,
-      "matured_3y_obs": 31,
-      "live_pe_history_months": 65
+      "valid_pe_quarters": 44,
+      "matured_3y_obs": 32,
+      "live_pe_history_months": 66
     },
     {
       "slug": "nifty-private-bank",
       "name": "NIFTY Private Bank",
       "group": "Sectoral",
       "status": "ok",
-      "valid_pe_quarters": 42,
-      "matured_3y_obs": 30,
-      "live_pe_history_months": 65
+      "valid_pe_quarters": 43,
+      "matured_3y_obs": 31,
+      "live_pe_history_months": 66
     },
     {
       "slug": "nifty-realty",
       "name": "NIFTY Realty",
       "group": "Sectoral",
       "status": "ok",
-      "valid_pe_quarters": 42,
-      "matured_3y_obs": 30,
-      "live_pe_history_months": 64
+      "valid_pe_quarters": 43,
+      "matured_3y_obs": 31,
+      "live_pe_history_months": 65
     },
     {
       "slug": "nifty-alpha-50",
       "name": "NIFTY Alpha 50",
       "group": "Strategy / Thematic / Other",
       "status": "ok",
-      "valid_pe_quarters": 40,
-      "matured_3y_obs": 28,
-      "live_pe_history_months": 63
+      "valid_pe_quarters": 41,
+      "matured_3y_obs": 29,
+      "live_pe_history_months": 64
     },
     {
       "slug": "nifty-alpha-low-volatility-30",
       "name": "NIFTY Alpha Low-Volatility 30",
       "group": "Strategy / Thematic / Other",
       "status": "ok",
-      "valid_pe_quarters": 36,
-      "matured_3y_obs": 24,
-      "live_pe_history_months": 65
+      "valid_pe_quarters": 37,
+      "matured_3y_obs": 25,
+      "live_pe_history_months": 66
     },
     {
       "slug": "nifty-alpha-quality-low-volatility-30",
       "name": "NIFTY Alpha Quality Low-Volatility 30",
       "group": "Strategy / Thematic / Other",
       "status": "ok",
-      "valid_pe_quarters": 36,
-      "matured_3y_obs": 24,
-      "live_pe_history_months": 65
+      "valid_pe_quarters": 37,
+      "matured_3y_obs": 25,
+      "live_pe_history_months": 66
     },
     {
       "slug": "nifty-alpha-quality-value-low-volatility-30",
       "name": "NIFTY Alpha Quality Value Low-Volatility 30",
       "group": "Strategy / Thematic / Other",
       "status": "ok",
-      "valid_pe_quarters": 36,
-      "matured_3y_obs": 24,
-      "live_pe_history_months": 65
+      "valid_pe_quarters": 37,
+      "matured_3y_obs": 25,
+      "live_pe_history_months": 66
     },
     {
       "slug": "nifty-commodities",
       "name": "NIFTY Commodities",
       "group": "Strategy / Thematic / Other",
       "status": "ok",
-      "valid_pe_quarters": 43,
-      "matured_3y_obs": 31,
-      "live_pe_history_months": 65
+      "valid_pe_quarters": 44,
+      "matured_3y_obs": 32,
+      "live_pe_history_months": 66
     },
     {
       "slug": "nifty-cpse",
       "name": "NIFTY Cpse",
       "group": "Strategy / Thematic / Other",
       "status": "ok",
-      "valid_pe_quarters": 43,
-      "matured_3y_obs": 31,
-      "live_pe_history_months": 65
+      "valid_pe_quarters": 44,
+      "matured_3y_obs": 32,
+      "live_pe_history_months": 66
     },
     {
       "slug": "nifty-dividend-opportunities-50",
       "name": "NIFTY Dividend Opportunities 50",
       "group": "Strategy / Thematic / Other",
       "status": "ok",
-      "valid_pe_quarters": 43,
-      "matured_3y_obs": 31,
-      "live_pe_history_months": 65
+      "valid_pe_quarters": 44,
+      "matured_3y_obs": 32,
+      "live_pe_history_months": 66
     },
     {
       "slug": "nifty-growth-sectors-15",
       "name": "NIFTY Growth Sectors 15",
       "group": "Strategy / Thematic / Other",
       "status": "ok",
-      "valid_pe_quarters": 43,
-      "matured_3y_obs": 31,
-      "live_pe_history_months": 65
+      "valid_pe_quarters": 44,
+      "matured_3y_obs": 32,
+      "live_pe_history_months": 66
     },
     {
       "slug": "nifty-high-beta-50",
       "name": "NIFTY High Beta 50",
       "group": "Strategy / Thematic / Other",
       "status": "ok",
-      "valid_pe_quarters": 35,
-      "matured_3y_obs": 23,
-      "live_pe_history_months": 65
+      "valid_pe_quarters": 36,
+      "matured_3y_obs": 24,
+      "live_pe_history_months": 66
     },
     {
       "slug": "nifty-india-consumption",
       "name": "NIFTY India Consumption",
       "group": "Strategy / Thematic / Other",
       "status": "ok",
-      "valid_pe_quarters": 42,
-      "matured_3y_obs": 30,
-      "live_pe_history_months": 65
+      "valid_pe_quarters": 43,
+      "matured_3y_obs": 31,
+      "live_pe_history_months": 66
     },
     {
       "slug": "nifty-infrastructure",
       "name": "NIFTY Infrastructure",
       "group": "Strategy / Thematic / Other",
       "status": "ok",
-      "valid_pe_quarters": 43,
-      "matured_3y_obs": 31,
-      "live_pe_history_months": 65
+      "valid_pe_quarters": 44,
+      "matured_3y_obs": 32,
+      "live_pe_history_months": 66
     },
     {
       "slug": "nifty-low-volatility-50",
       "name": "NIFTY Low Volatility 50",
       "group": "Strategy / Thematic / Other",
       "status": "ok",
-      "valid_pe_quarters": 43,
-      "matured_3y_obs": 31,
-      "live_pe_history_months": 65
+      "valid_pe_quarters": 44,
+      "matured_3y_obs": 32,
+      "live_pe_history_months": 66
     },
     {
       "slug": "nifty-mnc",
       "name": "NIFTY Mnc",
       "group": "Strategy / Thematic / Other",
       "status": "ok",
-      "valid_pe_quarters": 37,
-      "matured_3y_obs": 25,
-      "live_pe_history_months": 64
+      "valid_pe_quarters": 38,
+      "matured_3y_obs": 26,
+      "live_pe_history_months": 65
     },
     {
       "slug": "nifty-pse",
       "name": "NIFTY Pse",
       "group": "Strategy / Thematic / Other",
       "status": "ok",
-      "valid_pe_quarters": 43,
-      "matured_3y_obs": 31,
-      "live_pe_history_months": 65
+      "valid_pe_quarters": 44,
+      "matured_3y_obs": 32,
+      "live_pe_history_months": 66
     },
     {
       "slug": "nifty-quality-low-volatility-30",
       "name": "NIFTY Quality Low-Volatility 30",
       "group": "Strategy / Thematic / Other",
       "status": "ok",
-      "valid_pe_quarters": 36,
-      "matured_3y_obs": 24,
-      "live_pe_history_months": 65
+      "valid_pe_quarters": 37,
+      "matured_3y_obs": 25,
+      "live_pe_history_months": 66
     },
     {
       "slug": "nifty-services-sector",
       "name": "NIFTY Services Sector",
       "group": "Strategy / Thematic / Other",
       "status": "ok",
-      "valid_pe_quarters": 43,
-      "matured_3y_obs": 31,
-      "live_pe_history_months": 65
+      "valid_pe_quarters": 44,
+      "matured_3y_obs": 32,
+      "live_pe_history_months": 66
     },
     {
       "slug": "nifty-shariah-25",
       "name": "NIFTY Shariah 25",
       "group": "Strategy / Thematic / Other",
       "status": "ok",
-      "valid_pe_quarters": 43,
-      "matured_3y_obs": 31,
-      "live_pe_history_months": 65
+      "valid_pe_quarters": 44,
+      "matured_3y_obs": 32,
+      "live_pe_history_months": 66
     },
     {
       "slug": "nifty-sme-emerge",
       "name": "NIFTY Sme Emerge",
       "group": "Strategy / Thematic / Other",
       "status": "ok",
-      "valid_pe_quarters": 34,
-      "matured_3y_obs": 22,
-      "live_pe_history_months": 63
+      "valid_pe_quarters": 35,
+      "matured_3y_obs": 23,
+      "live_pe_history_months": 64
     },
     {
       "slug": "nifty100-esg",
       "name": "Nifty100 ESG",
       "group": "Strategy / Thematic / Other",
       "status": "ok",
-      "valid_pe_quarters": 34,
-      "matured_3y_obs": 22,
-      "live_pe_history_months": 65
+      "valid_pe_quarters": 35,
+      "matured_3y_obs": 23,
+      "live_pe_history_months": 66
     },
     {
       "slug": "nifty100-enhanced-esg",
       "name": "Nifty100 Enhanced ESG",
       "group": "Strategy / Thematic / Other",
       "status": "ok",
-      "valid_pe_quarters": 34,
-      "matured_3y_obs": 22,
-      "live_pe_history_months": 65
+      "valid_pe_quarters": 35,
+      "matured_3y_obs": 23,
+      "live_pe_history_months": 66
     },
     {
       "slug": "nifty100-equal-weight",
       "name": "Nifty100 Equal Weight",
       "group": "Strategy / Thematic / Other",
       "status": "ok",
-      "valid_pe_quarters": 43,
-      "matured_3y_obs": 31,
-      "live_pe_history_months": 65
+      "valid_pe_quarters": 44,
+      "matured_3y_obs": 32,
+      "live_pe_history_months": 66
     },
     {
       "slug": "nifty100-low-volatility-30",
       "name": "Nifty100 Low Volatility 30",
       "group": "Strategy / Thematic / Other",
       "status": "ok",
-      "valid_pe_quarters": 40,
-      "matured_3y_obs": 28,
-      "live_pe_history_months": 65
+      "valid_pe_quarters": 41,
+      "matured_3y_obs": 29,
+      "live_pe_history_months": 66
     },
     {
       "slug": "nifty100-quality-30",
       "name": "Nifty100 Quality 30",
       "group": "Strategy / Thematic / Other",
       "status": "ok",
-      "valid_pe_quarters": 32,
-      "matured_3y_obs": 20,
-      "live_pe_history_months": 65
+      "valid_pe_quarters": 33,
+      "matured_3y_obs": 21,
+      "live_pe_history_months": 66
     },
     {
       "slug": "nifty200-quality-30",
       "name": "Nifty200 Quality 30",
       "group": "Strategy / Thematic / Other",
       "status": "ok",
-      "valid_pe_quarters": 33,
-      "matured_3y_obs": 21,
-      "live_pe_history_months": 65
+      "valid_pe_quarters": 34,
+      "matured_3y_obs": 22,
+      "live_pe_history_months": 66
     },
     {
       "slug": "nifty50-equal-weight",
       "name": "Nifty50 Equal Weight",
       "group": "Strategy / Thematic / Other",
       "status": "ok",
-      "valid_pe_quarters": 37,
-      "matured_3y_obs": 25,
-      "live_pe_history_months": 65
+      "valid_pe_quarters": 38,
+      "matured_3y_obs": 26,
+      "live_pe_history_months": 66
     },
     {
       "slug": "nifty50-shariah",
       "name": "Nifty50 Shariah",
       "group": "Strategy / Thematic / Other",
       "status": "ok",
-      "valid_pe_quarters": 43,
-      "matured_3y_obs": 31,
-      "live_pe_history_months": 65
+      "valid_pe_quarters": 44,
+      "matured_3y_obs": 32,
+      "live_pe_history_months": 66
     },
     {
       "slug": "nifty50-value-20",
       "name": "Nifty50 Value 20",
       "group": "Strategy / Thematic / Other",
       "status": "ok",
-      "valid_pe_quarters": 43,
-      "matured_3y_obs": 31,
-      "live_pe_history_months": 65
+      "valid_pe_quarters": 44,
+      "matured_3y_obs": 32,
+      "live_pe_history_months": 66
     },
     {
       "slug": "nifty500-shariah",
       "name": "Nifty500 Shariah",
       "group": "Strategy / Thematic / Other",
       "status": "ok",
-      "valid_pe_quarters": 43,
-      "matured_3y_obs": 31,
-      "live_pe_history_months": 65
+      "valid_pe_quarters": 44,
+      "matured_3y_obs": 32,
+      "live_pe_history_months": 66
+    },
+    {
+      "slug": "nifty500-value-50",
+      "name": "Nifty500 Value 50",
+      "group": "Strategy / Thematic / Other",
+      "status": "ok",
+      "valid_pe_quarters": 32,
+      "matured_3y_obs": 20,
+      "live_pe_history_months": 66
     }
   ]
 }

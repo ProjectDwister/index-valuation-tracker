@@ -1,157 +1,157 @@
 {
   "slug": "nifty100-enhanced-esg",
   "index_name": "Nifty100 Enhanced ESG",
-  "as_of": "2026-08-31",
+  "as_of": "2026-09-30",
   "source": "NSE Indices — Index factsheet (top constituents)",
   "source_url": "https://www.niftyindices.com/Factsheet/Factsheet_NIFTY100_Enhanced_ESG_Index.pdf",
   "source_type": "official_nse_indices_factsheet",
   "completeness": "partial (top stocks)",
   "stock_count": 77,
-  "weight_coverage": 39.06,
-  "top10_weight": 39.06,
+  "weight_coverage": 39.04,
+  "top10_weight": 39.04,
   "coverage_note": "Partial composition: the official factsheet shows only its top constituents. Other stocks and their individual weights are not listed here.",
   "holdings": [
     {
       "name": "ICICI Bank Ltd.",
       "symbol": "",
       "sector": "",
-      "weight": 6.41
-    },
-    {
-      "name": "Infosys Ltd.",
-      "symbol": "",
-      "sector": "",
-      "weight": 5.02
+      "weight": 6.25
     },
     {
       "name": "Bharti Airtel Ltd.",
       "symbol": "",
       "sector": "",
-      "weight": 4.71
+      "weight": 4.9
+    },
+    {
+      "name": "Infosys Ltd.",
+      "symbol": "",
+      "sector": "",
+      "weight": 4.72
     },
     {
       "name": "HDFC Bank Ltd.",
       "symbol": "",
       "sector": "",
-      "weight": 4.23
+      "weight": 4.53
     },
     {
       "name": "Eternal Ltd.",
       "symbol": "",
       "sector": "",
-      "weight": 3.56
+      "weight": 3.72
     },
     {
       "name": "Axis Bank Ltd.",
       "symbol": "",
       "sector": "",
-      "weight": 3.4
+      "weight": 3.44
     },
     {
       "name": "Bajaj Finance Ltd.",
       "symbol": "",
       "sector": "",
-      "weight": 3.16
+      "weight": 3.07
     },
     {
       "name": "Mahindra & Mahindra Ltd.",
       "symbol": "",
       "sector": "",
-      "weight": 2.93
+      "weight": 2.83
     },
     {
       "name": "State Bank of India",
       "symbol": "",
       "sector": "",
-      "weight": 2.87
+      "weight": 2.79
     },
     {
       "name": "HCL Technologies Ltd.",
       "symbol": "",
       "sector": "",
-      "weight": 2.77
+      "weight": 2.79
     }
   ],
   "sectors": [
     {
       "name": "Financial Services",
       "count": null,
-      "weight": 33.61
-    },
-    {
-      "name": "Information Technology",
-      "count": null,
-      "weight": 12.59
+      "weight": 33.36
     },
     {
       "name": "Automobile and Auto Components",
       "count": null,
-      "weight": 12.46
+      "weight": 12.2
+    },
+    {
+      "name": "Information Technology",
+      "count": null,
+      "weight": 12.15
     },
     {
       "name": "Consumer Services",
       "count": null,
-      "weight": 5.84
+      "weight": 6.06
     },
     {
       "name": "Fast Moving Consumer Goods",
       "count": null,
-      "weight": 5.24
+      "weight": 5.3
     },
     {
       "name": "Power",
       "count": null,
-      "weight": 4.71
+      "weight": 5.07
     },
     {
       "name": "Telecommunication",
       "count": null,
-      "weight": 4.71
+      "weight": 4.9
     },
     {
       "name": "Metals & Mining",
       "count": null,
-      "weight": 3.7
-    },
-    {
-      "name": "Capital Goods",
-      "count": null,
-      "weight": 3.7
+      "weight": 3.84
     },
     {
       "name": "Healthcare",
       "count": null,
-      "weight": 3.62
+      "weight": 3.64
+    },
+    {
+      "name": "Capital Goods",
+      "count": null,
+      "weight": 3.63
     },
     {
       "name": "Oil, Gas & Consumable Fuels",
       "count": null,
-      "weight": 3.07
+      "weight": 3.12
     },
     {
       "name": "Consumer Durables",
       "count": null,
-      "weight": 2.84
+      "weight": 2.74
     },
     {
       "name": "Construction Materials",
       "count": null,
-      "weight": 1.87
+      "weight": 1.88
     },
     {
       "name": "Chemicals",
       "count": null,
-      "weight": 0.95
+      "weight": 0.88
     },
     {
       "name": "Services",
       "count": null,
-      "weight": 0.71
+      "weight": 0.86
     },
     {
       "name": "Realty",
       "count": null,
-      "weight": 0.37
+      "weight": 0.39
     }
   ]
 }

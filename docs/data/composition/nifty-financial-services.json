@@ -1,142 +1,142 @@
 {
   "slug": "nifty-financial-services",
   "index_name": "NIFTY Financial Services",
-  "as_of": "2026-08-31",
-  "report_month": "Aug 2026",
+  "as_of": "2026-09-30",
+  "report_month": "Sep 2026",
   "source": "NSE Indices — Indices Market Capitalisation & Weightage",
-  "source_url": "https://www.niftyindices.com/Indices_-_Market_Capitalisation_and_Weightage/indices_dataAug2026.zip",
+  "source_url": "https://www.niftyindices.com/Indices_-_Market_Capitalisation_and_Weightage/indices_dataSep2026.zip",
   "source_type": "official_nse_indices_monthly_report",
   "completeness": "full",
   "stock_count": 20,
-  "weight_coverage": 100.02,
-  "top10_weight": 85.88,
+  "weight_coverage": 99.99,
+  "top10_weight": 86.19,
   "coverage_note": "Official NSE Indices monthly constituent-weight report.",
   "holdings": [
     {
       "name": "HDFC Bank Ltd.",
       "symbol": "HDFCBANK",
       "sector": "Financial Services",
-      "weight": 17.26
+      "weight": 18.63
     },
     {
       "name": "ICICI Bank Ltd.",
       "symbol": "ICICIBANK",
       "sector": "Financial Services",
-      "weight": 15.07
-    },
-    {
-      "name": "State Bank of India",
-      "symbol": "SBIN",
-      "sector": "Financial Services",
-      "weight": 10.42
-    },
-    {
-      "name": "Kotak Mahindra Bank Ltd.",
-      "symbol": "KOTAKBANK",
-      "sector": "Financial Services",
-      "weight": 9.63
+      "weight": 14.2
     },
     {
       "name": "Axis Bank Ltd.",
       "symbol": "AXISBANK",
       "sector": "Financial Services",
-      "weight": 9.51
+      "weight": 10.18
+    },
+    {
+      "name": "Kotak Mahindra Bank Ltd.",
+      "symbol": "KOTAKBANK",
+      "sector": "Financial Services",
+      "weight": 10.11
+    },
+    {
+      "name": "State Bank of India",
+      "symbol": "SBIN",
+      "sector": "Financial Services",
+      "weight": 9.94
     },
     {
       "name": "Bajaj Finance Ltd.",
       "symbol": "BAJFINANCE",
       "sector": "Financial Services",
-      "weight": 8.83
+      "weight": 8.62
     },
     {
       "name": "Shriram Finance Ltd.",
       "symbol": "SHRIRAMFIN",
       "sector": "Financial Services",
-      "weight": 4.85
+      "weight": 4.53
     },
     {
       "name": "BSE Ltd.",
       "symbol": "BSE",
       "sector": "Financial Services",
-      "weight": 4.18
+      "weight": 4.16
     },
     {
       "name": "Bajaj Finserv Ltd.",
       "symbol": "BAJAJFINSV",
       "sector": "Financial Services",
-      "weight": 3.65
-    },
-    {
-      "name": "Cholamandalam Investment and Finance Company Ltd.",
-      "symbol": "CHOLAFIN",
-      "sector": "Financial Services",
-      "weight": 2.48
-    },
-    {
-      "name": "Jio Financial Services Ltd.",
-      "symbol": "JIOFIN",
-      "sector": "Financial Services",
-      "weight": 2.46
+      "weight": 3.31
     },
     {
       "name": "SBI Life Insurance Company Ltd.",
       "symbol": "SBILIFE",
       "sector": "Financial Services",
-      "weight": 2.44
+      "weight": 2.51
+    },
+    {
+      "name": "Jio Financial Services Ltd.",
+      "symbol": "JIOFIN",
+      "sector": "Financial Services",
+      "weight": 2.34
+    },
+    {
+      "name": "Cholamandalam Investment and Finance Company Ltd.",
+      "symbol": "CHOLAFIN",
+      "sector": "Financial Services",
+      "weight": 2.31
     },
     {
       "name": "HDFC Life Insurance Company Ltd.",
       "symbol": "HDFCLIFE",
       "sector": "Financial Services",
-      "weight": 1.83
+      "weight": 1.85
     },
     {
       "name": "Power Finance Corporation Ltd.",
       "symbol": "PFC",
       "sector": "Financial Services",
-      "weight": 1.5
-    },
-    {
-      "name": "Max Financial Services Ltd.",
-      "symbol": "MFSL",
-      "sector": "Financial Services",
-      "weight": 1.28
-    },
-    {
-      "name": "REC Ltd.",
-      "symbol": "RECLTD",
-      "sector": "Financial Services",
-      "weight": 1.27
+      "weight": 1.56
     },
     {
       "name": "ICICI Lombard General Insurance Company Ltd.",
       "symbol": "ICICIGI",
       "sector": "Financial Services",
-      "weight": 1.2
+      "weight": 1.25
+    },
+    {
+      "name": "REC Ltd.",
+      "symbol": "RECLTD",
+      "sector": "Financial Services",
+      "weight": 1.23
+    },
+    {
+      "name": "Max Financial Services Ltd.",
+      "symbol": "MFSL",
+      "sector": "Financial Services",
+      "weight": 1.18
     },
     {
       "name": "Muthoot Finance Ltd.",
       "symbol": "MUTHOOTFIN",
       "sector": "Financial Services",
-      "weight": 1.03
+      "weight": 0.98
     },
     {
       "name": "SBI Cards and Payment Services Ltd.",
       "symbol": "SBICARD",
       "sector": "Financial Services",
-      "weight": 0.61
+      "weight": 0.57
     },
     {
       "name": "LIC Housing Finance Ltd.",
       "symbol": "LICHSGFIN",
       "sector": "Financial Services",
-      "weight": 0.52
+      "weight": 0.53
     }
   ],
   "sectors": [
     {
       "name": "Financial Services",
-      "weight": 100.02,
+      "weight": 99.99,
       "count": 20
     }
   ]
