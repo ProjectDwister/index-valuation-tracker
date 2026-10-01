@@ -2,7 +2,7 @@
   "slug": "nifty-midsmallcap-400",
   "index_name": "NIFTY Midsmallcap 400",
   "as_of": null,
-  "retrieved_on": "2026-09-30",
+  "retrieved_on": "2026-10-01",
   "source": "NSE Indices — Index Constituent CSV",
   "source_url": "https://www.niftyindices.com/IndexConstituent/ind_niftymidsmallcap400list.csv",
   "source_type": "official_nse_indices_constituent_csv",
@@ -711,7 +711,7 @@
     {
       "name": "Dummy HEG Ltd.",
       "symbol": "DUMMYHEG",
-      "sector": "Metals & Mining",
+      "sector": "Capital Goods",
       "weight": null
     },
     {
@@ -2428,8 +2428,8 @@
     },
     {
       "name": "Capital Goods",
-      "count": 58,
-      "stock_share": 14.4638,
+      "count": 59,
+      "stock_share": 14.7132,
       "weight": null
     },
     {
@@ -2475,12 +2475,6 @@
       "weight": null
     },
     {
-      "name": "Metals & Mining",
-      "count": 13,
-      "stock_share": 3.2419,
-      "weight": null
-    },
-    {
       "name": "Oil Gas & Consumable Fuels",
       "count": 13,
       "stock_share": 3.2419,
@@ -2500,6 +2494,12 @@
     },
     {
       "name": "Construction",
+      "count": 12,
+      "stock_share": 2.9925,
+      "weight": null
+    },
+    {
+      "name": "Metals & Mining",
       "count": 12,
       "stock_share": 2.9925,
       "weight": null

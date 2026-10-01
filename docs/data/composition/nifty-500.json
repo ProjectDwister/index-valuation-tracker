@@ -2,7 +2,7 @@
   "slug": "nifty-500",
   "index_name": "NIFTY 500",
   "as_of": null,
-  "retrieved_on": "2026-09-30",
+  "retrieved_on": "2026-10-01",
   "source": "NSE Indices — Index Constituent CSV",
   "source_url": "https://www.niftyindices.com/IndexConstituent/ind_nifty500list.csv",
   "source_type": "official_nse_indices_constituent_csv",
@@ -897,7 +897,7 @@
     {
       "name": "Dummy HEG Ltd.",
       "symbol": "DUMMYHEG",
-      "sector": "Metals & Mining",
+      "sector": "Capital Goods",
       "weight": null
     },
     {
@@ -3028,8 +3028,8 @@
     },
     {
       "name": "Capital Goods",
-      "count": 69,
-      "stock_share": 13.7725,
+      "count": 70,
+      "stock_share": 13.9721,
       "weight": null
     },
     {
@@ -3070,8 +3070,8 @@
     },
     {
       "name": "Metals & Mining",
-      "count": 21,
-      "stock_share": 4.1916,
+      "count": 20,
+      "stock_share": 3.992,
       "weight": null
     },
     {
