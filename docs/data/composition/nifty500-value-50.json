@@ -2,7 +2,7 @@
   "slug": "nifty500-value-50",
   "index_name": "Nifty500 Value 50",
   "as_of": null,
-  "retrieved_on": "2026-10-01",
+  "retrieved_on": "2026-10-05",
   "source": "NSE Indices — Index Constituent CSV",
   "source_url": "https://www.niftyindices.com/IndexConstituent/ind_nifty500Value50_list.csv",
   "source_type": "official_nse_indices_constituent_csv",
