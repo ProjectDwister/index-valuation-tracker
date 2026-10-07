@@ -504,7 +504,7 @@ function renderSelected(slug){
     setStrip({wrap:'overviewBoundaryStrip',buyHoldTick:'ovBuyHoldTick',holdSellTick:'ovHoldSellTick',currentTick:'ovCurrentPeTick',min:'ovBoundaryMin',max:'ovBoundaryMax'},null,null,null);
     setStrip({wrap:'boundaryStrip',buyHoldTick:'buyHoldTick',holdSellTick:'holdSellTick',currentTick:'currentPeTick',min:'boundaryMin',max:'boundaryMax'},null,null,null);
   }
-  renderSparklines(slug,x);renderBacktest(slug,x);renderHistory(slug,x);renderComposition(slug);
+  renderSparklines(slug,x);renderBacktest(slug,x);renderReturnExpectations();renderHistory(slug,x);renderComposition(slug);
   $('coverageStats').innerHTML=`<div><span>Monthly P/E observations</span><strong>${x.live_pe_history_months||0}</strong></div><div><span>Quarter-end P/E observations</span><strong>${x.backtest_valid_pe_quarters||0}</strong></div>`;
 }
 
@@ -526,6 +526,36 @@ function heatmapTrend(x, previous){
     ? `Signal stayed ${x.signal} since ${fmtDate(previous.date)}`
     : `Signal ${direction==='up'?'improved':'weakened'} from ${previous.signal} to ${x.signal} since ${fmtDate(previous.date)}`;
   return `<span class="signal-trend ${direction}" role="img" aria-label="${escapeCompositionText(label)}" title="${escapeCompositionText(label)}">${arrow}</span>`;
+}
+
+function renderReturnExpectations(){
+  if(!catalog || !latestBundle?.indices) return;
+  const years=Number($('returnHorizon')?.value||3);
+  const rows=catalog.items.map(item=>{
+    const current=latestBundle.indices[item.slug]||{};
+    const expectation=backtestBundle?.indices?.[item.slug]?.score_expectations;
+    const stale=!expectation || expectation.as_of!==current.as_of;
+    const matched=stale?{}:expectation.horizons?.[String(years)]||{};
+    const rate=matched.median_cagr==null?null:Number(matched.median_cagr);
+    return {item,current,matched,stale,rate:Number.isFinite(rate)?rate:null};
+  });
+  const ranked=rows.filter(row=>row.rate!=null).sort((a,b)=>b.rate-a.rate||a.item.name.localeCompare(b.item.name));
+  const unranked=rows.filter(row=>row.rate==null).sort((a,b)=>a.item.name.localeCompare(b.item.name));
+  const scoreText=x=>x==null||!Number.isFinite(Number(x))?'—':Number(x).toFixed(1);
+  const staleCount=rows.filter(row=>row.stale).length;
+  $('returnSummary').textContent=`${ranked.length} of ${rows.length} indices ranked for ${years} ${years===1?'year':'years'} · Data as of ${fmtDate(latestBundle.as_of)} · Median historical price CAGR${staleCount?` · ${staleCount} awaiting matching backtest data`:''}`;
+  $('returnBody').innerHTML=ranked.map(({item,current,matched,rate},i)=>{
+    const total=Math.pow(1+rate,years)-1;
+    const range=`${Number(matched.score_min).toFixed(0)}–${Number(matched.score_max).toFixed(0)}`;
+    const name=escapeCompositionText(item.name);
+    const signal=['BUY','HOLD','SELL'].includes(current.signal)?current.signal:'';
+    return `<tr class="${item.slug===selectedSlug?'selected':''}"><td class="return-rank">${i+1}</td><td><button type="button" class="return-index-link" data-slug="${escapeCompositionText(item.slug)}" aria-label="Open ${name} dashboard">${name}</button><small>${escapeCompositionText(item.group||'')}</small></td><td><span class="return-score ${signal}">${scoreText(current.composite_score)}</span></td><td class="return-value ${rate<0?'negative':'positive'}">${signedPct(rate)}</td><td class="return-total">${signedPct(total)}</td><td class="return-range">${range}</td><td class="return-sample">${matched.n}</td></tr>`;
+  }).join('')||'<tr><td colspan="7" class="empty-history">No indices have enough score-matched history for this horizon.</td></tr>';
+  $('returnUnrankedCount').textContent=`${unranked.length} ${unranked.length===1?'index':'indices'} without enough score-matched history`;
+  $('returnUnrankedList').innerHTML=unranked.map(({item,matched,stale})=>`<span>${escapeCompositionText(item.name)} <b>${stale?'Backtest data unavailable':`${Number(matched.n)||0} quarters`}</b></span>`).join('')||'<span>All tracked indices have enough matching history.</span>';
+  $('returnBody').querySelectorAll('.return-index-link').forEach(button=>button.addEventListener('click',()=>{
+    renderSelected(button.dataset.slug);activateTab('overview');window.scrollTo({top:0,behavior:'smooth'});
+  }));
 }
 
 function renderHeatmap(){
@@ -560,7 +590,7 @@ function renderHeatmap(){
   $('heatmapBody').querySelectorAll('tr[data-slug]').forEach(tr=>tr.addEventListener('click',()=>{renderSelected(tr.dataset.slug);activateTab('overview');window.scrollTo({top:0,behavior:'smooth'});}));
 }
 
-function activateTab(name){document.querySelectorAll('.tab-button').forEach(b=>b.classList.toggle('active',b.dataset.tab===name));document.querySelectorAll('.tab-panel').forEach(p=>p.classList.toggle('active',p.dataset.panel===name));try{localStorage.setItem('niftyActiveTab',name);}catch(_e){} if(name==='heatmap' && catalog && latestBundle?.indices)renderHeatmap();}
+function activateTab(name){document.querySelectorAll('.tab-button').forEach(b=>b.classList.toggle('active',b.dataset.tab===name));document.querySelectorAll('.tab-panel').forEach(p=>p.classList.toggle('active',p.dataset.panel===name));try{localStorage.setItem('niftyActiveTab',name);}catch(_e){} if(name==='heatmap' && catalog && latestBundle?.indices)renderHeatmap();if(name==='returns' && catalog && latestBundle?.indices)renderReturnExpectations();}
 function updateTabScrollHint(){
   const nav=document.querySelector('.tab-nav'), hint=$('tabScrollHint');
   if(!nav || !hint) return;
@@ -650,6 +680,7 @@ async function boot(){
     $('heatmapSearch').addEventListener('input',renderHeatmap);
     $('heatmapGroup').addEventListener('change',renderHeatmap);
     $('heatmapSort')?.addEventListener('change',renderHeatmap);
+    $('returnHorizon')?.addEventListener('change',renderReturnExpectations);
     setLoadProgress(86);
 
     const requestedSlug=new URLSearchParams(location.search).get('index');

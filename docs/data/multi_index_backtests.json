@@ -59,6 +59,47 @@
         "valid_pe_quarters": 44,
         "first_quarter": "2015-12-31",
         "last_quarter": "2026-09-30"
+      },
+      "score_expectations": {
+        "as_of": "2026-10-06",
+        "method": "nearest_historical_composite_score",
+        "max_score_distance": 25.0,
+        "min_samples": 5,
+        "max_samples": 8,
+        "horizons": {
+          "1": {
+            "median_cagr": 0.06957381380423622,
+            "n": 8,
+            "score_min": 57.5,
+            "score_max": 81.0690074573725,
+            "first_quarter": "2020-03-31",
+            "last_quarter": "2025-09-30"
+          },
+          "3": {
+            "median_cagr": null,
+            "n": 3,
+            "score_min": 66.27663470473276,
+            "score_max": 77.02057257028291,
+            "first_quarter": "2020-03-31",
+            "last_quarter": "2023-03-31"
+          },
+          "5": {
+            "median_cagr": null,
+            "n": 1,
+            "score_min": 77.02057257028291,
+            "score_max": 77.02057257028291,
+            "first_quarter": "2020-03-31",
+            "last_quarter": "2020-03-31"
+          },
+          "10": {
+            "median_cagr": null,
+            "n": 0,
+            "score_min": null,
+            "score_max": null,
+            "first_quarter": null,
+            "last_quarter": null
+          }
+        }
       }
     },
     "nifty-200": {
@@ -119,6 +160,47 @@
         "valid_pe_quarters": 44,
         "first_quarter": "2015-12-31",
         "last_quarter": "2026-09-30"
+      },
+      "score_expectations": {
+        "as_of": "2026-10-06",
+        "method": "nearest_historical_composite_score",
+        "max_score_distance": 25.0,
+        "min_samples": 5,
+        "max_samples": 8,
+        "horizons": {
+          "1": {
+            "median_cagr": 0.234890548383214,
+            "n": 5,
+            "score_min": 67.80197876995561,
+            "score_max": 83.24632477988666,
+            "first_quarter": "2020-03-31",
+            "last_quarter": "2025-09-30"
+          },
+          "3": {
+            "median_cagr": null,
+            "n": 3,
+            "score_min": 68.01314869900153,
+            "score_max": 83.24632477988666,
+            "first_quarter": "2020-03-31",
+            "last_quarter": "2023-03-31"
+          },
+          "5": {
+            "median_cagr": null,
+            "n": 1,
+            "score_min": 83.24632477988666,
+            "score_max": 83.24632477988666,
+            "first_quarter": "2020-03-31",
+            "last_quarter": "2020-03-31"
+          },
+          "10": {
+            "median_cagr": null,
+            "n": 0,
+            "score_min": null,
+            "score_max": null,
+            "first_quarter": null,
+            "last_quarter": null
+          }
+        }
       }
     },
     "nifty-50": {
@@ -180,6 +262,47 @@
         "first_quarter": "1999-03-31",
         "last_quarter": "2026-09-30",
         "source": "canonical_nifty50_long_history"
+      },
+      "score_expectations": {
+        "as_of": "2026-10-06",
+        "method": "nearest_historical_composite_score",
+        "max_score_distance": 25.0,
+        "min_samples": 5,
+        "max_samples": 8,
+        "horizons": {
+          "1": {
+            "median_cagr": 0.2589355759365,
+            "n": 8,
+            "score_min": 74.4360042631,
+            "score_max": 83.2,
+            "first_quarter": "2001-09-30",
+            "last_quarter": "2025-03-31"
+          },
+          "3": {
+            "median_cagr": 0.2828376943945,
+            "n": 8,
+            "score_min": 74.4360042631,
+            "score_max": 83.4572214872,
+            "first_quarter": "2001-06-30",
+            "last_quarter": "2023-03-31"
+          },
+          "5": {
+            "median_cagr": 0.2282368726785,
+            "n": 8,
+            "score_min": 73.4652284737,
+            "score_max": 83.4572214872,
+            "first_quarter": "2001-06-30",
+            "last_quarter": "2008-12-31"
+          },
+          "10": {
+            "median_cagr": 0.156170701992,
+            "n": 8,
+            "score_min": 73.4652284737,
+            "score_max": 83.4572214872,
+            "first_quarter": "2001-06-30",
+            "last_quarter": "2008-12-31"
+          }
+        }
       }
     },
     "nifty-500": {
@@ -240,6 +363,47 @@
         "valid_pe_quarters": 44,
         "first_quarter": "2015-12-31",
         "last_quarter": "2026-09-30"
+      },
+      "score_expectations": {
+        "as_of": "2026-10-06",
+        "method": "nearest_historical_composite_score",
+        "max_score_distance": 25.0,
+        "min_samples": 5,
+        "max_samples": 8,
+        "horizons": {
+          "1": {
+            "median_cagr": 0.20464223882735344,
+            "n": 8,
+            "score_min": 51.684216199352875,
+            "score_max": 78.4813918427375,
+            "first_quarter": "2019-09-30",
+            "last_quarter": "2025-09-30"
+          },
+          "3": {
+            "median_cagr": 0.13873580130585805,
+            "n": 6,
+            "score_min": 50.097053634847015,
+            "score_max": 78.4813918427375,
+            "first_quarter": "2019-09-30",
+            "last_quarter": "2023-09-30"
+          },
+          "5": {
+            "median_cagr": null,
+            "n": 2,
+            "score_min": 54.81885991297611,
+            "score_max": 78.4813918427375,
+            "first_quarter": "2019-09-30",
+            "last_quarter": "2020-03-31"
+          },
+          "10": {
+            "median_cagr": null,
+            "n": 0,
+            "score_min": null,
+            "score_max": null,
+            "first_quarter": null,
+            "last_quarter": null
+          }
+        }
       }
     },
     "nifty-largemidcap-250": {
@@ -300,6 +464,47 @@
         "valid_pe_quarters": 36,
         "first_quarter": "2017-12-31",
         "last_quarter": "2026-09-30"
+      },
+      "score_expectations": {
+        "as_of": "2026-10-06",
+        "method": "nearest_historical_composite_score",
+        "max_score_distance": 25.0,
+        "min_samples": 5,
+        "max_samples": 8,
+        "horizons": {
+          "1": {
+            "median_cagr": 0.31581152555071945,
+            "n": 7,
+            "score_min": 62.64795589959553,
+            "score_max": 95.11733966424242,
+            "first_quarter": "2019-09-30",
+            "last_quarter": "2025-09-30"
+          },
+          "3": {
+            "median_cagr": 0.18635822021442783,
+            "n": 6,
+            "score_min": 62.64795589959553,
+            "score_max": 95.11733966424242,
+            "first_quarter": "2019-09-30",
+            "last_quarter": "2023-09-30"
+          },
+          "5": {
+            "median_cagr": null,
+            "n": 3,
+            "score_min": 84.83039078889244,
+            "score_max": 95.11733966424242,
+            "first_quarter": "2019-09-30",
+            "last_quarter": "2020-03-31"
+          },
+          "10": {
+            "median_cagr": null,
+            "n": 0,
+            "score_min": null,
+            "score_max": null,
+            "first_quarter": null,
+            "last_quarter": null
+          }
+        }
       }
     },
     "nifty-midcap-100": {
@@ -360,6 +565,47 @@
         "valid_pe_quarters": 35,
         "first_quarter": "2015-12-31",
         "last_quarter": "2026-09-30"
+      },
+      "score_expectations": {
+        "as_of": "2026-10-06",
+        "method": "nearest_historical_composite_score",
+        "max_score_distance": 25.0,
+        "min_samples": 5,
+        "max_samples": 8,
+        "horizons": {
+          "1": {
+            "median_cagr": 0.35211799608255767,
+            "n": 8,
+            "score_min": 51.388888888888886,
+            "score_max": 84.52420295981334,
+            "first_quarter": "2019-12-31",
+            "last_quarter": "2025-09-30"
+          },
+          "3": {
+            "median_cagr": 0.20574700018455916,
+            "n": 5,
+            "score_min": 59.79461935309024,
+            "score_max": 84.52420295981334,
+            "first_quarter": "2019-12-31",
+            "last_quarter": "2023-09-30"
+          },
+          "5": {
+            "median_cagr": null,
+            "n": 1,
+            "score_min": 80.55555555555554,
+            "score_max": 80.55555555555554,
+            "first_quarter": "2019-12-31",
+            "last_quarter": "2019-12-31"
+          },
+          "10": {
+            "median_cagr": null,
+            "n": 0,
+            "score_min": null,
+            "score_max": null,
+            "first_quarter": null,
+            "last_quarter": null
+          }
+        }
       }
     },
     "nifty-midcap-150": {
@@ -420,6 +666,47 @@
         "valid_pe_quarters": 41,
         "first_quarter": "2016-06-30",
         "last_quarter": "2026-09-30"
+      },
+      "score_expectations": {
+        "as_of": "2026-10-06",
+        "method": "nearest_historical_composite_score",
+        "max_score_distance": 25.0,
+        "min_samples": 5,
+        "max_samples": 8,
+        "horizons": {
+          "1": {
+            "median_cagr": 0.3373778566873955,
+            "n": 8,
+            "score_min": 49.05750735831283,
+            "score_max": 84.09399191748804,
+            "first_quarter": "2018-09-30",
+            "last_quarter": "2025-09-30"
+          },
+          "3": {
+            "median_cagr": 0.19617662156853644,
+            "n": 8,
+            "score_min": 49.05750735831283,
+            "score_max": 91.9230769230769,
+            "first_quarter": "2018-09-30",
+            "last_quarter": "2023-09-30"
+          },
+          "5": {
+            "median_cagr": 0.22259465496244024,
+            "n": 5,
+            "score_min": 49.05750735831283,
+            "score_max": 93.0,
+            "first_quarter": "2018-09-30",
+            "last_quarter": "2019-12-31"
+          },
+          "10": {
+            "median_cagr": null,
+            "n": 0,
+            "score_min": null,
+            "score_max": null,
+            "first_quarter": null,
+            "last_quarter": null
+          }
+        }
       }
     },
     "nifty-midcap-50": {
@@ -480,6 +767,47 @@
         "valid_pe_quarters": 57,
         "first_quarter": "2012-03-31",
         "last_quarter": "2026-09-30"
+      },
+      "score_expectations": {
+        "as_of": "2026-10-06",
+        "method": "nearest_historical_composite_score",
+        "max_score_distance": 25.0,
+        "min_samples": 5,
+        "max_samples": 8,
+        "horizons": {
+          "1": {
+            "median_cagr": 0.15856754258771177,
+            "n": 8,
+            "score_min": 57.63157894736842,
+            "score_max": 67.62411351323978,
+            "first_quarter": "2013-12-31",
+            "last_quarter": "2025-09-30"
+          },
+          "3": {
+            "median_cagr": 0.19198062483651523,
+            "n": 8,
+            "score_min": 55.34482758620689,
+            "score_max": 67.62411351323978,
+            "first_quarter": "2013-12-31",
+            "last_quarter": "2022-12-31"
+          },
+          "5": {
+            "median_cagr": 0.24016629746254936,
+            "n": 8,
+            "score_min": 55.34482758620689,
+            "score_max": 77.72727272727272,
+            "first_quarter": "2013-12-31",
+            "last_quarter": "2020-03-31"
+          },
+          "10": {
+            "median_cagr": 0.18022974964920846,
+            "n": 5,
+            "score_min": 38.529090541567264,
+            "score_max": 63.39991914472209,
+            "first_quarter": "2013-12-31",
+            "last_quarter": "2015-06-30"
+          }
+        }
       }
     },
     "nifty-midsmallcap-400": {
@@ -540,6 +868,47 @@
         "valid_pe_quarters": 42,
         "first_quarter": "2016-06-30",
         "last_quarter": "2026-09-30"
+      },
+      "score_expectations": {
+        "as_of": "2026-10-06",
+        "method": "nearest_historical_composite_score",
+        "max_score_distance": 25.0,
+        "min_samples": 5,
+        "max_samples": 8,
+        "horizons": {
+          "1": {
+            "median_cagr": 0.15778972371713762,
+            "n": 8,
+            "score_min": 33.47382352232679,
+            "score_max": 64.64943137623615,
+            "first_quarter": "2018-06-30",
+            "last_quarter": "2025-09-30"
+          },
+          "3": {
+            "median_cagr": 0.20886185431859017,
+            "n": 6,
+            "score_min": 41.0,
+            "score_max": 77.66790961305625,
+            "first_quarter": "2018-06-30",
+            "last_quarter": "2023-09-30"
+          },
+          "5": {
+            "median_cagr": null,
+            "n": 4,
+            "score_min": 41.0,
+            "score_max": 77.66790961305625,
+            "first_quarter": "2018-06-30",
+            "last_quarter": "2020-06-30"
+          },
+          "10": {
+            "median_cagr": null,
+            "n": 0,
+            "score_min": null,
+            "score_max": null,
+            "first_quarter": null,
+            "last_quarter": null
+          }
+        }
       }
     },
     "nifty-next-50": {
@@ -600,6 +969,47 @@
         "valid_pe_quarters": 44,
         "first_quarter": "2015-12-31",
         "last_quarter": "2026-09-30"
+      },
+      "score_expectations": {
+        "as_of": "2026-10-06",
+        "method": "nearest_historical_composite_score",
+        "max_score_distance": 25.0,
+        "min_samples": 5,
+        "max_samples": 8,
+        "horizons": {
+          "1": {
+            "median_cagr": 0.028031480511134577,
+            "n": 7,
+            "score_min": 67.1875,
+            "score_max": 81.15384615384616,
+            "first_quarter": "2020-06-30",
+            "last_quarter": "2025-09-30"
+          },
+          "3": {
+            "median_cagr": null,
+            "n": 1,
+            "score_min": 72.36842105263158,
+            "score_max": 72.36842105263158,
+            "first_quarter": "2020-06-30",
+            "last_quarter": "2020-06-30"
+          },
+          "5": {
+            "median_cagr": null,
+            "n": 1,
+            "score_min": 72.36842105263158,
+            "score_max": 72.36842105263158,
+            "first_quarter": "2020-06-30",
+            "last_quarter": "2020-06-30"
+          },
+          "10": {
+            "median_cagr": null,
+            "n": 0,
+            "score_min": null,
+            "score_max": null,
+            "first_quarter": null,
+            "last_quarter": null
+          }
+        }
       }
     },
     "nifty-smallcap-100": {
@@ -660,6 +1070,47 @@
         "valid_pe_quarters": 35,
         "first_quarter": "2015-12-31",
         "last_quarter": "2026-09-30"
+      },
+      "score_expectations": {
+        "as_of": "2026-10-06",
+        "method": "nearest_historical_composite_score",
+        "max_score_distance": 25.0,
+        "min_samples": 5,
+        "max_samples": 8,
+        "horizons": {
+          "1": {
+            "median_cagr": 0.10180408679129843,
+            "n": 8,
+            "score_min": 17.666666666666664,
+            "score_max": 34.63636363636363,
+            "first_quarter": "2019-12-31",
+            "last_quarter": "2025-06-30"
+          },
+          "3": {
+            "median_cagr": null,
+            "n": 3,
+            "score_min": 17.666666666666664,
+            "score_max": 34.63636363636363,
+            "first_quarter": "2019-12-31",
+            "last_quarter": "2023-09-30"
+          },
+          "5": {
+            "median_cagr": null,
+            "n": 2,
+            "score_min": 17.666666666666664,
+            "score_max": 21.90909090909091,
+            "first_quarter": "2019-12-31",
+            "last_quarter": "2020-09-30"
+          },
+          "10": {
+            "median_cagr": null,
+            "n": 0,
+            "score_min": null,
+            "score_max": null,
+            "first_quarter": null,
+            "last_quarter": null
+          }
+        }
       }
     },
     "nifty-smallcap-250": {
@@ -720,6 +1171,47 @@
         "valid_pe_quarters": 40,
         "first_quarter": "2016-06-30",
         "last_quarter": "2026-09-30"
+      },
+      "score_expectations": {
+        "as_of": "2026-10-06",
+        "method": "nearest_historical_composite_score",
+        "max_score_distance": 25.0,
+        "min_samples": 5,
+        "max_samples": 8,
+        "horizons": {
+          "1": {
+            "median_cagr": -0.029176616349379236,
+            "n": 6,
+            "score_min": 17.68272206597255,
+            "score_max": 35.3743661782475,
+            "first_quarter": "2024-06-30",
+            "last_quarter": "2025-09-30"
+          },
+          "3": {
+            "median_cagr": null,
+            "n": 0,
+            "score_min": null,
+            "score_max": null,
+            "first_quarter": null,
+            "last_quarter": null
+          },
+          "5": {
+            "median_cagr": null,
+            "n": 0,
+            "score_min": null,
+            "score_max": null,
+            "first_quarter": null,
+            "last_quarter": null
+          },
+          "10": {
+            "median_cagr": null,
+            "n": 0,
+            "score_min": null,
+            "score_max": null,
+            "first_quarter": null,
+            "last_quarter": null
+          }
+        }
       }
     },
     "nifty-smallcap-50": {
@@ -780,6 +1272,47 @@
         "valid_pe_quarters": 40,
         "first_quarter": "2016-06-30",
         "last_quarter": "2026-09-30"
+      },
+      "score_expectations": {
+        "as_of": "2026-10-06",
+        "method": "nearest_historical_composite_score",
+        "max_score_distance": 25.0,
+        "min_samples": 5,
+        "max_samples": 8,
+        "horizons": {
+          "1": {
+            "median_cagr": null,
+            "n": 3,
+            "score_min": 10.375,
+            "score_max": 32.76470588235294,
+            "first_quarter": "2018-03-31",
+            "last_quarter": "2025-06-30"
+          },
+          "3": {
+            "median_cagr": null,
+            "n": 1,
+            "score_min": 10.375,
+            "score_max": 10.375,
+            "first_quarter": "2018-03-31",
+            "last_quarter": "2018-03-31"
+          },
+          "5": {
+            "median_cagr": null,
+            "n": 1,
+            "score_min": 10.375,
+            "score_max": 10.375,
+            "first_quarter": "2018-03-31",
+            "last_quarter": "2018-03-31"
+          },
+          "10": {
+            "median_cagr": null,
+            "n": 0,
+            "score_min": null,
+            "score_max": null,
+            "first_quarter": null,
+            "last_quarter": null
+          }
+        }
       }
     },
     "nifty-auto": {
@@ -840,6 +1373,47 @@
         "valid_pe_quarters": 44,
         "first_quarter": "2015-12-31",
         "last_quarter": "2026-09-30"
+      },
+      "score_expectations": {
+        "as_of": "2026-10-06",
+        "method": "nearest_historical_composite_score",
+        "max_score_distance": 25.0,
+        "min_samples": 5,
+        "max_samples": 8,
+        "horizons": {
+          "1": {
+            "median_cagr": 0.10921539592544582,
+            "n": 5,
+            "score_min": 26.263157894736842,
+            "score_max": 62.388888888888886,
+            "first_quarter": "2018-03-31",
+            "last_quarter": "2025-09-30"
+          },
+          "3": {
+            "median_cagr": null,
+            "n": 3,
+            "score_min": 26.263157894736842,
+            "score_max": 61.58823529411765,
+            "first_quarter": "2018-03-31",
+            "last_quarter": "2020-06-30"
+          },
+          "5": {
+            "median_cagr": null,
+            "n": 3,
+            "score_min": 26.263157894736842,
+            "score_max": 61.58823529411765,
+            "first_quarter": "2018-03-31",
+            "last_quarter": "2020-06-30"
+          },
+          "10": {
+            "median_cagr": null,
+            "n": 0,
+            "score_min": null,
+            "score_max": null,
+            "first_quarter": null,
+            "last_quarter": null
+          }
+        }
       }
     },
     "nifty-bank": {
@@ -900,6 +1474,47 @@
         "valid_pe_quarters": 44,
         "first_quarter": "2015-12-31",
         "last_quarter": "2026-09-30"
+      },
+      "score_expectations": {
+        "as_of": "2026-10-06",
+        "method": "nearest_historical_composite_score",
+        "max_score_distance": 25.0,
+        "min_samples": 5,
+        "max_samples": 8,
+        "horizons": {
+          "1": {
+            "median_cagr": 0.16597000148733676,
+            "n": 8,
+            "score_min": 86.37527562308097,
+            "score_max": 97.94117647058823,
+            "first_quarter": "2020-03-31",
+            "last_quarter": "2025-03-31"
+          },
+          "3": {
+            "median_cagr": 0.11496388684985703,
+            "n": 7,
+            "score_min": 78.125,
+            "score_max": 96.1111111111111,
+            "first_quarter": "2020-03-31",
+            "last_quarter": "2023-09-30"
+          },
+          "5": {
+            "median_cagr": null,
+            "n": 3,
+            "score_min": 81.69222726134842,
+            "score_max": 90.27777777777777,
+            "first_quarter": "2020-03-31",
+            "last_quarter": "2020-09-30"
+          },
+          "10": {
+            "median_cagr": null,
+            "n": 0,
+            "score_min": null,
+            "score_max": null,
+            "first_quarter": null,
+            "last_quarter": null
+          }
+        }
       }
     },
     "nifty-energy": {
@@ -960,6 +1575,47 @@
         "valid_pe_quarters": 44,
         "first_quarter": "2015-12-31",
         "last_quarter": "2026-09-30"
+      },
+      "score_expectations": {
+        "as_of": "2026-10-06",
+        "method": "nearest_historical_composite_score",
+        "max_score_distance": 25.0,
+        "min_samples": 5,
+        "max_samples": 8,
+        "horizons": {
+          "1": {
+            "median_cagr": -0.05765031978447216,
+            "n": 8,
+            "score_min": 33.91945863930961,
+            "score_max": 65.0,
+            "first_quarter": "2018-09-30",
+            "last_quarter": "2024-06-30"
+          },
+          "3": {
+            "median_cagr": 0.15630849431862337,
+            "n": 8,
+            "score_min": 26.332261072895257,
+            "score_max": 65.0,
+            "first_quarter": "2017-09-30",
+            "last_quarter": "2023-03-31"
+          },
+          "5": {
+            "median_cagr": 0.16691424949224942,
+            "n": 8,
+            "score_min": 23.13967006937172,
+            "score_max": 65.0,
+            "first_quarter": "2017-09-30",
+            "last_quarter": "2020-06-30"
+          },
+          "10": {
+            "median_cagr": null,
+            "n": 0,
+            "score_min": null,
+            "score_max": null,
+            "first_quarter": null,
+            "last_quarter": null
+          }
+        }
       }
     },
     "nifty-fmcg": {
@@ -1020,6 +1676,47 @@
         "valid_pe_quarters": 44,
         "first_quarter": "2015-12-31",
         "last_quarter": "2026-09-30"
+      },
+      "score_expectations": {
+        "as_of": "2026-10-06",
+        "method": "nearest_historical_composite_score",
+        "max_score_distance": 25.0,
+        "min_samples": 5,
+        "max_samples": 8,
+        "horizons": {
+          "1": {
+            "median_cagr": 0.18790691333229947,
+            "n": 8,
+            "score_min": 59.415589115778545,
+            "score_max": 98.05555555555554,
+            "first_quarter": "2019-12-31",
+            "last_quarter": "2025-09-30"
+          },
+          "3": {
+            "median_cagr": 0.16248621459651158,
+            "n": 6,
+            "score_min": 59.415589115778545,
+            "score_max": 98.05555555555554,
+            "first_quarter": "2019-12-31",
+            "last_quarter": "2023-03-31"
+          },
+          "5": {
+            "median_cagr": null,
+            "n": 4,
+            "score_min": 63.94283149726115,
+            "score_max": 98.05555555555554,
+            "first_quarter": "2019-12-31",
+            "last_quarter": "2020-09-30"
+          },
+          "10": {
+            "median_cagr": null,
+            "n": 0,
+            "score_min": null,
+            "score_max": null,
+            "first_quarter": null,
+            "last_quarter": null
+          }
+        }
       }
     },
     "nifty-financial-services": {
@@ -1080,6 +1777,47 @@
         "valid_pe_quarters": 44,
         "first_quarter": "2015-12-31",
         "last_quarter": "2026-09-30"
+      },
+      "score_expectations": {
+        "as_of": "2026-10-06",
+        "method": "nearest_historical_composite_score",
+        "max_score_distance": 25.0,
+        "min_samples": 5,
+        "max_samples": 8,
+        "horizons": {
+          "1": {
+            "median_cagr": 0.18115464220388366,
+            "n": 8,
+            "score_min": 74.14628150752979,
+            "score_max": 92.48572724037633,
+            "first_quarter": "2020-03-31",
+            "last_quarter": "2024-06-30"
+          },
+          "3": {
+            "median_cagr": 0.13309123998832129,
+            "n": 7,
+            "score_min": 70.12479616833163,
+            "score_max": 96.1111111111111,
+            "first_quarter": "2020-03-31",
+            "last_quarter": "2023-09-30"
+          },
+          "5": {
+            "median_cagr": null,
+            "n": 3,
+            "score_min": 70.12479616833163,
+            "score_max": 90.27777777777777,
+            "first_quarter": "2020-03-31",
+            "last_quarter": "2020-09-30"
+          },
+          "10": {
+            "median_cagr": null,
+            "n": 0,
+            "score_min": null,
+            "score_max": null,
+            "first_quarter": null,
+            "last_quarter": null
+          }
+        }
       }
     },
     "nifty-it": {
@@ -1140,6 +1878,47 @@
         "valid_pe_quarters": 44,
         "first_quarter": "2015-12-31",
         "last_quarter": "2026-09-30"
+      },
+      "score_expectations": {
+        "as_of": "2026-10-06",
+        "method": "nearest_historical_composite_score",
+        "max_score_distance": 25.0,
+        "min_samples": 5,
+        "max_samples": 8,
+        "horizons": {
+          "1": {
+            "median_cagr": null,
+            "n": 3,
+            "score_min": 78.64898215294869,
+            "score_max": 90.51318397519572,
+            "first_quarter": "2020-03-31",
+            "last_quarter": "2025-09-30"
+          },
+          "3": {
+            "median_cagr": null,
+            "n": 2,
+            "score_min": 78.64898215294869,
+            "score_max": 87.88229346282056,
+            "first_quarter": "2020-03-31",
+            "last_quarter": "2023-03-31"
+          },
+          "5": {
+            "median_cagr": null,
+            "n": 1,
+            "score_min": 87.88229346282056,
+            "score_max": 87.88229346282056,
+            "first_quarter": "2020-03-31",
+            "last_quarter": "2020-03-31"
+          },
+          "10": {
+            "median_cagr": null,
+            "n": 0,
+            "score_min": null,
+            "score_max": null,
+            "first_quarter": null,
+            "last_quarter": null
+          }
+        }
       }
     },
     "nifty-metal": {
@@ -1200,6 +1979,47 @@
         "valid_pe_quarters": 44,
         "first_quarter": "2015-12-31",
         "last_quarter": "2026-09-30"
+      },
+      "score_expectations": {
+        "as_of": "2026-10-06",
+        "method": "nearest_historical_composite_score",
+        "max_score_distance": 25.0,
+        "min_samples": 5,
+        "max_samples": 8,
+        "horizons": {
+          "1": {
+            "median_cagr": 0.07177067384141167,
+            "n": 8,
+            "score_min": 63.05555555555555,
+            "score_max": 82.5,
+            "first_quarter": "2017-09-30",
+            "last_quarter": "2025-09-30"
+          },
+          "3": {
+            "median_cagr": 0.2720214638467431,
+            "n": 8,
+            "score_min": 55.73684210526316,
+            "score_max": 82.5,
+            "first_quarter": "2017-09-30",
+            "last_quarter": "2020-09-30"
+          },
+          "5": {
+            "median_cagr": 0.2284193786696167,
+            "n": 8,
+            "score_min": 55.73684210526316,
+            "score_max": 82.5,
+            "first_quarter": "2017-09-30",
+            "last_quarter": "2020-09-30"
+          },
+          "10": {
+            "median_cagr": null,
+            "n": 0,
+            "score_min": null,
+            "score_max": null,
+            "first_quarter": null,
+            "last_quarter": null
+          }
+        }
       }
     },
     "nifty-pharma": {
@@ -1260,6 +2080,47 @@
         "valid_pe_quarters": 44,
         "first_quarter": "2015-12-31",
         "last_quarter": "2026-09-30"
+      },
+      "score_expectations": {
+        "as_of": "2026-10-06",
+        "method": "nearest_historical_composite_score",
+        "max_score_distance": 25.0,
+        "min_samples": 5,
+        "max_samples": 8,
+        "horizons": {
+          "1": {
+            "median_cagr": -0.08594862653676688,
+            "n": 8,
+            "score_min": 13.499999999999996,
+            "score_max": 32.333333333333336,
+            "first_quarter": "2017-09-30",
+            "last_quarter": "2024-09-30"
+          },
+          "3": {
+            "median_cagr": 0.13273028510955687,
+            "n": 7,
+            "score_min": 13.499999999999996,
+            "score_max": 24.846153846153847,
+            "first_quarter": "2017-09-30",
+            "last_quarter": "2019-03-31"
+          },
+          "5": {
+            "median_cagr": 0.08459430072357499,
+            "n": 7,
+            "score_min": 13.499999999999996,
+            "score_max": 24.846153846153847,
+            "first_quarter": "2017-09-30",
+            "last_quarter": "2019-03-31"
+          },
+          "10": {
+            "median_cagr": null,
+            "n": 0,
+            "score_min": null,
+            "score_max": null,
+            "first_quarter": null,
+            "last_quarter": null
+          }
+        }
       }
     },
     "nifty-private-bank": {
@@ -1320,6 +2181,47 @@
         "valid_pe_quarters": 43,
         "first_quarter": "2016-03-31",
         "last_quarter": "2026-09-30"
+      },
+      "score_expectations": {
+        "as_of": "2026-10-06",
+        "method": "nearest_historical_composite_score",
+        "max_score_distance": 25.0,
+        "min_samples": 5,
+        "max_samples": 8,
+        "horizons": {
+          "1": {
+            "median_cagr": 0.06911906729426587,
+            "n": 8,
+            "score_min": 46.83333333333333,
+            "score_max": 79.76100274397426,
+            "first_quarter": "2020-06-30",
+            "last_quarter": "2025-09-30"
+          },
+          "3": {
+            "median_cagr": null,
+            "n": 4,
+            "score_min": 52.79097354765032,
+            "score_max": 68.36347910780403,
+            "first_quarter": "2020-06-30",
+            "last_quarter": "2023-09-30"
+          },
+          "5": {
+            "median_cagr": null,
+            "n": 3,
+            "score_min": 52.79097354765032,
+            "score_max": 67.2795924588679,
+            "first_quarter": "2020-06-30",
+            "last_quarter": "2020-12-31"
+          },
+          "10": {
+            "median_cagr": null,
+            "n": 0,
+            "score_min": null,
+            "score_max": null,
+            "first_quarter": null,
+            "last_quarter": null
+          }
+        }
       }
     },
     "nifty-realty": {
@@ -1380,6 +2282,47 @@
         "valid_pe_quarters": 43,
         "first_quarter": "2015-12-31",
         "last_quarter": "2026-09-30"
+      },
+      "score_expectations": {
+        "as_of": "2026-10-06",
+        "method": "nearest_historical_composite_score",
+        "max_score_distance": 25.0,
+        "min_samples": 5,
+        "max_samples": 8,
+        "horizons": {
+          "1": {
+            "median_cagr": 0.3742544925690058,
+            "n": 8,
+            "score_min": 72.77777777777777,
+            "score_max": 98.05555555555554,
+            "first_quarter": "2019-09-30",
+            "last_quarter": "2025-06-30"
+          },
+          "3": {
+            "median_cagr": 0.18398926584930586,
+            "n": 8,
+            "score_min": 67.5,
+            "score_max": 98.05555555555554,
+            "first_quarter": "2019-03-31",
+            "last_quarter": "2023-09-30"
+          },
+          "5": {
+            "median_cagr": 0.32343312851238093,
+            "n": 6,
+            "score_min": 65.0,
+            "score_max": 98.05555555555554,
+            "first_quarter": "2019-03-31",
+            "last_quarter": "2020-06-30"
+          },
+          "10": {
+            "median_cagr": null,
+            "n": 0,
+            "score_min": null,
+            "score_max": null,
+            "first_quarter": null,
+            "last_quarter": null
+          }
+        }
       }
     },
     "nifty-alpha-50": {
@@ -1440,6 +2383,47 @@
         "valid_pe_quarters": 41,
         "first_quarter": "2015-12-31",
         "last_quarter": "2026-09-30"
+      },
+      "score_expectations": {
+        "as_of": "2026-10-06",
+        "method": "nearest_historical_composite_score",
+        "max_score_distance": 25.0,
+        "min_samples": 5,
+        "max_samples": 8,
+        "horizons": {
+          "1": {
+            "median_cagr": 0.7274880987049658,
+            "n": 8,
+            "score_min": 52.5,
+            "score_max": 95.625,
+            "first_quarter": "2018-09-30",
+            "last_quarter": "2023-09-30"
+          },
+          "3": {
+            "median_cagr": 0.3414141912862333,
+            "n": 8,
+            "score_min": 52.5,
+            "score_max": 95.625,
+            "first_quarter": "2018-09-30",
+            "last_quarter": "2023-09-30"
+          },
+          "5": {
+            "median_cagr": 0.31100146000841633,
+            "n": 5,
+            "score_min": 52.5,
+            "score_max": 78.61111111111111,
+            "first_quarter": "2018-09-30",
+            "last_quarter": "2020-06-30"
+          },
+          "10": {
+            "median_cagr": null,
+            "n": 0,
+            "score_min": null,
+            "score_max": null,
+            "first_quarter": null,
+            "last_quarter": null
+          }
+        }
       }
     },
     "nifty-alpha-low-volatility-30": {
@@ -1500,6 +2484,47 @@
         "valid_pe_quarters": 37,
         "first_quarter": "2017-09-30",
         "last_quarter": "2026-09-30"
+      },
+      "score_expectations": {
+        "as_of": "2026-10-06",
+        "method": "nearest_historical_composite_score",
+        "max_score_distance": 25.0,
+        "min_samples": 5,
+        "max_samples": 8,
+        "horizons": {
+          "1": {
+            "median_cagr": 0.4427424329846813,
+            "n": 8,
+            "score_min": 70.38461538461539,
+            "score_max": 96.81818181818181,
+            "first_quarter": "2020-03-31",
+            "last_quarter": "2024-03-31"
+          },
+          "3": {
+            "median_cagr": 0.14685770005210586,
+            "n": 6,
+            "score_min": 74.74275725155664,
+            "score_max": 96.81818181818181,
+            "first_quarter": "2020-03-31",
+            "last_quarter": "2023-09-30"
+          },
+          "5": {
+            "median_cagr": null,
+            "n": 2,
+            "score_min": 74.74275725155664,
+            "score_max": 83.21571860400883,
+            "first_quarter": "2020-03-31",
+            "last_quarter": "2020-06-30"
+          },
+          "10": {
+            "median_cagr": null,
+            "n": 0,
+            "score_min": null,
+            "score_max": null,
+            "first_quarter": null,
+            "last_quarter": null
+          }
+        }
       }
     },
     "nifty-alpha-quality-low-volatility-30": {
@@ -1560,6 +2585,47 @@
         "valid_pe_quarters": 37,
         "first_quarter": "2017-09-30",
         "last_quarter": "2026-09-30"
+      },
+      "score_expectations": {
+        "as_of": "2026-10-06",
+        "method": "nearest_historical_composite_score",
+        "max_score_distance": 25.0,
+        "min_samples": 5,
+        "max_samples": 8,
+        "horizons": {
+          "1": {
+            "median_cagr": 0.4655019703151462,
+            "n": 8,
+            "score_min": 66.96221987416168,
+            "score_max": 96.1111111111111,
+            "first_quarter": "2019-06-30",
+            "last_quarter": "2023-09-30"
+          },
+          "3": {
+            "median_cagr": 0.1357172898268172,
+            "n": 8,
+            "score_min": 66.96221987416168,
+            "score_max": 96.1111111111111,
+            "first_quarter": "2019-06-30",
+            "last_quarter": "2023-09-30"
+          },
+          "5": {
+            "median_cagr": null,
+            "n": 4,
+            "score_min": 66.96221987416168,
+            "score_max": 79.65962445975778,
+            "first_quarter": "2019-06-30",
+            "last_quarter": "2020-06-30"
+          },
+          "10": {
+            "median_cagr": null,
+            "n": 0,
+            "score_min": null,
+            "score_max": null,
+            "first_quarter": null,
+            "last_quarter": null
+          }
+        }
       }
     },
     "nifty-alpha-quality-value-low-volatility-30": {
@@ -1620,6 +2686,47 @@
         "valid_pe_quarters": 37,
         "first_quarter": "2017-09-30",
         "last_quarter": "2026-09-30"
+      },
+      "score_expectations": {
+        "as_of": "2026-10-06",
+        "method": "nearest_historical_composite_score",
+        "max_score_distance": 25.0,
+        "min_samples": 5,
+        "max_samples": 8,
+        "horizons": {
+          "1": {
+            "median_cagr": 0.46783820802580467,
+            "n": 8,
+            "score_min": 82.5,
+            "score_max": 96.1111111111111,
+            "first_quarter": "2019-06-30",
+            "last_quarter": "2023-06-30"
+          },
+          "3": {
+            "median_cagr": 0.16911212381526064,
+            "n": 8,
+            "score_min": 82.5,
+            "score_max": 96.1111111111111,
+            "first_quarter": "2019-06-30",
+            "last_quarter": "2023-06-30"
+          },
+          "5": {
+            "median_cagr": 0.24375987264517995,
+            "n": 5,
+            "score_min": 84.81106327106687,
+            "score_max": 91.91768935098824,
+            "first_quarter": "2019-06-30",
+            "last_quarter": "2020-06-30"
+          },
+          "10": {
+            "median_cagr": null,
+            "n": 0,
+            "score_min": null,
+            "score_max": null,
+            "first_quarter": null,
+            "last_quarter": null
+          }
+        }
       }
     },
     "nifty-commodities": {
@@ -1680,6 +2787,47 @@
         "valid_pe_quarters": 44,
         "first_quarter": "2015-12-31",
         "last_quarter": "2026-09-30"
+      },
+      "score_expectations": {
+        "as_of": "2026-10-06",
+        "method": "nearest_historical_composite_score",
+        "max_score_distance": 25.0,
+        "min_samples": 5,
+        "max_samples": 8,
+        "horizons": {
+          "1": {
+            "median_cagr": -0.007319980103834112,
+            "n": 8,
+            "score_min": 47.36363636363635,
+            "score_max": 83.40744083530308,
+            "first_quarter": "2018-03-31",
+            "last_quarter": "2020-03-31"
+          },
+          "3": {
+            "median_cagr": 0.17925242266486874,
+            "n": 8,
+            "score_min": 47.36363636363635,
+            "score_max": 83.40744083530308,
+            "first_quarter": "2018-03-31",
+            "last_quarter": "2020-03-31"
+          },
+          "5": {
+            "median_cagr": 0.17849359294821898,
+            "n": 8,
+            "score_min": 47.36363636363635,
+            "score_max": 83.40744083530308,
+            "first_quarter": "2018-03-31",
+            "last_quarter": "2020-03-31"
+          },
+          "10": {
+            "median_cagr": null,
+            "n": 0,
+            "score_min": null,
+            "score_max": null,
+            "first_quarter": null,
+            "last_quarter": null
+          }
+        }
       }
     },
     "nifty-cpse": {
@@ -1740,6 +2888,47 @@
         "valid_pe_quarters": 44,
         "first_quarter": "2015-12-31",
         "last_quarter": "2026-09-30"
+      },
+      "score_expectations": {
+        "as_of": "2026-10-06",
+        "method": "nearest_historical_composite_score",
+        "max_score_distance": 25.0,
+        "min_samples": 5,
+        "max_samples": 8,
+        "horizons": {
+          "1": {
+            "median_cagr": 0.2270762521625408,
+            "n": 8,
+            "score_min": 32.36942586196375,
+            "score_max": 69.24663062247159,
+            "first_quarter": "2018-03-31",
+            "last_quarter": "2024-06-30"
+          },
+          "3": {
+            "median_cagr": 0.22291201305679476,
+            "n": 8,
+            "score_min": 37.66666666666666,
+            "score_max": 69.8235294117647,
+            "first_quarter": "2018-03-31",
+            "last_quarter": "2023-03-31"
+          },
+          "5": {
+            "median_cagr": 0.28546785055838375,
+            "n": 8,
+            "score_min": 37.66666666666666,
+            "score_max": 74.05555555555554,
+            "first_quarter": "2018-03-31",
+            "last_quarter": "2020-12-31"
+          },
+          "10": {
+            "median_cagr": null,
+            "n": 0,
+            "score_min": null,
+            "score_max": null,
+            "first_quarter": null,
+            "last_quarter": null
+          }
+        }
       }
     },
     "nifty-dividend-opportunities-50": {
@@ -1800,6 +2989,47 @@
         "valid_pe_quarters": 44,
         "first_quarter": "2015-12-31",
         "last_quarter": "2026-09-30"
+      },
+      "score_expectations": {
+        "as_of": "2026-10-06",
+        "method": "nearest_historical_composite_score",
+        "max_score_distance": 25.0,
+        "min_samples": 5,
+        "max_samples": 8,
+        "horizons": {
+          "1": {
+            "median_cagr": -0.03580759678474882,
+            "n": 8,
+            "score_min": 74.24030174907563,
+            "score_max": 86.08254957046752,
+            "first_quarter": "2018-09-30",
+            "last_quarter": "2025-09-30"
+          },
+          "3": {
+            "median_cagr": 0.12430607728206311,
+            "n": 8,
+            "score_min": 70.47368421052632,
+            "score_max": 87.7320969487856,
+            "first_quarter": "2018-09-30",
+            "last_quarter": "2020-06-30"
+          },
+          "5": {
+            "median_cagr": 0.19207168234598493,
+            "n": 8,
+            "score_min": 70.47368421052632,
+            "score_max": 87.7320969487856,
+            "first_quarter": "2018-09-30",
+            "last_quarter": "2020-06-30"
+          },
+          "10": {
+            "median_cagr": null,
+            "n": 0,
+            "score_min": null,
+            "score_max": null,
+            "first_quarter": null,
+            "last_quarter": null
+          }
+        }
       }
     },
     "nifty-growth-sectors-15": {
@@ -1860,6 +3090,47 @@
         "valid_pe_quarters": 44,
         "first_quarter": "2015-12-31",
         "last_quarter": "2026-09-30"
+      },
+      "score_expectations": {
+        "as_of": "2026-10-06",
+        "method": "nearest_historical_composite_score",
+        "max_score_distance": 25.0,
+        "min_samples": 5,
+        "max_samples": 8,
+        "horizons": {
+          "1": {
+            "median_cagr": 0.1510497708402455,
+            "n": 8,
+            "score_min": 83.95550447863893,
+            "score_max": 98.05555555555554,
+            "first_quarter": "2020-03-31",
+            "last_quarter": "2024-12-31"
+          },
+          "3": {
+            "median_cagr": 0.09795882256614641,
+            "n": 6,
+            "score_min": 75.5,
+            "score_max": 98.05555555555554,
+            "first_quarter": "2020-03-31",
+            "last_quarter": "2023-09-30"
+          },
+          "5": {
+            "median_cagr": null,
+            "n": 2,
+            "score_min": 77.8985933352207,
+            "score_max": 98.05555555555554,
+            "first_quarter": "2020-03-31",
+            "last_quarter": "2020-06-30"
+          },
+          "10": {
+            "median_cagr": null,
+            "n": 0,
+            "score_min": null,
+            "score_max": null,
+            "first_quarter": null,
+            "last_quarter": null
+          }
+        }
       }
     },
     "nifty-high-beta-50": {
@@ -1920,6 +3191,47 @@
         "valid_pe_quarters": 36,
         "first_quarter": "2015-12-31",
         "last_quarter": "2026-09-30"
+      },
+      "score_expectations": {
+        "as_of": "2026-10-06",
+        "method": "nearest_historical_composite_score",
+        "max_score_distance": 25.0,
+        "min_samples": 5,
+        "max_samples": 8,
+        "horizons": {
+          "1": {
+            "median_cagr": null,
+            "n": 4,
+            "score_min": 14.75,
+            "score_max": 39.55472289442903,
+            "first_quarter": "2020-06-30",
+            "last_quarter": "2024-12-31"
+          },
+          "3": {
+            "median_cagr": null,
+            "n": 2,
+            "score_min": 14.75,
+            "score_max": 36.625,
+            "first_quarter": "2020-06-30",
+            "last_quarter": "2022-12-31"
+          },
+          "5": {
+            "median_cagr": null,
+            "n": 1,
+            "score_min": 14.75,
+            "score_max": 14.75,
+            "first_quarter": "2020-06-30",
+            "last_quarter": "2020-06-30"
+          },
+          "10": {
+            "median_cagr": null,
+            "n": 0,
+            "score_min": null,
+            "score_max": null,
+            "first_quarter": null,
+            "last_quarter": null
+          }
+        }
       }
     },
     "nifty-india-consumption": {
@@ -1980,6 +3292,47 @@
         "valid_pe_quarters": 43,
         "first_quarter": "2015-12-31",
         "last_quarter": "2026-09-30"
+      },
+      "score_expectations": {
+        "as_of": "2026-10-06",
+        "method": "nearest_historical_composite_score",
+        "max_score_distance": 25.0,
+        "min_samples": 5,
+        "max_samples": 8,
+        "horizons": {
+          "1": {
+            "median_cagr": -0.00891264229237232,
+            "n": 8,
+            "score_min": 62.083333333333336,
+            "score_max": 78.125,
+            "first_quarter": "2018-09-30",
+            "last_quarter": "2025-09-30"
+          },
+          "3": {
+            "median_cagr": 0.12615060135955325,
+            "n": 8,
+            "score_min": 49.61330655155773,
+            "score_max": 78.125,
+            "first_quarter": "2018-06-30",
+            "last_quarter": "2023-03-31"
+          },
+          "5": {
+            "median_cagr": 0.14887757321638784,
+            "n": 6,
+            "score_min": 49.61330655155773,
+            "score_max": 66.0589671505787,
+            "first_quarter": "2018-06-30",
+            "last_quarter": "2019-09-30"
+          },
+          "10": {
+            "median_cagr": null,
+            "n": 0,
+            "score_min": null,
+            "score_max": null,
+            "first_quarter": null,
+            "last_quarter": null
+          }
+        }
       }
     },
     "nifty-infrastructure": {
@@ -2040,6 +3393,47 @@
         "valid_pe_quarters": 44,
         "first_quarter": "2015-12-31",
         "last_quarter": "2026-09-30"
+      },
+      "score_expectations": {
+        "as_of": "2026-10-06",
+        "method": "nearest_historical_composite_score",
+        "max_score_distance": 25.0,
+        "min_samples": 5,
+        "max_samples": 8,
+        "horizons": {
+          "1": {
+            "median_cagr": 0.021173545901306157,
+            "n": 8,
+            "score_min": 17.666666666666664,
+            "score_max": 42.5,
+            "first_quarter": "2017-09-30",
+            "last_quarter": "2025-03-31"
+          },
+          "3": {
+            "median_cagr": 0.18381522095539293,
+            "n": 8,
+            "score_min": 9.88888888888889,
+            "score_max": 49.663631374921664,
+            "first_quarter": "2017-09-30",
+            "last_quarter": "2023-06-30"
+          },
+          "5": {
+            "median_cagr": 0.21208903493973885,
+            "n": 8,
+            "score_min": 7.750000000000002,
+            "score_max": 52.5,
+            "first_quarter": "2017-09-30",
+            "last_quarter": "2020-12-31"
+          },
+          "10": {
+            "median_cagr": null,
+            "n": 0,
+            "score_min": null,
+            "score_max": null,
+            "first_quarter": null,
+            "last_quarter": null
+          }
+        }
       }
     },
     "nifty-low-volatility-50": {
@@ -2100,6 +3494,47 @@
         "valid_pe_quarters": 44,
         "first_quarter": "2015-12-31",
         "last_quarter": "2026-09-30"
+      },
+      "score_expectations": {
+        "as_of": "2026-10-06",
+        "method": "nearest_historical_composite_score",
+        "max_score_distance": 25.0,
+        "min_samples": 5,
+        "max_samples": 8,
+        "horizons": {
+          "1": {
+            "median_cagr": 0.1721334903621905,
+            "n": 6,
+            "score_min": 74.27892338917833,
+            "score_max": 90.45454545454544,
+            "first_quarter": "2018-12-31",
+            "last_quarter": "2023-09-30"
+          },
+          "3": {
+            "median_cagr": 0.1516755790499026,
+            "n": 6,
+            "score_min": 74.27892338917833,
+            "score_max": 90.45454545454544,
+            "first_quarter": "2018-12-31",
+            "last_quarter": "2023-09-30"
+          },
+          "5": {
+            "median_cagr": 0.18228071039982252,
+            "n": 5,
+            "score_min": 74.27892338917833,
+            "score_max": 86.23475880287224,
+            "first_quarter": "2018-12-31",
+            "last_quarter": "2020-03-31"
+          },
+          "10": {
+            "median_cagr": null,
+            "n": 0,
+            "score_min": null,
+            "score_max": null,
+            "first_quarter": null,
+            "last_quarter": null
+          }
+        }
       }
     },
     "nifty-mnc": {
@@ -2160,6 +3595,47 @@
         "valid_pe_quarters": 38,
         "first_quarter": "2015-12-31",
         "last_quarter": "2026-09-30"
+      },
+      "score_expectations": {
+        "as_of": "2026-10-06",
+        "method": "nearest_historical_composite_score",
+        "max_score_distance": 25.0,
+        "min_samples": 5,
+        "max_samples": 8,
+        "horizons": {
+          "1": {
+            "median_cagr": -0.016468000758638413,
+            "n": 8,
+            "score_min": 52.76469964199288,
+            "score_max": 86.23768264998466,
+            "first_quarter": "2017-12-31",
+            "last_quarter": "2025-09-30"
+          },
+          "3": {
+            "median_cagr": 0.10579335841931758,
+            "n": 8,
+            "score_min": 43.916666666666664,
+            "score_max": 89.5,
+            "first_quarter": "2017-09-30",
+            "last_quarter": "2023-09-30"
+          },
+          "5": {
+            "median_cagr": 0.09389427332347966,
+            "n": 6,
+            "score_min": 43.916666666666664,
+            "score_max": 89.5,
+            "first_quarter": "2017-09-30",
+            "last_quarter": "2019-06-30"
+          },
+          "10": {
+            "median_cagr": null,
+            "n": 0,
+            "score_min": null,
+            "score_max": null,
+            "first_quarter": null,
+            "last_quarter": null
+          }
+        }
       }
     },
     "nifty-pse": {
@@ -2220,6 +3696,47 @@
         "valid_pe_quarters": 44,
         "first_quarter": "2015-12-31",
         "last_quarter": "2026-09-30"
+      },
+      "score_expectations": {
+        "as_of": "2026-10-06",
+        "method": "nearest_historical_composite_score",
+        "max_score_distance": 25.0,
+        "min_samples": 5,
+        "max_samples": 8,
+        "horizons": {
+          "1": {
+            "median_cagr": 0.11885259489743039,
+            "n": 8,
+            "score_min": 30.101323203702616,
+            "score_max": 63.74999999999999,
+            "first_quarter": "2018-03-31",
+            "last_quarter": "2024-09-30"
+          },
+          "3": {
+            "median_cagr": 0.16032658063357208,
+            "n": 5,
+            "score_min": 21.74311766633934,
+            "score_max": 63.74999999999999,
+            "first_quarter": "2017-09-30",
+            "last_quarter": "2023-09-30"
+          },
+          "5": {
+            "median_cagr": null,
+            "n": 4,
+            "score_min": 21.74311766633934,
+            "score_max": 63.74999999999999,
+            "first_quarter": "2017-09-30",
+            "last_quarter": "2020-12-31"
+          },
+          "10": {
+            "median_cagr": null,
+            "n": 0,
+            "score_min": null,
+            "score_max": null,
+            "first_quarter": null,
+            "last_quarter": null
+          }
+        }
       }
     },
     "nifty-quality-low-volatility-30": {
@@ -2280,6 +3797,47 @@
         "valid_pe_quarters": 37,
         "first_quarter": "2017-09-30",
         "last_quarter": "2026-09-30"
+      },
+      "score_expectations": {
+        "as_of": "2026-10-06",
+        "method": "nearest_historical_composite_score",
+        "max_score_distance": 25.0,
+        "min_samples": 5,
+        "max_samples": 8,
+        "horizons": {
+          "1": {
+            "median_cagr": 0.3134935281639165,
+            "n": 8,
+            "score_min": 64.82077768941046,
+            "score_max": 86.75060114714864,
+            "first_quarter": "2019-06-30",
+            "last_quarter": "2023-09-30"
+          },
+          "3": {
+            "median_cagr": 0.12029983843324887,
+            "n": 8,
+            "score_min": 64.82077768941046,
+            "score_max": 86.75060114714864,
+            "first_quarter": "2019-06-30",
+            "last_quarter": "2023-09-30"
+          },
+          "5": {
+            "median_cagr": 0.16828196354187286,
+            "n": 5,
+            "score_min": 60.819273083914794,
+            "score_max": 76.06190837096916,
+            "first_quarter": "2019-06-30",
+            "last_quarter": "2020-06-30"
+          },
+          "10": {
+            "median_cagr": null,
+            "n": 0,
+            "score_min": null,
+            "score_max": null,
+            "first_quarter": null,
+            "last_quarter": null
+          }
+        }
       }
     },
     "nifty-services-sector": {
@@ -2340,6 +3898,47 @@
         "valid_pe_quarters": 44,
         "first_quarter": "2015-12-31",
         "last_quarter": "2026-09-30"
+      },
+      "score_expectations": {
+        "as_of": "2026-10-06",
+        "method": "nearest_historical_composite_score",
+        "max_score_distance": 25.0,
+        "min_samples": 5,
+        "max_samples": 8,
+        "horizons": {
+          "1": {
+            "median_cagr": 0.11403916582979812,
+            "n": 8,
+            "score_min": 40.5109098935763,
+            "score_max": 64.96570767694963,
+            "first_quarter": "2019-09-30",
+            "last_quarter": "2025-06-30"
+          },
+          "3": {
+            "median_cagr": 0.10651686277865369,
+            "n": 5,
+            "score_min": 44.98963600585385,
+            "score_max": 78.125,
+            "first_quarter": "2019-09-30",
+            "last_quarter": "2023-09-30"
+          },
+          "5": {
+            "median_cagr": null,
+            "n": 2,
+            "score_min": 44.98963600585385,
+            "score_max": 63.031099988550096,
+            "first_quarter": "2019-09-30",
+            "last_quarter": "2020-06-30"
+          },
+          "10": {
+            "median_cagr": null,
+            "n": 0,
+            "score_min": null,
+            "score_max": null,
+            "first_quarter": null,
+            "last_quarter": null
+          }
+        }
       }
     },
     "nifty-shariah-25": {
@@ -2400,6 +3999,47 @@
         "valid_pe_quarters": 44,
         "first_quarter": "2015-12-31",
         "last_quarter": "2026-09-30"
+      },
+      "score_expectations": {
+        "as_of": "2026-10-06",
+        "method": "nearest_historical_composite_score",
+        "max_score_distance": 25.0,
+        "min_samples": 5,
+        "max_samples": 8,
+        "horizons": {
+          "1": {
+            "median_cagr": 0.1615738980224044,
+            "n": 8,
+            "score_min": 44.59064183274012,
+            "score_max": 76.06089379257804,
+            "first_quarter": "2019-03-31",
+            "last_quarter": "2025-03-31"
+          },
+          "3": {
+            "median_cagr": 0.08580533713057226,
+            "n": 6,
+            "score_min": 51.92905316672915,
+            "score_max": 92.64870241751798,
+            "first_quarter": "2019-03-31",
+            "last_quarter": "2023-09-30"
+          },
+          "5": {
+            "median_cagr": null,
+            "n": 2,
+            "score_min": 74.05555555555554,
+            "score_max": 76.06089379257804,
+            "first_quarter": "2019-03-31",
+            "last_quarter": "2020-03-31"
+          },
+          "10": {
+            "median_cagr": null,
+            "n": 0,
+            "score_min": null,
+            "score_max": null,
+            "first_quarter": null,
+            "last_quarter": null
+          }
+        }
       }
     },
     "nifty-sme-emerge": {
@@ -2460,6 +4100,47 @@
         "valid_pe_quarters": 35,
         "first_quarter": "2017-12-31",
         "last_quarter": "2026-09-30"
+      },
+      "score_expectations": {
+        "as_of": "2026-10-06",
+        "method": "nearest_historical_composite_score",
+        "max_score_distance": 25.0,
+        "min_samples": 5,
+        "max_samples": 8,
+        "horizons": {
+          "1": {
+            "median_cagr": 0.1668446322634246,
+            "n": 8,
+            "score_min": 78.08770197347965,
+            "score_max": 98.05555555555554,
+            "first_quarter": "2019-09-30",
+            "last_quarter": "2025-09-30"
+          },
+          "3": {
+            "median_cagr": 0.4145994457909671,
+            "n": 6,
+            "score_min": 72.77777777777777,
+            "score_max": 95.625,
+            "first_quarter": "2019-09-30",
+            "last_quarter": "2023-09-30"
+          },
+          "5": {
+            "median_cagr": null,
+            "n": 3,
+            "score_min": 78.08770197347965,
+            "score_max": 82.9797874062451,
+            "first_quarter": "2019-09-30",
+            "last_quarter": "2020-03-31"
+          },
+          "10": {
+            "median_cagr": null,
+            "n": 0,
+            "score_min": null,
+            "score_max": null,
+            "first_quarter": null,
+            "last_quarter": null
+          }
+        }
       }
     },
     "nifty100-esg": {
@@ -2520,6 +4201,47 @@
         "valid_pe_quarters": 35,
         "first_quarter": "2018-03-31",
         "last_quarter": "2026-09-30"
+      },
+      "score_expectations": {
+        "as_of": "2026-10-06",
+        "method": "nearest_historical_composite_score",
+        "max_score_distance": 25.0,
+        "min_samples": 5,
+        "max_samples": 8,
+        "horizons": {
+          "1": {
+            "median_cagr": 0.052734204325422085,
+            "n": 8,
+            "score_min": 73.27985791923783,
+            "score_max": 96.60302678426099,
+            "first_quarter": "2020-03-31",
+            "last_quarter": "2025-09-30"
+          },
+          "3": {
+            "median_cagr": null,
+            "n": 1,
+            "score_min": 73.51546414782607,
+            "score_max": 73.51546414782607,
+            "first_quarter": "2020-03-31",
+            "last_quarter": "2020-03-31"
+          },
+          "5": {
+            "median_cagr": null,
+            "n": 1,
+            "score_min": 73.51546414782607,
+            "score_max": 73.51546414782607,
+            "first_quarter": "2020-03-31",
+            "last_quarter": "2020-03-31"
+          },
+          "10": {
+            "median_cagr": null,
+            "n": 0,
+            "score_min": null,
+            "score_max": null,
+            "first_quarter": null,
+            "last_quarter": null
+          }
+        }
       }
     },
     "nifty100-enhanced-esg": {
@@ -2580,6 +4302,47 @@
         "valid_pe_quarters": 35,
         "first_quarter": "2018-03-31",
         "last_quarter": "2026-09-30"
+      },
+      "score_expectations": {
+        "as_of": "2026-10-06",
+        "method": "nearest_historical_composite_score",
+        "max_score_distance": 25.0,
+        "min_samples": 5,
+        "max_samples": 8,
+        "horizons": {
+          "1": {
+            "median_cagr": 0.053033517819745635,
+            "n": 8,
+            "score_min": 67.88364227505629,
+            "score_max": 96.46460691256715,
+            "first_quarter": "2020-03-31",
+            "last_quarter": "2025-09-30"
+          },
+          "3": {
+            "median_cagr": null,
+            "n": 1,
+            "score_min": 72.1111111111111,
+            "score_max": 72.1111111111111,
+            "first_quarter": "2020-03-31",
+            "last_quarter": "2020-03-31"
+          },
+          "5": {
+            "median_cagr": null,
+            "n": 1,
+            "score_min": 72.1111111111111,
+            "score_max": 72.1111111111111,
+            "first_quarter": "2020-03-31",
+            "last_quarter": "2020-03-31"
+          },
+          "10": {
+            "median_cagr": null,
+            "n": 0,
+            "score_min": null,
+            "score_max": null,
+            "first_quarter": null,
+            "last_quarter": null
+          }
+        }
       }
     },
     "nifty100-equal-weight": {
@@ -2640,6 +4403,47 @@
         "valid_pe_quarters": 44,
         "first_quarter": "2015-12-31",
         "last_quarter": "2026-09-30"
+      },
+      "score_expectations": {
+        "as_of": "2026-10-06",
+        "method": "nearest_historical_composite_score",
+        "max_score_distance": 25.0,
+        "min_samples": 5,
+        "max_samples": 8,
+        "horizons": {
+          "1": {
+            "median_cagr": null,
+            "n": 3,
+            "score_min": 66.906108784193,
+            "score_max": 74.9253764891731,
+            "first_quarter": "2020-06-30",
+            "last_quarter": "2025-03-31"
+          },
+          "3": {
+            "median_cagr": null,
+            "n": 1,
+            "score_min": 74.9253764891731,
+            "score_max": 74.9253764891731,
+            "first_quarter": "2020-06-30",
+            "last_quarter": "2020-06-30"
+          },
+          "5": {
+            "median_cagr": null,
+            "n": 1,
+            "score_min": 74.9253764891731,
+            "score_max": 74.9253764891731,
+            "first_quarter": "2020-06-30",
+            "last_quarter": "2020-06-30"
+          },
+          "10": {
+            "median_cagr": null,
+            "n": 0,
+            "score_min": null,
+            "score_max": null,
+            "first_quarter": null,
+            "last_quarter": null
+          }
+        }
       }
     },
     "nifty100-low-volatility-30": {
@@ -2700,6 +4504,47 @@
         "valid_pe_quarters": 41,
         "first_quarter": "2016-09-30",
         "last_quarter": "2026-09-30"
+      },
+      "score_expectations": {
+        "as_of": "2026-10-06",
+        "method": "nearest_historical_composite_score",
+        "max_score_distance": 25.0,
+        "min_samples": 5,
+        "max_samples": 8,
+        "horizons": {
+          "1": {
+            "median_cagr": 0.4255622694969423,
+            "n": 5,
+            "score_min": 59.277487956715234,
+            "score_max": 87.59129586155969,
+            "first_quarter": "2019-09-30",
+            "last_quarter": "2023-09-30"
+          },
+          "3": {
+            "median_cagr": 0.14099027482736592,
+            "n": 5,
+            "score_min": 59.277487956715234,
+            "score_max": 87.59129586155969,
+            "first_quarter": "2019-09-30",
+            "last_quarter": "2023-09-30"
+          },
+          "5": {
+            "median_cagr": null,
+            "n": 4,
+            "score_min": 64.01286296156312,
+            "score_max": 87.59129586155969,
+            "first_quarter": "2019-09-30",
+            "last_quarter": "2020-06-30"
+          },
+          "10": {
+            "median_cagr": null,
+            "n": 0,
+            "score_min": null,
+            "score_max": null,
+            "first_quarter": null,
+            "last_quarter": null
+          }
+        }
       }
     },
     "nifty100-quality-30": {
@@ -2760,6 +4605,47 @@
         "valid_pe_quarters": 33,
         "first_quarter": "2018-09-30",
         "last_quarter": "2026-09-30"
+      },
+      "score_expectations": {
+        "as_of": "2026-10-06",
+        "method": "nearest_historical_composite_score",
+        "max_score_distance": 25.0,
+        "min_samples": 5,
+        "max_samples": 8,
+        "horizons": {
+          "1": {
+            "median_cagr": 0.3053035572950592,
+            "n": 8,
+            "score_min": 62.77510662986394,
+            "score_max": 96.1111111111111,
+            "first_quarter": "2020-06-30",
+            "last_quarter": "2025-06-30"
+          },
+          "3": {
+            "median_cagr": 0.0966550446735579,
+            "n": 5,
+            "score_min": 63.804228623023555,
+            "score_max": 96.1111111111111,
+            "first_quarter": "2020-06-30",
+            "last_quarter": "2023-09-30"
+          },
+          "5": {
+            "median_cagr": null,
+            "n": 1,
+            "score_min": 63.804228623023555,
+            "score_max": 63.804228623023555,
+            "first_quarter": "2020-06-30",
+            "last_quarter": "2020-06-30"
+          },
+          "10": {
+            "median_cagr": null,
+            "n": 0,
+            "score_min": null,
+            "score_max": null,
+            "first_quarter": null,
+            "last_quarter": null
+          }
+        }
       }
     },
     "nifty200-quality-30": {
@@ -2820,6 +4706,47 @@
         "valid_pe_quarters": 34,
         "first_quarter": "2018-06-30",
         "last_quarter": "2026-09-30"
+      },
+      "score_expectations": {
+        "as_of": "2026-10-06",
+        "method": "nearest_historical_composite_score",
+        "max_score_distance": 25.0,
+        "min_samples": 5,
+        "max_samples": 8,
+        "horizons": {
+          "1": {
+            "median_cagr": 0.17553710906344322,
+            "n": 8,
+            "score_min": 53.31272853942974,
+            "score_max": 81.05165697725133,
+            "first_quarter": "2020-03-31",
+            "last_quarter": "2025-09-30"
+          },
+          "3": {
+            "median_cagr": 0.11881994901336801,
+            "n": 6,
+            "score_min": 53.31272853942974,
+            "score_max": 92.64644712555742,
+            "first_quarter": "2020-03-31",
+            "last_quarter": "2023-09-30"
+          },
+          "5": {
+            "median_cagr": null,
+            "n": 2,
+            "score_min": 70.19011488784156,
+            "score_max": 81.05165697725133,
+            "first_quarter": "2020-03-31",
+            "last_quarter": "2020-06-30"
+          },
+          "10": {
+            "median_cagr": null,
+            "n": 0,
+            "score_min": null,
+            "score_max": null,
+            "first_quarter": null,
+            "last_quarter": null
+          }
+        }
       }
     },
     "nifty50-equal-weight": {
@@ -2880,6 +4807,47 @@
         "valid_pe_quarters": 38,
         "first_quarter": "2017-06-30",
         "last_quarter": "2026-09-30"
+      },
+      "score_expectations": {
+        "as_of": "2026-10-06",
+        "method": "nearest_historical_composite_score",
+        "max_score_distance": 25.0,
+        "min_samples": 5,
+        "max_samples": 8,
+        "horizons": {
+          "1": {
+            "median_cagr": 0.024842949618792298,
+            "n": 8,
+            "score_min": 17.034019548842046,
+            "score_max": 40.70216324429772,
+            "first_quarter": "2022-12-31",
+            "last_quarter": "2025-09-30"
+          },
+          "3": {
+            "median_cagr": 0.1787358168661054,
+            "n": 8,
+            "score_min": 8.333333333333332,
+            "score_max": 50.664673254381974,
+            "first_quarter": "2019-12-31",
+            "last_quarter": "2023-09-30"
+          },
+          "5": {
+            "median_cagr": null,
+            "n": 4,
+            "score_min": 8.333333333333332,
+            "score_max": 47.36363636363635,
+            "first_quarter": "2019-12-31",
+            "last_quarter": "2020-12-31"
+          },
+          "10": {
+            "median_cagr": null,
+            "n": 0,
+            "score_min": null,
+            "score_max": null,
+            "first_quarter": null,
+            "last_quarter": null
+          }
+        }
       }
     },
     "nifty50-shariah": {
@@ -2940,6 +4908,47 @@
         "valid_pe_quarters": 44,
         "first_quarter": "2015-12-31",
         "last_quarter": "2026-09-30"
+      },
+      "score_expectations": {
+        "as_of": "2026-10-06",
+        "method": "nearest_historical_composite_score",
+        "max_score_distance": 25.0,
+        "min_samples": 5,
+        "max_samples": 8,
+        "horizons": {
+          "1": {
+            "median_cagr": -0.06578237910558732,
+            "n": 8,
+            "score_min": 39.05555555555555,
+            "score_max": 52.29761119820595,
+            "first_quarter": "2019-03-31",
+            "last_quarter": "2025-06-30"
+          },
+          "3": {
+            "median_cagr": 0.142909358142984,
+            "n": 8,
+            "score_min": 21.90909090909091,
+            "score_max": 52.29761119820595,
+            "first_quarter": "2017-12-31",
+            "last_quarter": "2023-09-30"
+          },
+          "5": {
+            "median_cagr": 0.1313359321631511,
+            "n": 7,
+            "score_min": 20.411764705882355,
+            "score_max": 52.29761119820595,
+            "first_quarter": "2017-12-31",
+            "last_quarter": "2020-03-31"
+          },
+          "10": {
+            "median_cagr": null,
+            "n": 0,
+            "score_min": null,
+            "score_max": null,
+            "first_quarter": null,
+            "last_quarter": null
+          }
+        }
       }
     },
     "nifty50-value-20": {
@@ -3000,6 +5009,47 @@
         "valid_pe_quarters": 44,
         "first_quarter": "2015-12-31",
         "last_quarter": "2026-09-30"
+      },
+      "score_expectations": {
+        "as_of": "2026-10-06",
+        "method": "nearest_historical_composite_score",
+        "max_score_distance": 25.0,
+        "min_samples": 5,
+        "max_samples": 8,
+        "horizons": {
+          "1": {
+            "median_cagr": 0.05257475083793628,
+            "n": 8,
+            "score_min": 73.28237677623721,
+            "score_max": 86.53846153846155,
+            "first_quarter": "2018-12-31",
+            "last_quarter": "2025-06-30"
+          },
+          "3": {
+            "median_cagr": 0.17977864682259748,
+            "n": 7,
+            "score_min": 67.5,
+            "score_max": 86.53846153846155,
+            "first_quarter": "2018-12-31",
+            "last_quarter": "2022-12-31"
+          },
+          "5": {
+            "median_cagr": 0.19393344540880908,
+            "n": 6,
+            "score_min": 67.5,
+            "score_max": 86.53846153846155,
+            "first_quarter": "2018-12-31",
+            "last_quarter": "2020-03-31"
+          },
+          "10": {
+            "median_cagr": null,
+            "n": 0,
+            "score_min": null,
+            "score_max": null,
+            "first_quarter": null,
+            "last_quarter": null
+          }
+        }
       }
     },
     "nifty500-shariah": {
@@ -3060,6 +5110,47 @@
         "valid_pe_quarters": 44,
         "first_quarter": "2015-12-31",
         "last_quarter": "2026-09-30"
+      },
+      "score_expectations": {
+        "as_of": "2026-10-06",
+        "method": "nearest_historical_composite_score",
+        "max_score_distance": 25.0,
+        "min_samples": 5,
+        "max_samples": 8,
+        "horizons": {
+          "1": {
+            "median_cagr": -0.044651112364276546,
+            "n": 8,
+            "score_min": 38.669438519028006,
+            "score_max": 72.81277977875375,
+            "first_quarter": "2019-03-31",
+            "last_quarter": "2025-09-30"
+          },
+          "3": {
+            "median_cagr": 0.16086975115548519,
+            "n": 8,
+            "score_min": 34.63636363636363,
+            "score_max": 75.01722726085887,
+            "first_quarter": "2018-09-30",
+            "last_quarter": "2023-09-30"
+          },
+          "5": {
+            "median_cagr": 0.17005666452257495,
+            "n": 5,
+            "score_min": 59.19227363270949,
+            "score_max": 75.58906054861832,
+            "first_quarter": "2018-09-30",
+            "last_quarter": "2020-03-31"
+          },
+          "10": {
+            "median_cagr": null,
+            "n": 0,
+            "score_min": null,
+            "score_max": null,
+            "first_quarter": null,
+            "last_quarter": null
+          }
+        }
       }
     },
     "nifty500-value-50": {
@@ -3120,6 +5211,47 @@
         "valid_pe_quarters": 32,
         "first_quarter": "2018-12-31",
         "last_quarter": "2026-09-30"
+      },
+      "score_expectations": {
+        "as_of": "2026-10-06",
+        "method": "nearest_historical_composite_score",
+        "max_score_distance": 25.0,
+        "min_samples": 5,
+        "max_samples": 8,
+        "horizons": {
+          "1": {
+            "median_cagr": 0.398168303794705,
+            "n": 8,
+            "score_min": 33.222222222222214,
+            "score_max": 51.70787879188657,
+            "first_quarter": "2020-09-30",
+            "last_quarter": "2025-09-30"
+          },
+          "3": {
+            "median_cagr": 0.29759407412028516,
+            "n": 6,
+            "score_min": 25.444444444444443,
+            "score_max": 51.37975122193944,
+            "first_quarter": "2020-09-30",
+            "last_quarter": "2023-09-30"
+          },
+          "5": {
+            "median_cagr": null,
+            "n": 2,
+            "score_min": 25.444444444444443,
+            "score_max": 36.625,
+            "first_quarter": "2020-09-30",
+            "last_quarter": "2020-12-31"
+          },
+          "10": {
+            "median_cagr": null,
+            "n": 0,
+            "score_min": null,
+            "score_max": null,
+            "first_quarter": null,
+            "last_quarter": null
+          }
+        }
       }
     }
   }

@@ -46,6 +46,7 @@ from openpyxl import Workbook
 from openpyxl.comments import Comment
 from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
 from openpyxl.utils import get_column_letter
+from score_return_expectations import build_score_return_expectations
 
 NSE_ARCHIVE_BASE = "https://nsearchives.nseindia.com/content/indices"
 NSE_SOURCE_URL = "https://www.nseindia.com/all-reports"
@@ -1578,6 +1579,12 @@ def main():
     latest_map = {k:v for k,v in latest_map.items() if k in keep}
     backtests = {k:v for k,v in backtests.items() if k in keep}
     quarter_details = {k:v for k,v in quarter_details.items() if k in keep}
+
+    for slug, current in latest_map.items():
+        backtests[slug]["score_expectations"] = build_score_return_expectations(
+            quarter_details[slug], current.get("composite_score"), growth_score,
+            current.get("as_of"), MIN_EXPANDING_OBS
+        )
 
     if excluded:
         print(f"Excluded {len(excluded)} limited/unusable indices from dashboard.")
