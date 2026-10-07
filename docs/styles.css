@@ -367,13 +367,13 @@ html.app-load-failed .loading-title::after{background:linear-gradient(90deg,#f59
 .return-horizon-label select:focus-visible,.return-index-link:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .return-summary{margin:0 0 12px;padding:10px 12px;border:1px solid rgba(112,174,248,.11);border-radius:8px;background:rgba(112,174,248,.04);color:#b9cbe0;font-size:11px;line-height:1.45}
 .return-caution{margin:0 0 14px;color:#a8bbd0;font-size:11px;line-height:1.45}
-.return-wrap{border-top:0}.return-table{min-width:810px}.return-table th:nth-child(n+3),.return-table td:nth-child(n+3){text-align:right}
+.return-wrap{border-top:0}.return-table{min-width:960px}.return-table th:nth-child(n+3),.return-table td:nth-child(n+3){text-align:right}
 .return-table th:first-child,.return-table td:first-child{width:54px}.return-table th:nth-child(2){width:31%}
 .return-table tbody tr.selected{background:linear-gradient(90deg,rgba(112,174,248,.105),rgba(112,174,248,.02));box-shadow:inset 2px 0 0 var(--accent)}
 .return-rank{color:#8babc9;font-weight:750;font-variant-numeric:tabular-nums}.return-index-link{padding:0;border:0;background:none;color:#e5f0fc;font-size:12px;font-weight:740;text-align:left;cursor:pointer}.return-index-link:hover{color:#9fc8ff;text-decoration:underline}
-.return-table td small{display:block;margin-top:3px;color:var(--faint);font-size:10px}.return-score,.return-value,.return-total,.return-range,.return-sample{font-variant-numeric:tabular-nums}.return-score{font-weight:760}.return-score.BUY{color:var(--buy)}.return-score.HOLD{color:var(--hold)}.return-score.SELL{color:var(--sell)}
-.return-value{font-size:14px;font-weight:810}.return-value.positive{color:#8bdfad}.return-value.negative{color:#f29a9a}.return-total{color:#d5e4f4;font-weight:700}.return-range,.return-sample{color:var(--muted)}
+.return-table td small{display:block;margin-top:3px;color:var(--faint);font-size:10px}.return-score,.return-value,.return-total,.return-band,.return-sample{font-variant-numeric:tabular-nums}.return-score{font-weight:760}.return-score.BUY{color:var(--buy)}.return-score.HOLD{color:var(--hold)}.return-score.SELL{color:var(--sell)}
+.return-value{font-size:14px;font-weight:810}.return-value.positive{color:#8bdfad}.return-value.negative{color:#f29a9a}.return-total{color:#d5e4f4;font-weight:700}.return-band,.return-sample{color:var(--muted)}
 .return-unranked,.return-method{margin-top:15px;border-top:1px solid rgba(255,255,255,.06);padding-top:13px;color:var(--muted);font-size:11px;line-height:1.55}
 .return-unranked summary,.return-method summary{width:max-content;max-width:100%;color:#b9d5f2;font-weight:730;cursor:pointer}.return-unranked-list{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}.return-unranked-list span{padding:5px 8px;border:1px solid var(--line);border-radius:7px;color:#c0cede}.return-unranked-list b{margin-left:4px;color:var(--faint);font-weight:650}
 .return-method p{max-width:1000px;margin-top:10px;color:#a8bbd0;line-height:1.6}
-@media(max-width:760px){.return-head{align-items:stretch;flex-direction:column}.return-horizon-label{width:100%}.return-summary{font-size:11px}.return-table{min-width:775px}}
+@media(max-width:760px){.return-head{align-items:stretch;flex-direction:column}.return-horizon-label{width:100%}.return-summary{font-size:11px}.return-table{min-width:940px}}

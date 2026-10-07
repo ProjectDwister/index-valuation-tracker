@@ -46,7 +46,6 @@ from openpyxl import Workbook
 from openpyxl.comments import Comment
 from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
 from openpyxl.utils import get_column_letter
-from score_return_expectations import build_score_return_expectations
 
 NSE_ARCHIVE_BASE = "https://nsearchives.nseindia.com/content/indices"
 NSE_SOURCE_URL = "https://www.nseindia.com/all-reports"
@@ -527,7 +526,10 @@ def build_quarterly_backtest(qdf: pd.DataFrame, key: str) -> Tuple[pd.DataFrame,
             "median_5y": med("Fwd_5Y"),
             "median_10y": med("Fwd_10Y"),
             "loss_3y": None if s3.empty else float((s3 < 0).mean()),
+            "n_1y": int(x["Fwd_1Y"].notna().sum()),
             "n_3y": int(len(s3)),
+            "n_5y": int(x["Fwd_5Y"].notna().sum()),
+            "n_10y": int(x["Fwd_10Y"].notna().sum()),
         })
 
     valid_pe = int(d["PE"].notna().sum())
@@ -579,7 +581,10 @@ def build_legacy_nifty50_backtest(path: Path) -> Optional[Dict]:
             "median_5y": med("Fwd_5Y"),
             "median_10y": med("Fwd_10Y"),
             "loss_3y": None if s3.empty else float((s3 < 0).mean()),
+            "n_1y": int(x["Fwd_1Y"].notna().sum()),
             "n_3y": int(len(s3)),
+            "n_5y": int(x["Fwd_5Y"].notna().sum()),
+            "n_10y": int(x["Fwd_10Y"].notna().sum()),
         })
 
     valid_pe = int(d["PE"].notna().sum())
@@ -1580,12 +1585,6 @@ def main():
     backtests = {k:v for k,v in backtests.items() if k in keep}
     quarter_details = {k:v for k,v in quarter_details.items() if k in keep}
 
-    for slug, current in latest_map.items():
-        backtests[slug]["score_expectations"] = build_score_return_expectations(
-            quarter_details[slug], current.get("composite_score"), growth_score,
-            current.get("as_of"), MIN_EXPANDING_OBS
-        )
-
     if excluded:
         print(f"Excluded {len(excluded)} limited/unusable indices from dashboard.")
         for name, live_months, q_obs, matured_3y_obs, has_pe in excluded:
@@ -1605,6 +1604,7 @@ def main():
     }, indent=2, allow_nan=False), encoding="utf-8")
     (data_dir / "multi_index_backtests.json").write_text(json.dumps({
         "generated_at": datetime.utcnow().isoformat(timespec="seconds") + "Z",
+        "as_of": latest_date.isoformat(),
         "indices": backtests,
     }, indent=2, allow_nan=False), encoding="utf-8")
     history_path = data_dir / "multi_index_history.csv"

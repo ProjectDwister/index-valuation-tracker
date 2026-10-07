@@ -533,26 +533,26 @@ function renderReturnExpectations(){
   const years=Number($('returnHorizon')?.value||3);
   const rows=catalog.items.map(item=>{
     const current=latestBundle.indices[item.slug]||{};
-    const expectation=backtestBundle?.indices?.[item.slug]?.score_expectations;
-    const stale=!expectation || expectation.as_of!==current.as_of;
-    const matched=stale?{}:expectation.horizons?.[String(years)]||{};
-    const rate=matched.median_cagr==null?null:Number(matched.median_cagr);
-    return {item,current,matched,stale,rate:Number.isFinite(rate)?rate:null};
+    const stale=!backtestBundle?.as_of || backtestBundle.as_of!==current.as_of;
+    const band=stale?null:backtestBundle?.indices?.[item.slug]?.rows?.find(r=>r.quintile===current.valuation_quintile);
+    const value=band?.[`median_${years}y`];
+    const rate=value==null?null:Number(value);
+    const n=Number(band?.[`n_${years}y`]||0);
+    return {item,current,stale,rate:Number.isFinite(rate)&&n>=5?rate:null,n};
   });
   const ranked=rows.filter(row=>row.rate!=null).sort((a,b)=>b.rate-a.rate||a.item.name.localeCompare(b.item.name));
   const unranked=rows.filter(row=>row.rate==null).sort((a,b)=>a.item.name.localeCompare(b.item.name));
   const scoreText=x=>x==null||!Number.isFinite(Number(x))?'—':Number(x).toFixed(1);
   const staleCount=rows.filter(row=>row.stale).length;
-  $('returnSummary').textContent=`${ranked.length} of ${rows.length} indices ranked for ${years} ${years===1?'year':'years'} · Data as of ${fmtDate(latestBundle.as_of)} · Median historical price CAGR${staleCount?` · ${staleCount} awaiting matching backtest data`:''}`;
-  $('returnBody').innerHTML=ranked.map(({item,current,matched,rate},i)=>{
+  $('returnSummary').textContent=`${ranked.length} of ${rows.length} indices ranked for ${years} ${years===1?'year':'years'} · Data as of ${fmtDate(latestBundle.as_of)} · Same median price returns as the Backtest tab${staleCount?` · ${staleCount} awaiting matching backtest data`:''}`;
+  $('returnBody').innerHTML=ranked.map(({item,current,rate,n},i)=>{
     const total=Math.pow(1+rate,years)-1;
-    const range=`${Number(matched.score_min).toFixed(0)}–${Number(matched.score_max).toFixed(0)}`;
     const name=escapeCompositionText(item.name);
     const signal=['BUY','HOLD','SELL'].includes(current.signal)?current.signal:'';
-    return `<tr class="${item.slug===selectedSlug?'selected':''}"><td class="return-rank">${i+1}</td><td><button type="button" class="return-index-link" data-slug="${escapeCompositionText(item.slug)}" aria-label="Open ${name} dashboard">${name}</button><small>${escapeCompositionText(item.group||'')}</small></td><td><span class="return-score ${signal}">${scoreText(current.composite_score)}</span></td><td class="return-value ${rate<0?'negative':'positive'}">${signedPct(rate)}</td><td class="return-total">${signedPct(total)}</td><td class="return-range">${range}</td><td class="return-sample">${matched.n}</td></tr>`;
-  }).join('')||'<tr><td colspan="7" class="empty-history">No indices have enough score-matched history for this horizon.</td></tr>';
-  $('returnUnrankedCount').textContent=`${unranked.length} ${unranked.length===1?'index':'indices'} without enough score-matched history`;
-  $('returnUnrankedList').innerHTML=unranked.map(({item,matched,stale})=>`<span>${escapeCompositionText(item.name)} <b>${stale?'Backtest data unavailable':`${Number(matched.n)||0} quarters`}</b></span>`).join('')||'<span>All tracked indices have enough matching history.</span>';
+    return `<tr class="${item.slug===selectedSlug?'selected':''}"><td class="return-rank">${i+1}</td><td><button type="button" class="return-index-link" data-slug="${escapeCompositionText(item.slug)}" aria-label="Open ${name} dashboard">${name}</button><small>${escapeCompositionText(item.group||'')}</small></td><td class="return-band">${displayQuintile(current.valuation_quintile)}</td><td><span class="return-score ${signal}">${scoreText(current.composite_score)}</span></td><td class="return-value ${rate<0?'negative':'positive'}">${signedPct(rate)}</td><td class="return-total">${signedPct(total)}</td><td class="return-sample">${n}</td></tr>`;
+  }).join('')||'<tr><td colspan="7" class="empty-history">No indices have five completed backtest returns in their current band for this horizon.</td></tr>';
+  $('returnUnrankedCount').textContent=`${unranked.length} ${unranked.length===1?'index':'indices'} with fewer than five returns for this horizon`;
+  $('returnUnrankedList').innerHTML=unranked.map(({item,stale,n})=>`<span>${escapeCompositionText(item.name)} <b>${stale?'Backtest date does not match':`${n} completed ${n===1?'return':'returns'}`}</b></span>`).join('')||'<span>All tracked indices have at least five completed returns in their current valuation bands.</span>';
   $('returnBody').querySelectorAll('.return-index-link').forEach(button=>button.addEventListener('click',()=>{
     renderSelected(button.dataset.slug);activateTab('overview');window.scrollTo({top:0,behavior:'smooth'});
   }));

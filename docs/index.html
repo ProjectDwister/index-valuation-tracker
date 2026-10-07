@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#07111f" />
   <title>Index Valuation Tracker</title>
   <meta name="description" content="Multi-index valuation, earnings-growth and historical forward-return dashboard for NSE equity indices." />
-  <link rel="stylesheet" href="styles.css?v=20261007-return-expectation-v1" />
+  <link rel="stylesheet" href="styles.css?v=20261007-valuation-ranking-v2" />
 </head>
 <body>
   <div id="ambientGlow" class="ambient-glow" aria-hidden="true"></div>
@@ -259,8 +259,8 @@
       <section class="card return-card">
         <div class="section-head return-head">
           <div>
-            <h2>Return expectation by Composite Score</h2>
-            <p class="return-intro">Historical median price returns from quarters with scores closest to each index's current score.</p>
+            <h2>Return expectation from the valuation backtest</h2>
+            <p class="return-intro">Each index is ranked using the median return in its current P/E valuation band from the Backtest tab.</p>
           </div>
           <label class="return-horizon-label" for="returnHorizon">Time horizon
             <select id="returnHorizon" aria-label="Select return horizon">
@@ -272,18 +272,18 @@
           </label>
         </div>
         <div id="returnSummary" class="return-summary" aria-live="polite">Loading historical returns…</div>
-        <p class="return-caution">Historical comparison, not a forecast. Price changes exclude dividends, and quarter-end observations overlap.</p>
+        <p class="return-caution">Historical comparison, not a forecast. Ranking requires five completed returns in the current P/E band. Price changes exclude dividends, and quarter-end observations overlap.</p>
         <div class="table-scroll-hint">Swipe table sideways to see all columns →</div>
         <div class="table-wrap return-wrap">
           <table class="return-table">
-            <thead><tr><th>Rank</th><th>Index</th><th>Current score</th><th>Median CAGR</th><th>Implied total return</th><th>Matched scores</th><th>Quarters</th></tr></thead>
+            <thead><tr><th>Rank</th><th>Index</th><th>Current P/E band</th><th>Current score</th><th>Median CAGR</th><th>Implied cumulative price return</th><th>Quarters</th></tr></thead>
             <tbody id="returnBody"></tbody>
           </table>
         </div>
-        <details class="return-unranked"><summary id="returnUnrankedCount">Indices without enough matching history</summary><div id="returnUnrankedList" class="return-unranked-list"></div></details>
+        <details class="return-unranked"><summary id="returnUnrankedCount">Indices with fewer than five returns</summary><div id="returnUnrankedList" class="return-unranked-list"></div></details>
         <details class="return-method"><summary>How the ranking is calculated</summary>
-          <p>For each index and horizon, the backtest uses up to eight quarter-end observations with historical Composite Scores closest to today's score, within 25 points. At least five matured observations are required to rank an index. Historical scores use the same 70% P/E and 30% earnings-growth weights, with only P/E data available through that quarter and separate P/E regimes. Live scores use month-end P/E observations; the historical quarter-end calibration is not identical. NIFTY 50 uses its longer canonical score history.</p>
-          <p>Returns are median annualised index price changes. The total return column compounds that median CAGR over the chosen horizon; it is not a separate forecast. Dividends and costs are excluded. Quarter-end samples overlap, and some indices have short histories, especially at 5 and 10 years. These are historical comparisons, not predicted investment returns.</p>
+          <p>The ranking reads the exact median return for each index's current valuation quintile and chosen horizon from the Backtest tab, provided at least five completed returns are available. Current valuation bands are based on post-2021 month-end P/E history; historical bands use quarter-end P/E observations, separately within the pre- and post-2021 regimes. The Composite Score is shown for context but does not select the historical quarters. NIFTY 50 uses its longer backtest from 1999 onward.</p>
+          <p>The median CAGR is the annualised index price change. The cumulative price return column compounds that CAGR over the chosen horizon; it is not a separate forecast. Dividends and costs are excluded. Quarter-end samples overlap, and some bands have very few completed return observations, especially at 10 years.</p>
         </details>
       </section>
     </section>
@@ -339,6 +339,6 @@
       <span id="lastUpdatedText">Last updated on —</span>
     </footer>
   </main>
-  <script src="app.js?v=20261007-return-expectation-v1"></script>
+  <script src="app.js?v=20261007-valuation-ranking-v2"></script>
 </body>
 </html>
