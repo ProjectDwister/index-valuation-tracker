@@ -272,6 +272,7 @@
           </label>
         </div>
         <div id="returnSummary" class="return-summary" aria-live="polite">Loading historical returns…</div>
+        <p class="return-caution">Historical comparison, not a forecast. Price changes exclude dividends, and quarter-end observations overlap.</p>
         <div class="table-scroll-hint">Swipe table sideways to see all columns →</div>
         <div class="table-wrap return-wrap">
           <table class="return-table">
@@ -281,7 +282,7 @@
         </div>
         <details class="return-unranked"><summary id="returnUnrankedCount">Indices without enough matching history</summary><div id="returnUnrankedList" class="return-unranked-list"></div></details>
         <details class="return-method"><summary>How the ranking is calculated</summary>
-          <p>For each index and horizon, the backtest uses up to eight quarter-end observations with historical Composite Scores closest to today's score, within 25 points. At least five matured observations are required to rank an index. Historical scores use the same 70% P/E and 30% earnings-growth weights, with only P/E data available through that quarter and separate P/E regimes. NIFTY 50 uses its longer canonical score history.</p>
+          <p>For each index and horizon, the backtest uses up to eight quarter-end observations with historical Composite Scores closest to today's score, within 25 points. At least five matured observations are required to rank an index. Historical scores use the same 70% P/E and 30% earnings-growth weights, with only P/E data available through that quarter and separate P/E regimes. Live scores use month-end P/E observations; the historical quarter-end calibration is not identical. NIFTY 50 uses its longer canonical score history.</p>
           <p>Returns are median annualised index price changes. The total return column compounds that median CAGR over the chosen horizon; it is not a separate forecast. Dividends and costs are excluded. Quarter-end samples overlap, and some indices have short histories, especially at 5 and 10 years. These are historical comparisons, not predicted investment returns.</p>
         </details>
       </section>
