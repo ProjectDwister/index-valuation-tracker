@@ -1,24 +1,24 @@
 {
   "model_version": "1.5",
-  "as_of": "2026-10-09",
-  "generated_at_utc": "2026-10-09T18:31:42+00:00",
+  "as_of": "2026-10-12",
+  "generated_at_utc": "2026-10-12T21:25:03+00:00",
   "signal": "BUY",
-  "composite_score": 79.5,
+  "composite_score": 79.6,
   "valuation_score": 99.25,
-  "growth_score": 33.42,
-  "nifty_close": 22520.45,
-  "pe": 19.27,
-  "earnings_yield": 0.05189414,
+  "growth_score": 33.73,
+  "nifty_close": 22363.35,
+  "pe": 19.12,
+  "earnings_yield": 0.05230126,
   "pe_percentile": 0.00746269,
   "valuation_quintile": "Q1 Cheapest",
   "era_median_pe": 22.0,
-  "implied_eps": 1168.68,
-  "yoy_eps_growth": 0.03354359,
+  "implied_eps": 1169.63,
+  "yoy_eps_growth": 0.03431257,
   "prior_year": {
-    "date": "2025-10-09",
-    "nifty_close": 25181.8,
-    "pe": 22.27,
-    "implied_eps": 1130.75
+    "date": "2025-10-10",
+    "nifty_close": 25285.35,
+    "pe": 22.36,
+    "implied_eps": 1130.83
   },
   "thresholds": {
     "buy": 70,
@@ -27,19 +27,19 @@
   "signal_boundaries": {
     "buy_hold": {
       "score_threshold": 70.0,
-      "valuation_score_required": 85.67824234,
-      "pe_percentile": 0.14321758,
+      "valuation_score_required": 85.54641662,
+      "pe_percentile": 0.14453583,
       "pe": 20.4,
-      "nifty_level": 23841.05760249,
-      "move_from_current": 0.05864037
+      "nifty_level": 23860.47803347,
+      "move_from_current": 0.06694561
     },
     "hold_sell": {
       "score_threshold": 40.0,
-      "valuation_score_required": 42.82109948,
-      "pe_percentile": 0.57178901,
+      "valuation_score_required": 42.68927376,
+      "pe_percentile": 0.57310726,
       "pe": 22.2,
-      "nifty_level": 25944.68033212,
-      "move_from_current": 0.15204982
+      "nifty_level": 25965.81433054,
+      "move_from_current": 0.16108787
     },
     "assumption": "Current implied EPS and earnings-growth score held constant",
     "note": "Approximate because regime-relative P/E percentiles are based on a discrete historical distribution."
