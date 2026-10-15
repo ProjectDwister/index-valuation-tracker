@@ -1,24 +1,24 @@
 {
   "model_version": "1.5",
-  "as_of": "2026-10-14",
-  "generated_at_utc": "2026-10-14T17:36:55+00:00",
+  "as_of": "2026-10-15",
+  "generated_at_utc": "2026-10-15T17:22:31+00:00",
   "signal": "BUY",
-  "composite_score": 79.64,
-  "valuation_score": 99.25,
-  "growth_score": 33.86,
-  "nifty_close": 22622.7,
-  "pe": 19.33,
-  "earnings_yield": 0.05173306,
-  "pe_percentile": 0.00746269,
+  "composite_score": 76.52,
+  "valuation_score": 94.78,
+  "growth_score": 33.91,
+  "nifty_close": 22997.35,
+  "pe": 19.65,
+  "earnings_yield": 0.05089059,
+  "pe_percentile": 0.05223881,
   "valuation_quintile": "Q1 Cheapest",
   "era_median_pe": 22.0,
-  "implied_eps": 1170.34,
-  "yoy_eps_growth": 0.03464597,
+  "implied_eps": 1170.35,
+  "yoy_eps_growth": 0.03477218,
   "prior_year": {
-    "date": "2025-10-14",
-    "nifty_close": 25145.5,
-    "pe": 22.23,
-    "implied_eps": 1131.15
+    "date": "2025-10-15",
+    "nifty_close": 25323.55,
+    "pe": 22.39,
+    "implied_eps": 1131.02
   },
   "thresholds": {
     "buy": 70,
@@ -27,19 +27,19 @@
   "signal_boundaries": {
     "buy_hold": {
       "score_threshold": 70.0,
-      "valuation_score_required": 85.48926275,
-      "pe_percentile": 0.14510737,
+      "valuation_score_required": 85.46762543,
+      "pe_percentile": 0.14532375,
       "pe": 20.4,
-      "nifty_level": 23874.96533885,
-      "move_from_current": 0.05535437
+      "nifty_level": 23875.11145038,
+      "move_from_current": 0.03816794
     },
     "hold_sell": {
       "score_threshold": 40.0,
-      "valuation_score_required": 42.63211989,
-      "pe_percentile": 0.5736788,
+      "valuation_score_required": 42.61048257,
+      "pe_percentile": 0.57389517,
       "pe": 22.2,
-      "nifty_level": 25981.57992757,
-      "move_from_current": 0.14847387
+      "nifty_level": 25981.7389313,
+      "move_from_current": 0.12977099
     },
     "assumption": "Current implied EPS and earnings-growth score held constant",
     "note": "Approximate because regime-relative P/E percentiles are based on a discrete historical distribution."
