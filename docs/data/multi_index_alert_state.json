@@ -1,992 +1,992 @@
 {
-  "updated_at": "2026-10-15T17:22:40Z",
+  "updated_at": "2026-10-16T16:58:22Z",
   "indices": {
     "nifty-100": {
       "slug": "nifty-100",
       "index_name": "NIFTY 100",
-      "as_of": "2026-10-15",
+      "as_of": "2026-10-16",
       "signal": "BUY",
-      "composite_score": 80.51029622636479,
-      "index_level": 23986.1,
-      "pe": 19.31,
+      "composite_score": 80.91130660505041,
+      "index_level": 24133.1,
+      "pe": 19.42,
       "buy_hold": {
-        "pe": 21.0235154993963,
-        "index_level": 26114.559560852907,
-        "move_from_current": 0.08873720866889201
+        "pe": 21.057544094387623,
+        "index_level": 26168.0647468726,
+        "move_from_current": 0.08432255892830187
       },
       "hold_sell": {
-        "pe": 22.7,
-        "index_level": 28197.02071465562,
-        "move_from_current": 0.17555670636975673
+        "pe": 22.702172253401276,
+        "index_level": 28211.83281197519,
+        "move_from_current": 0.16900989976319614
       }
     },
     "nifty-200": {
       "slug": "nifty-200",
       "index_name": "NIFTY 200",
-      "as_of": "2026-10-15",
+      "as_of": "2026-10-16",
       "signal": "BUY",
-      "composite_score": 82.85322475849019,
-      "index_level": 13275.3,
-      "pe": 20.57,
+      "composite_score": 83.20367590414301,
+      "index_level": 13337.4,
+      "pe": 20.66,
       "buy_hold": {
-        "pe": 21.81977296073459,
-        "index_level": 14081.868351270776,
-        "move_from_current": 0.060757071499007775
+        "pe": 21.85942400464274,
+        "index_level": 14111.707730857795,
+        "move_from_current": 0.058055372925592375
       },
       "hold_sell": {
-        "pe": 23.77867155625169,
-        "index_level": 15346.086461385905,
-        "move_from_current": 0.15598792203459855
+        "pe": 23.781975809910705,
+        "index_level": 15352.842408862682,
+        "move_from_current": 0.15111209147680071
       }
     },
     "nifty-50": {
       "slug": "nifty-50",
       "index_name": "NIFTY 50",
-      "as_of": "2026-10-15",
+      "as_of": "2026-10-16",
       "signal": "BUY",
-      "composite_score": 76.51594578179414,
-      "index_level": 22997.35,
-      "pe": 19.65,
+      "composite_score": 75.94747440700796,
+      "index_level": 23146.15,
+      "pe": 19.77,
       "buy_hold": {
-        "pe": 20.445913672168643,
-        "index_level": 23928.84645234848,
-        "move_from_current": 0.04050451257855725
+        "pe": 20.455259091175392,
+        "index_level": 23948.43172550376,
+        "move_from_current": 0.034661562527839695
       },
       "hold_sell": {
-        "pe": 22.21,
-        "index_level": 25993.442417302802,
-        "move_from_current": 0.1302798982188298
+        "pe": 22.245878571653908,
+        "index_level": 26044.837749179926,
+        "move_from_current": 0.1252341209738952
       }
     },
     "nifty-500": {
       "slug": "nifty-500",
       "index_name": "NIFTY 500",
-      "as_of": "2026-10-15",
+      "as_of": "2026-10-16",
       "signal": "BUY",
-      "composite_score": 71.66447977785214,
-      "index_level": 22180.8,
-      "pe": 21.83,
+      "composite_score": 71.01395684575101,
+      "index_level": 22270.05,
+      "pe": 21.89,
       "buy_hold": {
-        "pe": 22.172158196958424,
-        "index_level": 22528.456552226085,
-        "move_from_current": 0.015673760740193554
+        "pe": 22.220777971615448,
+        "index_level": 22606.570875595,
+        "move_from_current": 0.015110916930810792
       },
       "hold_sell": {
-        "pe": 24.449999999999996,
-        "index_level": 24842.902427851575,
-        "move_from_current": 0.12001832340815377
+        "pe": 24.45,
+        "index_level": 24874.496231155776,
+        "move_from_current": 0.11694837825491078
       }
     },
     "nifty-largemidcap-250": {
       "slug": "nifty-largemidcap-250",
       "index_name": "NIFTY LargeMidcap 250",
-      "as_of": "2026-10-15",
+      "as_of": "2026-10-16",
       "signal": "BUY",
-      "composite_score": 83.47806450603431,
-      "index_level": 15801.35,
-      "pe": 22.88,
+      "composite_score": 82.74996807970389,
+      "index_level": 15843.15,
+      "pe": 22.92,
       "buy_hold": {
-        "pe": 24.05398727322408,
-        "index_level": 16612.127263975497,
-        "move_from_current": 0.05131063257098267
+        "pe": 24.1286332008769,
+        "index_level": 16678.601880299862,
+        "move_from_current": 0.05273268764733419
       },
       "hold_sell": {
         "pe": 27.46,
-        "index_level": 18964.382473776226,
-        "move_from_current": 0.2001748251748252
+        "index_level": 18981.36557591623,
+        "move_from_current": 0.1980802792321117
       }
     },
     "nifty-midcap-100": {
       "slug": "nifty-midcap-100",
       "index_name": "NIFTY Midcap 100",
-      "as_of": "2026-10-15",
+      "as_of": "2026-10-16",
       "signal": "BUY",
-      "composite_score": 71.28273551675744,
-      "index_level": 59197.25,
-      "pe": 27.84,
+      "composite_score": 71.32595635304023,
+      "index_level": 59129.75,
+      "pe": 27.77,
       "buy_hold": {
-        "pe": 27.966278279126232,
-        "index_level": 59465.760303843585,
-        "move_from_current": 0.004535857727235415
+        "pe": 27.967093300610422,
+        "index_level": 59549.41429930749,
+        "move_from_current": 0.0070973460788772424
       },
       "hold_sell": {
-        "pe": 36.873111498441865,
-        "index_level": 78404.6982633311,
-        "move_from_current": 0.32446521186931987
+        "pe": 36.97050656580253,
+        "index_level": 78720.08680623918,
+        "move_from_current": 0.331311003449857
       }
     },
     "nifty-midcap-150": {
       "slug": "nifty-midcap-150",
       "index_name": "NIFTY Midcap 150",
-      "as_of": "2026-10-15",
+      "as_of": "2026-10-16",
       "signal": "BUY",
-      "composite_score": 70.76539505045143,
-      "index_level": 21756.35,
-      "pe": 28.18,
+      "composite_score": 70.8054175200271,
+      "index_level": 21736.75,
+      "pe": 28.12,
       "buy_hold": {
-        "pe": 28.196821223510007,
-        "index_level": 21769.33681426941,
-        "move_from_current": 0.0005969206355573853
+        "pe": 28.190303731745153,
+        "index_level": 21791.094759637675,
+        "move_from_current": 0.002500132707864644
       },
       "hold_sell": {
-        "pe": 35.2978906014672,
-        "index_level": 27251.71263971721,
-        "move_from_current": 0.2525866075751315
+        "pe": 35.30619240515633,
+        "index_level": 27291.67417364089,
+        "move_from_current": 0.25555449520470597
       }
     },
     "nifty-midcap-50": {
       "slug": "nifty-midcap-50",
       "index_name": "NIFTY Midcap 50",
-      "as_of": "2026-10-15",
+      "as_of": "2026-10-16",
       "signal": "HOLD",
-      "composite_score": 64.39817497234395,
-      "index_level": 16956.3,
-      "pe": 29.91,
+      "composite_score": 64.2469764344709,
+      "index_level": 16946.3,
+      "pe": 29.92,
       "buy_hold": {
-        "pe": 24.614476920348142,
-        "index_level": 13954.211133550623,
-        "move_from_current": -0.17704858173359617
+        "pe": 24.59166754092044,
+        "index_level": 13928.401592536766,
+        "move_from_current": -0.17808597791041314
       },
       "hold_sell": {
-        "pe": 38.04885397311301,
-        "index_level": 21570.30366513862,
-        "move_from_current": 0.2721114668376132
+        "pe": 38.00684545665868,
+        "index_level": 21526.584397131515,
+        "move_from_current": 0.27028226793645316
       }
     },
     "nifty-midsmallcap-400": {
       "slug": "nifty-midsmallcap-400",
       "index_name": "NIFTY Midsmallcap 400",
-      "as_of": "2026-10-15",
+      "as_of": "2026-10-16",
       "signal": "HOLD",
-      "composite_score": 58.66735664481995,
-      "index_level": 20278.15,
-      "pe": 29.97,
+      "composite_score": 58.95766517734127,
+      "index_level": 20270.65,
+      "pe": 29.87,
       "buy_hold": {
-        "pe": 25.718033989699283,
-        "index_level": 17401.2062378452,
-        "move_from_current": -0.1418740744177749
+        "pe": 25.82204738963693,
+        "index_level": 17523.591728113286,
+        "move_from_current": -0.1355190026904276
       },
       "hold_sell": {
-        "pe": 32.04726941915513,
-        "index_level": 21683.66154060863,
-        "move_from_current": 0.06931162559743509
+        "pe": 32.06642978230154,
+        "index_level": 21761.21107688687,
+        "move_from_current": 0.07353296894213401
       }
     },
     "nifty-next-50": {
       "slug": "nifty-next-50",
       "index_name": "NIFTY Next 50",
-      "as_of": "2026-10-15",
+      "as_of": "2026-10-16",
       "signal": "BUY",
-      "composite_score": 93.23403342881598,
-      "index_level": 68671.6,
-      "pe": 17.97,
+      "composite_score": 93.34471356429472,
+      "index_level": 68988.6,
+      "pe": 18.03,
       "buy_hold": {
-        "pe": 21.77071890528314,
-        "index_level": 83195.88761135458,
-        "move_from_current": 0.21150355622054207
+        "pe": 21.779067349787823,
+        "index_level": 83333.74186176219,
+        "move_from_current": 0.20793496116404997
       },
       "hold_sell": {
-        "pe": 25.68348503008768,
-        "index_level": 98148.35896450581,
-        "move_from_current": 0.4292423500327034
+        "pe": 25.688702807903105,
+        "index_level": 98293.26913662253,
+        "move_from_current": 0.4247755301110985
       }
     },
     "nifty-smallcap-100": {
       "slug": "nifty-smallcap-100",
       "index_name": "NIFTY Smallcap 100",
-      "as_of": "2026-10-15",
+      "as_of": "2026-10-16",
       "signal": "SELL",
       "composite_score": 10.701492537313431,
-      "index_level": 19131.7,
-      "pe": 37.05,
+      "index_level": 19129.8,
+      "pe": 36.49,
       "buy_hold": {
         "pe": 17.072000000000003,
-        "index_level": 8815.556879892041,
-        "move_from_current": -0.5392172739541159
+        "index_level": 8949.957402027954,
+        "move_from_current": -0.532145793368046
       },
       "hold_sell": {
         "pe": 29.519428571428573,
-        "index_level": 15243.099908232123,
-        "move_from_current": -0.20325428957007885
+        "index_level": 15475.493688290333,
+        "move_from_current": -0.19102689582273036
       }
     },
     "nifty-smallcap-250": {
       "slug": "nifty-smallcap-250",
       "index_name": "NIFTY Smallcap 250",
-      "as_of": "2026-10-15",
+      "as_of": "2026-10-16",
       "signal": "SELL",
-      "composite_score": 14.880597014925375,
-      "index_level": 17627.05,
-      "pe": 33.92,
+      "composite_score": 16.970149253731343,
+      "index_level": 17637.65,
+      "pe": 33.68,
       "buy_hold": {
         "pe": 19.04657142857143,
-        "index_level": 9897.843953419811,
-        "move_from_current": -0.43848551212938003
+        "index_level": 9974.369375212082,
+        "move_from_current": -0.43448422124194086
       },
       "hold_sell": {
         "pe": 29.176000000000002,
-        "index_level": 15161.757393867925,
-        "move_from_current": -0.1398584905660376
+        "index_level": 15278.980890736344,
+        "move_from_current": -0.13372921615201894
       }
     },
     "nifty-smallcap-50": {
       "slug": "nifty-smallcap-50",
       "index_name": "NIFTY Smallcap 50",
-      "as_of": "2026-10-15",
+      "as_of": "2026-10-16",
       "signal": "SELL",
       "composite_score": 13.835820895522389,
-      "index_level": 9571.75,
-      "pe": 34.51,
+      "index_level": 9583.25,
+      "pe": 33.85,
       "buy_hold": {
         "pe": 19.692857142857143,
-        "index_level": 5462.043041354473,
-        "move_from_current": -0.4293579500765824
+        "index_level": 5575.231114159105,
+        "move_from_current": -0.41823169445030595
       },
       "hold_sell": {
         "pe": 29.29714285714286,
-        "index_level": 8125.903423438342,
-        "move_from_current": -0.1510535248582191
+        "index_level": 8294.29377505803,
+        "move_from_current": -0.1345009495674192
       }
     },
     "nifty-auto": {
       "slug": "nifty-auto",
       "index_name": "NIFTY Auto",
-      "as_of": "2026-10-15",
+      "as_of": "2026-10-16",
       "signal": "HOLD",
       "composite_score": 43.089552238805965,
-      "index_level": 25576.4,
-      "pe": 29.73,
+      "index_level": 25768.5,
+      "pe": 29.95,
       "buy_hold": {
         "pe": 22.712857142857143,
-        "index_level": 19539.627293258374,
-        "move_from_current": -0.23602902311277685
+        "index_level": 19541.778273312662,
+        "move_from_current": -0.2416408299546865
       },
       "hold_sell": {
         "pe": 30.543142857142858,
-        "index_level": 26275.938075056463,
-        "move_from_current": 0.02735092018643992
+        "index_level": 26278.83060815645,
+        "move_from_current": 0.01980443596470316
       }
     },
     "nifty-bank": {
       "slug": "nifty-bank",
       "index_name": "NIFTY Bank",
-      "as_of": "2026-10-15",
+      "as_of": "2026-10-16",
       "signal": "BUY",
-      "composite_score": 90.32973190946456,
-      "index_level": 55810.5,
-      "pe": 13.2,
+      "composite_score": 90.84044641618219,
+      "index_level": 55844.0,
+      "pe": 13.21,
       "buy_hold": {
-        "pe": 15.174034750564198,
-        "index_level": 64156.85351866388,
-        "move_from_current": 0.1495480871639543
+        "pe": 15.190823995847243,
+        "index_level": 64217.74225769065,
+        "move_from_current": 0.14994882633211537
       },
       "hold_sell": {
-        "pe": 18.07886583049819,
-        "index_level": 76438.67738128935,
-        "move_from_current": 0.36961104776501474
+        "pe": 18.124173664452645,
+        "index_level": 76618.19486129399,
+        "move_from_current": 0.3720040624112526
       }
     },
     "nifty-energy": {
       "slug": "nifty-energy",
       "index_name": "NIFTY Energy",
-      "as_of": "2026-10-15",
+      "as_of": "2026-10-16",
       "signal": "HOLD",
-      "composite_score": 49.73865700564771,
-      "index_level": 36213.7,
-      "pe": 14.31,
+      "composite_score": 49.79557501219632,
+      "index_level": 36190.85,
+      "pe": 14.3,
       "buy_hold": {
-        "pe": 12.066734930827183,
-        "index_level": 30536.765811634963,
-        "move_from_current": -0.15676205934121712
+        "pe": 12.067808241807814,
+        "index_level": 30541.555098463657,
+        "move_from_current": -0.1560973257477053
       },
       "hold_sell": {
-        "pe": 15.121224608270733,
-        "index_level": 38266.63113882137,
-        "move_from_current": 0.056689350682790574
+        "pe": 15.121761263761048,
+        "index_level": 38270.58696731374,
+        "move_from_current": 0.057465822640632824
       }
     },
     "nifty-fmcg": {
       "slug": "nifty-fmcg",
       "index_name": "NIFTY FMCG",
-      "as_of": "2026-10-15",
+      "as_of": "2026-10-16",
       "signal": "BUY",
-      "composite_score": 82.38379563286956,
-      "index_level": 44791.65,
-      "pe": 31.06,
+      "composite_score": 83.84524008031467,
+      "index_level": 44616.15,
+      "pe": 30.84,
       "buy_hold": {
-        "pe": 38.41070871807152,
-        "index_level": 55392.1127222089,
-        "move_from_current": 0.23666158139315918
+        "pe": 38.69356698876526,
+        "index_level": 55977.88549953953,
+        "move_from_current": 0.2546552201285752
       },
       "hold_sell": {
-        "pe": 42.61757905576588,
-        "index_level": 61458.84368683825,
-        "move_from_current": 0.3721049277451991
+        "pe": 42.63329340413775,
+        "index_level": 61677.47774037031,
+        "move_from_current": 0.3824025098617947
       }
     },
     "nifty-financial-services": {
       "slug": "nifty-financial-services",
       "index_name": "NIFTY Financial Services",
-      "as_of": "2026-10-15",
+      "as_of": "2026-10-16",
       "signal": "BUY",
-      "composite_score": 81.34206591356495,
-      "index_level": 25364.2,
-      "pe": 15.54,
+      "composite_score": 82.04026819724552,
+      "index_level": 25387.1,
+      "pe": 15.57,
       "buy_hold": {
-        "pe": 16.73141709055391,
-        "index_level": 27308.816561662006,
-        "move_from_current": 0.07666776644491069
+        "pe": 16.738000140657185,
+        "index_level": 27291.540357795635,
+        "move_from_current": 0.07501606555280582
       },
       "hold_sell": {
-        "pe": 18.311130068687397,
-        "index_level": 29887.204973500706,
-        "move_from_current": 0.17832239824243246
+        "pe": 18.47457381974357,
+        "index_level": 30123.047721208215,
+        "move_from_current": 0.18654937827511686
       }
     },
     "nifty-it": {
       "slug": "nifty-it",
       "index_name": "NIFTY IT",
-      "as_of": "2026-10-15",
+      "as_of": "2026-10-16",
       "signal": "BUY",
-      "composite_score": 92.01723145523995,
-      "index_level": 30719.8,
-      "pe": 19.06,
+      "composite_score": 91.1657701756037,
+      "index_level": 31924.1,
+      "pe": 19.75,
       "buy_hold": {
-        "pe": 26.225525335747328,
-        "index_level": 42268.77718830487,
-        "move_from_current": 0.3759457154117172
+        "pe": 26.238284115171933,
+        "index_level": 42411.828147906854,
+        "move_from_current": 0.32852071469224997
       },
       "hold_sell": {
-        "pe": 32.12702629502541,
-        "index_level": 51780.47336715223,
-        "move_from_current": 0.6855732578712177
+        "pe": 32.176238729948885,
+        "index_level": 52009.99811841829,
+        "move_from_current": 0.629176644554374
       }
     },
     "nifty-metal": {
       "slug": "nifty-metal",
       "index_name": "NIFTY Metal",
-      "as_of": "2026-10-15",
+      "as_of": "2026-10-16",
       "signal": "BUY",
       "composite_score": 74.40298507462686,
-      "index_level": 12018.5,
-      "pe": 15.76,
+      "index_level": 12133.2,
+      "pe": 15.91,
       "buy_hold": {
         "pe": 16.704285714285714,
-        "index_level": 12738.60773205221,
-        "move_from_current": 0.05991660623640316
+        "index_level": 12738.933967854899,
+        "move_from_current": 0.049923677830654656
       },
       "hold_sell": {
         "pe": 29.89285714285714,
-        "index_level": 22796.148703770843,
-        "move_from_current": 0.8967548948513411
+        "index_level": 22796.73251324414,
+        "move_from_current": 0.8788722277094367
       }
     },
     "nifty-pharma": {
       "slug": "nifty-pharma",
       "index_name": "NIFTY Pharma",
-      "as_of": "2026-10-15",
+      "as_of": "2026-10-16",
       "signal": "SELL",
       "composite_score": 9.65671641791045,
-      "index_level": 25817.8,
-      "pe": 39.94,
+      "index_level": 25781.65,
+      "pe": 39.88,
       "buy_hold": {
         "pe": 30.645142857142858,
-        "index_level": 19809.468434079692,
-        "move_from_current": -0.23272050933543165
+        "index_level": 19811.49316306061,
+        "move_from_current": -0.2315661269522854
       },
       "hold_sell": {
         "pe": 33.89057142857142,
-        "index_level": 21907.360917089918,
-        "move_from_current": -0.1514629086486874
+        "index_level": 21909.600072001715,
+        "move_from_current": -0.15018627310502963
       }
     },
     "nifty-private-bank": {
       "slug": "nifty-private-bank",
       "index_name": "NIFTY Private Bank",
-      "as_of": "2026-10-15",
+      "as_of": "2026-10-16",
       "signal": "HOLD",
-      "composite_score": 60.996189274807634,
-      "index_level": 27679.3,
-      "pe": 17.08,
+      "composite_score": 63.40727753946439,
+      "index_level": 27700.55,
+      "pe": 17.09,
       "buy_hold": {
-        "pe": 16.29740253236331,
-        "index_level": 26411.047653047062,
-        "move_from_current": -0.0458195238663166
+        "pe": 16.419183328954183,
+        "index_level": 26613.248025913505,
+        "move_from_current": -0.039251999476057176
       },
       "hold_sell": {
-        "pe": 18.44515147721193,
-        "index_level": 29891.620684027646,
-        "move_from_current": 0.07992690147610837
+        "pe": 19.058566605358553,
+        "index_level": 30891.326926861606,
+        "move_from_current": 0.11518821564415171
       }
     },
     "nifty-realty": {
       "slug": "nifty-realty",
       "index_name": "NIFTY Realty",
-      "as_of": "2026-10-15",
+      "as_of": "2026-10-16",
       "signal": "BUY",
-      "composite_score": 91.77362422447565,
-      "index_level": 828.7,
-      "pe": 35.09,
+      "composite_score": 91.7570178548487,
+      "index_level": 825.95,
+      "pe": 34.98,
       "buy_hold": {
-        "pe": 42.02136543156281,
-        "index_level": 992.3940020842433,
-        "move_from_current": 0.19753107527964664
+        "pe": 42.01612256343773,
+        "index_level": 992.0873765372042,
+        "move_from_current": 0.20114701439215965
       },
       "hold_sell": {
-        "pe": 58.2262277801907,
-        "index_level": 1375.094755242064,
-        "move_from_current": 0.6593396346591816
+        "pe": 58.199088227543214,
+        "index_level": 1374.200598100038,
+        "move_from_current": 0.6637818246867702
       }
     },
     "nifty-alpha-50": {
       "slug": "nifty-alpha-50",
       "index_name": "NIFTY Alpha 50",
-      "as_of": "2026-10-15",
+      "as_of": "2026-10-16",
       "signal": "BUY",
-      "composite_score": 75.76923076923077,
-      "index_level": 53751.45,
-      "pe": 27.26,
+      "composite_score": 77.92307692307693,
+      "index_level": 53846.55,
+      "pe": 27.0,
       "buy_hold": {
         "pe": 29.584285714285713,
-        "index_level": 58334.49208940362,
-        "move_from_current": 0.08526359920343762
+        "index_level": 59000.43407142857,
+        "move_from_current": 0.09571428571428564
       },
       "hold_sell": {
         "pe": 41.91,
-        "index_level": 82638.41780997797,
-        "move_from_current": 0.5374174614820246
+        "index_level": 83581.8115,
+        "move_from_current": 0.5522222222222222
       }
     },
     "nifty-alpha-low-volatility-30": {
       "slug": "nifty-alpha-low-volatility-30",
       "index_name": "NIFTY Alpha Low-Volatility 30",
-      "as_of": "2026-10-15",
+      "as_of": "2026-10-16",
       "signal": "BUY",
       "composite_score": 81.71641791044776,
-      "index_level": 24880.6,
-      "pe": 23.91,
+      "index_level": 24914.1,
+      "pe": 23.92,
       "buy_hold": {
         "pe": 29.159999999999997,
-        "index_level": 30343.717942283558,
-        "move_from_current": 0.21957340025094085
+        "index_level": 30371.871070234105,
+        "move_from_current": 0.21906354515050142
       },
       "hold_sell": {
         "pe": 38.09285714285714,
-        "index_level": 39639.194539045224,
-        "move_from_current": 0.5931767939296169
+        "index_level": 39675.97207955088,
+        "move_from_current": 0.5925107501194455
       }
     },
     "nifty-alpha-quality-low-volatility-30": {
       "slug": "nifty-alpha-quality-low-volatility-30",
       "index_name": "NIFTY Alpha Quality Low-Volatility 30",
-      "as_of": "2026-10-15",
+      "as_of": "2026-10-16",
       "signal": "BUY",
-      "composite_score": 85.89552238805969,
-      "index_level": 21424.5,
-      "pe": 27.63,
+      "composite_score": 86.94029850746269,
+      "index_level": 21423.35,
+      "pe": 27.53,
       "buy_hold": {
         "pe": 31.917142857142856,
-        "index_level": 24748.781293624943,
-        "move_from_current": 0.15516260793133752
+        "index_level": 24837.345529552174,
+        "move_from_current": 0.1593586217632712
       },
       "hold_sell": {
         "pe": 37.14714285714285,
-        "index_level": 28804.160772452302,
-        "move_from_current": 0.344449614807921
+        "index_level": 28907.237302163867,
+        "move_from_current": 0.34933319495615156
       }
     },
     "nifty-alpha-quality-value-low-volatility-30": {
       "slug": "nifty-alpha-quality-value-low-volatility-30",
       "index_name": "NIFTY Alpha Quality Value Low-Volatility 30",
-      "as_of": "2026-10-15",
+      "as_of": "2026-10-16",
       "signal": "BUY",
       "composite_score": 93.2089552238806,
-      "index_level": 18854.65,
+      "index_level": 18867.1,
       "pe": 15.57,
       "buy_hold": {
         "pe": 19.82142857142857,
-        "index_level": 24002.96070740435,
+        "index_level": 24018.810211946045,
         "move_from_current": 0.2730525736306082
       },
       "hold_sell": {
         "pe": 24.35857142857143,
-        "index_level": 29497.260037618133,
+        "index_level": 29516.737508028258,
         "move_from_current": 0.5644554546288651
       }
     },
     "nifty-commodities": {
       "slug": "nifty-commodities",
       "index_name": "NIFTY Commodities",
-      "as_of": "2026-10-15",
+      "as_of": "2026-10-16",
       "signal": "HOLD",
-      "composite_score": 68.34856761574854,
-      "index_level": 9069.45,
-      "pe": 14.5,
+      "composite_score": 68.33132436103541,
+      "index_level": 9099.5,
+      "pe": 14.55,
       "buy_hold": {
-        "pe": 14.094548238711642,
-        "index_level": 8815.848311971262,
-        "move_from_current": -0.02796219043367998
+        "pe": 14.092272129089512,
+        "index_level": 8813.239191659794,
+        "move_from_current": -0.03145896020003369
       },
       "hold_sell": {
-        "pe": 17.711820170508314,
-        "index_level": 11078.377065201146,
-        "move_from_current": 0.22150483934540088
+        "pe": 17.71019437792108,
+        "index_level": 11075.87036026755,
+        "move_from_current": 0.21719548989148318
       }
     },
     "nifty-cpse": {
       "slug": "nifty-cpse",
       "index_name": "NIFTY Cpse",
-      "as_of": "2026-10-15",
+      "as_of": "2026-10-16",
       "signal": "HOLD",
-      "composite_score": 50.61632020635316,
-      "index_level": 6089.3,
-      "pe": 11.75,
+      "composite_score": 50.648874772765126,
+      "index_level": 6065.4,
+      "pe": 11.7,
       "buy_hold": {
-        "pe": 7.291271010357102,
-        "index_level": 3778.6158777334044,
-        "move_from_current": -0.37946629699088497
+        "pe": 7.292191839521326,
+        "index_level": 3780.3470413190303,
+        "move_from_current": -0.3767357402118524
       },
       "hold_sell": {
-        "pe": 12.91957983714275,
-        "index_level": 6695.421064026668,
-        "move_from_current": 0.09953870954406385
+        "pe": 12.922544226975852,
+        "index_level": 6699.179466179431,
+        "move_from_current": 0.10449095957058585
       }
     },
     "nifty-dividend-opportunities-50": {
       "slug": "nifty-dividend-opportunities-50",
       "index_name": "NIFTY Dividend Opportunities 50",
-      "as_of": "2026-10-15",
+      "as_of": "2026-10-16",
       "signal": "BUY",
-      "composite_score": 78.94483412398445,
-      "index_level": 5571.15,
-      "pe": 12.59,
+      "composite_score": 78.0564289715091,
+      "index_level": 5631.45,
+      "pe": 12.71,
       "buy_hold": {
-        "pe": 13.504064447729291,
-        "index_level": 5975.628963301592,
-        "move_from_current": 0.0726024184058216
+        "pe": 13.509961867053416,
+        "index_level": 5985.891011504166,
+        "move_from_current": 0.06293956467768802
       },
       "hold_sell": {
-        "pe": 15.926091840999845,
-        "index_level": 7047.39051310455,
-        "move_from_current": 0.26497949491658823
+        "pe": 15.954104582789451,
+        "index_level": 7068.823151278492,
+        "move_from_current": 0.25524032909437055
       }
     },
     "nifty-growth-sectors-15": {
       "slug": "nifty-growth-sectors-15",
       "index_name": "NIFTY Growth Sectors 15",
-      "as_of": "2026-10-15",
+      "as_of": "2026-10-16",
       "signal": "BUY",
-      "composite_score": 92.42015969723509,
-      "index_level": 10805.15,
-      "pe": 24.96,
+      "composite_score": 91.61226585986422,
+      "index_level": 11025.45,
+      "pe": 25.38,
       "buy_hold": {
-        "pe": 31.50016055512848,
-        "index_level": 13636.376595442569,
-        "move_from_current": 0.26202566326636556
+        "pe": 31.529195554840417,
+        "index_level": 13696.752132786261,
+        "move_from_current": 0.2422850888432
       },
       "hold_sell": {
-        "pe": 34.27804667881097,
-        "index_level": 14838.919714405223,
-        "move_from_current": 0.373319177836978
+        "pe": 34.29885201382685,
+        "index_level": 14899.93214877255,
+        "move_from_current": 0.3514126088978273
       }
     },
     "nifty-high-beta-50": {
       "slug": "nifty-high-beta-50",
       "index_name": "NIFTY High Beta 50",
-      "as_of": "2026-10-15",
+      "as_of": "2026-10-16",
       "signal": "SELL",
-      "composite_score": 25.328358208955223,
-      "index_level": 4159.95,
-      "pe": 22.74,
+      "composite_score": 26.993913239590743,
+      "index_level": 4138.4,
+      "pe": 22.39,
       "buy_hold": {
-        "pe": 15.859714285714286,
-        "index_level": 2901.3024820957407,
-        "move_from_current": -0.30256313607237084
+        "pe": 15.87969794750934,
+        "index_level": 2935.084501383325,
+        "move_from_current": -0.29076829175929697
       },
       "hold_sell": {
-        "pe": 20.696571428571424,
-        "index_level": 3786.134666415378,
-        "move_from_current": -0.08986053524312121
+        "pe": 20.779224446017174,
+        "index_level": 3840.6763040374035,
+        "move_from_current": -0.07194173979378415
       }
     },
     "nifty-india-consumption": {
       "slug": "nifty-india-consumption",
       "index_name": "NIFTY India Consumption",
-      "as_of": "2026-10-15",
+      "as_of": "2026-10-16",
       "signal": "BUY",
-      "composite_score": 74.07173521639143,
-      "index_level": 11005.25,
-      "pe": 36.88,
+      "composite_score": 74.20475103511535,
+      "index_level": 11054.65,
+      "pe": 37.0,
       "buy_hold": {
-        "pe": 37.49596994012432,
-        "index_level": 11189.059739250357,
-        "move_from_current": 0.016702004884065147
+        "pe": 37.52481537052759,
+        "index_level": 11211.4513577244,
+        "move_from_current": 0.014184199203448378
       },
       "hold_sell": {
-        "pe": 41.21435240674051,
-        "index_level": 12298.651079834084,
-        "move_from_current": 0.1175258244777797
+        "pe": 41.22187730162832,
+        "index_level": 12316.038538174202,
+        "move_from_current": 0.1141047919359004
       }
     },
     "nifty-infrastructure": {
       "slug": "nifty-infrastructure",
       "index_name": "NIFTY Infrastructure",
-      "as_of": "2026-10-15",
+      "as_of": "2026-10-16",
       "signal": "SELL",
-      "composite_score": 34.731343283582085,
-      "index_level": 8685.9,
-      "pe": 21.72,
+      "composite_score": 32.64179104477612,
+      "index_level": 8725.6,
+      "pe": 21.82,
       "buy_hold": {
         "pe": 17.16314285714286,
-        "index_level": 6863.597722967641,
-        "move_from_current": -0.20980005261773205
+        "index_level": 6863.369354458558,
+        "move_from_current": -0.2134215005892366
       },
       "hold_sell": {
         "pe": 21.597142857142856,
-        "index_level": 8636.769021310181,
-        "move_from_current": -0.005656406208892406
+        "index_level": 8636.48165510017,
+        "move_from_current": -0.010213434594736226
       }
     },
     "nifty-low-volatility-50": {
       "slug": "nifty-low-volatility-50",
       "index_name": "NIFTY Low Volatility 50",
-      "as_of": "2026-10-15",
+      "as_of": "2026-10-16",
       "signal": "BUY",
       "composite_score": 98.43283582089552,
-      "index_level": 23194.5,
-      "pe": 22.66,
+      "index_level": 23262.3,
+      "pe": 22.69,
       "buy_hold": {
         "pe": 28.178571428571427,
-        "index_level": 28843.242497793468,
-        "move_from_current": 0.2435380153826756
+        "index_level": 28889.307278221993,
+        "move_from_current": 0.241893848769124
       },
       "hold_sell": {
         "pe": 33.57142857142857,
-        "index_level": 34363.30538393645,
-        "move_from_current": 0.48152818055730684
+        "index_level": 34418.186110936214,
+        "move_from_current": 0.4795693508782972
       }
     },
     "nifty-mnc": {
       "slug": "nifty-mnc",
       "index_name": "NIFTY Mnc",
-      "as_of": "2026-10-15",
+      "as_of": "2026-10-16",
       "signal": "BUY",
-      "composite_score": 73.95180606459903,
-      "index_level": 29490.4,
-      "pe": 34.02,
+      "composite_score": 77.53911257121364,
+      "index_level": 29515.15,
+      "pe": 33.94,
       "buy_hold": {
-        "pe": 34.683446286937844,
-        "index_level": 30065.511592601757,
-        "move_from_current": 0.019501654524921808
+        "pe": 34.807699495036175,
+        "index_level": 30269.72515471176,
+        "move_from_current": 0.02556568930572123
       },
       "hold_sell": {
-        "pe": 45.444336370124944,
-        "index_level": 39393.64071985692,
-        "move_from_current": 0.33581235655864017
+        "pe": 45.85948123029897,
+        "index_level": 39880.65608233526,
+        "move_from_current": 0.3511927292368584
       }
     },
     "nifty-pse": {
       "slug": "nifty-pse",
       "index_name": "NIFTY Pse",
-      "as_of": "2026-10-15",
+      "as_of": "2026-10-16",
       "signal": "HOLD",
-      "composite_score": 45.646234190832985,
-      "index_level": 9257.15,
-      "pe": 10.41,
+      "composite_score": 45.79660332490096,
+      "index_level": 9247.3,
+      "pe": 10.39,
       "buy_hold": {
-        "pe": 7.2863251085685175,
-        "index_level": 6479.404849066767,
-        "move_from_current": -0.3000648310693067
+        "pe": 7.296301661868385,
+        "index_level": 6493.848927603032,
+        "move_from_current": -0.29775729914645
       },
       "hold_sell": {
-        "pe": 11.119958614855978,
-        "index_level": 9888.48461974198,
-        "move_from_current": 0.06819967481805733
+        "pe": 11.125629679340827,
+        "index_level": 9902.02457495365,
+        "move_from_current": 0.07080170157274557
       }
     },
     "nifty-quality-low-volatility-30": {
       "slug": "nifty-quality-low-volatility-30",
       "index_name": "NIFTY Quality Low-Volatility 30",
-      "as_of": "2026-10-15",
+      "as_of": "2026-10-16",
       "signal": "BUY",
-      "composite_score": 82.20580118393771,
-      "index_level": 15836.7,
-      "pe": 25.67,
+      "composite_score": 82.36239238052883,
+      "index_level": 15873.55,
+      "pe": 25.7,
       "buy_hold": {
-        "pe": 27.257681071818723,
-        "index_level": 16816.194695367027,
-        "move_from_current": 0.061849671671940776
+        "pe": 27.281358174670732,
+        "index_level": 16850.27249235582,
+        "move_from_current": 0.06153144648524256
       },
       "hold_sell": {
-        "pe": 30.28567276834483,
-        "index_level": 18684.26622245604,
-        "move_from_current": 0.17980805486345264
+        "pe": 30.30043708116628,
+        "index_level": 18715.000117888987,
+        "move_from_current": 0.1790053338975206
       }
     },
     "nifty-services-sector": {
       "slug": "nifty-services-sector",
       "index_name": "NIFTY Services Sector",
-      "as_of": "2026-10-15",
+      "as_of": "2026-10-16",
       "signal": "HOLD",
-      "composite_score": 51.447761194029844,
-      "index_level": 29995.85,
-      "pe": 20.97,
+      "composite_score": 46.74626865671642,
+      "index_level": 30481.85,
+      "pe": 21.28,
       "buy_hold": {
         "pe": 19.47657142857143,
-        "index_level": 27859.62399073506,
-        "move_from_current": -0.0712173853804755
+        "index_level": 27898.586879699244,
+        "move_from_current": -0.08474758324382392
       },
       "hold_sell": {
         "pe": 21.577714285714286,
-        "index_level": 30865.13500510934,
-        "move_from_current": 0.02898017576129175
+        "index_level": 30908.301231203004,
+        "move_from_current": 0.013990332975295283
       }
     },
     "nifty-shariah-25": {
       "slug": "nifty-shariah-25",
       "index_name": "NIFTY Shariah 25",
-      "as_of": "2026-10-15",
+      "as_of": "2026-10-16",
       "signal": "HOLD",
-      "composite_score": 67.64166007433352,
-      "index_level": 7589.6,
-      "pe": 24.84,
+      "composite_score": 68.02474731181294,
+      "index_level": 7645.7,
+      "pe": 24.95,
       "buy_hold": {
-        "pe": 24.618245309561694,
-        "index_level": 7521.845193295067,
-        "move_from_current": -0.008927322481413258
+        "pe": 24.68931482357513,
+        "index_level": 7565.815404673683,
+        "move_from_current": -0.010448303664323366
       },
       "hold_sell": {
-        "pe": 27.433374698463208,
-        "index_level": 8381.978285485362,
-        "move_from_current": 0.10440316821510498
+        "pe": 27.491166144574393,
+        "index_level": 8424.417194050999,
+        "move_from_current": 0.1018503464759275
       }
     },
     "nifty-sme-emerge": {
       "slug": "nifty-sme-emerge",
       "index_name": "NIFTY Sme Emerge",
-      "as_of": "2026-10-15",
+      "as_of": "2026-10-16",
       "signal": "BUY",
-      "composite_score": 85.65711205023734,
-      "index_level": 15145.1,
-      "pe": 23.2,
+      "composite_score": 85.65491112119949,
+      "index_level": 15130.0,
+      "pe": 23.18,
       "buy_hold": {
-        "pe": 46.601784123338994,
-        "index_level": 30421.92589337851,
-        "move_from_current": 1.0086975915232324
+        "pe": 46.59739735734811,
+        "index_level": 30414.953495111167,
+        "move_from_current": 1.0102414735698062
       },
       "hold_sell": {
-        "pe": 90.92663788297068,
-        "index_level": 59357.457905231866,
-        "move_from_current": 2.919251632886667
+        "pe": 90.91653624752377,
+        "index_level": 59342.846998491565,
+        "move_from_current": 2.922197422240024
       }
     },
     "nifty100-esg": {
       "slug": "nifty100-esg",
       "index_name": "Nifty100 ESG",
-      "as_of": "2026-10-15",
+      "as_of": "2026-10-16",
       "signal": "BUY",
-      "composite_score": 83.90694709047041,
-      "index_level": 4743.65,
-      "pe": 20.12,
+      "composite_score": 84.4203452786974,
+      "index_level": 4789.1,
+      "pe": 20.29,
       "buy_hold": {
-        "pe": 22.521064138566622,
-        "index_level": 5309.743832053257,
-        "move_from_current": 0.11933718382537872
+        "pe": 22.642957499551386,
+        "index_level": 5344.474507693521,
+        "move_from_current": 0.11596636271815597
       },
       "hold_sell": {
-        "pe": 25.596362218863845,
-        "index_level": 6034.800379697488,
-        "move_from_current": 0.2721850009375668
+        "pe": 25.63078955323497,
+        "index_level": 6049.700061577013,
+        "move_from_current": 0.26322274781838195
       }
     },
     "nifty100-enhanced-esg": {
       "slug": "nifty100-enhanced-esg",
       "index_name": "Nifty100 Enhanced ESG",
-      "as_of": "2026-10-15",
+      "as_of": "2026-10-16",
       "signal": "BUY",
-      "composite_score": 85.58769418816131,
-      "index_level": 4775.85,
-      "pe": 20.1,
+      "composite_score": 86.0819047690206,
+      "index_level": 4821.7,
+      "pe": 20.28,
       "buy_hold": {
-        "pe": 22.90174580746279,
-        "index_level": 5441.557348983641,
-        "move_from_current": 0.13939033867974082
+        "pe": 22.90640550722518,
+        "index_level": 5446.144745275525,
+        "move_from_current": 0.1295071749124841
       },
       "hold_sell": {
-        "pe": 26.022059006398692,
-        "index_level": 6182.957736602448,
-        "move_from_current": 0.2946298013133677
+        "pe": 26.11525300164644,
+        "index_level": 6209.0688066094,
+        "move_from_current": 0.28773436891747717
       }
     },
     "nifty100-equal-weight": {
       "slug": "nifty100-equal-weight",
       "index_name": "Nifty100 Equal Weight",
-      "as_of": "2026-10-15",
+      "as_of": "2026-10-16",
       "signal": "BUY",
-      "composite_score": 89.68753073932237,
-      "index_level": 32701.95,
-      "pe": 19.2,
+      "composite_score": 88.83835064445793,
+      "index_level": 32849.65,
+      "pe": 19.26,
       "buy_hold": {
-        "pe": 22.00921757722204,
-        "index_level": 37486.68399736647,
-        "move_from_current": 0.1463134154803143
+        "pe": 22.04956604945636,
+        "index_level": 37607.5040174727,
+        "move_from_current": 0.14483728190323775
       },
       "hold_sell": {
-        "pe": 24.277261520277115,
-        "index_level": 41349.67668609512,
-        "move_from_current": 0.2644407041810999
+        "pe": 24.30308019551621,
+        "index_level": 41451.07364198541,
+        "move_from_current": 0.2618421700683389
       }
     },
     "nifty100-low-volatility-30": {
       "slug": "nifty100-low-volatility-30",
       "index_name": "Nifty100 Low Volatility 30",
-      "as_of": "2026-10-15",
+      "as_of": "2026-10-16",
       "signal": "BUY",
-      "composite_score": 78.30449290007071,
-      "index_level": 18843.45,
-      "pe": 23.75,
+      "composite_score": 78.53113807067423,
+      "index_level": 18918.7,
+      "pe": 23.81,
       "buy_hold": {
-        "pe": 24.917915432879667,
-        "index_level": 19770.08393952406,
-        "move_from_current": 0.049175386647565045
+        "pe": 24.928600133779547,
+        "index_level": 19807.5055586281,
+        "move_from_current": 0.046980266013420646
       },
       "hold_sell": {
-        "pe": 28.963282753196914,
-        "index_level": 22979.712437714883,
-        "move_from_current": 0.21950664223987015
+        "pe": 28.988926035356627,
+        "index_level": 23033.71671503996,
+        "move_from_current": 0.21751054327411268
       }
     },
     "nifty100-quality-30": {
       "slug": "nifty100-quality-30",
       "index_name": "Nifty100 Quality 30",
-      "as_of": "2026-10-15",
+      "as_of": "2026-10-16",
       "signal": "BUY",
-      "composite_score": 81.72160398573493,
-      "index_level": 5412.85,
-      "pe": 25.89,
+      "composite_score": 81.11698223501784,
+      "index_level": 5472.0,
+      "pe": 26.08,
       "buy_hold": {
-        "pe": 27.682080434271807,
-        "index_level": 5787.522173760068,
-        "move_from_current": 0.06921902024997317
+        "pe": 27.76093094546211,
+        "index_level": 5824.6861247534,
+        "move_from_current": 0.06445287367569441
       },
       "hold_sell": {
-        "pe": 30.668517407515136,
-        "index_level": 6411.899746978305,
-        "move_from_current": 0.18457000415276692
+        "pe": 30.68370701681556,
+        "index_level": 6437.931165491363,
+        "move_from_current": 0.17652250831348004
       }
     },
     "nifty200-quality-30": {
       "slug": "nifty200-quality-30",
       "index_name": "Nifty200 Quality 30",
-      "as_of": "2026-10-15",
+      "as_of": "2026-10-16",
       "signal": "BUY",
-      "composite_score": 71.61196331009616,
-      "index_level": 19368.7,
-      "pe": 26.07,
+      "composite_score": 71.74399077550098,
+      "index_level": 19470.45,
+      "pe": 26.15,
       "buy_hold": {
-        "pe": 26.486913447822985,
-        "index_level": 19678.445742111588,
-        "move_from_current": 0.015992077016608652
+        "pe": 26.493312346406945,
+        "index_level": 19726.069345128075,
+        "move_from_current": 0.013128579212502656
       },
       "hold_sell": {
-        "pe": 29.578769543316007,
-        "index_level": 21975.539457369574,
-        "move_from_current": 0.13459031619930983
+        "pe": 29.589973016808926,
+        "index_level": 22031.74340822667,
+        "move_from_current": 0.1315477253081807
       }
     },
     "nifty50-equal-weight": {
       "slug": "nifty50-equal-weight",
       "index_name": "Nifty50 Equal Weight",
-      "as_of": "2026-10-15",
+      "as_of": "2026-10-16",
       "signal": "SELL",
-      "composite_score": 28.932848247416423,
-      "index_level": 31051.1,
-      "pe": 23.3,
+      "composite_score": 29.35492217938603,
+      "index_level": 31199.8,
+      "pe": 23.39,
       "buy_hold": {
-        "pe": 18.018035052453314,
-        "index_level": 24012.008936361934,
-        "move_from_current": -0.22669377457281914
+        "pe": 18.049871486179022,
+        "index_level": 24076.630200704927,
+        "move_from_current": -0.2283081878504052
       },
       "hold_sell": {
-        "pe": 22.345645915034716,
-        "index_level": 29779.26548808302,
-        "move_from_current": -0.04095940278820975
+        "pe": 22.413298336701846,
+        "index_level": 29896.9827039517,
+        "move_from_current": -0.041757232291498636
       }
     },
     "nifty50-shariah": {
       "slug": "nifty50-shariah",
       "index_name": "Nifty50 Shariah",
-      "as_of": "2026-10-15",
-      "signal": "HOLD",
-      "composite_score": 41.0,
-      "index_level": 4067.2,
-      "pe": 24.76,
+      "as_of": "2026-10-16",
+      "signal": "SELL",
+      "composite_score": 38.91044776119403,
+      "index_level": 4135.15,
+      "pe": 25.08,
       "buy_hold": {
         "pe": 21.27228571428571,
-        "index_level": 3494.2908100623117,
-        "move_from_current": -0.14086083544888084
+        "index_level": 3507.34020221007,
+        "move_from_current": -0.15182273866484397
       },
       "hold_sell": {
-        "pe": 25.023999999999997,
-        "index_level": 4110.565945072697,
-        "move_from_current": 0.01066235864297238
+        "pe": 25.049428571428574,
+        "index_level": 4130.109432102985,
+        "move_from_current": -0.0012189564821142307
       }
     },
     "nifty50-value-20": {
       "slug": "nifty50-value-20",
       "index_name": "Nifty50 Value 20",
-      "as_of": "2026-10-15",
+      "as_of": "2026-10-16",
       "signal": "BUY",
-      "composite_score": 78.72142638459965,
-      "index_level": 11456.35,
-      "pe": 14.35,
+      "composite_score": 79.46383774582316,
+      "index_level": 11532.3,
+      "pe": 14.45,
       "buy_hold": {
-        "pe": 16.095033555146053,
-        "index_level": 12849.50088289181,
-        "move_from_current": 0.12160512579414995
+        "pe": 16.13804612704522,
+        "index_level": 12879.500993143503,
+        "move_from_current": 0.11681980117960022
       },
       "hold_sell": {
-        "pe": 18.027685516068004,
-        "index_level": 14392.437279582278,
-        "move_from_current": 0.25628470495247413
+        "pe": 18.09863732435032,
+        "index_level": 14444.215585855032,
+        "move_from_current": 0.25250085289621604
       }
     },
     "nifty500-shariah": {
       "slug": "nifty500-shariah",
       "index_name": "Nifty500 Shariah",
-      "as_of": "2026-10-15",
+      "as_of": "2026-10-16",
       "signal": "HOLD",
-      "composite_score": 57.19402985074627,
-      "index_level": 6639.1,
-      "pe": 27.32,
+      "composite_score": 55.104477611940304,
+      "index_level": 6682.1,
+      "pe": 27.45,
       "buy_hold": {
         "pe": 24.106571428571428,
-        "index_level": 5858.196865718469,
-        "move_from_current": -0.11762183643589208
+        "index_level": 5868.215699193339,
+        "move_from_current": -0.12180067655477489
       },
       "hold_sell": {
         "pe": 28.418857142857142,
-        "index_level": 6906.135961096004,
-        "move_from_current": 0.04022171093913385
+        "index_level": 6917.947005984907,
+        "move_from_current": 0.03529534218058794
       }
     },
     "nifty500-value-50": {
       "slug": "nifty500-value-50",
       "index_name": "Nifty500 Value 50",
-      "as_of": "2026-10-15",
+      "as_of": "2026-10-16",
       "signal": "HOLD",
-      "composite_score": 49.12858547126416,
-      "index_level": 14962.15,
+      "composite_score": 49.103023956067446,
+      "index_level": 14968.45,
       "pe": 9.73,
       "buy_hold": {
-        "pe": 7.279189370707442,
-        "index_level": 11193.455626200446,
-        "move_from_current": -0.2518818735141376
+        "pe": 7.278466344991877,
+        "index_level": 11197.056481160704,
+        "move_from_current": -0.2519561824263231
       },
       "hold_sell": {
-        "pe": 10.11592026642629,
-        "index_level": 15555.59264278624,
-        "move_from_current": 0.03966292563476781
+        "pe": 10.115679257854435,
+        "index_level": 15561.77175613887,
+        "move_from_current": 0.039638155997372415
       }
     }
   }
