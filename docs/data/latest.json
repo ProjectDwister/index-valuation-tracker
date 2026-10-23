@@ -1,23 +1,23 @@
 {
   "model_version": "1.5",
-  "as_of": "2026-10-22",
-  "generated_at_utc": "2026-10-22T17:38:53+00:00",
+  "as_of": "2026-10-23",
+  "generated_at_utc": "2026-10-23T17:27:41+00:00",
   "signal": "BUY",
-  "composite_score": 80.58,
+  "composite_score": 80.62,
   "valuation_score": 99.25,
-  "growth_score": 37.02,
-  "nifty_close": 22687.65,
-  "pe": 19.13,
-  "earnings_yield": 0.05227392,
+  "growth_score": 37.15,
+  "nifty_close": 22600.0,
+  "pe": 19.05,
+  "earnings_yield": 0.05249344,
   "pe_percentile": 0.00746269,
   "valuation_quintile": "Q1 Cheapest",
   "era_median_pe": 22.0,
-  "implied_eps": 1185.97,
-  "yoy_eps_growth": 0.04253844,
+  "implied_eps": 1186.35,
+  "yoy_eps_growth": 0.04287002,
   "prior_year": {
-    "date": "2025-10-21",
-    "nifty_close": 25868.6,
-    "pe": 22.74,
+    "date": "2025-10-23",
+    "nifty_close": 25891.4,
+    "pe": 22.76,
     "implied_eps": 1137.58
   },
   "thresholds": {
@@ -27,19 +27,19 @@
   "signal_boundaries": {
     "buy_hold": {
       "score_threshold": 70.0,
-      "valuation_score_required": 84.1362668,
-      "pe_percentile": 0.15863733,
-      "pe": 20.49401278,
-      "nifty_level": 24305.33137021,
-      "move_from_current": 0.07130229
+      "valuation_score_required": 84.07942519,
+      "pe_percentile": 0.15920575,
+      "pe": 20.50151588,
+      "nifty_level": 24322.00833526,
+      "move_from_current": 0.07619506
     },
     "hold_sell": {
       "score_threshold": 40.0,
-      "valuation_score_required": 41.27912394,
-      "pe_percentile": 0.58720876,
-      "pe": 22.27557782,
-      "nifty_level": 26418.21814571,
-      "move_from_current": 0.16443167
+      "valuation_score_required": 41.22228233,
+      "pe_percentile": 0.58777718,
+      "pe": 22.27932937,
+      "nifty_level": 26431.1204031,
+      "move_from_current": 0.1695186
     },
     "assumption": "Current implied EPS and earnings-growth score held constant",
     "note": "Approximate because regime-relative P/E percentiles are based on a discrete historical distribution."
