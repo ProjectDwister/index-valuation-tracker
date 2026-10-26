@@ -1,24 +1,24 @@
 {
   "model_version": "1.5",
-  "as_of": "2026-10-23",
-  "generated_at_utc": "2026-10-23T17:27:41+00:00",
+  "as_of": "2026-10-26",
+  "generated_at_utc": "2026-10-26T18:52:15+00:00",
   "signal": "BUY",
-  "composite_score": 80.62,
+  "composite_score": 80.59,
   "valuation_score": 99.25,
-  "growth_score": 37.15,
-  "nifty_close": 22600.0,
-  "pe": 19.05,
-  "earnings_yield": 0.05249344,
+  "growth_score": 37.03,
+  "nifty_close": 22753.2,
+  "pe": 19.18,
+  "earnings_yield": 0.05213764,
   "pe_percentile": 0.00746269,
   "valuation_quintile": "Q1 Cheapest",
   "era_median_pe": 22.0,
-  "implied_eps": 1186.35,
-  "yoy_eps_growth": 0.04287002,
+  "implied_eps": 1186.3,
+  "yoy_eps_growth": 0.04257509,
   "prior_year": {
-    "date": "2025-10-23",
-    "nifty_close": 25891.4,
-    "pe": 22.76,
-    "implied_eps": 1137.58
+    "date": "2025-10-24",
+    "nifty_close": 25795.15,
+    "pe": 22.67,
+    "implied_eps": 1137.85
   },
   "thresholds": {
     "buy": 70,
@@ -27,19 +27,19 @@
   "signal_boundaries": {
     "buy_hold": {
       "score_threshold": 70.0,
-      "valuation_score_required": 84.07942519,
-      "pe_percentile": 0.15920575,
-      "pe": 20.50151588,
-      "nifty_level": 24322.00833526,
-      "move_from_current": 0.07619506
+      "valuation_score_required": 84.1299847,
+      "pe_percentile": 0.15870015,
+      "pe": 20.49484202,
+      "nifty_level": 24312.99475693,
+      "move_from_current": 0.06855276
     },
     "hold_sell": {
       "score_threshold": 40.0,
-      "valuation_score_required": 41.22228233,
-      "pe_percentile": 0.58777718,
-      "pe": 22.27932937,
-      "nifty_level": 26431.1204031,
-      "move_from_current": 0.1695186
+      "valuation_score_required": 41.27284184,
+      "pe_percentile": 0.58727158,
+      "pe": 22.27599244,
+      "nifty_level": 26425.97034137,
+      "move_from_current": 0.16141775
     },
     "assumption": "Current implied EPS and earnings-growth score held constant",
     "note": "Approximate because regime-relative P/E percentiles are based on a discrete historical distribution."
