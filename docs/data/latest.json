@@ -1,24 +1,24 @@
 {
   "model_version": "1.5",
-  "as_of": "2026-10-26",
-  "generated_at_utc": "2026-10-26T18:52:15+00:00",
+  "as_of": "2026-10-27",
+  "generated_at_utc": "2026-10-27T18:17:07+00:00",
   "signal": "BUY",
-  "composite_score": 80.59,
+  "composite_score": 81.4,
   "valuation_score": 99.25,
-  "growth_score": 37.03,
-  "nifty_close": 22753.2,
-  "pe": 19.18,
-  "earnings_yield": 0.05213764,
+  "growth_score": 39.74,
+  "nifty_close": 22749.75,
+  "pe": 19.07,
+  "earnings_yield": 0.05243838,
   "pe_percentile": 0.00746269,
   "valuation_quintile": "Q1 Cheapest",
   "era_median_pe": 22.0,
-  "implied_eps": 1186.3,
-  "yoy_eps_growth": 0.04257509,
+  "implied_eps": 1192.96,
+  "yoy_eps_growth": 0.0493398,
   "prior_year": {
-    "date": "2025-10-24",
-    "nifty_close": 25795.15,
-    "pe": 22.67,
-    "implied_eps": 1137.85
+    "date": "2025-10-27",
+    "nifty_close": 25966.05,
+    "pe": 22.84,
+    "implied_eps": 1136.87
   },
   "thresholds": {
     "buy": 70,
@@ -27,19 +27,19 @@
   "signal_boundaries": {
     "buy_hold": {
       "score_threshold": 70.0,
-      "valuation_score_required": 84.1299847,
-      "pe_percentile": 0.15870015,
-      "pe": 20.49484202,
-      "nifty_level": 24312.99475693,
-      "move_from_current": 0.06855276
+      "valuation_score_required": 82.97031974,
+      "pe_percentile": 0.1702968,
+      "pe": 20.6,
+      "nifty_level": 24574.97902465,
+      "move_from_current": 0.08023073
     },
     "hold_sell": {
       "score_threshold": 40.0,
-      "valuation_score_required": 41.27284184,
-      "pe_percentile": 0.58727158,
-      "pe": 22.27599244,
-      "nifty_level": 26425.97034137,
-      "move_from_current": 0.16141775
+      "valuation_score_required": 40.11317688,
+      "pe_percentile": 0.59886823,
+      "pe": 22.35253033,
+      "nifty_level": 26665.67785954,
+      "move_from_current": 0.17213059
     },
     "assumption": "Current implied EPS and earnings-growth score held constant",
     "note": "Approximate because regime-relative P/E percentiles are based on a discrete historical distribution."
