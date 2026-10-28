@@ -1,24 +1,24 @@
 {
   "model_version": "1.5",
-  "as_of": "2026-10-27",
-  "generated_at_utc": "2026-10-27T18:17:07+00:00",
+  "as_of": "2026-10-28",
+  "generated_at_utc": "2026-10-28T18:30:09+00:00",
   "signal": "BUY",
-  "composite_score": 81.4,
+  "composite_score": 81.68,
   "valuation_score": 99.25,
-  "growth_score": 39.74,
-  "nifty_close": 22749.75,
-  "pe": 19.07,
-  "earnings_yield": 0.05243838,
+  "growth_score": 40.68,
+  "nifty_close": 22698.85,
+  "pe": 18.99,
+  "earnings_yield": 0.05265929,
   "pe_percentile": 0.00746269,
   "valuation_quintile": "Q1 Cheapest",
   "era_median_pe": 22.0,
-  "implied_eps": 1192.96,
-  "yoy_eps_growth": 0.0493398,
+  "implied_eps": 1195.31,
+  "yoy_eps_growth": 0.05169106,
   "prior_year": {
-    "date": "2025-10-27",
-    "nifty_close": 25966.05,
-    "pe": 22.84,
-    "implied_eps": 1136.87
+    "date": "2025-10-28",
+    "nifty_close": 25936.2,
+    "pe": 22.82,
+    "implied_eps": 1136.56
   },
   "thresholds": {
     "buy": 70,
@@ -27,19 +27,19 @@
   "signal_boundaries": {
     "buy_hold": {
       "score_threshold": 70.0,
-      "valuation_score_required": 82.97031974,
-      "pe_percentile": 0.1702968,
+      "valuation_score_required": 82.56724618,
+      "pe_percentile": 0.17432754,
       "pe": 20.6,
-      "nifty_level": 24574.97902465,
-      "move_from_current": 0.08023073
+      "nifty_level": 24623.29173249,
+      "move_from_current": 0.08478146
     },
     "hold_sell": {
       "score_threshold": 40.0,
-      "valuation_score_required": 40.11317688,
-      "pe_percentile": 0.59886823,
-      "pe": 22.35253033,
-      "nifty_level": 26665.67785954,
-      "move_from_current": 0.17213059
+      "valuation_score_required": 39.71010332,
+      "pe_percentile": 0.60289897,
+      "pe": 22.37913318,
+      "nifty_level": 26749.89927361,
+      "move_from_current": 0.17846936
     },
     "assumption": "Current implied EPS and earnings-growth score held constant",
     "note": "Approximate because regime-relative P/E percentiles are based on a discrete historical distribution."
