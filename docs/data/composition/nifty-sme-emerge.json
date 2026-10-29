@@ -2,12 +2,12 @@
   "slug": "nifty-sme-emerge",
   "index_name": "NIFTY Sme Emerge",
   "as_of": null,
-  "retrieved_on": "2026-10-28",
+  "retrieved_on": "2026-10-29",
   "source": "NSE Indices — Index Constituent CSV",
   "source_url": "https://www.niftyindices.com/IndexConstituent/ind_niftysmelist.csv",
   "source_type": "official_nse_indices_constituent_csv",
   "completeness": "constituents",
-  "stock_count": 539,
+  "stock_count": 538,
   "weight_coverage": null,
   "top10_weight": null,
   "coverage_note": "The official constituent file lists members but does not publish usable stock weights.",
@@ -256,12 +256,6 @@
       "name": "ARC Insulation & Insulators Ltd.",
       "symbol": "ARCIIL",
       "sector": "Capital Goods",
-      "weight": null
-    },
-    {
-      "name": "Arham Technologies Ltd.",
-      "symbol": "ARHAM",
-      "sector": "Consumer Durables",
       "weight": null
     },
     {
@@ -3251,127 +3245,127 @@
     {
       "name": "Capital Goods",
       "count": 128,
-      "stock_share": 23.7477,
+      "stock_share": 23.7918,
       "weight": null
     },
     {
       "name": "Services",
       "count": 64,
-      "stock_share": 11.8738,
+      "stock_share": 11.8959,
       "weight": null
     },
     {
       "name": "Consumer Durables",
-      "count": 36,
-      "stock_share": 6.679,
+      "count": 35,
+      "stock_share": 6.5056,
       "weight": null
     },
     {
       "name": "Fast Moving Consumer Goods",
       "count": 34,
-      "stock_share": 6.308,
+      "stock_share": 6.3197,
       "weight": null
     },
     {
       "name": "Healthcare",
       "count": 34,
-      "stock_share": 6.308,
+      "stock_share": 6.3197,
       "weight": null
     },
     {
       "name": "Information Technology",
       "count": 34,
-      "stock_share": 6.308,
+      "stock_share": 6.3197,
       "weight": null
     },
     {
       "name": "Construction",
       "count": 31,
-      "stock_share": 5.7514,
+      "stock_share": 5.7621,
       "weight": null
     },
     {
       "name": "Chemicals",
       "count": 29,
-      "stock_share": 5.3803,
+      "stock_share": 5.3903,
       "weight": null
     },
     {
       "name": "Consumer Services",
       "count": 29,
-      "stock_share": 5.3803,
+      "stock_share": 5.3903,
       "weight": null
     },
     {
       "name": "Media Entertainment & Publication",
       "count": 25,
-      "stock_share": 4.6382,
+      "stock_share": 4.6468,
       "weight": null
     },
     {
       "name": "Automobile and Auto Components",
       "count": 22,
-      "stock_share": 4.0816,
+      "stock_share": 4.0892,
       "weight": null
     },
     {
       "name": "Textiles",
       "count": 21,
-      "stock_share": 3.8961,
+      "stock_share": 3.9033,
       "weight": null
     },
     {
       "name": "Financial Services",
       "count": 10,
-      "stock_share": 1.8553,
+      "stock_share": 1.8587,
       "weight": null
     },
     {
       "name": "Utilities",
       "count": 9,
-      "stock_share": 1.6698,
+      "stock_share": 1.6729,
       "weight": null
     },
     {
       "name": "Metals & Mining",
       "count": 8,
-      "stock_share": 1.4842,
+      "stock_share": 1.487,
       "weight": null
     },
     {
       "name": "Oil Gas & Consumable Fuels",
       "count": 6,
-      "stock_share": 1.1132,
+      "stock_share": 1.1152,
       "weight": null
     },
     {
       "name": "Realty",
       "count": 6,
-      "stock_share": 1.1132,
+      "stock_share": 1.1152,
       "weight": null
     },
     {
       "name": "Telecommunication",
       "count": 6,
-      "stock_share": 1.1132,
+      "stock_share": 1.1152,
       "weight": null
     },
     {
       "name": "Forest Materials",
       "count": 4,
-      "stock_share": 0.7421,
+      "stock_share": 0.7435,
       "weight": null
     },
     {
       "name": "Construction Materials",
       "count": 2,
-      "stock_share": 0.3711,
+      "stock_share": 0.3717,
       "weight": null
     },
     {
       "name": "Power",
       "count": 1,
-      "stock_share": 0.1855,
+      "stock_share": 0.1859,
       "weight": null
     }
   ]
