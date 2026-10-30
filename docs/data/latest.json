@@ -1,24 +1,24 @@
 {
   "model_version": "1.5",
-  "as_of": "2026-10-29",
-  "generated_at_utc": "2026-10-29T18:39:32+00:00",
+  "as_of": "2026-10-30",
+  "generated_at_utc": "2026-10-30T18:13:50+00:00",
   "signal": "BUY",
-  "composite_score": 81.65,
+  "composite_score": 81.6,
   "valuation_score": 99.25,
-  "growth_score": 40.59,
-  "nifty_close": 22936.75,
-  "pe": 19.19,
-  "earnings_yield": 0.05211047,
+  "growth_score": 40.4,
+  "nifty_close": 23053.1,
+  "pe": 19.3,
+  "earnings_yield": 0.05181347,
   "pe_percentile": 0.00746269,
   "valuation_quintile": "Q1 Cheapest",
   "era_median_pe": 22.0,
-  "implied_eps": 1195.24,
-  "yoy_eps_growth": 0.05147458,
+  "implied_eps": 1194.46,
+  "yoy_eps_growth": 0.05101004,
   "prior_year": {
-    "date": "2025-10-29",
-    "nifty_close": 26053.9,
-    "pe": 22.92,
-    "implied_eps": 1136.73
+    "date": "2025-10-30",
+    "nifty_close": 25877.85,
+    "pe": 22.77,
+    "implied_eps": 1136.49
   },
   "thresholds": {
     "buy": 70,
@@ -27,19 +27,19 @@
   "signal_boundaries": {
     "buy_hold": {
       "score_threshold": 70.0,
-      "valuation_score_required": 82.60435779,
-      "pe_percentile": 0.17395642,
+      "valuation_score_required": 82.6839932,
+      "pe_percentile": 0.17316007,
       "pe": 20.6,
-      "nifty_level": 24622.04533611,
-      "move_from_current": 0.07347577
+      "nifty_level": 24605.89948187,
+      "move_from_current": 0.06735751
     },
     "hold_sell": {
       "score_threshold": 40.0,
-      "valuation_score_required": 39.74721493,
-      "pe_percentile": 0.60252785,
-      "pe": 22.37668381,
-      "nifty_level": 26745.61763858,
-      "move_from_current": 0.1660596
+      "valuation_score_required": 39.82685034,
+      "pe_percentile": 0.6017315,
+      "pe": 22.37142788,
+      "nifty_level": 26721.80124375,
+      "move_from_current": 0.15914134
     },
     "assumption": "Current implied EPS and earnings-growth score held constant",
     "note": "Approximate because regime-relative P/E percentiles are based on a discrete historical distribution."

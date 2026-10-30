@@ -1,100 +1,100 @@
 {
   "slug": "nifty-bank",
   "index_name": "NIFTY Bank",
-  "as_of": "2026-09-30",
-  "report_month": "Sep 2026",
+  "as_of": "2026-10-30",
+  "report_month": "Oct 2026",
   "source": "NSE Indices — Indices Market Capitalisation & Weightage",
-  "source_url": "https://www.niftyindices.com/Indices_-_Market_Capitalisation_and_Weightage/indices_dataSep2026.zip",
+  "source_url": "https://www.niftyindices.com/Indices_-_Market_Capitalisation_and_Weightage/indices_dataOct2026.zip",
   "source_type": "official_nse_indices_monthly_report",
   "completeness": "full",
   "stock_count": 14,
   "weight_coverage": 100.0,
-  "top10_weight": 87.49,
+  "top10_weight": 87.86,
   "coverage_note": "Official NSE Indices monthly constituent-weight report.",
   "holdings": [
     {
       "name": "HDFC Bank Ltd.",
       "symbol": "HDFCBANK",
       "sector": "Financial Services",
-      "weight": 18.61
+      "weight": 18.18
     },
     {
       "name": "ICICI Bank Ltd.",
       "symbol": "ICICIBANK",
       "sector": "Financial Services",
-      "weight": 14.18
+      "weight": 14.99
     },
     {
       "name": "Kotak Mahindra Bank Ltd.",
       "symbol": "KOTAKBANK",
       "sector": "Financial Services",
-      "weight": 10.2
+      "weight": 11.28
     },
     {
       "name": "Axis Bank Ltd.",
       "symbol": "AXISBANK",
       "sector": "Financial Services",
-      "weight": 10.06
+      "weight": 9.97
     },
     {
       "name": "State Bank of India",
       "symbol": "SBIN",
       "sector": "Financial Services",
-      "weight": 9.93
+      "weight": 9.94
     },
     {
       "name": "Federal Bank Ltd.",
       "symbol": "FEDERALBNK",
       "sector": "Financial Services",
-      "weight": 6.56
+      "weight": 7.02
     },
     {
       "name": "IndusInd Bank Ltd.",
       "symbol": "INDUSINDBK",
       "sector": "Financial Services",
-      "weight": 4.97
+      "weight": 4.62
     },
     {
       "name": "AU Small Finance Bank Ltd.",
       "symbol": "AUBANK",
       "sector": "Financial Services",
-      "weight": 4.85
+      "weight": 4.14
     },
     {
       "name": "IDFC First Bank Ltd.",
       "symbol": "IDFCFIRSTB",
       "sector": "Financial Services",
-      "weight": 4.54
+      "weight": 4.01
     },
     {
       "name": "Bank of Baroda",
       "symbol": "BANKBARODA",
       "sector": "Financial Services",
-      "weight": 3.59
-    },
-    {
-      "name": "Canara Bank",
-      "symbol": "CANBK",
-      "sector": "Financial Services",
-      "weight": 3.37
+      "weight": 3.71
     },
     {
       "name": "Punjab National Bank",
       "symbol": "PNB",
       "sector": "Financial Services",
-      "weight": 3.27
+      "weight": 3.55
     },
     {
-      "name": "Yes Bank Ltd.",
-      "symbol": "YESBANK",
+      "name": "Canara Bank",
+      "symbol": "CANBK",
       "sector": "Financial Services",
-      "weight": 3.01
+      "weight": 3.31
     },
     {
       "name": "Union Bank of India",
       "symbol": "UNIONBANK",
       "sector": "Financial Services",
-      "weight": 2.86
+      "weight": 3.11
+    },
+    {
+      "name": "Yes Bank Ltd.",
+      "symbol": "YESBANK",
+      "sector": "Financial Services",
+      "weight": 2.17
     }
   ],
   "sectors": [

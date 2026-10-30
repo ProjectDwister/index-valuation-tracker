@@ -1,14 +1,14 @@
 {
-  "report_label": "Sep 2026",
-  "source_url": "https://www.niftyindices.com/Indices_-_Market_Capitalisation_and_Weightage/indices_dataSep2026.zip",
+  "report_label": "Oct 2026",
+  "source_url": "https://www.niftyindices.com/Indices_-_Market_Capitalisation_and_Weightage/indices_dataOct2026.zip",
   "files_seen": [
-    "report.zip!NIFTY_50_Sep2026.pdf",
-    "report.zip!NIFTY_Bank_Sep2026.pdf",
-    "report.zip!NIFTY_Financial_Services_Sep2026.pdf",
-    "report.zip!NIFTY_Midcap_Select_Sep2026.pdf",
-    "report.zip!NIFTY_IT_Sep2026.pdf",
-    "report.zip!NIFTY_Next_50_Sep2026.pdf",
-    "report.zip!NIFTY_India_FPI_150_Sep2026.pdf"
+    "report.zip!NIFTY_50_Oct2026.pdf",
+    "report.zip!NIFTY_Bank_Oct2026.pdf",
+    "report.zip!NIFTY_Financial_Services_Oct2026.pdf",
+    "report.zip!NIFTY_Midcap_Select_Oct2026.pdf",
+    "report.zip!NIFTY_IT_Oct2026.pdf",
+    "report.zip!NIFTY_Next_50_Oct2026.pdf",
+    "report.zip!NIFTY_India_FPI_150_Oct2026.pdf"
   ],
   "parse_errors": [],
   "raw_rows_by_slug": {
@@ -73,7 +73,7 @@
   "constituent_csv_indices": 42,
   "factsheet_partial_indices": 5,
   "constituent_source_errors": {},
-  "generated_at": "2026-10-29T18:40:09Z",
+  "generated_at": "2026-10-30T18:14:26Z",
   "available_indices": 52,
   "tracked_indices": 52
 }
