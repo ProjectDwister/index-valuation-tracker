@@ -1,122 +1,117 @@
 {
   "slug": "nifty50-shariah",
   "index_name": "Nifty50 Shariah",
-  "as_of": "2026-09-30",
+  "as_of": "2026-10-30",
   "source": "NSE Indices — Index factsheet (top constituents)",
   "source_url": "https://www.niftyindices.com/Factsheet/Factsheet_Nifty50_Shariah.pdf",
   "source_type": "official_nse_indices_factsheet",
   "completeness": "partial (top stocks)",
-  "stock_count": 18,
-  "weight_coverage": 74.18,
-  "top10_weight": 74.18,
+  "stock_count": 17,
+  "weight_coverage": 78.38,
+  "top10_weight": 78.38,
   "coverage_note": "Partial composition: the official factsheet shows only its top constituents. Other stocks and their individual weights are not listed here.",
   "holdings": [
     {
       "name": "Infosys Ltd.",
       "symbol": "",
       "sector": "",
-      "weight": 14.86
-    },
-    {
-      "name": "Eternal Ltd.",
-      "symbol": "",
-      "sector": "",
-      "weight": 9.81
+      "weight": 17.48
     },
     {
       "name": "Tata Consultancy Services Ltd.",
       "symbol": "",
       "sector": "",
-      "weight": 8.86
+      "weight": 10.67
+    },
+    {
+      "name": "Eternal Ltd.",
+      "symbol": "",
+      "sector": "",
+      "weight": 10.4
     },
     {
       "name": "Sun Pharmaceutical Industries Ltd.",
       "symbol": "",
       "sector": "",
-      "weight": 8.14
+      "weight": 7.86
     },
     {
       "name": "Hindustan Unilever Ltd.",
       "symbol": "",
       "sector": "",
-      "weight": 7.06
-    },
-    {
-      "name": "Hindalco Industries Ltd.",
-      "symbol": "",
-      "sector": "",
-      "weight": 5.77
-    },
-    {
-      "name": "UltraTech Cement Ltd.",
-      "symbol": "",
-      "sector": "",
-      "weight": 5.49
+      "weight": 6.91
     },
     {
       "name": "HCL Technologies Ltd.",
       "symbol": "",
       "sector": "",
-      "weight": 5.49
+      "weight": 6.28
     },
     {
-      "name": "Asian Paints Ltd.",
+      "name": "UltraTech Cement Ltd.",
       "symbol": "",
       "sector": "",
-      "weight": 4.6
+      "weight": 5.46
     },
     {
       "name": "Tech Mahindra Ltd.",
       "symbol": "",
       "sector": "",
-      "weight": 4.1
+      "weight": 4.75
+    },
+    {
+      "name": "Asian Paints Ltd.",
+      "symbol": "",
+      "sector": "",
+      "weight": 4.38
+    },
+    {
+      "name": "Trent Ltd.",
+      "symbol": "",
+      "sector": "",
+      "weight": 4.19
     }
   ],
   "sectors": [
     {
       "name": "Information Technology",
       "count": null,
-      "weight": 33.3
+      "weight": 39.18
     },
     {
       "name": "Healthcare",
       "count": null,
-      "weight": 17.46
-    },
-    {
-      "name": "Fast Moving Consumer Goods",
-      "count": null,
-      "weight": 13.65
+      "weight": 17.22
     },
     {
       "name": "Consumer Services",
       "count": null,
-      "weight": 13.51
+      "weight": 14.59
     },
     {
-      "name": "Metals & Mining",
+      "name": "Fast Moving Consumer Goods",
       "count": null,
-      "weight": 5.77
+      "weight": 13.19
     },
     {
       "name": "Construction Materials",
       "count": null,
-      "weight": 5.49
+      "weight": 5.46
     },
     {
       "name": "Consumer Durables",
       "count": null,
-      "weight": 4.6
+      "weight": 4.38
     },
     {
       "name": "Oil, Gas & Consumable Fuels",
       "count": null,
-      "weight": 3.71
+      "weight": 3.66
     },
     {
       "name": "Automobile and Auto Components",
       "count": null,
-      "weight": 2.51
+      "weight": 2.32
     }
   ]
 }

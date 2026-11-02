@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-30T18:13:56Z",
+  "generated_at": "2026-11-02T21:56:43Z",
   "default_slug": "nifty-50",
   "groups": [
     "Broad Market",
@@ -14,7 +14,7 @@
       "status": "ok",
       "valid_pe_quarters": 44,
       "matured_3y_obs": 32,
-      "live_pe_history_months": 66
+      "live_pe_history_months": 67
     },
     {
       "slug": "nifty-200",
@@ -23,7 +23,7 @@
       "status": "ok",
       "valid_pe_quarters": 44,
       "matured_3y_obs": 32,
-      "live_pe_history_months": 66
+      "live_pe_history_months": 67
     },
     {
       "slug": "nifty-50",
@@ -32,7 +32,7 @@
       "status": "ok",
       "valid_pe_quarters": 111,
       "matured_3y_obs": 99,
-      "live_pe_history_months": 66
+      "live_pe_history_months": 67
     },
     {
       "slug": "nifty-500",
@@ -41,7 +41,7 @@
       "status": "ok",
       "valid_pe_quarters": 44,
       "matured_3y_obs": 32,
-      "live_pe_history_months": 66
+      "live_pe_history_months": 67
     },
     {
       "slug": "nifty-largemidcap-250",
@@ -50,7 +50,7 @@
       "status": "ok",
       "valid_pe_quarters": 36,
       "matured_3y_obs": 24,
-      "live_pe_history_months": 66
+      "live_pe_history_months": 67
     },
     {
       "slug": "nifty-midcap-100",
@@ -59,7 +59,7 @@
       "status": "ok",
       "valid_pe_quarters": 35,
       "matured_3y_obs": 23,
-      "live_pe_history_months": 66
+      "live_pe_history_months": 67
     },
     {
       "slug": "nifty-midcap-150",
@@ -68,7 +68,7 @@
       "status": "ok",
       "valid_pe_quarters": 41,
       "matured_3y_obs": 29,
-      "live_pe_history_months": 66
+      "live_pe_history_months": 67
     },
     {
       "slug": "nifty-midcap-50",
@@ -77,7 +77,7 @@
       "status": "ok",
       "valid_pe_quarters": 57,
       "matured_3y_obs": 45,
-      "live_pe_history_months": 66
+      "live_pe_history_months": 67
     },
     {
       "slug": "nifty-midsmallcap-400",
@@ -86,7 +86,7 @@
       "status": "ok",
       "valid_pe_quarters": 42,
       "matured_3y_obs": 30,
-      "live_pe_history_months": 66
+      "live_pe_history_months": 67
     },
     {
       "slug": "nifty-next-50",
@@ -95,7 +95,7 @@
       "status": "ok",
       "valid_pe_quarters": 44,
       "matured_3y_obs": 32,
-      "live_pe_history_months": 66
+      "live_pe_history_months": 67
     },
     {
       "slug": "nifty-smallcap-100",
@@ -104,7 +104,7 @@
       "status": "ok",
       "valid_pe_quarters": 35,
       "matured_3y_obs": 23,
-      "live_pe_history_months": 66
+      "live_pe_history_months": 67
     },
     {
       "slug": "nifty-smallcap-250",
@@ -113,7 +113,7 @@
       "status": "ok",
       "valid_pe_quarters": 40,
       "matured_3y_obs": 28,
-      "live_pe_history_months": 66
+      "live_pe_history_months": 67
     },
     {
       "slug": "nifty-smallcap-50",
@@ -122,7 +122,7 @@
       "status": "ok",
       "valid_pe_quarters": 40,
       "matured_3y_obs": 28,
-      "live_pe_history_months": 66
+      "live_pe_history_months": 67
     },
     {
       "slug": "nifty-auto",
@@ -131,7 +131,7 @@
       "status": "ok",
       "valid_pe_quarters": 44,
       "matured_3y_obs": 32,
-      "live_pe_history_months": 66
+      "live_pe_history_months": 67
     },
     {
       "slug": "nifty-bank",
@@ -140,7 +140,7 @@
       "status": "ok",
       "valid_pe_quarters": 44,
       "matured_3y_obs": 32,
-      "live_pe_history_months": 66
+      "live_pe_history_months": 67
     },
     {
       "slug": "nifty-energy",
@@ -149,7 +149,7 @@
       "status": "ok",
       "valid_pe_quarters": 44,
       "matured_3y_obs": 32,
-      "live_pe_history_months": 66
+      "live_pe_history_months": 67
     },
     {
       "slug": "nifty-fmcg",
@@ -158,7 +158,7 @@
       "status": "ok",
       "valid_pe_quarters": 44,
       "matured_3y_obs": 32,
-      "live_pe_history_months": 66
+      "live_pe_history_months": 67
     },
     {
       "slug": "nifty-financial-services",
@@ -167,7 +167,7 @@
       "status": "ok",
       "valid_pe_quarters": 44,
       "matured_3y_obs": 32,
-      "live_pe_history_months": 66
+      "live_pe_history_months": 67
     },
     {
       "slug": "nifty-it",
@@ -176,7 +176,7 @@
       "status": "ok",
       "valid_pe_quarters": 44,
       "matured_3y_obs": 32,
-      "live_pe_history_months": 66
+      "live_pe_history_months": 67
     },
     {
       "slug": "nifty-metal",
@@ -185,7 +185,7 @@
       "status": "ok",
       "valid_pe_quarters": 44,
       "matured_3y_obs": 32,
-      "live_pe_history_months": 66
+      "live_pe_history_months": 67
     },
     {
       "slug": "nifty-pharma",
@@ -194,7 +194,7 @@
       "status": "ok",
       "valid_pe_quarters": 44,
       "matured_3y_obs": 32,
-      "live_pe_history_months": 66
+      "live_pe_history_months": 67
     },
     {
       "slug": "nifty-private-bank",
@@ -203,7 +203,7 @@
       "status": "ok",
       "valid_pe_quarters": 43,
       "matured_3y_obs": 31,
-      "live_pe_history_months": 66
+      "live_pe_history_months": 67
     },
     {
       "slug": "nifty-realty",
@@ -212,7 +212,7 @@
       "status": "ok",
       "valid_pe_quarters": 43,
       "matured_3y_obs": 31,
-      "live_pe_history_months": 65
+      "live_pe_history_months": 66
     },
     {
       "slug": "nifty-alpha-50",
@@ -221,7 +221,7 @@
       "status": "ok",
       "valid_pe_quarters": 41,
       "matured_3y_obs": 29,
-      "live_pe_history_months": 64
+      "live_pe_history_months": 65
     },
     {
       "slug": "nifty-alpha-low-volatility-30",
@@ -230,7 +230,7 @@
       "status": "ok",
       "valid_pe_quarters": 37,
       "matured_3y_obs": 25,
-      "live_pe_history_months": 66
+      "live_pe_history_months": 67
     },
     {
       "slug": "nifty-alpha-quality-low-volatility-30",
@@ -239,7 +239,7 @@
       "status": "ok",
       "valid_pe_quarters": 37,
       "matured_3y_obs": 25,
-      "live_pe_history_months": 66
+      "live_pe_history_months": 67
     },
     {
       "slug": "nifty-alpha-quality-value-low-volatility-30",
@@ -248,7 +248,7 @@
       "status": "ok",
       "valid_pe_quarters": 37,
       "matured_3y_obs": 25,
-      "live_pe_history_months": 66
+      "live_pe_history_months": 67
     },
     {
       "slug": "nifty-commodities",
@@ -257,7 +257,7 @@
       "status": "ok",
       "valid_pe_quarters": 44,
       "matured_3y_obs": 32,
-      "live_pe_history_months": 66
+      "live_pe_history_months": 67
     },
     {
       "slug": "nifty-cpse",
@@ -266,7 +266,7 @@
       "status": "ok",
       "valid_pe_quarters": 44,
       "matured_3y_obs": 32,
-      "live_pe_history_months": 66
+      "live_pe_history_months": 67
     },
     {
       "slug": "nifty-dividend-opportunities-50",
@@ -275,7 +275,7 @@
       "status": "ok",
       "valid_pe_quarters": 44,
       "matured_3y_obs": 32,
-      "live_pe_history_months": 66
+      "live_pe_history_months": 67
     },
     {
       "slug": "nifty-growth-sectors-15",
@@ -284,7 +284,7 @@
       "status": "ok",
       "valid_pe_quarters": 44,
       "matured_3y_obs": 32,
-      "live_pe_history_months": 66
+      "live_pe_history_months": 67
     },
     {
       "slug": "nifty-high-beta-50",
@@ -293,7 +293,7 @@
       "status": "ok",
       "valid_pe_quarters": 36,
       "matured_3y_obs": 24,
-      "live_pe_history_months": 66
+      "live_pe_history_months": 67
     },
     {
       "slug": "nifty-india-consumption",
@@ -302,7 +302,7 @@
       "status": "ok",
       "valid_pe_quarters": 43,
       "matured_3y_obs": 31,
-      "live_pe_history_months": 66
+      "live_pe_history_months": 67
     },
     {
       "slug": "nifty-infrastructure",
@@ -311,7 +311,7 @@
       "status": "ok",
       "valid_pe_quarters": 44,
       "matured_3y_obs": 32,
-      "live_pe_history_months": 66
+      "live_pe_history_months": 67
     },
     {
       "slug": "nifty-low-volatility-50",
@@ -320,7 +320,7 @@
       "status": "ok",
       "valid_pe_quarters": 44,
       "matured_3y_obs": 32,
-      "live_pe_history_months": 66
+      "live_pe_history_months": 67
     },
     {
       "slug": "nifty-mnc",
@@ -329,7 +329,7 @@
       "status": "ok",
       "valid_pe_quarters": 38,
       "matured_3y_obs": 26,
-      "live_pe_history_months": 65
+      "live_pe_history_months": 66
     },
     {
       "slug": "nifty-pse",
@@ -338,7 +338,7 @@
       "status": "ok",
       "valid_pe_quarters": 44,
       "matured_3y_obs": 32,
-      "live_pe_history_months": 66
+      "live_pe_history_months": 67
     },
     {
       "slug": "nifty-quality-low-volatility-30",
@@ -347,7 +347,7 @@
       "status": "ok",
       "valid_pe_quarters": 37,
       "matured_3y_obs": 25,
-      "live_pe_history_months": 66
+      "live_pe_history_months": 67
     },
     {
       "slug": "nifty-services-sector",
@@ -356,7 +356,7 @@
       "status": "ok",
       "valid_pe_quarters": 44,
       "matured_3y_obs": 32,
-      "live_pe_history_months": 66
+      "live_pe_history_months": 67
     },
     {
       "slug": "nifty-shariah-25",
@@ -365,7 +365,7 @@
       "status": "ok",
       "valid_pe_quarters": 44,
       "matured_3y_obs": 32,
-      "live_pe_history_months": 66
+      "live_pe_history_months": 67
     },
     {
       "slug": "nifty-sme-emerge",
@@ -374,7 +374,7 @@
       "status": "ok",
       "valid_pe_quarters": 35,
       "matured_3y_obs": 23,
-      "live_pe_history_months": 64
+      "live_pe_history_months": 65
     },
     {
       "slug": "nifty100-esg",
@@ -383,7 +383,7 @@
       "status": "ok",
       "valid_pe_quarters": 35,
       "matured_3y_obs": 23,
-      "live_pe_history_months": 66
+      "live_pe_history_months": 67
     },
     {
       "slug": "nifty100-enhanced-esg",
@@ -392,7 +392,7 @@
       "status": "ok",
       "valid_pe_quarters": 35,
       "matured_3y_obs": 23,
-      "live_pe_history_months": 66
+      "live_pe_history_months": 67
     },
     {
       "slug": "nifty100-equal-weight",
@@ -401,7 +401,7 @@
       "status": "ok",
       "valid_pe_quarters": 44,
       "matured_3y_obs": 32,
-      "live_pe_history_months": 66
+      "live_pe_history_months": 67
     },
     {
       "slug": "nifty100-low-volatility-30",
@@ -410,7 +410,7 @@
       "status": "ok",
       "valid_pe_quarters": 41,
       "matured_3y_obs": 29,
-      "live_pe_history_months": 66
+      "live_pe_history_months": 67
     },
     {
       "slug": "nifty100-quality-30",
@@ -419,7 +419,7 @@
       "status": "ok",
       "valid_pe_quarters": 33,
       "matured_3y_obs": 21,
-      "live_pe_history_months": 66
+      "live_pe_history_months": 67
     },
     {
       "slug": "nifty200-quality-30",
@@ -428,7 +428,7 @@
       "status": "ok",
       "valid_pe_quarters": 34,
       "matured_3y_obs": 22,
-      "live_pe_history_months": 66
+      "live_pe_history_months": 67
     },
     {
       "slug": "nifty50-equal-weight",
@@ -437,7 +437,7 @@
       "status": "ok",
       "valid_pe_quarters": 38,
       "matured_3y_obs": 26,
-      "live_pe_history_months": 66
+      "live_pe_history_months": 67
     },
     {
       "slug": "nifty50-shariah",
@@ -446,7 +446,7 @@
       "status": "ok",
       "valid_pe_quarters": 44,
       "matured_3y_obs": 32,
-      "live_pe_history_months": 66
+      "live_pe_history_months": 67
     },
     {
       "slug": "nifty50-value-20",
@@ -455,7 +455,7 @@
       "status": "ok",
       "valid_pe_quarters": 44,
       "matured_3y_obs": 32,
-      "live_pe_history_months": 66
+      "live_pe_history_months": 67
     },
     {
       "slug": "nifty500-shariah",
@@ -464,7 +464,7 @@
       "status": "ok",
       "valid_pe_quarters": 44,
       "matured_3y_obs": 32,
-      "live_pe_history_months": 66
+      "live_pe_history_months": 67
     },
     {
       "slug": "nifty500-value-50",
@@ -473,7 +473,7 @@
       "status": "ok",
       "valid_pe_quarters": 32,
       "matured_3y_obs": 20,
-      "live_pe_history_months": 66
+      "live_pe_history_months": 67
     }
   ]
 }

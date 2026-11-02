@@ -1,24 +1,24 @@
 {
   "model_version": "1.5",
-  "as_of": "2026-10-30",
-  "generated_at_utc": "2026-10-30T18:13:50+00:00",
+  "as_of": "2026-11-02",
+  "generated_at_utc": "2026-11-02T21:56:36+00:00",
   "signal": "BUY",
-  "composite_score": 81.6,
-  "valuation_score": 99.25,
-  "growth_score": 40.4,
-  "nifty_close": 23053.1,
-  "pe": 19.3,
-  "earnings_yield": 0.05181347,
-  "pe_percentile": 0.00746269,
+  "composite_score": 80.85,
+  "valuation_score": 96.32,
+  "growth_score": 44.75,
+  "nifty_close": 23440.8,
+  "pe": 19.43,
+  "earnings_yield": 0.0514668,
+  "pe_percentile": 0.03676471,
   "valuation_quintile": "Q1 Cheapest",
   "era_median_pe": 22.0,
-  "implied_eps": 1194.46,
-  "yoy_eps_growth": 0.05101004,
+  "implied_eps": 1206.42,
+  "yoy_eps_growth": 0.06186579,
   "prior_year": {
-    "date": "2025-10-30",
-    "nifty_close": 25877.85,
-    "pe": 22.77,
-    "implied_eps": 1136.49
+    "date": "2025-10-31",
+    "nifty_close": 25722.1,
+    "pe": 22.64,
+    "implied_eps": 1136.14
   },
   "thresholds": {
     "buy": 70,
@@ -27,19 +27,19 @@
   "signal_boundaries": {
     "buy_hold": {
       "score_threshold": 70.0,
-      "valuation_score_required": 82.6839932,
-      "pe_percentile": 0.17316007,
+      "valuation_score_required": 80.82300759,
+      "pe_percentile": 0.19176992,
       "pe": 20.6,
-      "nifty_level": 24605.89948187,
-      "move_from_current": 0.06735751
+      "nifty_level": 24852.31497684,
+      "move_from_current": 0.06021616
     },
     "hold_sell": {
       "score_threshold": 40.0,
-      "valuation_score_required": 39.82685034,
-      "pe_percentile": 0.6017315,
-      "pe": 22.37142788,
-      "nifty_level": 26721.80124375,
-      "move_from_current": 0.15914134
+      "valuation_score_required": 37.96586473,
+      "pe_percentile": 0.62034135,
+      "pe": 22.45628706,
+      "nifty_level": 27091.78249052,
+      "move_from_current": 0.15575332
     },
     "assumption": "Current implied EPS and earnings-growth score held constant",
     "note": "Approximate because regime-relative P/E percentiles are based on a discrete historical distribution."

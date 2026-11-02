@@ -1,152 +1,152 @@
 {
   "slug": "nifty100-esg",
   "index_name": "Nifty100 ESG",
-  "as_of": "2026-09-30",
+  "as_of": "2026-10-30",
   "source": "NSE Indices — Index factsheet (top constituents)",
   "source_url": "https://www.niftyindices.com/Factsheet/Factsheet_NIFTY100_ESG_Index.pdf",
   "source_type": "official_nse_indices_factsheet",
   "completeness": "partial (top stocks)",
   "stock_count": 79,
-  "weight_coverage": 38.93,
-  "top10_weight": 38.93,
+  "weight_coverage": 40.63,
+  "top10_weight": 40.63,
   "coverage_note": "Partial composition: the official factsheet shows only its top constituents. Other stocks and their individual weights are not listed here.",
   "holdings": [
     {
       "name": "ICICI Bank Ltd.",
       "symbol": "",
       "sector": "",
-      "weight": 6.25
-    },
-    {
-      "name": "Bharti Airtel Ltd.",
-      "symbol": "",
-      "sector": "",
-      "weight": 4.87
+      "weight": 6.51
     },
     {
       "name": "Infosys Ltd.",
       "symbol": "",
       "sector": "",
-      "weight": 4.7
+      "weight": 5.52
+    },
+    {
+      "name": "Bharti Airtel Ltd.",
+      "symbol": "",
+      "sector": "",
+      "weight": 5.4
     },
     {
       "name": "HDFC Bank Ltd.",
       "symbol": "",
       "sector": "",
-      "weight": 4.53
+      "weight": 4.36
     },
     {
       "name": "Eternal Ltd.",
       "symbol": "",
       "sector": "",
-      "weight": 3.7
+      "weight": 3.92
     },
     {
       "name": "Axis Bank Ltd.",
       "symbol": "",
       "sector": "",
-      "weight": 3.44
-    },
-    {
-      "name": "Bajaj Finance Ltd.",
-      "symbol": "",
-      "sector": "",
-      "weight": 3.07
-    },
-    {
-      "name": "Mahindra & Mahindra Ltd.",
-      "symbol": "",
-      "sector": "",
-      "weight": 2.81
-    },
-    {
-      "name": "State Bank of India",
-      "symbol": "",
-      "sector": "",
-      "weight": 2.79
+      "weight": 3.36
     },
     {
       "name": "HCL Technologies Ltd.",
       "symbol": "",
       "sector": "",
-      "weight": 2.77
+      "weight": 3.17
+    },
+    {
+      "name": "Bajaj Finance Ltd.",
+      "symbol": "",
+      "sector": "",
+      "weight": 2.96
+    },
+    {
+      "name": "State Bank of India",
+      "symbol": "",
+      "sector": "",
+      "weight": 2.76
+    },
+    {
+      "name": "Mahindra & Mahindra Ltd.",
+      "symbol": "",
+      "sector": "",
+      "weight": 2.67
     }
   ],
   "sectors": [
     {
       "name": "Financial Services",
       "count": null,
-      "weight": 33.35
-    },
-    {
-      "name": "Automobile and Auto Components",
-      "count": null,
-      "weight": 12.13
+      "weight": 32.55
     },
     {
       "name": "Information Technology",
       "count": null,
-      "weight": 12.09
+      "weight": 13.98
+    },
+    {
+      "name": "Automobile and Auto Components",
+      "count": null,
+      "weight": 11.65
     },
     {
       "name": "Consumer Services",
       "count": null,
-      "weight": 6.03
-    },
-    {
-      "name": "Fast Moving Consumer Goods",
-      "count": null,
-      "weight": 5.27
-    },
-    {
-      "name": "Power",
-      "count": null,
-      "weight": 5.04
+      "weight": 6.21
     },
     {
       "name": "Telecommunication",
       "count": null,
-      "weight": 4.87
+      "weight": 5.4
+    },
+    {
+      "name": "Fast Moving Consumer Goods",
+      "count": null,
+      "weight": 5.03
+    },
+    {
+      "name": "Power",
+      "count": null,
+      "weight": 4.96
     },
     {
       "name": "Metals & Mining",
       "count": null,
-      "weight": 4.1
-    },
-    {
-      "name": "Capital Goods",
-      "count": null,
-      "weight": 3.68
+      "weight": 3.75
     },
     {
       "name": "Healthcare",
       "count": null,
-      "weight": 3.62
+      "weight": 3.58
+    },
+    {
+      "name": "Capital Goods",
+      "count": null,
+      "weight": 3.37
     },
     {
       "name": "Oil, Gas & Consumable Fuels",
       "count": null,
-      "weight": 3.1
+      "weight": 2.98
     },
     {
       "name": "Consumer Durables",
       "count": null,
-      "weight": 2.73
+      "weight": 2.6
     },
     {
       "name": "Construction Materials",
       "count": null,
-      "weight": 1.87
+      "weight": 1.82
     },
     {
       "name": "Chemicals",
       "count": null,
-      "weight": 0.88
+      "weight": 0.86
     },
     {
       "name": "Services",
       "count": null,
-      "weight": 0.85
+      "weight": 0.86
     },
     {
       "name": "Realty",

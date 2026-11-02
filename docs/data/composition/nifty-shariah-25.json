@@ -1,127 +1,127 @@
 {
   "slug": "nifty-shariah-25",
   "index_name": "NIFTY Shariah 25",
-  "as_of": "2026-09-30",
+  "as_of": "2026-10-30",
   "source": "NSE Indices — Index factsheet (top constituents)",
   "source_url": "https://www.niftyindices.com/Factsheet/Factsheet_nifty_Shariah25.pdf",
   "source_type": "official_nse_indices_factsheet",
   "completeness": "partial (top stocks)",
   "stock_count": 25,
-  "weight_coverage": 59.66,
-  "top10_weight": 59.66,
+  "weight_coverage": 61.22,
+  "top10_weight": 61.22,
   "coverage_note": "Partial composition: the official factsheet shows only its top constituents. Other stocks and their individual weights are not listed here.",
   "holdings": [
     {
       "name": "Tata Consultancy Services Ltd.",
       "symbol": "",
       "sector": "",
-      "weight": 9.59
+      "weight": 11.33
     },
     {
       "name": "Sun Pharmaceutical Industries Ltd.",
       "symbol": "",
       "sector": "",
-      "weight": 8.81
+      "weight": 8.35
     },
     {
       "name": "Hindustan Unilever Ltd.",
       "symbol": "",
       "sector": "",
-      "weight": 7.64
-    },
-    {
-      "name": "UltraTech Cement Ltd.",
-      "symbol": "",
-      "sector": "",
-      "weight": 5.94
+      "weight": 7.34
     },
     {
       "name": "HCL Technologies Ltd.",
       "symbol": "",
       "sector": "",
-      "weight": 5.94
+      "weight": 6.67
     },
     {
-      "name": "Asian Paints Ltd.",
+      "name": "UltraTech Cement Ltd.",
       "symbol": "",
       "sector": "",
-      "weight": 4.98
+      "weight": 5.8
     },
     {
       "name": "Tech Mahindra Ltd.",
       "symbol": "",
       "sector": "",
-      "weight": 4.44
+      "weight": 5.04
     },
     {
-      "name": "Nestle India Ltd.",
+      "name": "Asian Paints Ltd.",
       "symbol": "",
       "sector": "",
-      "weight": 4.3
-    },
-    {
-      "name": "Oil & Natural Gas Corporation Ltd.",
-      "symbol": "",
-      "sector": "",
-      "weight": 4.02
+      "weight": 4.65
     },
     {
       "name": "Trent Ltd.",
       "symbol": "",
       "sector": "",
-      "weight": 4.0
+      "weight": 4.45
+    },
+    {
+      "name": "Oil & Natural Gas Corporation Ltd.",
+      "symbol": "",
+      "sector": "",
+      "weight": 3.88
+    },
+    {
+      "name": "Nestle India Ltd.",
+      "symbol": "",
+      "sector": "",
+      "weight": 3.71
     }
   ],
   "sectors": [
     {
       "name": "Information Technology",
       "count": null,
-      "weight": 22.6
+      "weight": 25.97
     },
     {
       "name": "Fast Moving Consumer Goods",
       "count": null,
-      "weight": 18.95
+      "weight": 17.89
     },
     {
       "name": "Healthcare",
       "count": null,
-      "weight": 17.99
+      "weight": 17.61
     },
     {
       "name": "Oil, Gas & Consumable Fuels",
       "count": null,
-      "weight": 8.91
+      "weight": 8.43
     },
     {
       "name": "Consumer Durables",
       "count": null,
-      "weight": 7.48
+      "weight": 6.68
     },
     {
       "name": "Automobile and Auto Components",
       "count": null,
-      "weight": 6.42
+      "weight": 6.04
     },
     {
       "name": "Construction Materials",
       "count": null,
-      "weight": 5.94
+      "weight": 5.8
     },
     {
       "name": "Capital Goods",
       "count": null,
-      "weight": 5.63
+      "weight": 5.11
     },
     {
       "name": "Consumer Services",
       "count": null,
-      "weight": 4.0
+      "weight": 4.45
     },
     {
       "name": "Chemicals",
       "count": null,
-      "weight": 2.08
+      "weight": 2.01
     }
   ]
 }

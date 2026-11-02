@@ -1,167 +1,167 @@
 {
   "slug": "nifty500-shariah",
   "index_name": "Nifty500 Shariah",
-  "as_of": "2026-09-30",
+  "as_of": "2026-10-30",
   "source": "NSE Indices — Index factsheet (top constituents)",
   "source_url": "https://www.niftyindices.com/Factsheet/Factsheet_Nifty500_Shariah.pdf",
   "source_type": "official_nse_indices_factsheet",
   "completeness": "partial (top stocks)",
   "stock_count": 204,
-  "weight_coverage": 29.09,
-  "top10_weight": 29.09,
+  "weight_coverage": 31.69,
+  "top10_weight": 31.69,
   "coverage_note": "Partial composition: the official factsheet shows only its top constituents. Other stocks and their individual weights are not listed here.",
   "holdings": [
     {
       "name": "Infosys Ltd.",
       "symbol": "",
       "sector": "",
-      "weight": 5.83
-    },
-    {
-      "name": "Eternal Ltd.",
-      "symbol": "",
-      "sector": "",
-      "weight": 3.85
+      "weight": 7.07
     },
     {
       "name": "Tata Consultancy Services Ltd.",
       "symbol": "",
       "sector": "",
-      "weight": 3.48
+      "weight": 4.31
+    },
+    {
+      "name": "Eternal Ltd.",
+      "symbol": "",
+      "sector": "",
+      "weight": 4.2
     },
     {
       "name": "Sun Pharmaceutical Industries Ltd.",
       "symbol": "",
       "sector": "",
-      "weight": 3.19
+      "weight": 3.18
     },
     {
       "name": "Hindustan Unilever Ltd.",
       "symbol": "",
       "sector": "",
-      "weight": 2.77
-    },
-    {
-      "name": "Hindalco Industries Ltd.",
-      "symbol": "",
-      "sector": "",
-      "weight": 2.26
-    },
-    {
-      "name": "UltraTech Cement Ltd.",
-      "symbol": "",
-      "sector": "",
-      "weight": 2.15
+      "weight": 2.79
     },
     {
       "name": "HCL Technologies Ltd.",
       "symbol": "",
       "sector": "",
-      "weight": 2.15
+      "weight": 2.54
     },
     {
-      "name": "Asian Paints Ltd.",
+      "name": "UltraTech Cement Ltd.",
       "symbol": "",
       "sector": "",
-      "weight": 1.8
+      "weight": 2.21
     },
     {
       "name": "Tech Mahindra Ltd.",
       "symbol": "",
       "sector": "",
-      "weight": 1.61
+      "weight": 1.92
+    },
+    {
+      "name": "Asian Paints Ltd.",
+      "symbol": "",
+      "sector": "",
+      "weight": 1.77
+    },
+    {
+      "name": "Trent Ltd.",
+      "symbol": "",
+      "sector": "",
+      "weight": 1.7
     }
   ],
   "sectors": [
     {
       "name": "Information Technology",
       "count": null,
-      "weight": 17.39
+      "weight": 20.87
     },
     {
       "name": "Healthcare",
       "count": null,
-      "weight": 16.06
+      "weight": 16.71
     },
     {
       "name": "Capital Goods",
       "count": null,
-      "weight": 14.2
-    },
-    {
-      "name": "Fast Moving Consumer Goods",
-      "count": null,
-      "weight": 8.54
+      "weight": 13.01
     },
     {
       "name": "Consumer Services",
       "count": null,
-      "weight": 8.41
+      "weight": 8.61
+    },
+    {
+      "name": "Fast Moving Consumer Goods",
+      "count": null,
+      "weight": 8.47
     },
     {
       "name": "Automobile and Auto Components",
       "count": null,
-      "weight": 8.18
-    },
-    {
-      "name": "Metals & Mining",
-      "count": null,
-      "weight": 5.52
+      "weight": 7.9
     },
     {
       "name": "Consumer Durables",
       "count": null,
-      "weight": 5.02
+      "weight": 5.13
     },
     {
       "name": "Oil, Gas & Consumable Fuels",
       "count": null,
-      "weight": 4.99
+      "weight": 4.96
     },
     {
       "name": "Chemicals",
       "count": null,
-      "weight": 3.92
+      "weight": 3.91
     },
     {
       "name": "Construction Materials",
       "count": null,
-      "weight": 3.15
+      "weight": 3.11
+    },
+    {
+      "name": "Metals & Mining",
+      "count": null,
+      "weight": 2.94
     },
     {
       "name": "Telecommunication",
       "count": null,
-      "weight": 1.44
+      "weight": 1.5
     },
     {
       "name": "Construction",
       "count": null,
-      "weight": 0.93
+      "weight": 0.9
     },
     {
       "name": "Realty",
       "count": null,
-      "weight": 0.71
+      "weight": 0.64
     },
     {
       "name": "Textiles",
       "count": null,
-      "weight": 0.63
+      "weight": 0.61
     },
     {
       "name": "Services",
       "count": null,
-      "weight": 0.6
+      "weight": 0.44
     },
     {
       "name": "Financial Services",
       "count": null,
-      "weight": 0.18
+      "weight": 0.19
     },
     {
       "name": "Power",
       "count": null,
-      "weight": 0.13
+      "weight": 0.12
     }
   ]
 }
