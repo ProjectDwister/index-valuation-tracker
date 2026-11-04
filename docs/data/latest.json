@@ -1,24 +1,24 @@
 {
   "model_version": "1.5",
-  "as_of": "2026-11-03",
-  "generated_at_utc": "2026-11-03T19:49:32+00:00",
+  "as_of": "2026-11-04",
+  "generated_at_utc": "2026-11-04T20:02:27+00:00",
   "signal": "BUY",
-  "composite_score": 77.9,
+  "composite_score": 78.23,
   "valuation_score": 91.91,
-  "growth_score": 45.2,
-  "nifty_close": 23810.85,
-  "pe": 19.71,
-  "earnings_yield": 0.05073567,
+  "growth_score": 46.31,
+  "nifty_close": 23960.6,
+  "pe": 19.77,
+  "earnings_yield": 0.05058169,
   "pe_percentile": 0.08088235,
   "valuation_quintile": "Q1 Cheapest",
   "era_median_pe": 22.0,
-  "implied_eps": 1208.06,
-  "yoy_eps_growth": 0.06301027,
+  "implied_eps": 1211.97,
+  "yoy_eps_growth": 0.06577718,
   "prior_year": {
-    "date": "2025-11-03",
-    "nifty_close": 25763.35,
-    "pe": 22.67,
-    "implied_eps": 1136.45
+    "date": "2025-11-04",
+    "nifty_close": 25597.65,
+    "pe": 22.51,
+    "implied_eps": 1137.17
   },
   "thresholds": {
     "buy": 70,
@@ -27,19 +27,19 @@
   "signal_boundaries": {
     "buy_hold": {
       "score_threshold": 70.0,
-      "valuation_score_required": 80.6268104,
-      "pe_percentile": 0.1937319,
-      "pe": 20.6,
-      "nifty_level": 24886.02283105,
-      "move_from_current": 0.04515474
+      "valuation_score_required": 80.15248297,
+      "pe_percentile": 0.19847517,
+      "pe": 20.62978364,
+      "nifty_level": 25002.62993966,
+      "move_from_current": 0.04348931
     },
     "hold_sell": {
       "score_threshold": 40.0,
-      "valuation_score_required": 37.76966755,
-      "pe_percentile": 0.62230332,
-      "pe": 22.46943227,
-      "nifty_level": 27144.40798937,
-      "move_from_current": 0.14000164
+      "valuation_score_required": 37.29534011,
+      "pe_percentile": 0.6270466,
+      "pe": 22.5,
+      "nifty_level": 27269.27162367,
+      "move_from_current": 0.13808801
     },
     "assumption": "Current implied EPS and earnings-growth score held constant",
     "note": "Approximate because regime-relative P/E percentiles are based on a discrete historical distribution."
