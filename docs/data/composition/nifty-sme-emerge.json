@@ -2,12 +2,12 @@
   "slug": "nifty-sme-emerge",
   "index_name": "NIFTY Sme Emerge",
   "as_of": null,
-  "retrieved_on": "2026-11-04",
+  "retrieved_on": "2026-11-05",
   "source": "NSE Indices — Index Constituent CSV",
   "source_url": "https://www.niftyindices.com/IndexConstituent/ind_niftysmelist.csv",
   "source_type": "official_nse_indices_constituent_csv",
   "completeness": "constituents",
-  "stock_count": 537,
+  "stock_count": 536,
   "weight_coverage": null,
   "top10_weight": null,
   "coverage_note": "The official constituent file lists members but does not publish usable stock weights.",
@@ -376,12 +376,6 @@
       "name": "Baba Food Processing (India) Ltd.",
       "symbol": "BABAFP",
       "sector": "Fast Moving Consumer Goods",
-      "weight": null
-    },
-    {
-      "name": "Baheti Recycling Industries Ltd.",
-      "symbol": "BAHETI",
-      "sector": "Capital Goods",
       "weight": null
     },
     {
@@ -3238,128 +3232,128 @@
   "sectors": [
     {
       "name": "Capital Goods",
-      "count": 128,
-      "stock_share": 23.8361,
+      "count": 127,
+      "stock_share": 23.694,
       "weight": null
     },
     {
       "name": "Services",
       "count": 64,
-      "stock_share": 11.9181,
+      "stock_share": 11.9403,
       "weight": null
     },
     {
       "name": "Consumer Durables",
       "count": 34,
-      "stock_share": 6.3315,
+      "stock_share": 6.3433,
       "weight": null
     },
     {
       "name": "Fast Moving Consumer Goods",
       "count": 34,
-      "stock_share": 6.3315,
+      "stock_share": 6.3433,
       "weight": null
     },
     {
       "name": "Healthcare",
       "count": 34,
-      "stock_share": 6.3315,
+      "stock_share": 6.3433,
       "weight": null
     },
     {
       "name": "Information Technology",
       "count": 34,
-      "stock_share": 6.3315,
+      "stock_share": 6.3433,
       "weight": null
     },
     {
       "name": "Construction",
       "count": 31,
-      "stock_share": 5.7728,
+      "stock_share": 5.7836,
       "weight": null
     },
     {
       "name": "Chemicals",
       "count": 29,
-      "stock_share": 5.4004,
+      "stock_share": 5.4104,
       "weight": null
     },
     {
       "name": "Consumer Services",
       "count": 29,
-      "stock_share": 5.4004,
+      "stock_share": 5.4104,
       "weight": null
     },
     {
       "name": "Media Entertainment & Publication",
       "count": 25,
-      "stock_share": 4.6555,
+      "stock_share": 4.6642,
       "weight": null
     },
     {
       "name": "Automobile and Auto Components",
       "count": 22,
-      "stock_share": 4.0968,
+      "stock_share": 4.1045,
       "weight": null
     },
     {
       "name": "Textiles",
       "count": 21,
-      "stock_share": 3.9106,
+      "stock_share": 3.9179,
       "weight": null
     },
     {
       "name": "Financial Services",
       "count": 10,
-      "stock_share": 1.8622,
+      "stock_share": 1.8657,
       "weight": null
     },
     {
       "name": "Utilities",
       "count": 9,
-      "stock_share": 1.676,
+      "stock_share": 1.6791,
       "weight": null
     },
     {
       "name": "Metals & Mining",
       "count": 8,
-      "stock_share": 1.4898,
+      "stock_share": 1.4925,
       "weight": null
     },
     {
       "name": "Oil Gas & Consumable Fuels",
       "count": 6,
-      "stock_share": 1.1173,
+      "stock_share": 1.1194,
       "weight": null
     },
     {
       "name": "Realty",
       "count": 6,
-      "stock_share": 1.1173,
+      "stock_share": 1.1194,
       "weight": null
     },
     {
       "name": "Telecommunication",
       "count": 6,
-      "stock_share": 1.1173,
+      "stock_share": 1.1194,
       "weight": null
     },
     {
       "name": "Forest Materials",
       "count": 4,
-      "stock_share": 0.7449,
+      "stock_share": 0.7463,
       "weight": null
     },
     {
       "name": "Construction Materials",
       "count": 2,
-      "stock_share": 0.3724,
+      "stock_share": 0.3731,
       "weight": null
     },
     {
       "name": "Power",
       "count": 1,
-      "stock_share": 0.1862,
+      "stock_share": 0.1866,
       "weight": null
     }
   ]
