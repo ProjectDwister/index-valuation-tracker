@@ -1,24 +1,24 @@
 {
   "model_version": "1.5",
-  "as_of": "2026-11-06",
-  "generated_at_utc": "2026-11-06T19:41:49+00:00",
-  "signal": "HOLD",
-  "composite_score": 69.2,
-  "valuation_score": 80.15,
-  "growth_score": 43.65,
-  "nifty_close": 25030.35,
-  "pe": 20.65,
-  "earnings_yield": 0.04842615,
-  "pe_percentile": 0.19852941,
+  "as_of": "2026-11-09",
+  "generated_at_utc": "2026-11-09T22:42:35+00:00",
+  "signal": "BUY",
+  "composite_score": 72.42,
+  "valuation_score": 83.09,
+  "growth_score": 47.51,
+  "nifty_close": 25044.65,
+  "pe": 20.48,
+  "earnings_yield": 0.04882812,
+  "pe_percentile": 0.16911765,
   "valuation_quintile": "Q1 Cheapest",
   "era_median_pe": 22.0,
-  "implied_eps": 1212.12,
-  "yoy_eps_growth": 0.05913564,
+  "implied_eps": 1222.88,
+  "yoy_eps_growth": 0.06878704,
   "prior_year": {
-    "date": "2025-11-06",
-    "nifty_close": 25509.7,
-    "pe": 22.29,
-    "implied_eps": 1144.45
+    "date": "2025-11-07",
+    "nifty_close": 25492.3,
+    "pe": 22.28,
+    "implied_eps": 1144.18
   },
   "thresholds": {
     "buy": 70,
@@ -27,19 +27,19 @@
   "signal_boundaries": {
     "buy_hold": {
       "score_threshold": 70.0,
-      "valuation_score_required": 81.29103259,
-      "pe_percentile": 0.18708967,
-      "pe": 20.62675041,
-      "nifty_level": 25002.16862382,
-      "move_from_current": -0.00112589
+      "valuation_score_required": 79.63650688,
+      "pe_percentile": 0.20363493,
+      "pe": 20.66435404,
+      "nifty_level": 25270.0934758,
+      "move_from_current": 0.00900166
     },
     "hold_sell": {
       "score_threshold": 40.0,
-      "valuation_score_required": 38.43388973,
-      "pe_percentile": 0.6156611,
-      "pe": 22.42492939,
-      "nifty_level": 27181.78359838,
-      "move_from_current": 0.085953
+      "valuation_score_required": 36.77936402,
+      "pe_percentile": 0.63220636,
+      "pe": 22.5,
+      "nifty_level": 27514.87426758,
+      "move_from_current": 0.09863281
     },
     "assumption": "Current implied EPS and earnings-growth score held constant",
     "note": "Approximate because regime-relative P/E percentiles are based on a discrete historical distribution."
