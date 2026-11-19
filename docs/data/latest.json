@@ -1,24 +1,24 @@
 {
   "model_version": "1.5",
-  "as_of": "2026-11-18",
-  "generated_at_utc": "2026-11-18T20:54:28+00:00",
-  "signal": "BUY",
-  "composite_score": 71.12,
-  "valuation_score": 83.09,
-  "growth_score": 43.2,
-  "nifty_close": 25227.95,
-  "pe": 20.55,
-  "earnings_yield": 0.0486618,
-  "pe_percentile": 0.16911765,
-  "valuation_quintile": "Q1 Cheapest",
+  "as_of": "2026-11-19",
+  "generated_at_utc": "2026-11-19T20:59:20+00:00",
+  "signal": "HOLD",
+  "composite_score": 65.98,
+  "valuation_score": 75.74,
+  "growth_score": 43.22,
+  "nifty_close": 25514.3,
+  "pe": 20.78,
+  "earnings_yield": 0.0481232,
+  "pe_percentile": 0.24264706,
+  "valuation_quintile": "Q2",
   "era_median_pe": 22.0,
-  "implied_eps": 1227.64,
-  "yoy_eps_growth": 0.05801203,
+  "implied_eps": 1227.83,
+  "yoy_eps_growth": 0.05804114,
   "prior_year": {
-    "date": "2025-11-18",
-    "nifty_close": 25910.05,
-    "pe": 22.33,
-    "implied_eps": 1160.32
+    "date": "2025-11-19",
+    "nifty_close": 26052.65,
+    "pe": 22.45,
+    "implied_eps": 1160.47
   },
   "thresholds": {
     "buy": 70,
@@ -27,19 +27,19 @@
   "signal_boundaries": {
     "buy_hold": {
       "score_threshold": 70.0,
-      "valuation_score_required": 81.48365135,
-      "pe_percentile": 0.18516349,
-      "pe": 20.6,
-      "nifty_level": 25289.33187348,
-      "move_from_current": 0.00243309
+      "valuation_score_required": 81.47866172,
+      "pe_percentile": 0.18521338,
+      "pe": 20.64092966,
+      "nifty_level": 25343.54531988,
+      "move_from_current": -0.00669251
     },
     "hold_sell": {
       "score_threshold": 40.0,
-      "valuation_score_required": 38.62650849,
-      "pe_percentile": 0.61373492,
-      "pe": 22.41202393,
-      "nifty_level": 27513.84034678,
-      "move_from_current": 0.09060944
+      "valuation_score_required": 38.62151886,
+      "pe_percentile": 0.61378481,
+      "pe": 22.41235824,
+      "nifty_level": 27518.55783191,
+      "move_from_current": 0.07855429
     },
     "assumption": "Current implied EPS and earnings-growth score held constant",
     "note": "Approximate because regime-relative P/E percentiles are based on a discrete historical distribution."
