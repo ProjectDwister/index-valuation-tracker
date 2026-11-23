@@ -29,6 +29,7 @@ on:
       - '.github/workflows/nifty-tracker.yml'
 
 permissions:
+  actions: read
   contents: write
   pages: write
   id-token: write
@@ -39,10 +40,14 @@ concurrency:
 
 jobs:
   update-and-deploy:
+    outputs:
+      needs_deploy: ${{ github.event_name != 'schedule' || steps.freshness.outputs.needs_deploy == 'true' }}
+      artifact_name: ${{ steps.publication.outputs.artifact_name }}
+      artifact_id: ${{ steps.pages_artifact.outputs.artifact_id }}
+      as_of: ${{ steps.publication.outputs.as_of }}
     runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - name: Checkout repository
@@ -52,7 +57,7 @@ jobs:
           # A queued backup must see the first run's published data.
           ref: main
 
-      - name: Check whether the trading day is already published
+      - name: Check repository and live website freshness
         id: freshness
         if: github.event_name == 'schedule'
         run: |
@@ -61,6 +66,7 @@ jobs:
           import os
           from datetime import datetime, time, timedelta
           from pathlib import Path
+          from urllib.request import Request, urlopen
           from zoneinfo import ZoneInfo
 
           now = datetime.now(ZoneInfo('Asia/Kolkata'))
@@ -68,17 +74,33 @@ jobs:
           if now.time() < time(15, 30):
               target -= timedelta(days=1)
 
-          holiday_file = Path('docs/data/nse_market_holidays.json')
-          holidays = json.loads(holiday_file.read_text()).get('holidays', {}) if holiday_file.exists() else {}
+          calendar = json.loads(Path('docs/data/nse_market_holidays.json').read_text())
+          holidays = calendar.get('holidays', {})
           while target.weekday() >= 5 or target.isoformat() in holidays:
               target -= timedelta(days=1)
+          if target.year not in calendar.get('covered_years', []):
+              raise RuntimeError(f"NSE holiday calendar does not cover {target.year}")
 
-          latest_file = Path('docs/data/multi_index_latest.json')
-          latest = json.loads(latest_file.read_text()).get('as_of', '') if latest_file.exists() else ''
+          latest = json.loads(Path('docs/data/multi_index_latest.json').read_text()).get('as_of', '')
           needs_refresh = latest < target.isoformat()
+          hosted = ''
+          if not needs_refresh:
+              url = ('https://projectdwister.github.io/index-valuation-tracker/'
+                     f'data/multi_index_latest.json?freshness={int(now.timestamp())}')
+              try:
+                  request = Request(url, headers={'Cache-Control': 'no-cache', 'User-Agent': 'IndexTracker-Freshness'})
+                  with urlopen(request, timeout=15) as response:
+                      hosted = json.load(response).get('as_of', '')
+              except Exception as error:
+                  print(f"Live data could not be verified; republishing: {error}")
+
+          # Recover an unsuccessful deployment even if the bot already committed fresh data.
+          needs_deploy = needs_refresh or hosted != latest
           with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
               output.write(f"needs_refresh={str(needs_refresh).lower()}\n")
-          print(f"Latest: {latest or 'none'}; expected trading day: {target}; refresh: {needs_refresh}")
+              output.write(f"needs_deploy={str(needs_deploy).lower()}\n")
+          print(f"Repository: {latest or 'none'}; website: {hosted or 'not verified'}; "
+                f"expected: {target}; refresh: {needs_refresh}; deploy: {needs_deploy}")
           PY
 
       - name: Set up Python
@@ -153,17 +175,120 @@ jobs:
             echo "No model changes to commit."
           fi
 
+      - name: Prepare Pages publication
+        id: publication
+        if: github.event_name != 'schedule' || steps.freshness.outputs.needs_deploy == 'true'
+        run: |
+          python3 - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          latest = json.loads(Path('docs/data/multi_index_latest.json').read_text())['as_of']
+          name = f"github-pages-{os.environ['GITHUB_RUN_ID']}-{os.environ['GITHUB_RUN_ATTEMPT']}"
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+              output.write(f"as_of={latest}\n")
+              output.write(f"artifact_name={name}\n")
+          print(f"Preparing {name} with valuation data as of {latest}")
+          PY
+
       - name: Configure GitHub Pages
-        if: github.event_name != 'schedule' || steps.freshness.outputs.needs_refresh == 'true'
+        if: github.event_name != 'schedule' || steps.freshness.outputs.needs_deploy == 'true'
         uses: actions/configure-pages@v5
 
       - name: Upload Pages artifact
-        if: github.event_name != 'schedule' || steps.freshness.outputs.needs_refresh == 'true'
+        id: pages_artifact
+        if: github.event_name != 'schedule' || steps.freshness.outputs.needs_deploy == 'true'
         uses: actions/upload-pages-artifact@v4
         with:
+          name: ${{ steps.publication.outputs.artifact_name }}
           path: docs
 
+  deploy:
+    needs: update-and-deploy
+    if: needs.update-and-deploy.outputs.needs_deploy == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      actions: read
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Wait for the uploaded Pages artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PAGES_ARTIFACT_NAME: ${{ needs.update-and-deploy.outputs.artifact_name }}
+          PAGES_ARTIFACT_ID: ${{ needs.update-and-deploy.outputs.artifact_id }}
+        run: |
+          python3 - <<'PY'
+          import json
+          import os
+          import time
+          from urllib.request import Request, urlopen
+
+          url = (f"{os.environ['GITHUB_API_URL']}/repos/{os.environ['GITHUB_REPOSITORY']}"
+                 f"/actions/runs/{os.environ['GITHUB_RUN_ID']}/artifacts?per_page=100")
+          expected_id = int(os.environ['PAGES_ARTIFACT_ID'])
+          expected_name = os.environ['PAGES_ARTIFACT_NAME']
+          for attempt in range(1, 13):
+              try:
+                  request = Request(url, headers={
+                      'Authorization': f"Bearer {os.environ['GH_TOKEN']}",
+                      'Accept': 'application/vnd.github+json',
+                      'Cache-Control': 'no-cache',
+                  })
+                  with urlopen(request, timeout=10) as response:
+                      artifacts = json.load(response).get('artifacts', [])
+                  ready = any(item['id'] == expected_id and item['name'] == expected_name
+                              and not item.get('expired', False) for item in artifacts)
+                  if ready:
+                      print(f"Pages artifact {expected_name} ({expected_id}) is available")
+                      break
+              except Exception as error:
+                  print(f"Artifact check {attempt}/12: {error}")
+              if attempt == 12:
+                  raise RuntimeError(f"Uploaded Pages artifact {expected_name} did not become available")
+              time.sleep(5)
+          PY
+
       - name: Deploy to GitHub Pages
-        if: github.event_name != 'schedule' || steps.freshness.outputs.needs_refresh == 'true'
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5.0.1
+        with:
+          artifact_name: ${{ needs.update-and-deploy.outputs.artifact_name }}
+
+      - name: Verify live valuation data
+        env:
+          PAGES_URL: ${{ steps.deployment.outputs.page_url }}
+          EXPECTED_AS_OF: ${{ needs.update-and-deploy.outputs.as_of }}
+        run: |
+          python3 - <<'PY'
+          import json
+          import os
+          import time
+          from urllib.request import Request, urlopen
+
+          base_url = os.environ['PAGES_URL'].rstrip('/') + '/data/multi_index_latest.json'
+          expected = os.environ['EXPECTED_AS_OF']
+          observed = 'unavailable'
+          for attempt in range(1, 25):
+              try:
+                  request = Request(f"{base_url}?freshness={time.time_ns()}", headers={
+                      'Cache-Control': 'no-cache', 'User-Agent': 'IndexTracker-Freshness',
+                  })
+                  with urlopen(request, timeout=10) as response:
+                      observed = json.load(response).get('as_of', '')
+                  if observed == expected:
+                      print(f"Verified live website: {observed}")
+                      break
+                  print(f"Live data is {observed}; waiting for {expected} ({attempt}/24)")
+              except Exception as error:
+                  print(f"Live verification {attempt}/24: {error}")
+              if attempt == 24:
+                  raise RuntimeError(f"Website data is {observed}; expected {expected}")
+              time.sleep(5)
+          PY
