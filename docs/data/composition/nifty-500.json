@@ -2,7 +2,7 @@
   "slug": "nifty-500",
   "index_name": "NIFTY 500",
   "as_of": null,
-  "retrieved_on": "2026-11-25",
+  "retrieved_on": "2026-11-26",
   "source": "NSE Indices — Index Constituent CSV",
   "source_url": "https://www.niftyindices.com/IndexConstituent/ind_nifty500list.csv",
   "source_type": "official_nse_indices_constituent_csv",
@@ -895,12 +895,6 @@
       "weight": null
     },
     {
-      "name": "Dummy HEG Ltd.",
-      "symbol": "DUMMYHEG",
-      "sector": "Capital Goods",
-      "weight": null
-    },
-    {
       "name": "E.I.D. Parry (India) Ltd.",
       "symbol": "EIDPARRY",
       "sector": "Fast Moving Consumer Goods",
@@ -1233,6 +1227,12 @@
     {
       "name": "HEG Advanced Materials Ltd.",
       "symbol": "HEGAM",
+      "sector": "Capital Goods",
+      "weight": null
+    },
+    {
+      "name": "HEG Ltd.",
+      "symbol": "HEGRAPHITE",
       "sector": "Capital Goods",
       "weight": null
     },
