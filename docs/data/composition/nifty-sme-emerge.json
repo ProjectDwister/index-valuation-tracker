@@ -2,12 +2,12 @@
   "slug": "nifty-sme-emerge",
   "index_name": "NIFTY Sme Emerge",
   "as_of": null,
-  "retrieved_on": "2026-11-26",
+  "retrieved_on": "2026-11-27",
   "source": "NSE Indices — Index Constituent CSV",
   "source_url": "https://www.niftyindices.com/IndexConstituent/ind_niftysmelist.csv",
   "source_type": "official_nse_indices_constituent_csv",
   "completeness": "constituents",
-  "stock_count": 534,
+  "stock_count": 533,
   "weight_coverage": null,
   "top10_weight": null,
   "coverage_note": "The official constituent file lists members but does not publish usable stock weights.",
@@ -1222,12 +1222,6 @@
       "name": "Indifra Ltd.",
       "symbol": "INDIFRA",
       "sector": "Oil Gas & Consumable Fuels",
-      "weight": null
-    },
-    {
-      "name": "Infinium Pharmachem Ltd.",
-      "symbol": "INFINIUM",
-      "sector": "Healthcare",
       "weight": null
     },
     {
@@ -3221,127 +3215,127 @@
     {
       "name": "Capital Goods",
       "count": 127,
-      "stock_share": 23.7828,
+      "stock_share": 23.8274,
       "weight": null
     },
     {
       "name": "Services",
       "count": 62,
-      "stock_share": 11.6105,
+      "stock_share": 11.6323,
       "weight": null
     },
     {
       "name": "Consumer Durables",
       "count": 34,
-      "stock_share": 6.367,
+      "stock_share": 6.379,
       "weight": null
     },
     {
       "name": "Fast Moving Consumer Goods",
       "count": 34,
-      "stock_share": 6.367,
-      "weight": null
-    },
-    {
-      "name": "Healthcare",
-      "count": 34,
-      "stock_share": 6.367,
+      "stock_share": 6.379,
       "weight": null
     },
     {
       "name": "Information Technology",
       "count": 34,
-      "stock_share": 6.367,
+      "stock_share": 6.379,
+      "weight": null
+    },
+    {
+      "name": "Healthcare",
+      "count": 33,
+      "stock_share": 6.1914,
       "weight": null
     },
     {
       "name": "Construction",
       "count": 31,
-      "stock_share": 5.8052,
+      "stock_share": 5.8161,
       "weight": null
     },
     {
       "name": "Chemicals",
       "count": 29,
-      "stock_share": 5.4307,
+      "stock_share": 5.4409,
       "weight": null
     },
     {
       "name": "Consumer Services",
       "count": 29,
-      "stock_share": 5.4307,
+      "stock_share": 5.4409,
       "weight": null
     },
     {
       "name": "Media Entertainment & Publication",
       "count": 25,
-      "stock_share": 4.6816,
+      "stock_share": 4.6904,
       "weight": null
     },
     {
       "name": "Automobile and Auto Components",
       "count": 22,
-      "stock_share": 4.1199,
+      "stock_share": 4.1276,
       "weight": null
     },
     {
       "name": "Textiles",
       "count": 21,
-      "stock_share": 3.9326,
+      "stock_share": 3.94,
       "weight": null
     },
     {
       "name": "Financial Services",
       "count": 10,
-      "stock_share": 1.8727,
+      "stock_share": 1.8762,
       "weight": null
     },
     {
       "name": "Utilities",
       "count": 9,
-      "stock_share": 1.6854,
+      "stock_share": 1.6886,
       "weight": null
     },
     {
       "name": "Metals & Mining",
       "count": 8,
-      "stock_share": 1.4981,
+      "stock_share": 1.5009,
       "weight": null
     },
     {
       "name": "Oil Gas & Consumable Fuels",
       "count": 6,
-      "stock_share": 1.1236,
+      "stock_share": 1.1257,
       "weight": null
     },
     {
       "name": "Realty",
       "count": 6,
-      "stock_share": 1.1236,
+      "stock_share": 1.1257,
       "weight": null
     },
     {
       "name": "Telecommunication",
       "count": 6,
-      "stock_share": 1.1236,
+      "stock_share": 1.1257,
       "weight": null
     },
     {
       "name": "Forest Materials",
       "count": 4,
-      "stock_share": 0.7491,
+      "stock_share": 0.7505,
       "weight": null
     },
     {
       "name": "Construction Materials",
       "count": 2,
-      "stock_share": 0.3745,
+      "stock_share": 0.3752,
       "weight": null
     },
     {
       "name": "Power",
       "count": 1,
-      "stock_share": 0.1873,
+      "stock_share": 0.1876,
       "weight": null
     }
   ]
